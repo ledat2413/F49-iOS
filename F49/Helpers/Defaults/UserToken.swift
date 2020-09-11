@@ -9,7 +9,6 @@
 import Foundation
 
 struct UserToken{
-    static let accessTokenKey = "accessTokenKey"
     static let userSessionKey = "com.save.usersession"
     private static let userDefault = UserDefaults.standard
     

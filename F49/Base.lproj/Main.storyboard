@@ -106,6 +106,9 @@
                                     <constraint firstAttribute="width" constant="20" id="Qns-QY-vo3"/>
                                 </constraints>
                                 <state key="normal" image="login-check"/>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IcI-CB-3uN"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U0Y-k5-Qmm">
                                 <rect key="frame" x="57" y="329" width="300" height="50"/>

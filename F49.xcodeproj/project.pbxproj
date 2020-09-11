@@ -29,6 +29,8 @@
 		C2695BEF2508F69B00E3A3C8 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEE2508F69B00E3A3C8 /* SplashScreenViewController.swift */; };
 		C288472F250B0F7200CB84FA /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C288472E250B0F7200CB84FA /* Contants.swift */; };
 		C2884731250B0FA500CB84FA /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2884730250B0FA500CB84FA /* ExtensionUIView.swift */; };
+		C2884733250B191E00CB84FA /* SaveEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2884732250B191E00CB84FA /* SaveEmail.swift */; };
+		C2884736250B21CF00CB84FA /* SavePass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2884735250B21CF00CB84FA /* SavePass.swift */; };
 		CAB33D739092F3991E860E43 /* Pods_F49.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E3FC27611B8020906915F1 /* Pods_F49.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,8 @@
 		C2695BEE2508F69B00E3A3C8 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		C288472E250B0F7200CB84FA /* Contants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contants.swift; sourceTree = "<group>"; };
 		C2884730250B0FA500CB84FA /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
+		C2884732250B191E00CB84FA /* SaveEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveEmail.swift; sourceTree = "<group>"; };
+		C2884735250B21CF00CB84FA /* SavePass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePass.swift; sourceTree = "<group>"; };
 		E42C8533E2BF20FFED4D10D1 /* Pods-F49.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F49.release.xcconfig"; path = "Target Support Files/Pods-F49/Pods-F49.release.xcconfig"; sourceTree = "<group>"; };
 		E65DEDA807C3DBF97E92936A /* Pods-F49.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F49.debug.xcconfig"; path = "Target Support Files/Pods-F49/Pods-F49.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,8 +160,8 @@
 		C265C18E25071F4E000D4FAE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C2884734250B21B600CB84FA /* Defaults */,
 				C288472E250B0F7200CB84FA /* Contants.swift */,
-				C265C19E250777A1000D4FAE /* UserToken.swift */,
 				C2884730250B0FA500CB84FA /* ExtensionUIView.swift */,
 			);
 			path = Helpers;
@@ -203,6 +207,16 @@
 			children = (
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		C2884734250B21B600CB84FA /* Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				C2884732250B191E00CB84FA /* SaveEmail.swift */,
+				C265C19E250777A1000D4FAE /* UserToken.swift */,
+				C2884735250B21CF00CB84FA /* SavePass.swift */,
+			);
+			path = Defaults;
 			sourceTree = "<group>";
 		};
 		FB6D794E8FEFCEC15328425A /* Frameworks */ = {
@@ -343,7 +357,9 @@
 				C265C19425072158000D4FAE /* BaseResponse.swift in Sources */,
 				C265C19F250777A1000D4FAE /* UserToken.swift in Sources */,
 				C2695BEB2508BF9200E3A3C8 /* HomeViewController.swift in Sources */,
+				C2884736250B21CF00CB84FA /* SavePass.swift in Sources */,
 				C265C17825071EE0000D4FAE /* AppDelegate.swift in Sources */,
+				C2884733250B191E00CB84FA /* SaveEmail.swift in Sources */,
 				C265C17A25071EE0000D4FAE /* SceneDelegate.swift in Sources */,
 				C265C19D25073A0D000D4FAE /* Token.swift in Sources */,
 				C2661CE2250A025600430595 /* BodyCollectionViewCell.swift in Sources */,
@@ -493,6 +509,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = F49/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -511,6 +528,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = F49/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

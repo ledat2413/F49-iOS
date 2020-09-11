@@ -34,6 +34,13 @@ class LoginViewController: UIViewController {
     }
     
     //MARK: --IBAction
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        
+        saveButton.setImage(UIImage(named: "login-checked"), for: .normal)
+        
+    }
+    
     @IBAction func loginButtonPressed(_ sender: Any) {
         MGConnection.requestToken(APIRouter.Login(grant_type: "password", username: emailTextField.text ?? "", password: passTextField.text ?? ""), Token.self) { (result, error) in
             guard error == nil else {
