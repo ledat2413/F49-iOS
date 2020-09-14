@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 class LoginViewController: UIViewController {
     
     //MARK: --Vars
@@ -30,15 +31,16 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayUI()
-        
+        emailTextField.text = SaveEmail.getEmail()
+        passTextField.text = SavePass.getPass()
     }
     
     //MARK: --IBAction
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        
         saveButton.setImage(UIImage(named: "login-checked"), for: .normal)
-        
+        SaveEmail.save(emailTextField.text ?? "")
+        SavePass.save(passTextField.text ?? "")
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
@@ -57,8 +59,6 @@ class LoginViewController: UIViewController {
                 UserToken.save("\(result.token_type) \(result.access_token)")
                 print("Login Success")
                 self.homeView()
-                
-                
             }
         }
         NotificationCenter.default.post(name: Notification.Name("LoginNotification"), object: nil)
@@ -117,7 +117,7 @@ class LoginViewController: UIViewController {
     }
     
     private func homeView(){
-        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "SplashScreenViewController")
+        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashScreenViewController")
         self.present(itemVC, animated: true, completion: nil)
     }
     

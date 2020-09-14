@@ -13,6 +13,8 @@ enum APIRouter: URLRequestConvertible {
     // =========== Begin define api ===========
     case Login(grant_type: String, username: String, password: String)
     case GetUserProfile
+    case GetCuaHang
+    case GetDashBoard(id: Int)
     // =========== End define api ===========
     
     // MARK: - HTTPMethod
@@ -22,7 +24,10 @@ enum APIRouter: URLRequestConvertible {
             return .post
         case .GetUserProfile:
             return .get
-            
+        case .GetCuaHang:
+            return .get
+        case .GetDashBoard:
+            return .get
         }
     }
     
@@ -33,6 +38,10 @@ enum APIRouter: URLRequestConvertible {
             return "token"
         case .GetUserProfile:
             return "api/UserProfile"
+        case .GetCuaHang:
+            return "api/Dashboard/GetCuaHang"
+        case .GetDashBoard:
+            return "api/Dashboard/GetDashboard"
         }
     }
     
@@ -47,6 +56,16 @@ enum APIRouter: URLRequestConvertible {
                 headers["Authorization"] = token
             }
             break
+        case .GetCuaHang:
+            if let token = UserToken.getAccessToken() {
+                headers["Authorization"] = token
+            }
+            break
+            
+        case .GetDashBoard:
+            if let token = UserToken.getAccessToken() {
+                headers["Authorization"] = token
+            }
         }
         
         return headers;
@@ -61,6 +80,10 @@ enum APIRouter: URLRequestConvertible {
                     "password": password]
         case .GetUserProfile:
             return [:]
+        case .GetCuaHang:
+            return [:]
+        case .GetDashBoard(let id):
+            return ["idCuaHang": id]
         }
     }
     

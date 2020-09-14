@@ -33,10 +33,10 @@ class SplashScreenViewController: UIViewController {
     
     @objc private func checkLogin(){
         if UserToken.getAccessToken() == nil {
-            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "LoginViewController")
+            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
             self.present(itemVC, animated: true, completion: nil)
         }else {
-            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "TabarController")
+            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabarController")
             self.present(itemVC, animated: true, completion: nil)
         }
     }

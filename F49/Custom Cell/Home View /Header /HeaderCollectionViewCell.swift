@@ -10,12 +10,30 @@ import UIKit
 
 class HeaderCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var thumbnailView: UIView!
     @IBOutlet weak var thumbnailTitleLabel: UILabel!
     @IBOutlet weak var thumbnailCountLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        cornerRadius(thumbnailView)
+        cornerRadius(thumbnailImageView)
+    }
+    
+    
+    
+    func shadowView(_ view: UIView) {
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        view.layer.shadowRadius = 1
+        view.layer.shadowOpacity = 1
+        view.layer.cornerRadius = 6
+    }
+    
+    func cornerRadius(_ view: UIView){
+        view.layer.cornerRadius = 6
+        view.clipsToBounds = true
     }
 
 }

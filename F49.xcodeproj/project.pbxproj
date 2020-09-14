@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C261B4C1250F261900B63043 /* CuaHang.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C0250F261900B63043 /* CuaHang.swift */; };
+		C261B4C3250F542700B63043 /* SaveIdCuaHang.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C2250F542700B63043 /* SaveIdCuaHang.swift */; };
+		C261B4C5250F556900B63043 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C4250F556900B63043 /* ExtensionUIView.swift */; };
+		C261B4C7250F58AD00B63043 /* DashBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C6250F58AD00B63043 /* DashBoard.swift */; };
 		C265C17825071EE0000D4FAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C17725071EE0000D4FAE /* AppDelegate.swift */; };
 		C265C17A25071EE0000D4FAE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C17925071EE0000D4FAE /* SceneDelegate.swift */; };
 		C265C17F25071EE0000D4FAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C265C17D25071EE0000D4FAE /* Main.storyboard */; };
@@ -28,7 +32,6 @@
 		C2695BED2508C62400E3A3C8 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEC2508C62400E3A3C8 /* UserViewController.swift */; };
 		C2695BEF2508F69B00E3A3C8 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEE2508F69B00E3A3C8 /* SplashScreenViewController.swift */; };
 		C288472F250B0F7200CB84FA /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C288472E250B0F7200CB84FA /* Contants.swift */; };
-		C2884731250B0FA500CB84FA /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2884730250B0FA500CB84FA /* ExtensionUIView.swift */; };
 		C2884733250B191E00CB84FA /* SaveEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2884732250B191E00CB84FA /* SaveEmail.swift */; };
 		C2884736250B21CF00CB84FA /* SavePass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2884735250B21CF00CB84FA /* SavePass.swift */; };
 		CAB33D739092F3991E860E43 /* Pods_F49.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E3FC27611B8020906915F1 /* Pods_F49.framework */; };
@@ -36,6 +39,10 @@
 
 /* Begin PBXFileReference section */
 		07E3FC27611B8020906915F1 /* Pods_F49.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_F49.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C261B4C0250F261900B63043 /* CuaHang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuaHang.swift; sourceTree = "<group>"; };
+		C261B4C2250F542700B63043 /* SaveIdCuaHang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveIdCuaHang.swift; sourceTree = "<group>"; };
+		C261B4C4250F556900B63043 /* ExtensionUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
+		C261B4C6250F58AD00B63043 /* DashBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoard.swift; sourceTree = "<group>"; };
 		C265C17425071EDF000D4FAE /* F49.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = F49.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C265C17725071EE0000D4FAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C265C17925071EE0000D4FAE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +67,6 @@
 		C2695BEC2508C62400E3A3C8 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		C2695BEE2508F69B00E3A3C8 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		C288472E250B0F7200CB84FA /* Contants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contants.swift; sourceTree = "<group>"; };
-		C2884730250B0FA500CB84FA /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		C2884732250B191E00CB84FA /* SaveEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveEmail.swift; sourceTree = "<group>"; };
 		C2884735250B21CF00CB84FA /* SavePass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePass.swift; sourceTree = "<group>"; };
 		E42C8533E2BF20FFED4D10D1 /* Pods-F49.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F49.release.xcconfig"; path = "Target Support Files/Pods-F49/Pods-F49.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +148,8 @@
 			children = (
 				C265C19C25073A0D000D4FAE /* Token.swift */,
 				C265C1A025078812000D4FAE /* UserProfile.swift */,
+				C261B4C0250F261900B63043 /* CuaHang.swift */,
+				C261B4C6250F58AD00B63043 /* DashBoard.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -161,8 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				C2884734250B21B600CB84FA /* Defaults */,
+				C261B4C4250F556900B63043 /* ExtensionUIView.swift */,
 				C288472E250B0F7200CB84FA /* Contants.swift */,
-				C2884730250B0FA500CB84FA /* ExtensionUIView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -215,6 +223,7 @@
 				C2884732250B191E00CB84FA /* SaveEmail.swift */,
 				C265C19E250777A1000D4FAE /* UserToken.swift */,
 				C2884735250B21CF00CB84FA /* SavePass.swift */,
+				C261B4C2250F542700B63043 /* SaveIdCuaHang.swift */,
 			);
 			path = Defaults;
 			sourceTree = "<group>";
@@ -344,21 +353,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C261B4C3250F542700B63043 /* SaveIdCuaHang.swift in Sources */,
 				C265C19B250728CC000D4FAE /* LoginViewController.swift in Sources */,
 				C2695BED2508C62400E3A3C8 /* UserViewController.swift in Sources */,
 				C265C1962507218E000D4FAE /* MGConnection.swift in Sources */,
 				C288472F250B0F7200CB84FA /* Contants.swift in Sources */,
 				C2661CDE2509E59A00430595 /* HeaderCollectionViewCell.swift in Sources */,
 				C2695BEF2508F69B00E3A3C8 /* SplashScreenViewController.swift in Sources */,
-				C2884731250B0FA500CB84FA /* ExtensionUIView.swift in Sources */,
 				C265C1A125078812000D4FAE /* UserProfile.swift in Sources */,
 				C265C19225071FF6000D4FAE /* APIRouter.swift in Sources */,
+				C261B4C5250F556900B63043 /* ExtensionUIView.swift in Sources */,
+				C261B4C7250F58AD00B63043 /* DashBoard.swift in Sources */,
 				C265C19025071F91000D4FAE /* Config.swift in Sources */,
 				C265C19425072158000D4FAE /* BaseResponse.swift in Sources */,
 				C265C19F250777A1000D4FAE /* UserToken.swift in Sources */,
 				C2695BEB2508BF9200E3A3C8 /* HomeViewController.swift in Sources */,
 				C2884736250B21CF00CB84FA /* SavePass.swift in Sources */,
 				C265C17825071EE0000D4FAE /* AppDelegate.swift in Sources */,
+				C261B4C1250F261900B63043 /* CuaHang.swift in Sources */,
 				C2884733250B191E00CB84FA /* SaveEmail.swift in Sources */,
 				C265C17A25071EE0000D4FAE /* SceneDelegate.swift in Sources */,
 				C265C19D25073A0D000D4FAE /* Token.swift in Sources */,
@@ -509,7 +521,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = F49/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -528,7 +540,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = F49/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

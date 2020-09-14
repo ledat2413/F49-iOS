@@ -16,7 +16,7 @@ class UserViewController: UIViewController {
     }
     
     private func loadUserProfile(){
-        MGConnection.requestProfile(APIRouter.GetUserProfile, UserProfile.self) { (result, error) in
+        MGConnection.requestArray(APIRouter.GetUserProfile, UserProfile.self) { (result, error) in
             guard error == nil else {
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorType))")
                 return

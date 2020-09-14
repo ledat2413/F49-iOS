@@ -9,18 +9,36 @@
 import UIKit
 
 class BodyCollectionViewCell: UICollectionViewCell {
-
+  
+    @IBOutlet weak var thumbnailCornerRadiusView: UIView!
+    @IBOutlet weak var thumbnailCountView: UIView!
     @IBOutlet weak var thumbnailTitleLabel: UILabel!
     @IBOutlet weak var thumbnailCountLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        displayUI()
+        
     }
     
     func displayUI(){
-        thumbnailImageView.layer.shadowOffset = CGSize(width: 0, height: 3)
-        thumbnailImageView.layer.shadowRadius = 1
+        shadowView(thumbnailCountView)
+        cornerRadius(thumbnailCountLabel)
+        cornerRadius(thumbnailCornerRadiusView)
     }
+    
+    func shadowView(_ view: UIView) {
+        view.layer.shadowColor = UIColor.darkGray.cgColor
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        view.layer.shadowRadius = 1
+        view.layer.shadowOpacity = 0.9
+        view.layer.cornerRadius = 6
+    }
+    
+    func cornerRadius(_ view: UIView){
+        view.layer.cornerRadius = 6
+        view.clipsToBounds = true
+    }
+
 }
