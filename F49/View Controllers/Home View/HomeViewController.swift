@@ -224,7 +224,6 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITe
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCuaHang = dataCuaHang[row].tenCuaHang
         loadDashBoard(id: dataCuaHang[row].id)
-        //        didSelectCuaHang?.chooseCuaHang(id: dataCuaHang[row].id)
         findTextField.text = selectedCuaHang
     }
     
