@@ -55,6 +55,8 @@
 		C2695BEB2508BF9200E3A3C8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEA2508BF9200E3A3C8 /* HomeViewController.swift */; };
 		C2695BED2508C62400E3A3C8 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEC2508C62400E3A3C8 /* UserViewController.swift */; };
 		C2695BEF2508F69B00E3A3C8 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEE2508F69B00E3A3C8 /* SplashScreenViewController.swift */; };
+		C282CBF32511A61400F62B63 /* NavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = C282CBF22511A61400F62B63 /* NavigationBar.xib */; };
+		C282CBF52511A73400F62B63 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282CBF42511A73400F62B63 /* NavigationBar.swift */; };
 		C288472F250B0F7200CB84FA /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C288472E250B0F7200CB84FA /* Contants.swift */; };
 		C2884733250B191E00CB84FA /* SaveEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2884732250B191E00CB84FA /* SaveEmail.swift */; };
 		C2884736250B21CF00CB84FA /* SavePass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2884735250B21CF00CB84FA /* SavePass.swift */; };
@@ -114,6 +116,8 @@
 		C2695BEA2508BF9200E3A3C8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C2695BEC2508C62400E3A3C8 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		C2695BEE2508F69B00E3A3C8 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		C282CBF22511A61400F62B63 /* NavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationBar.xib; sourceTree = "<group>"; };
+		C282CBF42511A73400F62B63 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		C288472E250B0F7200CB84FA /* Contants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contants.swift; sourceTree = "<group>"; };
 		C2884732250B191E00CB84FA /* SaveEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveEmail.swift; sourceTree = "<group>"; };
 		C2884735250B21CF00CB84FA /* SavePass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePass.swift; sourceTree = "<group>"; };
@@ -310,6 +314,8 @@
 		C2661CE4250A074500430595 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C282CBF22511A61400F62B63 /* NavigationBar.xib */,
+				C282CBF42511A73400F62B63 /* NavigationBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -401,6 +407,7 @@
 				C265C18125071EE2000D4FAE /* Assets.xcassets in Resources */,
 				C2659C8925107C620021BC9D /* EmailTableViewCell.xib in Resources */,
 				C2659C8125107A5B0021BC9D /* BirthDateTableViewCell.xib in Resources */,
+				C282CBF32511A61400F62B63 /* NavigationBar.xib in Resources */,
 				C265C17F25071EE0000D4FAE /* Main.storyboard in Resources */,
 				C2659CC02510AD1C0021BC9D /* HeaderCollectionViewCell.xib in Resources */,
 				C2659C7D251079C00021BC9D /* NameTableViewCell.xib in Resources */,
@@ -496,6 +503,7 @@
 				C2884733250B191E00CB84FA /* SaveEmail.swift in Sources */,
 				C265C17A25071EE0000D4FAE /* SceneDelegate.swift in Sources */,
 				C2659CC72510BE8F0021BC9D /* MatKhauViewController.swift in Sources */,
+				C282CBF52511A73400F62B63 /* NavigationBar.swift in Sources */,
 				C265C19D25073A0D000D4FAE /* Token.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

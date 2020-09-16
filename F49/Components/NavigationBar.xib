@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+            <connections>
+                <outlet property="backGroundImageView" destination="irC-Pg-amw" id="SMp-cU-rHs"/>
+                <outlet property="leftButton" destination="v1x-ip-GWX" id="gq8-KS-l08"/>
+                <outlet property="titleLabel" destination="BEO-sw-je6" id="2Mp-xK-hN5"/>
+                <outlet property="view" destination="iN0-l3-epB" id="L1G-ol-ZLx"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-bg-page" translatesAutoresizingMaskIntoConstraints="NO" id="irC-Pg-amw">
+                    <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="b9m-W2-zBH"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1x-ip-GWX">
+                    <rect key="frame" x="0.0" y="44" width="60" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="0lR-ov-FAH"/>
+                        <constraint firstAttribute="width" constant="60" id="hsk-n4-s7G"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEO-sw-je6">
+                    <rect key="frame" x="60" y="44" width="250" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="0h5-Jh-Go0"/>
+                        <constraint firstAttribute="height" constant="50" id="Up7-85-nde"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="v1x-ip-GWX" firstAttribute="leading" secondItem="GBo-oe-A2E" secondAttribute="leading" id="One-TE-OFO"/>
+                <constraint firstItem="GBo-oe-A2E" firstAttribute="trailing" secondItem="irC-Pg-amw" secondAttribute="trailing" id="Y3D-gh-8KJ"/>
+                <constraint firstItem="irC-Pg-amw" firstAttribute="leading" secondItem="GBo-oe-A2E" secondAttribute="leading" id="dN1-zJ-Sfv"/>
+                <constraint firstItem="BEO-sw-je6" firstAttribute="top" secondItem="GBo-oe-A2E" secondAttribute="top" id="eYI-BK-OpF"/>
+                <constraint firstItem="BEO-sw-je6" firstAttribute="leading" secondItem="v1x-ip-GWX" secondAttribute="trailing" id="nCW-2f-miY"/>
+                <constraint firstItem="irC-Pg-amw" firstAttribute="top" secondItem="GBo-oe-A2E" secondAttribute="top" id="r2E-uJ-rWX"/>
+                <constraint firstItem="v1x-ip-GWX" firstAttribute="top" secondItem="GBo-oe-A2E" secondAttribute="top" id="xFm-4S-cdb"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="GBo-oe-A2E"/>
+            <point key="canvasLocation" x="139" y="115"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="profile-bg-page" width="1242" height="212"/>
+    </resources>
+</document>
