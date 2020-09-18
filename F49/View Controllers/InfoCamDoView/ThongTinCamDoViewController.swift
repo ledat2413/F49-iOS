@@ -16,17 +16,12 @@ class ThongTinCamDoViewController: UIViewController {
         super.viewDidLoad()
 
         headerView.title = "Thông tin cầm đồ"
+        headerView.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+        headerView.leftButton.setImage(UIImage(named: "arrow-left-white"), for: .normal)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func backView(){
+        
     }
-    */
 
 }
