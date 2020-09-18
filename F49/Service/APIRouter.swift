@@ -15,6 +15,9 @@ enum APIRouter: URLRequestConvertible {
     case GetUserProfile
     case GetCuaHang
     case GetDashBoard(id: Int)
+    case GetTienIch(id: Int)
+    case GetStatus
+    case GetListCamDo(id: String)
     // =========== End define api ===========
     
     // MARK: - HTTPMethod
@@ -28,6 +31,13 @@ enum APIRouter: URLRequestConvertible {
             return .get
         case .GetDashBoard:
             return .get
+        case .GetStatus:
+            return .get
+        case .GetTienIch:
+            return .get
+        case .GetListCamDo:
+            return .get
+            
         }
     }
     
@@ -42,6 +52,12 @@ enum APIRouter: URLRequestConvertible {
             return "api/Dashboard/GetCuaHang"
         case .GetDashBoard:
             return "api/Dashboard/GetDashboard"
+        case .GetStatus:
+            return "api/TopMenu/GetTrangThai"
+        case .GetTienIch:
+            return "api/TienIch/GetTienIch"
+        case .GetListCamDo:
+            return "api/TopMenu/GetListCamDo"
         }
     }
     
@@ -66,6 +82,22 @@ enum APIRouter: URLRequestConvertible {
             if let token = UserToken.getAccessToken() {
                 headers["Authorization"] = token
             }
+            break
+        case .GetTienIch:
+            if let token = UserToken.getAccessToken() {
+                headers["Authorization"] = token
+            }
+            break
+        case .GetStatus:
+            if let token = UserToken.getAccessToken() {
+                headers["Authorization"] = token
+            }
+            break
+        case .GetListCamDo:
+            if let token = UserToken.getAccessToken() {
+                headers["Authorization"] = token
+            }
+            break
         }
         
         return headers;
@@ -84,6 +116,12 @@ enum APIRouter: URLRequestConvertible {
             return [:]
         case .GetDashBoard(let id):
             return ["idCuaHang": id]
+        case .GetTienIch(let id):
+            return ["idCuaHang": id]
+        case .GetStatus:
+            return [:]
+        case .GetListCamDo(let id):
+            return ["trangThai": id]
         }
     }
     

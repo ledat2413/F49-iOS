@@ -10,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
             <connections>
-                <outlet property="backGroundImageView" destination="irC-Pg-amw" id="SMp-cU-rHs"/>
                 <outlet property="leftButton" destination="v1x-ip-GWX" id="gq8-KS-l08"/>
                 <outlet property="titleLabel" destination="BEO-sw-je6" id="2Mp-xK-hN5"/>
                 <outlet property="view" destination="iN0-l3-epB" id="L1G-ol-ZLx"/>
@@ -22,38 +21,40 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-bg-page" translatesAutoresizingMaskIntoConstraints="NO" id="irC-Pg-amw">
-                    <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="b9m-W2-zBH"/>
+                        <constraint firstAttribute="height" constant="90" id="RgH-XE-1Fb"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1x-ip-GWX">
-                    <rect key="frame" x="0.0" y="44" width="60" height="50"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1x-ip-GWX">
+                    <rect key="frame" x="0.0" y="44" width="60" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="0lR-ov-FAH"/>
+                        <constraint firstAttribute="height" constant="40" id="0lR-ov-FAH"/>
                         <constraint firstAttribute="width" constant="60" id="hsk-n4-s7G"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="Button" image="arrow-left-white"/>
+                    <connections>
+                        <action selector="leftButtonPressed:" destination="-1" eventType="touchUpInside" id="ZRB-Mj-Rxy"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEO-sw-je6">
-                    <rect key="frame" x="60" y="44" width="250" height="50"/>
+                    <rect key="frame" x="60" y="44" width="250" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="0h5-Jh-Go0"/>
-                        <constraint firstAttribute="height" constant="50" id="Up7-85-nde"/>
+                        <constraint firstAttribute="height" constant="40" id="Up7-85-nde"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="0.98859602899999999" green="0.99781332369999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="v1x-ip-GWX" firstAttribute="leading" secondItem="GBo-oe-A2E" secondAttribute="leading" id="One-TE-OFO"/>
-                <constraint firstItem="GBo-oe-A2E" firstAttribute="trailing" secondItem="irC-Pg-amw" secondAttribute="trailing" id="Y3D-gh-8KJ"/>
-                <constraint firstItem="irC-Pg-amw" firstAttribute="leading" secondItem="GBo-oe-A2E" secondAttribute="leading" id="dN1-zJ-Sfv"/>
+                <constraint firstItem="irC-Pg-amw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eFX-80-y1a"/>
                 <constraint firstItem="BEO-sw-je6" firstAttribute="top" secondItem="GBo-oe-A2E" secondAttribute="top" id="eYI-BK-OpF"/>
+                <constraint firstItem="irC-Pg-amw" firstAttribute="leading" secondItem="GBo-oe-A2E" secondAttribute="leading" id="mdM-8j-2kJ"/>
                 <constraint firstItem="BEO-sw-je6" firstAttribute="leading" secondItem="v1x-ip-GWX" secondAttribute="trailing" id="nCW-2f-miY"/>
-                <constraint firstItem="irC-Pg-amw" firstAttribute="top" secondItem="GBo-oe-A2E" secondAttribute="top" id="r2E-uJ-rWX"/>
+                <constraint firstItem="irC-Pg-amw" firstAttribute="trailing" secondItem="GBo-oe-A2E" secondAttribute="trailing" id="qrR-zQ-t2L"/>
                 <constraint firstItem="v1x-ip-GWX" firstAttribute="top" secondItem="GBo-oe-A2E" secondAttribute="top" id="xFm-4S-cdb"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="GBo-oe-A2E"/>
@@ -61,6 +62,7 @@
         </view>
     </objects>
     <resources>
+        <image name="arrow-left-white" width="400" height="400"/>
         <image name="profile-bg-page" width="1242" height="212"/>
     </resources>
 </document>

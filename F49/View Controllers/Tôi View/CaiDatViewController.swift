@@ -10,20 +10,28 @@ import UIKit
 
 class CaiDatViewController: UIViewController {
 
+    @IBOutlet weak var headerView: NavigationBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        headerView.title = "Cài đặt"
+        headerView.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+        headerView.leftButton.setImage(UIImage(named: "arrow-left-white"), for: .normal)
+        
     }
-   
-    override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-           navigationController?.setNavigationBarHidden(true, animated: animated)
-       }
-       
-       override func viewWillDisappear(_ animated: Bool) {
-           super.viewWillDisappear(animated)
-           navigationController?.setNavigationBarHidden(false, animated: animated)
+    @objc func backView(){
+           self.navigationController?.popViewController(animated: true)
        }
 
+    @IBAction func switchButton(_ sender: UISwitch) {
+        if sender.isOn {
+            print("ON")
+            let alert = UIAlertController(title: "Xác nhận lại mật khẩu", message: "Message", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            print("OFF")
+        }
+    }
 }

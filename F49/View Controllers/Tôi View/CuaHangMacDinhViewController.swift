@@ -10,22 +10,49 @@ import UIKit
 
 class CuaHangMacDinhViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerView: NavigationBar!
+    
+    @IBOutlet weak var acceptButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        headerView.backgroundColor = UIColor.clear
+        tableView.dataSource = self
+        tableView.delegate = self
+        headerView.title = "Cửa hàng mặc định"
+        headerView.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+        headerView.leftButton.setImage(UIImage(named: "arrow-left-white"), for: .normal)
+        acceptButton.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
+        displayButton(acceptButton)
+        displayButton(cancelButton)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-           navigationController?.setNavigationBarHidden(true, animated: animated)
-       }
-       
-       override func viewWillDisappear(_ animated: Bool) {
-           super.viewWillDisappear(animated)
-           navigationController?.setNavigationBarHidden(false, animated: animated)
-       }
+    @objc func backView(){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func displayButton(_ button: UIButton){
+        button.layer.cornerRadius = 20
+        button.clipsToBounds = true
+    }
+   
+}
+
+extension CuaHangMacDinhViewController: UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ShopUITableViewCell", for: indexPath) as? ShopUITableViewCell else {
+            fatalError()
+        }
+        
+        return cell
+    }
+    
+    
 }

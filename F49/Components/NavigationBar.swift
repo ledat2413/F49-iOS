@@ -14,7 +14,6 @@ final class NavigationBar: UIView{
     private static let NIB_NAME = "NavigationBar"
     
     @IBOutlet var view: UIView!
-    @IBOutlet weak var backGroundImageView: UIImageView!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -25,8 +24,12 @@ final class NavigationBar: UIView{
     }
     
     
+    
+
+    
     override func awakeFromNib() {
         initWithNib()
+        
     }
     
     private func initWithNib() {
