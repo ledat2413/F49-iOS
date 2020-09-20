@@ -16,8 +16,13 @@ enum APIRouter: URLRequestConvertible {
     case GetCuaHang
     case GetDashBoard(id: Int)
     case GetTienIch(id: Int)
+    case GetTopMenu
     case GetStatus
     case GetListCamDo(id: String)
+    case GetChiTietCamDo(id: Int)
+    case GetListDinhGia(id: String)
+    case GetListDoGiaDung(id: String)
+    
     // =========== End define api ===========
     
     // MARK: - HTTPMethod
@@ -37,7 +42,14 @@ enum APIRouter: URLRequestConvertible {
             return .get
         case .GetListCamDo:
             return .get
-            
+        case .GetChiTietCamDo:
+            return .get
+        case .GetTopMenu:
+            return .get
+        case .GetListDinhGia:
+            return .get
+        case .GetListDoGiaDung:
+            return .get
         }
     }
     
@@ -58,6 +70,14 @@ enum APIRouter: URLRequestConvertible {
             return "api/TienIch/GetTienIch"
         case .GetListCamDo:
             return "api/TopMenu/GetListCamDo"
+        case .GetChiTietCamDo:
+            return "api/TopMenu/GetChiTietCamDo"
+        case .GetTopMenu:
+            return "api/TopMenu"
+        case .GetListDinhGia:
+            return "api/TopMenu/GetListDinhGia"
+        case .GetListDoGiaDung:
+            return "api/TopMenu/GetListDoGiaDung"
         }
     }
     
@@ -98,6 +118,26 @@ enum APIRouter: URLRequestConvertible {
                 headers["Authorization"] = token
             }
             break
+        case .GetChiTietCamDo:
+            if let token = UserToken.getAccessToken() {
+                headers["Authorization"] = token
+            }
+            break
+        case .GetTopMenu:
+            if let token = UserToken.getAccessToken() {
+                headers["Authorization"] = token
+            }
+            break
+        case .GetListDinhGia:
+            if let token = UserToken.getAccessToken() {
+                headers["Authorization"] = token
+            }
+            break
+        case .GetListDoGiaDung:
+            if let token = UserToken.getAccessToken() {
+                headers["Authorization"] = token
+            }
+            break
         }
         
         return headers;
@@ -110,18 +150,37 @@ enum APIRouter: URLRequestConvertible {
             return ["grant_type": grant_type,
                     "username": username,
                     "password": password]
+            
         case .GetUserProfile:
             return [:]
+            
         case .GetCuaHang:
             return [:]
+            
         case .GetDashBoard(let id):
             return ["idCuaHang": id]
+            
         case .GetTienIch(let id):
             return ["idCuaHang": id]
+            
+        case .GetTopMenu:
+            return [:]
+            
         case .GetStatus:
             return [:]
+            
         case .GetListCamDo(let id):
             return ["trangThai": id]
+            
+        case .GetListDinhGia(let id):
+            return ["trangThai": id]
+            
+        case .GetListDoGiaDung(let id):
+            return ["trangThai": id]
+            
+        case .GetChiTietCamDo(let id):
+            return ["id": id]
+            
         }
     }
     

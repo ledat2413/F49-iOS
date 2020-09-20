@@ -1,16 +1,15 @@
 //
-//  BirthDateTableViewCell.swift
+//  DinhGiaTableViewCell.swift
 //  F49
 //
-//  Created by Le Dat on 9/15/20.
+//  Created by Le Dat on 9/19/20.
 //  Copyright © 2020 Le Dat. All rights reserved.
 //
 
 import UIKit
 
-class BirthDateTableViewCell: UITableViewCell {
+class DinhGiaTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var thumbnailLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

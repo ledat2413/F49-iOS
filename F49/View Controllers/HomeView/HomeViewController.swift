@@ -8,33 +8,51 @@
 
 import UIKit
 
-//protocol IdCuaHangDelegate {
-//    func chooseCuaHang(id: Int)
-//}
-
 class HomeViewController: UIViewController {
     
     //MARK: --Vars
     var dataCuaHang: [CuaHang] = []
     var dataDashBoard: [DashBoard] = []
-    var selectedCuaHang: String?
-    //    var didSelectCuaHang: IdCuaHangDelegate?
-    
+    var selectedCuaHang: String?    
     
     //MARK: --IBOutlet
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var findContainerView: UIView!
-    @IBOutlet weak var headerCollectionView: UICollectionView!
     @IBOutlet weak var bodyCollectionView: UICollectionView!
     @IBOutlet weak var findButton: UIButton!
     @IBOutlet weak var findTextField: UITextField!
+    @IBOutlet weak var menuCollectionView: Menu!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        NotificationCenter.default.addObserver(self, selector: #selector(pushCamDoController), name: NSNotification.Name.init("CamDoController"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pushDinhGiaController), name: NSNotification.Name.init("DinhGiaController"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pushDoGiaDungController), name: NSNotification.Name.init("DoGiaDungController"), object: nil)
     }
     
+    
     //MARK: --Func
+    @objc func pushCamDoController() {
+        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
+        itemVC.key = "A"
+        
+        self.navigationController?.pushViewController(itemVC, animated: true)
+        print("PushToCamDoView")
+    }
+    @objc func pushDinhGiaController() {
+        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
+        
+        itemVC.key = "B"
+        self.navigationController?.pushViewController(itemVC, animated: true)
+        print("PushToDinhGiaView")
+    }
+    @objc func pushDoGiaDungController() {
+        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
+        itemVC.key = "C"
+        self.navigationController?.pushViewController(itemVC, animated: true)
+        print("PushToDoGiaDungview")
+    }
     
     private func loadData(){
         MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
@@ -68,6 +86,7 @@ class HomeViewController: UIViewController {
         createPickerView()
         dismissPickerView()
         
+        menuCollectionView.backgroundColor = UIColor.clear
         findButton.backgroundColor = UIColor.clear
         findTextField.layer.cornerRadius = 18
         findTextField.clipsToBounds = true
@@ -81,10 +100,7 @@ class HomeViewController: UIViewController {
         findContainerView.layer.borderWidth  = 1
         
         headerView.backgroundColor = UIColor(patternImage: UIImage(named: "home-bg-page")!)
-        headerCollectionView.register(UINib(nibName: "HeaderCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HeaderCollectionViewCell")
-        headerCollectionView.dataSource = self
-        headerCollectionView.delegate = self
-        headerCollectionView.backgroundColor = UIColor.clear
+        
         
         bodyCollectionView.register(UINib(nibName: "BodyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BodyCollectionViewCell")
         bodyCollectionView.delegate = self
@@ -127,46 +143,15 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == headerCollectionView {
-           let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController")
-            
-            self.navigationController?.pushViewController(itemVC, animated: true)
-        }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == headerCollectionView {
-            return 3
-        }
-        else if collectionView == bodyCollectionView{
+        if collectionView == bodyCollectionView{
             return dataDashBoard.count
         }
         return 1
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
-        case headerCollectionView:
-            guard let cell = headerCollectionView.dequeueReusableCell(withReuseIdentifier: "HeaderCollectionViewCell", for: indexPath) as? HeaderCollectionViewCell else {fatalError()}
-            let img: [UIImage?] = [UIImage(named: "icon-dashboard-camdo"),UIImage(named: "icon-dashboard-dinhgia"),UIImage(named: "icon-dashboard-dogiadung")]
-            let title: [String?] = ["CẦM ĐỒ","ĐỊNH GIÁ","ĐỒ GIA DỤNG"]
-            
-            cell.thumbnailImageView.image = img[indexPath.row]
-            cell.thumbnailTitleLabel.text = title[indexPath.row]
-            
-            displayShadowView(cell)
-            
-            cell.layer.shadowColor = UIColor.black.cgColor
-            cell.layer.shadowOffset = CGSize(width: 0, height: 2.0);
-            cell.layer.shadowRadius = 1.0;
-            cell.layer.shadowOpacity = 0.5;
-            cell.clipsToBounds = false
-            cell.layer.shadowPath = UIBezierPath(roundedRect:  cell.bounds, cornerRadius: cell.thumbnailView.layer.cornerRadius).cgPath
-            //            cell.thumbnailCountLabel.text = api[indexPath.row]
-            return cell
-            
         case bodyCollectionView:
             guard let cell = bodyCollectionView.dequeueReusableCell(withReuseIdentifier: "BodyCollectionViewCell", for: indexPath) as? BodyCollectionViewCell else {fatalError()}
             
@@ -198,8 +183,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView {
-        case headerCollectionView:
-            return CGSize(width: (headerCollectionView.frame.width)/3 - 20, height: (headerCollectionView.frame.height) - 20)
         case bodyCollectionView:
             return CGSize(width: (bodyCollectionView.frame.width)/2 - 20, height: (bodyCollectionView.frame.height ) / 3 - 20)
         default:
@@ -209,8 +192,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch collectionView {
-        case headerCollectionView:
-            return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         case bodyCollectionView:
             return UIEdgeInsets(top: 15, left: 10, bottom: 15, right: 10)
         default:

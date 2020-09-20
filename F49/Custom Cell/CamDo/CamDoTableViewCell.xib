@@ -162,6 +162,8 @@
                 <outlet property="nameLabel" destination="YAB-7U-Q42" id="mF0-iJ-jO3"/>
                 <outlet property="numberPhoneLabel" destination="ewT-Yg-eWm" id="uJR-zD-c2c"/>
                 <outlet property="statusImage" destination="ulS-HU-rac" id="i69-hY-o9k"/>
+                <outlet property="subItemImage" destination="cU6-Ap-Hka" id="uko-ir-M7Y"/>
+                <outlet property="subItemLabel" destination="QpV-eR-7b4" id="du0-HG-xhN"/>
             </connections>
             <point key="canvasLocation" x="160.1449275362319" y="127.56696428571428"/>
         </tableViewCell>

@@ -37,7 +37,7 @@ class SplashScreenViewController: UIViewController {
             self.present(itemVC, animated: true, completion: nil)
         }else {
             let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabarController")
-            self.present(itemVC, animated: true, completion: nil)
+            self.navigationController?.pushViewController(itemVC, animated: true)
         }
     }
 

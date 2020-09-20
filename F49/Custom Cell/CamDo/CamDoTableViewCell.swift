@@ -20,6 +20,9 @@ class CamDoTableViewCell: UITableViewCell {
     @IBOutlet weak var birthDateLabel: UILabel!
     @IBOutlet weak var nameItemLabel: UILabel!
     @IBOutlet weak var statusImage: UIImageView!
+    @IBOutlet weak var subItemLabel: UILabel!
+    @IBOutlet weak var subItemImage: UIImageView!
+
 
     
     override func awakeFromNib() {

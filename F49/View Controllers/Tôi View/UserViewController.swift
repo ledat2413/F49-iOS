@@ -12,7 +12,7 @@ class UserViewController: UIViewController {
     
     //MARK: --Vars
     var dataProfile: [UserProfile] = []
-    let cellIdentifier: [String] = ["NameTableViewCell","BirthDateTableViewCell","ChucVuTableViewCell","EmailTableViewCell","PhongTableViewCell","CuaHangTableViewCell","PhanQuyenTableViewCell"]
+    let cellIdentifier: [String] = ["NameTableViewCell"]
     let cellIdentifier2: [String] = ["MacDinhTableViewCell","MatKhauTableViewCell","CauHinhTableViewCell"]
     
     //MARK: --IBOutlet
@@ -45,14 +45,14 @@ class UserViewController: UIViewController {
     func setUpUI() {
         
         for i in cellIdentifier{
-                  bodyTableView.register(UINib(nibName: i, bundle: nil), forCellReuseIdentifier: i)
-              }
-              bodyTableView.delegate = self
-              bodyTableView.dataSource = self
-              
-              for j in cellIdentifier2{
-                  subBodyTableView.register(UINib(nibName: j, bundle: nil), forCellReuseIdentifier: j)
-              }
+            bodyTableView.register(UINib(nibName: i, bundle: nil), forCellReuseIdentifier: i)
+        }
+        bodyTableView.delegate = self
+        bodyTableView.dataSource = self
+        
+        for j in cellIdentifier2{
+            subBodyTableView.register(UINib(nibName: j, bundle: nil), forCellReuseIdentifier: j)
+        }
         
         //load Data
         loadUserProfile()
@@ -122,38 +122,40 @@ extension UserViewController: UITableViewDataSource, UITableViewDelegate{
         switch tableView {
         case bodyTableView:
             let data = dataProfile[indexPath.row]
+            guard let cell = bodyTableView.dequeueReusableCell(withIdentifier: "NameTableViewCell", for: indexPath) as? NameTableViewCell else {
+                fatalError()
+            }
             switch indexPath.section {
             case 0:
-                guard let cell = bodyTableView.dequeueReusableCell(withIdentifier: "NameTableViewCell", for: indexPath) as? NameTableViewCell else {fatalError()}
-                cell.thumbnailLabel.text = data.hoTen
+                cell.thumbnailKey.text = "Họ và tên"
+                cell.thumbnailValue.text = data.hoTen
                 return cell
             case 1:
-                guard let cell = bodyTableView.dequeueReusableCell(withIdentifier: "BirthDateTableViewCell", for: indexPath) as? BirthDateTableViewCell else {fatalError()}
-                cell.thumbnailLabel.text = "24/01/1998"
+                cell.thumbnailKey.text = "Ngày sinh"
+                cell.thumbnailValue.text = "24/01/1998"
                 return cell
             case 2:
-                guard let cell = bodyTableView.dequeueReusableCell(withIdentifier: "ChucVuTableViewCell", for: indexPath) as? ChucVuTableViewCell else {fatalError()}
-                cell.thumbnailLabel.text = "Mobile Developer"
+                cell.thumbnailKey.text = "Chức vụ"
+                cell.thumbnailValue.text = ""
                 return cell
             case 3:
-                guard let cell = bodyTableView.dequeueReusableCell(withIdentifier: "EmailTableViewCell", for: indexPath) as? EmailTableViewCell else {fatalError()}
-                cell.thumbnailLabel.text = data.email
+                cell.thumbnailKey.text = "Email"
+                cell.thumbnailValue.text = data.email
                 return cell
             case 4:
-                guard let cell = bodyTableView.dequeueReusableCell(withIdentifier: "PhongTableViewCell", for: indexPath) as? PhongTableViewCell else {fatalError()}
-                cell.thumbnailLabel.text = "Phòng IT"
+                cell.thumbnailKey.text = "Phòng"
+                cell.thumbnailValue.text = "IT"
                 return cell
             case 5:
-                guard let cell = bodyTableView.dequeueReusableCell(withIdentifier: "CuaHangTableViewCell", for: indexPath) as? CuaHangTableViewCell else {fatalError()}
-                cell.thumbnailLabel.text = "Cửa hàng F49"
+                cell.thumbnailKey.text = "Cửa hàng"
+                cell.thumbnailValue.text = "F49"
                 return cell
             case 6:
-                guard let cell = bodyTableView.dequeueReusableCell(withIdentifier: "PhanQuyenTableViewCell", for: indexPath) as? PhanQuyenTableViewCell else {fatalError()}
-                cell.thumbnailLabel.text = data.phanQuyen
+                cell.thumbnailKey.text = "Phân quyền"
+                cell.thumbnailValue.text = data.phanQuyen
                 return cell
-                
             default:
-                return UITableViewCell()
+                return cell
             }
         case subBodyTableView:
             switch indexPath.section {

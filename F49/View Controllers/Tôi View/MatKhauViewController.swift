@@ -24,7 +24,7 @@ class MatKhauViewController: UIViewController {
         
         headerView.title = "Đổi mật khẩu"
         headerView.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
-        headerView.leftButton.setImage(UIImage(named: "arrow-left-white"), for: .normal)
+        headerView.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
         cornerRadius(oldPassTextField)
         cornerRadius(newPassTextField)
         cornerRadius(confirmNewPassTextField)

@@ -11,8 +11,11 @@ import UIKit
 class CamDoViewController: UIViewController {
     
     //MARK: --Vars
+    var key: String = ""
     var dataStatus: [Status] = []
     var dataListCamDo: [CamDo] = []
+    var dataListDinhGia: [DinhGia] = []
+    var dataListDoGiaDung: [DoGiaDung] = []
     var selectedStatus: String?
     
     //MARK: --IBOutlet
@@ -25,13 +28,13 @@ class CamDoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        displayTitle()
         loadStatus()
         createPickerView()
         dismissPickerView()
         
-        headerView.title = "Cầm đồ"
         headerView.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
-        headerView.leftButton.setImage(UIImage(named: "arrow-left-white"), for: .normal)
+        headerView.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -40,16 +43,62 @@ class CamDoViewController: UIViewController {
     
     //MARK: --Func
     
+    private func displayTitle(){
+        switch key {
+        case "A":
+            return headerView.title = "Cầm Đồ"
+            
+        case "B":
+            return headerView.title = "Định Giá"
+            
+        case "C":
+            return headerView.title = "Đồ Gia dụng"
+            
+        default:
+            break
+        }
+    }
+    
     private func loadData(id: String){
-        MGConnection.requestArray(APIRouter.GetListCamDo(id: id), CamDo.self) { (result, error) in
-            guard error == nil else {
-                print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
-                return
+        switch key {
+        case "A":
+            MGConnection.requestArray(APIRouter.GetListCamDo(id: id), CamDo.self) { (result, error) in
+                guard error == nil else {
+                    print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                    return
+                }
+                if let result = result{
+                    self.dataListCamDo = result
+                    self.tableView.reloadData()
+                }
             }
-            if let result = result{
-                self.dataListCamDo = result
-                self.tableView.reloadData()
+            break
+        case "B":
+            MGConnection.requestArray(APIRouter.GetListDinhGia(id: id), DinhGia.self) { (result, error) in
+                guard error == nil else {
+                    print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                    return
+                }
+                if let result = result{
+                    self.dataListDinhGia = result
+                    self.tableView.reloadData()
+                }
             }
+            break
+        case "C":
+            MGConnection.requestArray(APIRouter.GetListDoGiaDung(id: id), DoGiaDung.self) { (result, error) in
+                guard error == nil else {
+                    print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                    return
+                }
+                if let result = result{
+                    self.dataListDoGiaDung = result
+                    self.tableView.reloadData()
+                }
+            }
+            break
+        default:
+            break
         }
     }
     
@@ -91,24 +140,66 @@ class CamDoViewController: UIViewController {
 
 extension CamDoViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataListCamDo.count
+        switch key {
+        case "A":
+            return dataListCamDo.count
+        case "B":
+            return dataListDinhGia.count
+        case "C":
+            return dataListDoGiaDung.count
+        default:
+            break
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CamDoTableViewCell", for: indexPath) as? CamDoTableViewCell else {
             fatalError()}
-        let data = dataListCamDo[indexPath.row]
-        cell.idLabel.text = data.id
-        cell.nameLabel.text = data.name
-        cell.birthDateLabel.text = data.date
-        cell.numberPhoneLabel.text = data.phone
-        cell.nameItemLabel.text = data.brand
-//
 //        if dataStatus[indexPath.row].id == "1" {
 //            cell.statusImage.image = UIImage(named: "icon-dangxuly")
 //        }else{
 //            cell.statusImage.isHidden = true
 //        }
+        
+        switch key {
+        case "A":
+            let data = dataListCamDo[indexPath.row]
+            cell.idLabel.text = data.id
+            cell.nameLabel.text = data.name
+            cell.birthDateLabel.text = data.date
+            cell.numberPhoneLabel.text = data.phone
+            cell.nameItemLabel.text = data.brand
+            cell.subItemLabel.text = "Nhãn hiệu"
+            cell.subItemImage.image = UIImage(named: "icon-content-nhanhang")
+            
+            break
+        case "B":
+            let data = dataListDinhGia[indexPath.row]
+            cell.idLabel.text = data.id
+            cell.nameLabel.text = data.name
+            cell.birthDateLabel.text = data.regDate
+            cell.numberPhoneLabel.text = data.phone
+            cell.nameItemLabel.text = data.email
+            cell.subItemLabel.text = "Họ và tên"
+            cell.subItemImage.image = UIImage(named: "icon-content-nhanvien")
+            
+            break
+        case "C":
+            let data = dataListDoGiaDung[indexPath.row]
+            cell.idLabel.text = data.id
+            cell.nameLabel.text = data.name
+            cell.birthDateLabel.text = data.date
+            cell.numberPhoneLabel.text = data.phone
+            cell.nameItemLabel.text = data.asset
+            cell.subItemLabel.text = "Tài sản"
+            cell.subItemImage.image = UIImage(named: "icon-content-taisan")
+            
+            break
+        default:
+            break
+        }
+        
         return cell
     }
     
@@ -117,8 +208,8 @@ extension CamDoViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let  itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThongTinCamDoViewController")
-        
+        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThongTinCamDoViewController") as! ThongTinCamDoViewController
+        itemVC.id = dataListCamDo[indexPath.row].id
         self.present(itemVC, animated: true, completion: nil)
     }
     

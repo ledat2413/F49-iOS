@@ -20,47 +20,72 @@ class UtilitiesViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerTextField: UITextField!
     @IBOutlet weak var headerButton: UIButton!
+    @IBOutlet weak var headerMenu: Menu!
     
-    @IBOutlet weak var headerCollectionView: UICollectionView!
     @IBOutlet weak var bodyView: UIView!
     @IBOutlet weak var bodyCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        NotificationCenter.default.addObserver(self, selector: #selector(pushCamDoController), name: NSNotification.Name.init("CamDoController"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pushDinhGiaController), name: NSNotification.Name.init("DinhGiaController"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pushDoGiaDungController), name: NSNotification.Name.init("DoGiaDungController"), object: nil)
     }
     
     
-      private func loadData(){
-          MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
-              guard error == nil else {
-                  print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
-                  return
-              }
-              if let result = result {
-                  self.dataCuaHang = result
-              }
-          }
-      }
-      
-      private func loadDashBoard(id: Int){
-          MGConnection.requestArray(APIRouter.GetTienIch(id: id), TienIch.self) { (result, error) in
-              guard error == nil else {
-                  print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
-                  return
-              }
-              if let result = result {
-                  self.dataTienIch = result
-                  self.bodyCollectionView.reloadData()
-              }
-          }
-      }
+    @objc func pushCamDoController() {
+        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
+        itemVC.key = "A"
+        
+        self.navigationController?.pushViewController(itemVC, animated: true)
+        print("PushToCamDoView")
+    }
+    @objc func pushDinhGiaController() {
+        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
+        
+        itemVC.key = "B"
+        self.navigationController?.pushViewController(itemVC, animated: true)
+        print("PushToDinhGiaView")
+    }
+    @objc func pushDoGiaDungController() {
+        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
+        itemVC.key = "C"
+        self.navigationController?.pushViewController(itemVC, animated: true)
+        print("PushToDoGiaDungview")
+    }
+    
+    
+    private func loadData(){
+        MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
+            guard error == nil else {
+                print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                return
+            }
+            if let result = result {
+                self.dataCuaHang = result
+            }
+        }
+    }
+    
+    private func loadDashBoard(id: Int){
+        MGConnection.requestArray(APIRouter.GetTienIch(id: id), TienIch.self) { (result, error) in
+            guard error == nil else {
+                print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                return
+            }
+            if let result = result {
+                self.dataTienIch = result
+                self.bodyCollectionView.reloadData()
+            }
+        }
+    }
     
     func setUpUI() {
         
         loadData()
         createPickerView()
-               dismissPickerView()
+        dismissPickerView()
         headerButton.backgroundColor = UIColor.clear
         headerTextField.layer.cornerRadius = 18
         headerTextField.clipsToBounds = true
@@ -72,15 +97,11 @@ class UtilitiesViewController: UIViewController {
         headerView.layer.borderColor = UIColor.white.cgColor
         headerView.layer.borderWidth  = 1
         
-        headerCollectionView.register(UINib(nibName: "HeaderCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HeaderCollectionViewCell")
-        headerCollectionView.delegate = self
-               headerCollectionView.dataSource = self
-        headerCollectionView.backgroundColor = UIColor.clear
         
-      
+        
         bodyCollectionView.register(UINib(nibName: "UtilitiesBodyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "UtilitiesBodyCollectionViewCell")
         bodyCollectionView.delegate = self
-              bodyCollectionView.dataSource = self
+        bodyCollectionView.dataSource = self
         displayShadowView(bodyView)
         cornerRadius(bodyCollectionView)
     }
@@ -122,8 +143,6 @@ class UtilitiesViewController: UIViewController {
 extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
-        case headerCollectionView:
-            return 3
         case bodyCollectionView:
             return dataTienIch.count
         default:
@@ -133,27 +152,6 @@ extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
-        case headerCollectionView:
-            guard let cell = headerCollectionView.dequeueReusableCell(withReuseIdentifier: "HeaderCollectionViewCell", for: indexPath) as? HeaderCollectionViewCell else {
-                fatalError()
-            }
-           let img: [UIImage?] = [UIImage(named: "icon-dashboard-camdo"),UIImage(named: "icon-dashboard-dinhgia"),UIImage(named: "icon-dashboard-dogiadung")]
-            let title: [String?] = ["CẦM ĐỒ","ĐỊNH GIÁ","ĐỒ GIA DỤNG"]
-            
-            cell.thumbnailImageView.image = img[indexPath.row]
-            cell.thumbnailTitleLabel.text = title[indexPath.row]
-            
-            displayShadowView(cell)
-            
-            cell.layer.shadowColor = UIColor.black.cgColor
-            cell.layer.shadowOffset = CGSize(width: 0, height: 2.0);
-            cell.layer.shadowRadius = 1.0;
-            cell.layer.shadowOpacity = 0.5;
-            cell.clipsToBounds = false
-            cell.layer.shadowPath = UIBezierPath(roundedRect:  cell.bounds, cornerRadius: cell.thumbnailView.layer.cornerRadius).cgPath
-            return cell
-            
-            
         case bodyCollectionView:
             guard let cell = bodyCollectionView.dequeueReusableCell(withReuseIdentifier: "UtilitiesBodyCollectionViewCell", for: indexPath) as? UtilitiesBodyCollectionViewCell else {
                 fatalError()
@@ -178,8 +176,6 @@ extension UtilitiesViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView {
-        case headerCollectionView:
-            return CGSize(width: (headerCollectionView.frame.width)/3 - 20, height: (headerCollectionView.frame.height) - 20)
         case bodyCollectionView:
             return CGSize(width: (bodyCollectionView.frame.width)/2, height: (bodyCollectionView.frame.height ) / 3)
         default:
@@ -189,8 +185,6 @@ extension UtilitiesViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch collectionView {
-        case headerCollectionView:
-            return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         case bodyCollectionView:
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         default:

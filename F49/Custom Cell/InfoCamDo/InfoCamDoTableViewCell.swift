@@ -1,16 +1,18 @@
 //
-//  EmailTableViewCell.swift
+//  InfoCamDoTableViewCell.swift
 //  F49
 //
-//  Created by Le Dat on 9/15/20.
+//  Created by Le Dat on 9/18/20.
 //  Copyright © 2020 Le Dat. All rights reserved.
 //
 
 import UIKit
 
-class EmailTableViewCell: UITableViewCell {
+class InfoCamDoTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var thumbnailLabel: UILabel!
+    @IBOutlet weak var keyLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

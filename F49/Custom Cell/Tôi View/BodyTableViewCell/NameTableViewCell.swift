@@ -10,7 +10,9 @@ import UIKit
 
 class NameTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var thumbnailLabel: UILabel!
+    @IBOutlet weak var thumbnailValue: UILabel!
+    @IBOutlet weak var thumbnailKey: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

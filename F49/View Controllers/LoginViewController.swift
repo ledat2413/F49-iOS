@@ -58,10 +58,14 @@ class LoginViewController: UIViewController {
             if let result = result {
                 UserToken.save("\(result.token_type) \(result.access_token)")
                 print("Login Success")
-                self.homeView()
+                self.dismiss(animated: true, completion: nil)
             }
         }
         NotificationCenter.default.post(name: Notification.Name("LoginNotification"), object: nil)
+    }
+    
+    deinit {
+        print("login deinit")
     }
     
     
