@@ -15,4 +15,6 @@ struct Production{
 enum NetworkErrorType {
     case API_ERROR
     case HTTP_ERROR
+    case EMAIL_ISVALID
+    case PASS_ISVALID
 }

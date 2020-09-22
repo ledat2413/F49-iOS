@@ -8,20 +8,33 @@
 
 import Foundation
 
-struct UserToken{
-    static let userSessionKey = "com.save.usersession"
+enum UserKey: String{
+    case Token = "token"
+    case Email = "email"
+    case Password = "password"
+    case AutoLogin = "autologin"
+}
+
+
+struct UserHelper{
+    
     private static let userDefault = UserDefaults.standard
     
-    static func save(_ access_token: String){
-        userDefault.set(access_token,
-                        forKey: userSessionKey)
+    static func saveUserData(_ valueData: Any?, key: UserKey){
+        userDefault.set(valueData,
+                        forKey: key.rawValue)
+        userDefault.synchronize()
     }
     
-    static func getAccessToken() -> String? {
-        return userDefault.value(forKey: userSessionKey) as? String
+    static func getUserData(key: UserKey) -> String? {
+        return userDefault.value(forKey: key.rawValue) as? String
     }
     
-    static func clearUserData(){
-           userDefault.removeObject(forKey: userSessionKey)
-       }
+    static func getAutoLogin() -> Bool {
+        return userDefault.value(forKey: UserKey.AutoLogin.rawValue) as? Bool ?? false
+    }
+    
+    static func clearUserData(key: UserKey){
+        userDefault.removeObject(forKey: key.rawValue)
+    }
 }

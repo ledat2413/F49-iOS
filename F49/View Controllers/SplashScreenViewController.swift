@@ -11,28 +11,59 @@ import ChameleonFramework
 import SDWebImage
 
 class SplashScreenViewController: UIViewController {
-
-    @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var imageView: UIImageView!
+    var loginSuccess: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(true, animated: false)
+
         setUpUI()
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.checkLogin), name: Notification.Name("LoginNotification"), object: nil)
+        
+        print(UserHelper.getUserData(key: UserKey.Token))
+        print(UserHelper.getAutoLogin())
+        if UserHelper.getAutoLogin() && UserHelper.getUserData(key: UserKey.Token) != nil{
+            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabarController")
+            loginSuccess = true
+            self.navigationController?.pushViewController(itemVC, animated: true)
+        }else{
+            UserHelper.clearUserData(key: UserKey.Token)
+        }
+
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        checkLogin()
+        //        NotificationCenter.default.addObserver(self, selector: #selector(checkLogin), name: NSNotification.Name.init("Login"), object: nil)
+        if !loginSuccess {
+            checkLogin()
+        }
     }
+    
     
     
     private func setUpUI(){
         view.backgroundColor = UIColor(patternImage: UIImage(named: "loading-bg")!)
-            imageView.image = UIImage(named: "hinh_loading")
+        imageView.image = UIImage(named: "hinh_loading")
     }
     
     @objc private func checkLogin(){
-        if UserToken.getAccessToken() == nil {
+        
+        //        if UserHelper.getAutoLogin() == false {
+        //            if UserHelper.getUserData(key: UserKey.Token) == nil {
+        //                let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
+        //                self.present(itemVC, animated: true, completion: nil)
+        //            }
+        //            else{
+        //                let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabarController")
+        //                self.navigationController?.pushViewController(itemVC, animated: true)
+        //            }
+        //        }else{
+        //            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabarController")
+        //            self.navigationController?.pushViewController(itemVC, animated: true)
+        //        }
+        
+        if UserHelper.getUserData(key: UserKey.Token) == nil{
             let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
             self.present(itemVC, animated: true, completion: nil)
         }else {
@@ -40,5 +71,5 @@ class SplashScreenViewController: UIViewController {
             self.navigationController?.pushViewController(itemVC, animated: true)
         }
     }
-
+    
 }

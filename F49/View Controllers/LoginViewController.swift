@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     let width = CGFloat(1.0)
     let cornerRadius : CGFloat = 25.0
     var gradientLayer = CAGradientLayer()
-    
+    var token: String = ""
     
     //MARK: --IBOutlet
     @IBOutlet weak var buttonView: UIView!
@@ -31,46 +31,72 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayUI()
-        emailTextField.text = SaveEmail.getEmail()
-        passTextField.text = SavePass.getPass()
     }
+    
+    
     
     //MARK: --IBAction
     
-    @IBAction func saveButtonPressed(_ sender: Any) {
-        saveButton.setImage(UIImage(named: "login-checked"), for: .normal)
-        SaveEmail.save(emailTextField.text ?? "")
-        SavePass.save(passTextField.text ?? "")
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
-        MGConnection.requestToken(APIRouter.Login(grant_type: "password", username: emailTextField.text ?? "", password: passTextField.text ?? ""), Token.self) { (result, error) in
-            guard error == nil else {
+        
+        MGConnection.requestToken(APIRouter.Login(grant_type: "password", username: emailTextField.text ?? "", password: passTextField.text ?? ""), Token.self) { [weak self] (result, error) in
+            guard let wself = self else {return}
+                if !wself.isValidEmail(wself.emailTextField.text ?? ""){
+                    let alert = UIAlertController(title: "Thông Báo", message: "Tài khoản không hợp lệ", preferredStyle: UIAlertController.Style.alert)
+                    // add an action (button)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    
+                    // show the alert
+                    wself.present(alert, animated: true, completion: nil)
+                }else if !wself.isValidPassword(password: wself.passTextField.text ?? ""){
+                    
+                    let alert = UIAlertController(title: "Thông Báo", message: "Mật khẩu không hợp lệ", preferredStyle: UIAlertController.Style.alert)
+                    // add an action (button)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    
+                    // show the alert
+                    wself.present(alert, animated: true, completion: nil)
+                }
+                guard error == nil else {
                 let alert = UIAlertController(title: "Thông Báo", message: "Sai tài khoản hoặc mật khẩu", preferredStyle: UIAlertController.Style.alert)
                 // add an action (button)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 
                 // show the alert
-                self.present(alert, animated: true, completion: nil)
+                wself.present(alert, animated: true, completion: nil)
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return
+                
             }
+            
             if let result = result {
-                UserToken.save("\(result.token_type) \(result.access_token)")
-                print("Login Success")
-                self.dismiss(animated: true, completion: nil)
+                UserHelper.saveUserData(self!.saveButton.isSelected, key: UserKey.AutoLogin)
+                
+                UserHelper.saveUserData("\(result.token_type) \(result.access_token)", key: UserKey.Token)
+                
+                print(UserHelper.getUserData(key: UserKey.Token))
+                print(UserHelper.getAutoLogin())
+                print("Login Success and Save Login")
+                
+                wself.dismiss(animated: true, completion: nil)
             }
+            
         }
-        NotificationCenter.default.post(name: Notification.Name("LoginNotification"), object: nil)
+        
+        
     }
     
     deinit {
         print("login deinit")
     }
     
-    
     //MARK: --Func
     func displayUI(){
+        hideKeyboardWhenTappedAround()
         displayShadowView(emailView)
         displayShadowView(passView)
         displayTextField(emailTextField)
@@ -80,7 +106,7 @@ class LoginViewController: UIViewController {
         displayForgotButton()
         loginButton.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
     }
-
+    
     func displayForgotButton() {
         let border = CALayer()
         let width = CGFloat(1)
@@ -99,6 +125,8 @@ class LoginViewController: UIViewController {
         view.layer.shadowRadius = 1
         view.layer.shadowOpacity = 0.9
         view.layer.cornerRadius = 25
+        view.layer.borderColor = UIColor.green.cgColor
+        view.clipsToBounds = false
     }
     
     func displayTextField(_ textField: UIView){
@@ -116,15 +144,20 @@ class LoginViewController: UIViewController {
     func isValidPassword(password: String?) -> Bool {
         guard password != nil else { return false }
         
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}")
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{6,32}")
         return passwordTest.evaluate(with: password)
     }
     
-    private func homeView(){
-        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashScreenViewController")
-        self.present(itemVC, animated: true, completion: nil)
-    }
-    
-    
 }
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}

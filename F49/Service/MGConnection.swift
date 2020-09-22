@@ -39,6 +39,8 @@ class MGConnection {
                 if error is AFError {
                     let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.HTTP_ERROR, error._code, "Request is error!")
                     completion(nil, err)
+                } else if error is AFError{
+                    let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.EMAIL_ISVALID, error._code, "Email is valid!")
                 }
                 
                 break

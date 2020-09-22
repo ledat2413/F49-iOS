@@ -21,7 +21,10 @@ enum APIRouter: URLRequestConvertible {
     case GetListCamDo(id: String)
     case GetChiTietCamDo(id: Int)
     case GetListDinhGia(id: String)
+    case GetChiTietDinhGia(id: Int)
     case GetListDoGiaDung(id: String)
+    case GetChiTietDoGiaDung(id: Int)
+    
     
     // =========== End define api ===========
     
@@ -50,6 +53,10 @@ enum APIRouter: URLRequestConvertible {
             return .get
         case .GetListDoGiaDung:
             return .get
+        case .GetChiTietDinhGia:
+            return .get
+        case .GetChiTietDoGiaDung:
+            return .get
         }
     }
     
@@ -68,16 +75,20 @@ enum APIRouter: URLRequestConvertible {
             return "api/TopMenu/GetTrangThai"
         case .GetTienIch:
             return "api/TienIch/GetTienIch"
+        case .GetTopMenu:
+            return "api/TopMenu"
         case .GetListCamDo:
             return "api/TopMenu/GetListCamDo"
         case .GetChiTietCamDo:
             return "api/TopMenu/GetChiTietCamDo"
-        case .GetTopMenu:
-            return "api/TopMenu"
         case .GetListDinhGia:
             return "api/TopMenu/GetListDinhGia"
+        case .GetChiTietDinhGia:
+            return "api/TopMenu/GetChiTietDinhGia"
         case .GetListDoGiaDung:
             return "api/TopMenu/GetListDoGiaDung"
+        case .GetChiTietDoGiaDung:
+            return "api/TopMenu/GetChiTietDoGiaDung"
         }
     }
     
@@ -88,53 +99,63 @@ enum APIRouter: URLRequestConvertible {
         case .Login:
             break
         case .GetUserProfile:
-            if let token = UserToken.getAccessToken() {
+            if let token = UserHelper.getUserData(key: UserKey.Token){
                 headers["Authorization"] = token
             }
             break
         case .GetCuaHang:
-            if let token = UserToken.getAccessToken() {
+            if let token = UserHelper.getUserData(key: UserKey.Token){
                 headers["Authorization"] = token
             }
             break
             
         case .GetDashBoard:
-            if let token = UserToken.getAccessToken() {
+            if let token = UserHelper.getUserData(key: UserKey.Token){
                 headers["Authorization"] = token
             }
             break
         case .GetTienIch:
-            if let token = UserToken.getAccessToken() {
+            if let token = UserHelper.getUserData(key: UserKey.Token){
                 headers["Authorization"] = token
             }
             break
         case .GetStatus:
-            if let token = UserToken.getAccessToken() {
+            if let token = UserHelper.getUserData(key: UserKey.Token){
                 headers["Authorization"] = token
             }
             break
         case .GetListCamDo:
-            if let token = UserToken.getAccessToken() {
+            if let token = UserHelper.getUserData(key: UserKey.Token){
                 headers["Authorization"] = token
             }
             break
         case .GetChiTietCamDo:
-            if let token = UserToken.getAccessToken() {
+            if let token = UserHelper.getUserData(key: UserKey.Token){
                 headers["Authorization"] = token
             }
             break
         case .GetTopMenu:
-            if let token = UserToken.getAccessToken() {
+            if let token = UserHelper.getUserData(key: UserKey.Token){
                 headers["Authorization"] = token
             }
             break
         case .GetListDinhGia:
-            if let token = UserToken.getAccessToken() {
+            if let token = UserHelper.getUserData(key: UserKey.Token){
                 headers["Authorization"] = token
             }
             break
         case .GetListDoGiaDung:
-            if let token = UserToken.getAccessToken() {
+            if let token = UserHelper.getUserData(key: UserKey.Token){
+                headers["Authorization"] = token
+            }
+            break
+        case .GetChiTietDinhGia:
+            if let token = UserHelper.getUserData(key: UserKey.Token){
+                headers["Authorization"] = token
+            }
+            break
+        case .GetChiTietDoGiaDung:
+            if let token = UserHelper.getUserData(key: UserKey.Token){
                 headers["Authorization"] = token
             }
             break
@@ -181,6 +202,11 @@ enum APIRouter: URLRequestConvertible {
         case .GetChiTietCamDo(let id):
             return ["id": id]
             
+        case .GetChiTietDinhGia(let id):
+            return ["id": id]
+            
+        case .GetChiTietDoGiaDung(let id):
+            return ["id": id]
         }
     }
     

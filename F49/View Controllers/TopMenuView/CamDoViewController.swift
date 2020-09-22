@@ -11,12 +11,14 @@ import UIKit
 class CamDoViewController: UIViewController {
     
     //MARK: --Vars
-    var key: String = ""
+    var index: Int = 0
     var dataStatus: [Status] = []
     var dataListCamDo: [CamDo] = []
     var dataListDinhGia: [DinhGia] = []
     var dataListDoGiaDung: [DoGiaDung] = []
     var selectedStatus: String?
+    var callBack: ((_ index: Int) -> Void)?
+
     
     //MARK: --IBOutlet
     @IBOutlet weak var tableView: UITableView!
@@ -44,24 +46,21 @@ class CamDoViewController: UIViewController {
     //MARK: --Func
     
     private func displayTitle(){
-        switch key {
-        case "A":
+        switch index {
+        case 0:
             return headerView.title = "Cầm Đồ"
-            
-        case "B":
+        case 1:
             return headerView.title = "Định Giá"
-            
-        case "C":
+        case 2:
             return headerView.title = "Đồ Gia dụng"
-            
         default:
             break
         }
     }
     
     private func loadData(id: String){
-        switch key {
-        case "A":
+        switch index {
+        case 0:
             MGConnection.requestArray(APIRouter.GetListCamDo(id: id), CamDo.self) { (result, error) in
                 guard error == nil else {
                     print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
@@ -73,7 +72,8 @@ class CamDoViewController: UIViewController {
                 }
             }
             break
-        case "B":
+            
+        case 1:
             MGConnection.requestArray(APIRouter.GetListDinhGia(id: id), DinhGia.self) { (result, error) in
                 guard error == nil else {
                     print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
@@ -85,7 +85,8 @@ class CamDoViewController: UIViewController {
                 }
             }
             break
-        case "C":
+            
+        case 2:
             MGConnection.requestArray(APIRouter.GetListDoGiaDung(id: id), DoGiaDung.self) { (result, error) in
                 guard error == nil else {
                     print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
@@ -97,6 +98,7 @@ class CamDoViewController: UIViewController {
                 }
             }
             break
+            
         default:
             break
         }
@@ -127,7 +129,7 @@ class CamDoViewController: UIViewController {
     func dismissPickerView() {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
-        let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
         toolBar.setItems([button], animated: true)
         toolBar.isUserInteractionEnabled = true
         findTextField.inputAccessoryView = toolBar
@@ -139,13 +141,14 @@ class CamDoViewController: UIViewController {
 }
 
 extension CamDoViewController: UITableViewDataSource, UITableViewDelegate{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch key {
-        case "A":
+        switch index {
+        case 0:
             return dataListCamDo.count
-        case "B":
+        case 1:
             return dataListDinhGia.count
-        case "C":
+        case 2:
             return dataListDoGiaDung.count
         default:
             break
@@ -156,14 +159,14 @@ extension CamDoViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CamDoTableViewCell", for: indexPath) as? CamDoTableViewCell else {
             fatalError()}
-//        if dataStatus[indexPath.row].id == "1" {
-//            cell.statusImage.image = UIImage(named: "icon-dangxuly")
-//        }else{
-//            cell.statusImage.isHidden = true
-//        }
+        //        if dataStatus[indexPath.row].id == "1" {
+        //            cell.statusImage.image = UIImage(named: "icon-dangxuly")
+        //        }else{
+        //            cell.statusImage.isHidden = true
+        //        }
         
-        switch key {
-        case "A":
+        switch index {
+        case 0:
             let data = dataListCamDo[indexPath.row]
             cell.idLabel.text = data.id
             cell.nameLabel.text = data.name
@@ -174,7 +177,7 @@ extension CamDoViewController: UITableViewDataSource, UITableViewDelegate{
             cell.subItemImage.image = UIImage(named: "icon-content-nhanhang")
             
             break
-        case "B":
+        case 1:
             let data = dataListDinhGia[indexPath.row]
             cell.idLabel.text = data.id
             cell.nameLabel.text = data.name
@@ -185,7 +188,7 @@ extension CamDoViewController: UITableViewDataSource, UITableViewDelegate{
             cell.subItemImage.image = UIImage(named: "icon-content-nhanvien")
             
             break
-        case "C":
+        case 2:
             let data = dataListDoGiaDung[indexPath.row]
             cell.idLabel.text = data.id
             cell.nameLabel.text = data.name
@@ -208,11 +211,32 @@ extension CamDoViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThongTinCamDoViewController") as! ThongTinCamDoViewController
-        itemVC.id = dataListCamDo[indexPath.row].id
-        self.present(itemVC, animated: true, completion: nil)
+
+        switch index {
+        case 0:
+            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThongTinCamDoViewController") as! ThongTinCamDoViewController
+            itemVC.id = dataListCamDo[indexPath.row].id
+            itemVC.index = index
+            print(index)
+            self.navigationController?.pushViewController(itemVC, animated: true)
+            break
+        case 1:
+            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThongTinCamDoViewController") as! ThongTinCamDoViewController
+            itemVC.id = dataListDinhGia[indexPath.row].id
+            itemVC.index = index
+            print(index)
+            self.navigationController?.pushViewController(itemVC, animated: true)
+            break
+        case 2:
+            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThongTinCamDoViewController") as! ThongTinCamDoViewController
+            itemVC.id = dataListDoGiaDung[indexPath.row].id
+            itemVC.index = index
+            print(index)
+            self.navigationController?.pushViewController(itemVC, animated: true)
+        default:
+            break
+        }
     }
-    
 }
 
 extension CamDoViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{

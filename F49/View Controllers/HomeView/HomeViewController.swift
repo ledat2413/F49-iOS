@@ -26,32 +26,27 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        NotificationCenter.default.addObserver(self, selector: #selector(pushCamDoController), name: NSNotification.Name.init("CamDoController"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(pushDinhGiaController), name: NSNotification.Name.init("DinhGiaController"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(pushDoGiaDungController), name: NSNotification.Name.init("DoGiaDungController"), object: nil)
+        navigation()
+        //        NotificationCenter.default.addObserver(self, selector: #selector(pushCamDoController), name: NSNotification.Name.init("CamDoController"), object: nil)
     }
-    
     
     //MARK: --Func
-    @objc func pushCamDoController() {
-        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
-        itemVC.key = "A"
-        
-        self.navigationController?.pushViewController(itemVC, animated: true)
-        print("PushToCamDoView")
-    }
-    @objc func pushDinhGiaController() {
-        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
-        
-        itemVC.key = "B"
-        self.navigationController?.pushViewController(itemVC, animated: true)
-        print("PushToDinhGiaView")
-    }
-    @objc func pushDoGiaDungController() {
-        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
-        itemVC.key = "C"
-        self.navigationController?.pushViewController(itemVC, animated: true)
-        print("PushToDoGiaDungview")
+    //    @objc func pushCamDoController() {
+    //        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
+    //        itemVC.key = "A"
+    //        self.navigationController?.pushViewController(itemVC, animated: true)
+    //        print("PushToCamDoView")
+    //    }
+    
+    private func navigation(){
+        menuCollectionView.callBack = { [weak self] (index) in
+            
+            guard let wself = self else { return }
+            print(index)
+            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
+            itemVC.index = index
+            wself.navigationController?.pushViewController(itemVC, animated: true)
+        }
     }
     
     private func loadData(){
@@ -88,23 +83,22 @@ class HomeViewController: UIViewController {
         
         menuCollectionView.backgroundColor = UIColor.clear
         findButton.backgroundColor = UIColor.clear
-        findTextField.layer.cornerRadius = 18
-        findTextField.clipsToBounds = true
-        findTextField.backgroundColor = UIColor.clear
-        findTextField.layer.borderColor = UIColor.clear.cgColor
-        
-        findContainerView.backgroundColor = UIColor.clear
-        findContainerView.layer.cornerRadius = 18
-        findContainerView.clipsToBounds = true
-        findContainerView.layer.borderColor = UIColor.white.cgColor
+        displayView(findTextField, cornerRadius: 18)
+        displayView(findContainerView, cornerRadius: 18)
         findContainerView.layer.borderWidth  = 1
         
         headerView.backgroundColor = UIColor(patternImage: UIImage(named: "home-bg-page")!)
         
-        
         bodyCollectionView.register(UINib(nibName: "BodyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BodyCollectionViewCell")
         bodyCollectionView.delegate = self
         bodyCollectionView.dataSource = self
+    }
+    
+    func displayView(_ view: UIView, cornerRadius: CGFloat) {
+        view.layer.cornerRadius = cornerRadius
+        view.clipsToBounds = true
+        view.backgroundColor = UIColor.clear
+        view.layer.borderColor = UIColor.white.cgColor
     }
     
     func displayShadowView(_ view: UIView) {
@@ -113,6 +107,7 @@ class HomeViewController: UIViewController {
         view.layer.shadowRadius = 2
         view.layer.shadowOpacity = 0.5
         view.layer.cornerRadius = 6
+        view.clipsToBounds = false
     }
     
     func cornerRadius(_ view: UIView){
@@ -129,7 +124,7 @@ class HomeViewController: UIViewController {
     func dismissPickerView() {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
-        let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
         toolBar.setItems([button], animated: true)
         toolBar.isUserInteractionEnabled = true
         findTextField.inputAccessoryView = toolBar
@@ -162,12 +157,6 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
             cell.thumbnailImageView.sd_setImage(with: URL(string: data.hinhAnh), placeholderImage: UIImage(named: "heart"))
             
             displayShadowView(cell)
-            
-            cell.layer.shadowColor = UIColor.black.cgColor
-            cell.layer.shadowOffset = CGSize(width: 0, height: 2.0);
-            cell.layer.shadowRadius = 1.0;
-            cell.layer.shadowOpacity = 0.5;
-            cell.clipsToBounds = false
             cell.layer.shadowPath = UIBezierPath(roundedRect:  cell.bounds, cornerRadius: cell.thumbnailCornerRadiusView.layer.cornerRadius).cgPath
             
             return cell

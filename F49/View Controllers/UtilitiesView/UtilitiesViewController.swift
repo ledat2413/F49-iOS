@@ -28,31 +28,29 @@ class UtilitiesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        NotificationCenter.default.addObserver(self, selector: #selector(pushCamDoController), name: NSNotification.Name.init("CamDoController"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(pushDinhGiaController), name: NSNotification.Name.init("DinhGiaController"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(pushDoGiaDungController), name: NSNotification.Name.init("DoGiaDungController"), object: nil)
+        navigation()
+        //        NotificationCenter.default.addObserver(self, selector: #selector(pushDoGiaDungController), name: NSNotification.Name.init("DoGiaDungController"), object: nil)
+        
     }
     
+    //    @objc func pushCamDoController() {
+    //        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
+    //        itemVC.key = "A"
+    //
+    //        self.navigationController?.pushViewController(itemVC, animated: true)
+    //        print("PushToCamDoView")
+    //    }
     
-    @objc func pushCamDoController() {
-        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
-        itemVC.key = "A"
-        
-        self.navigationController?.pushViewController(itemVC, animated: true)
-        print("PushToCamDoView")
-    }
-    @objc func pushDinhGiaController() {
-        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
-        
-        itemVC.key = "B"
-        self.navigationController?.pushViewController(itemVC, animated: true)
-        print("PushToDinhGiaView")
-    }
-    @objc func pushDoGiaDungController() {
-        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
-        itemVC.key = "C"
-        self.navigationController?.pushViewController(itemVC, animated: true)
-        print("PushToDoGiaDungview")
+    
+    private func navigation(){
+        headerMenu.callBack = { [weak self] (index) in
+            
+            guard let wself = self else { return }
+            print(index)
+            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
+            itemVC.index = index
+            wself.navigationController?.pushViewController(itemVC, animated: true)
+        }
     }
     
     
@@ -129,7 +127,7 @@ class UtilitiesViewController: UIViewController {
     func dismissPickerView() {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
-        let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
         toolBar.setItems([button], animated: true)
         toolBar.isUserInteractionEnabled = true
         headerTextField.inputAccessoryView = toolBar

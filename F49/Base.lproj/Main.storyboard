@@ -107,6 +107,7 @@
                                     <constraint firstAttribute="width" constant="20" id="Qns-QY-vo3"/>
                                 </constraints>
                                 <state key="normal" image="login-check"/>
+                                <state key="selected" image="login-checked"/>
                                 <connections>
                                     <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IcI-CB-3uN"/>
                                 </connections>
@@ -140,7 +141,7 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Dat@123" borderStyle="roundedRect" placeholder="Mật khẩu" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EzZ-7R-eQG">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-pass" translatesAutoresizingMaskIntoConstraints="NO" id="aU4-q4-VCR">
@@ -1237,6 +1238,7 @@
         <image name="login-bg1" width="533" height="1070"/>
         <image name="login-bg2" width="533" height="1070"/>
         <image name="login-check" width="40" height="41"/>
+        <image name="login-checked" width="40" height="41"/>
         <image name="login-mail" width="130" height="130"/>
         <image name="login-pass" width="130" height="130"/>
         <image name="logo-f49" width="360" height="198"/>
