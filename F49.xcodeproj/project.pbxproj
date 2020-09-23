@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2594D062519A1A000A99713 /* HopDongCamDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D052519A1A000A99713 /* HopDongCamDoViewController.swift */; };
+		C2594D102519A71F00A99713 /* ContractOpenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D0E2519A71F00A99713 /* ContractOpenTableViewCell.swift */; };
+		C2594D112519A71F00A99713 /* ContractOpenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2594D0F2519A71F00A99713 /* ContractOpenTableViewCell.xib */; };
+		C2594D142519F65400A99713 /* HopDongMoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D122519F65400A99713 /* HopDongMoViewController.swift */; };
+		C2594D152519F65400A99713 /* HopDongMoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2594D132519F65400A99713 /* HopDongMoViewController.xib */; };
+		C2594D172519F88700A99713 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D162519F88700A99713 /* CustomSegmentedControl.swift */; };
+		C2594D1C251A490200A99713 /* HopDongThanhLyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D1A251A490200A99713 /* HopDongThanhLyViewController.swift */; };
+		C2594D1D251A490200A99713 /* HopDongThanhLyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2594D1B251A490200A99713 /* HopDongThanhLyViewController.xib */; };
 		C261B4C1250F261900B63043 /* CuaHang.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C0250F261900B63043 /* CuaHang.swift */; };
 		C261B4C5250F556900B63043 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C4250F556900B63043 /* ExtensionUIView.swift */; };
 		C261B4C7250F58AD00B63043 /* DashBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C6250F58AD00B63043 /* DashBoard.swift */; };
@@ -78,6 +86,14 @@
 
 /* Begin PBXFileReference section */
 		07E3FC27611B8020906915F1 /* Pods_F49.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_F49.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2594D052519A1A000A99713 /* HopDongCamDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopDongCamDoViewController.swift; sourceTree = "<group>"; };
+		C2594D0E2519A71F00A99713 /* ContractOpenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractOpenTableViewCell.swift; sourceTree = "<group>"; };
+		C2594D0F2519A71F00A99713 /* ContractOpenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContractOpenTableViewCell.xib; sourceTree = "<group>"; };
+		C2594D122519F65400A99713 /* HopDongMoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopDongMoViewController.swift; sourceTree = "<group>"; };
+		C2594D132519F65400A99713 /* HopDongMoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HopDongMoViewController.xib; sourceTree = "<group>"; };
+		C2594D162519F88700A99713 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		C2594D1A251A490200A99713 /* HopDongThanhLyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopDongThanhLyViewController.swift; sourceTree = "<group>"; };
+		C2594D1B251A490200A99713 /* HopDongThanhLyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HopDongThanhLyViewController.xib; sourceTree = "<group>"; };
 		C261B4C0250F261900B63043 /* CuaHang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuaHang.swift; sourceTree = "<group>"; };
 		C261B4C4250F556900B63043 /* ExtensionUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		C261B4C6250F58AD00B63043 /* DashBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoard.swift; sourceTree = "<group>"; };
@@ -170,6 +186,23 @@
 				E42C8533E2BF20FFED4D10D1 /* Pods-F49.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C2594D042519A16100A99713 /* HopDongCamDo */ = {
+			isa = PBXGroup;
+			children = (
+				C2594D052519A1A000A99713 /* HopDongCamDoViewController.swift */,
+			);
+			path = HopDongCamDo;
+			sourceTree = "<group>";
+		};
+		C2594D0D2519A6FD00A99713 /* ContractOpen */ = {
+			isa = PBXGroup;
+			children = (
+				C2594D0E2519A71F00A99713 /* ContractOpenTableViewCell.swift */,
+				C2594D0F2519A71F00A99713 /* ContractOpenTableViewCell.xib */,
+			);
+			path = ContractOpen;
 			sourceTree = "<group>";
 		};
 		C2659C702510609C0021BC9D /* UserView */ = {
@@ -332,6 +365,7 @@
 		C2661CCE2509D5BE00430595 /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
+				C2594D0D2519A6FD00A99713 /* ContractOpen */,
 				C2C258412513739B0048FAB2 /* CamDo */,
 				C2C2585125148F180048FAB2 /* InfoCamDo */,
 				C282CC032512059C00F62B63 /* UtilitiesView */,
@@ -349,6 +383,11 @@
 				C282CBF42511A73400F62B63 /* NavigationBar.swift */,
 				C2C258682514B1E10048FAB2 /* Menu.xib */,
 				C2C2586A2514B1ED0048FAB2 /* Menu.swift */,
+				C2594D122519F65400A99713 /* HopDongMoViewController.swift */,
+				C2594D132519F65400A99713 /* HopDongMoViewController.xib */,
+				C2594D162519F88700A99713 /* CustomSegmentedControl.swift */,
+				C2594D1A251A490200A99713 /* HopDongThanhLyViewController.swift */,
+				C2594D1B251A490200A99713 /* HopDongThanhLyViewController.xib */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -374,6 +413,7 @@
 		C282CC0825120A4A00F62B63 /* UtilitiesView */ = {
 			isa = PBXGroup;
 			children = (
+				C2594D042519A16100A99713 /* HopDongCamDo */,
 				C282CC0925120A6D00F62B63 /* UtilitiesViewController.swift */,
 			);
 			path = UtilitiesView;
@@ -517,10 +557,13 @@
 				C2C2585525148F380048FAB2 /* InfoCamDoTableViewCell.xib in Resources */,
 				C2E4D6842517A3CD00622DF6 /* ImageTableViewCell.xib in Resources */,
 				C2C25859251491FA0048FAB2 /* CheckBoxTableViewCell.xib in Resources */,
+				C2594D152519F65400A99713 /* HopDongMoViewController.xib in Resources */,
 				C265C18125071EE2000D4FAE /* Assets.xcassets in Resources */,
 				C282CC11251211E700F62B63 /* UtilitiesHeaderCollectionViewCell.xib in Resources */,
 				C2C258692514B1E10048FAB2 /* Menu.xib in Resources */,
+				C2594D112519A71F00A99713 /* ContractOpenTableViewCell.xib in Resources */,
 				C282CC15251219B200F62B63 /* UtilitiesBodyCollectionViewCell.xib in Resources */,
+				C2594D1D251A490200A99713 /* HopDongThanhLyViewController.xib in Resources */,
 				C282CBF32511A61400F62B63 /* NavigationBar.xib in Resources */,
 				C265C17F25071EE0000D4FAE /* Main.storyboard in Resources */,
 				C2659CC02510AD1C0021BC9D /* HeaderCollectionViewCell.xib in Resources */,
@@ -581,6 +624,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2594D102519A71F00A99713 /* ContractOpenTableViewCell.swift in Sources */,
 				C2E4D67E25179EC400622DF6 /* DinhGiaChiTiet.swift in Sources */,
 				C265C19B250728CC000D4FAE /* LoginViewController.swift in Sources */,
 				C282CC10251211E700F62B63 /* UtilitiesHeaderCollectionViewCell.swift in Sources */,
@@ -594,6 +638,7 @@
 				C2659CBF2510AD1C0021BC9D /* HeaderCollectionViewCell.swift in Sources */,
 				C265C1A125078812000D4FAE /* UserProfile.swift in Sources */,
 				C2C25875251642C30048FAB2 /* DinhGia.swift in Sources */,
+				C2594D062519A1A000A99713 /* HopDongCamDoViewController.swift in Sources */,
 				C2E4D68025179F0C00622DF6 /* DoGiaDungChiTiet.swift in Sources */,
 				C2C2583F25135AD30048FAB2 /* CamDoViewController.swift in Sources */,
 				C265C19225071FF6000D4FAE /* APIRouter.swift in Sources */,
@@ -603,6 +648,7 @@
 				C261B4C7250F58AD00B63043 /* DashBoard.swift in Sources */,
 				C265C19025071F91000D4FAE /* Config.swift in Sources */,
 				C265C19425072158000D4FAE /* BaseResponse.swift in Sources */,
+				C2594D142519F65400A99713 /* HopDongMoViewController.swift in Sources */,
 				C2C2585425148F380048FAB2 /* InfoCamDoTableViewCell.swift in Sources */,
 				C265C19F250777A1000D4FAE /* UserToken.swift in Sources */,
 				C2695BEB2508BF9200E3A3C8 /* HomeViewController.swift in Sources */,
@@ -612,7 +658,9 @@
 				C282CBF92511CB8500F62B63 /* ShopUITableViewCell.swift in Sources */,
 				C2659CC52510BE740021BC9D /* CuaHangMacDinhViewController.swift in Sources */,
 				C2659CAF2510AA660021BC9D /* MacDinhTableViewCell.swift in Sources */,
+				C2594D172519F88700A99713 /* CustomSegmentedControl.swift in Sources */,
 				C2C25877251643FC0048FAB2 /* DoGiaDung.swift in Sources */,
+				C2594D1C251A490200A99713 /* HopDongThanhLyViewController.swift in Sources */,
 				C2659CC92510BE9C0021BC9D /* CaiDatViewController.swift in Sources */,
 				C265C17825071EE0000D4FAE /* AppDelegate.swift in Sources */,
 				C261B4C1250F261900B63043 /* CuaHang.swift in Sources */,

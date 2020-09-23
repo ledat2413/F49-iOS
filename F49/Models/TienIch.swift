@@ -11,11 +11,12 @@ import RealmSwift
 
 class TienIch: Object, Mappable{
     
+    @objc dynamic var id: Int = 0
     @objc dynamic var tieuDe: String = ""
     @objc dynamic var giaTri: String = ""
     @objc dynamic var hinhAnh: String = ""
     @objc dynamic var screenId: String = ""
-    @objc dynamic var sapXep: String = ""
+    @objc dynamic var sapXep: Int = 0
     @objc dynamic var mauSac: String = ""
     
     required convenience init?(map: Map) {
@@ -23,6 +24,7 @@ class TienIch: Object, Mappable{
     }
     
     func mapping(map: Map) {
+         id <- map["id"]
         tieuDe <- map["tieuDe"]
         giaTri <- map["giaTri"]
         hinhAnh <- map["hinhAnh"]

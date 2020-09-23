@@ -29,18 +29,8 @@ class UtilitiesViewController: UIViewController {
         super.viewDidLoad()
         setUpUI()
         navigation()
-        //        NotificationCenter.default.addObserver(self, selector: #selector(pushDoGiaDungController), name: NSNotification.Name.init("DoGiaDungController"), object: nil)
         
-    }
-    
-    //    @objc func pushCamDoController() {
-    //        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
-    //        itemVC.key = "A"
-    //
-    //        self.navigationController?.pushViewController(itemVC, animated: true)
-    //        print("PushToCamDoView")
-    //    }
-    
+    }   
     
     private func navigation(){
         headerMenu.callBack = { [weak self] (index) in
@@ -140,31 +130,35 @@ class UtilitiesViewController: UIViewController {
 
 extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch collectionView {
-        case bodyCollectionView:
-            return dataTienIch.count
-        default:
-            return 0
-        }
+        return dataTienIch.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch collectionView {
-        case bodyCollectionView:
-            guard let cell = bodyCollectionView.dequeueReusableCell(withReuseIdentifier: "UtilitiesBodyCollectionViewCell", for: indexPath) as? UtilitiesBodyCollectionViewCell else {
-                fatalError()
-            }
+        guard let cell = bodyCollectionView.dequeueReusableCell(withReuseIdentifier: "UtilitiesBodyCollectionViewCell", for: indexPath) as? UtilitiesBodyCollectionViewCell else {
+            fatalError()
+        }
+        
+        let data = dataTienIch[indexPath.row]
+        cell.layer.borderWidth = 0.5
+        cell.layer.borderColor = UIColor.groupTableViewBackground.cgColor
+        cell.titleLabel.text = data.tieuDe
+        cell.imageView.sd_setImage(with: URL(string: data.hinhAnh), placeholderImage: UIImage(named: "heart"))
+        cell.countLabel.text = data.giaTri
+        return cell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch dataTienIch[indexPath.row].id {
+        case 1:
+            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
+            self.navigationController?.pushViewController(itemVC, animated: true)
+        case 5:
+            //Quan li thu chi
+            print("Quan li thu chi")
+            break
+        default: break
             
-            let data = dataTienIch[indexPath.row]
-            cell.layer.borderWidth = 0.5
-            cell.layer.borderColor = UIColor.groupTableViewBackground.cgColor
-            cell.titleLabel.text = data.tieuDe
-            cell.countLabel.text = data.giaTri
-            cell.imageView.sd_setImage(with: URL(string: data.hinhAnh), placeholderImage: UIImage(named: "heart"))
-            cell.countLabel.text = data.giaTri
-            return cell
-        default:
-            return UICollectionViewCell()
         }
     }
 }
@@ -173,21 +167,12 @@ extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewD
 extension UtilitiesViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch collectionView {
-        case bodyCollectionView:
-            return CGSize(width: (bodyCollectionView.frame.width)/2, height: (bodyCollectionView.frame.height ) / 3)
-        default:
-            return CGSize()
-        }
+        return CGSize(width: (bodyCollectionView.frame.width)/2, height: (bodyCollectionView.frame.height ) / 3)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        switch collectionView {
-        case bodyCollectionView:
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        default:
-            return UIEdgeInsets()
-        }
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
     }
 }
