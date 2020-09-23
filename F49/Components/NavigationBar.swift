@@ -23,10 +23,6 @@ final class NavigationBar: UIView{
         }
     }
     
-    
-    
-
-    
     override func awakeFromNib() {
         initWithNib()
         

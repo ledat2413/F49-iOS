@@ -40,7 +40,7 @@ class HomeViewController: UIViewController {
     
     private func navigation(){
         menuCollectionView.callBack = { [weak self] (index) in
-            
+        
             guard let wself = self else { return }
             print(index)
             let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController

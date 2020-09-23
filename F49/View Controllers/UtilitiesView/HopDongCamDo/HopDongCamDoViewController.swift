@@ -7,57 +7,87 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 import SnapKit
 
-class HopDongCamDoViewController: UIViewController {
+
+class HopDongCamDoViewController: ButtonBarPagerTabStripViewController {
     
     //MARK: --Vars
     var views: [UIView] = []
+    let purpleInspireColor = UIColor.orange
+    var dataCuaHang: [CuaHang] = []
+    var dataTab: [Tab] = [Tab(id: 0, value: "")]
+    var selectedCuaHang: String?
+    var callBackIdShop: ((_ id: Int) -> Void)?
     
     
     //MARK: --IBOutlet
     @IBOutlet weak var headerView: NavigationBar!
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var shopContainerView: UIView!
     @IBOutlet weak var shopTextField: UITextField!
-    @IBOutlet weak var segmentedControl: CustomSegmentedControl!{
-        didSet{
-            segmentedControl.setButtonTitles(buttonTitles: ["HĐ mở","HĐ thanh lý","HĐ tất toán"])
-            segmentedControl.selectorViewColor = .orange
-            segmentedControl.selectorTextColor = .orange
-        }
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         displayHeaderView()
-//        selectIndex(segmentedControl)
-        
+        loadData()
+        loadStatus()
+        createPickerView()
+        dismissPickerView()
     }
     
-//    func selectIndex(_ sender: CustomSegmentedControl){
-//        self.contentView.bringSubviewToFront(views[sender.selectedIndex])
-//    }
-//
     //MARK: --IBAction
     @IBAction func locButtonPressed(_ sender: Any) {
     }
     
     //MARK: --Func
-    private func setUpUI(){
-        views.append(HopDongMoViewController().view)
-        views.append(HopDongThanhLyViewController().view)
-        views.append(HopDongMoViewController().view)
-        for v in views {
-            contentView.addSubview(v)
-            v.snp.makeConstraints { (marker) in
-                marker.edges.equalTo(contentView)
+    
+    
+    private func loadData(){
+        MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
+            guard error == nil else {
+                print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                return
+            }
+            if let result = result {
+                self.dataCuaHang = result
             }
         }
-        contentView.bringSubviewToFront(views[0])
     }
     
+    private func loadStatus(){
+        MGConnection.requestArray(APIRouter.GetTab, Tab.self) { (result, error) in
+            guard error == nil else {
+                print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                return  
+            }
+            if let result = result {
+                self.dataTab = result
+                self.reloadPagerTabStripView()
+            }
+        }
+    }
+    
+    
+    func setUpUI(){
+        settings.style.buttonBarBackgroundColor = .white
+        settings.style.buttonBarItemBackgroundColor = .white
+        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 13)
+        settings.style.selectedBarHeight = 1.0
+        settings.style.buttonBarMinimumLineSpacing = 0
+        settings.style.buttonBarItemTitleColor = .orange
+        settings.style.selectedBarBackgroundColor = .orange
+        settings.style.buttonBarLeftContentInset = 0
+        settings.style.buttonBarItemsShouldFillAvailableWidth = true
+        settings.style.buttonBarRightContentInset = 0
+        
+        changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
+            guard changeCurrentIndex == true else { return }
+            oldCell?.label.textColor = .orange
+            newCell?.label.textColor = self?.purpleInspireColor
+        }
+    }
     
     private func displayHeaderView(){
         headerView.title = "Quản lí hợp đồng cầm đồ"
@@ -67,5 +97,55 @@ class HopDongCamDoViewController: UIViewController {
     
     @objc func backView(){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func createPickerView() {
+           let pickerView = UIPickerView()
+           pickerView.delegate = self
+           shopTextField.inputView = pickerView
+       }
+       
+       func dismissPickerView() {
+           let toolBar = UIToolbar()
+           toolBar.sizeToFit()
+           let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
+           toolBar.setItems([button], animated: true)
+           toolBar.isUserInteractionEnabled = true
+           shopTextField.inputAccessoryView = toolBar
+       }
+       
+       @objc func action() {
+           view.endEditing(true)
+       }
+    
+    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        
+        var viewControllers: [UIViewController] = []
+        for i in dataTab {
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HopDongMoViewController") as! HopDongMoViewController
+            vc.id = i.id
+            vc.value = i.value
+            viewControllers.append(vc)
+            
+        }
+        return viewControllers
+    }
+}
+
+extension HopDongCamDoViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return dataCuaHang.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return dataCuaHang[row].tenCuaHang
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedCuaHang = dataCuaHang[row].tenCuaHang
+        shopTextField.text = selectedCuaHang
+        callBackIdShop?(dataCuaHang[row].id)
+
     }
 }

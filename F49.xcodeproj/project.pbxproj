@@ -11,10 +11,8 @@
 		C2594D102519A71F00A99713 /* ContractOpenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D0E2519A71F00A99713 /* ContractOpenTableViewCell.swift */; };
 		C2594D112519A71F00A99713 /* ContractOpenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2594D0F2519A71F00A99713 /* ContractOpenTableViewCell.xib */; };
 		C2594D142519F65400A99713 /* HopDongMoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D122519F65400A99713 /* HopDongMoViewController.swift */; };
-		C2594D152519F65400A99713 /* HopDongMoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2594D132519F65400A99713 /* HopDongMoViewController.xib */; };
-		C2594D172519F88700A99713 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D162519F88700A99713 /* CustomSegmentedControl.swift */; };
-		C2594D1C251A490200A99713 /* HopDongThanhLyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D1A251A490200A99713 /* HopDongThanhLyViewController.swift */; };
-		C2594D1D251A490200A99713 /* HopDongThanhLyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2594D1B251A490200A99713 /* HopDongThanhLyViewController.xib */; };
+		C25AD64E251B27890091CA6D /* GetTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25AD64D251B27890091CA6D /* GetTab.swift */; };
+		C25AD650251B2A290091CA6D /* HopDongTheoLoai.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25AD64F251B2A290091CA6D /* HopDongTheoLoai.swift */; };
 		C261B4C1250F261900B63043 /* CuaHang.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C0250F261900B63043 /* CuaHang.swift */; };
 		C261B4C5250F556900B63043 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C4250F556900B63043 /* ExtensionUIView.swift */; };
 		C261B4C7250F58AD00B63043 /* DashBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C6250F58AD00B63043 /* DashBoard.swift */; };
@@ -90,10 +88,8 @@
 		C2594D0E2519A71F00A99713 /* ContractOpenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractOpenTableViewCell.swift; sourceTree = "<group>"; };
 		C2594D0F2519A71F00A99713 /* ContractOpenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContractOpenTableViewCell.xib; sourceTree = "<group>"; };
 		C2594D122519F65400A99713 /* HopDongMoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopDongMoViewController.swift; sourceTree = "<group>"; };
-		C2594D132519F65400A99713 /* HopDongMoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HopDongMoViewController.xib; sourceTree = "<group>"; };
-		C2594D162519F88700A99713 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
-		C2594D1A251A490200A99713 /* HopDongThanhLyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopDongThanhLyViewController.swift; sourceTree = "<group>"; };
-		C2594D1B251A490200A99713 /* HopDongThanhLyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HopDongThanhLyViewController.xib; sourceTree = "<group>"; };
+		C25AD64D251B27890091CA6D /* GetTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTab.swift; sourceTree = "<group>"; };
+		C25AD64F251B2A290091CA6D /* HopDongTheoLoai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopDongTheoLoai.swift; sourceTree = "<group>"; };
 		C261B4C0250F261900B63043 /* CuaHang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuaHang.swift; sourceTree = "<group>"; };
 		C261B4C4250F556900B63043 /* ExtensionUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		C261B4C6250F58AD00B63043 /* DashBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoard.swift; sourceTree = "<group>"; };
@@ -334,6 +330,8 @@
 				C2C25876251643FC0048FAB2 /* DoGiaDung.swift */,
 				C2E4D67D25179EC400622DF6 /* DinhGiaChiTiet.swift */,
 				C2E4D67F25179F0C00622DF6 /* DoGiaDungChiTiet.swift */,
+				C25AD64D251B27890091CA6D /* GetTab.swift */,
+				C25AD64F251B2A290091CA6D /* HopDongTheoLoai.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -384,10 +382,6 @@
 				C2C258682514B1E10048FAB2 /* Menu.xib */,
 				C2C2586A2514B1ED0048FAB2 /* Menu.swift */,
 				C2594D122519F65400A99713 /* HopDongMoViewController.swift */,
-				C2594D132519F65400A99713 /* HopDongMoViewController.xib */,
-				C2594D162519F88700A99713 /* CustomSegmentedControl.swift */,
-				C2594D1A251A490200A99713 /* HopDongThanhLyViewController.swift */,
-				C2594D1B251A490200A99713 /* HopDongThanhLyViewController.xib */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -557,13 +551,11 @@
 				C2C2585525148F380048FAB2 /* InfoCamDoTableViewCell.xib in Resources */,
 				C2E4D6842517A3CD00622DF6 /* ImageTableViewCell.xib in Resources */,
 				C2C25859251491FA0048FAB2 /* CheckBoxTableViewCell.xib in Resources */,
-				C2594D152519F65400A99713 /* HopDongMoViewController.xib in Resources */,
 				C265C18125071EE2000D4FAE /* Assets.xcassets in Resources */,
 				C282CC11251211E700F62B63 /* UtilitiesHeaderCollectionViewCell.xib in Resources */,
 				C2C258692514B1E10048FAB2 /* Menu.xib in Resources */,
 				C2594D112519A71F00A99713 /* ContractOpenTableViewCell.xib in Resources */,
 				C282CC15251219B200F62B63 /* UtilitiesBodyCollectionViewCell.xib in Resources */,
-				C2594D1D251A490200A99713 /* HopDongThanhLyViewController.xib in Resources */,
 				C282CBF32511A61400F62B63 /* NavigationBar.xib in Resources */,
 				C265C17F25071EE0000D4FAE /* Main.storyboard in Resources */,
 				C2659CC02510AD1C0021BC9D /* HeaderCollectionViewCell.xib in Resources */,
@@ -628,6 +620,7 @@
 				C2E4D67E25179EC400622DF6 /* DinhGiaChiTiet.swift in Sources */,
 				C265C19B250728CC000D4FAE /* LoginViewController.swift in Sources */,
 				C282CC10251211E700F62B63 /* UtilitiesHeaderCollectionViewCell.swift in Sources */,
+				C25AD650251B2A290091CA6D /* HopDongTheoLoai.swift in Sources */,
 				C2659CB32510AA760021BC9D /* MatKhauTableViewCell.swift in Sources */,
 				C2695BED2508C62400E3A3C8 /* UserViewController.swift in Sources */,
 				C282CC14251219B200F62B63 /* UtilitiesBodyCollectionViewCell.swift in Sources */,
@@ -640,6 +633,7 @@
 				C2C25875251642C30048FAB2 /* DinhGia.swift in Sources */,
 				C2594D062519A1A000A99713 /* HopDongCamDoViewController.swift in Sources */,
 				C2E4D68025179F0C00622DF6 /* DoGiaDungChiTiet.swift in Sources */,
+				C25AD64E251B27890091CA6D /* GetTab.swift in Sources */,
 				C2C2583F25135AD30048FAB2 /* CamDoViewController.swift in Sources */,
 				C265C19225071FF6000D4FAE /* APIRouter.swift in Sources */,
 				C2C2586F2514BF890048FAB2 /* MenuHeader.swift in Sources */,
@@ -658,9 +652,7 @@
 				C282CBF92511CB8500F62B63 /* ShopUITableViewCell.swift in Sources */,
 				C2659CC52510BE740021BC9D /* CuaHangMacDinhViewController.swift in Sources */,
 				C2659CAF2510AA660021BC9D /* MacDinhTableViewCell.swift in Sources */,
-				C2594D172519F88700A99713 /* CustomSegmentedControl.swift in Sources */,
 				C2C25877251643FC0048FAB2 /* DoGiaDung.swift in Sources */,
-				C2594D1C251A490200A99713 /* HopDongThanhLyViewController.swift in Sources */,
 				C2659CC92510BE9C0021BC9D /* CaiDatViewController.swift in Sources */,
 				C265C17825071EE0000D4FAE /* AppDelegate.swift in Sources */,
 				C261B4C1250F261900B63043 /* CuaHang.swift in Sources */,

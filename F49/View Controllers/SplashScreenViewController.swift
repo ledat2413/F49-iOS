@@ -49,20 +49,6 @@ class SplashScreenViewController: UIViewController {
     
     @objc private func checkLogin(){
         
-        //        if UserHelper.getAutoLogin() == false {
-        //            if UserHelper.getUserData(key: UserKey.Token) == nil {
-        //                let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
-        //                self.present(itemVC, animated: true, completion: nil)
-        //            }
-        //            else{
-        //                let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabarController")
-        //                self.navigationController?.pushViewController(itemVC, animated: true)
-        //            }
-        //        }else{
-        //            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabarController")
-        //            self.navigationController?.pushViewController(itemVC, animated: true)
-        //        }
-        
         if UserHelper.getUserData(key: UserKey.Token) == nil{
             let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
             self.present(itemVC, animated: true, completion: nil)

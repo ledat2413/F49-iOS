@@ -24,6 +24,8 @@ enum APIRouter: URLRequestConvertible {
     case GetChiTietDinhGia(id: Int)
     case GetListDoGiaDung(id: String)
     case GetChiTietDoGiaDung(id: Int)
+    case GetTab
+    case GetListHopDongTheoLoai(id: Int,loaidHD: Int)
     
     
     // =========== End define api ===========
@@ -57,6 +59,11 @@ enum APIRouter: URLRequestConvertible {
             return .get
         case .GetChiTietDoGiaDung:
             return .get
+        case .GetTab:
+            return .get
+        case .GetListHopDongTheoLoai:
+            return .get
+            
         }
     }
     
@@ -89,6 +96,10 @@ enum APIRouter: URLRequestConvertible {
             return "api/TopMenu/GetListDoGiaDung"
         case .GetChiTietDoGiaDung:
             return "api/TopMenu/GetChiTietDoGiaDung"
+        case .GetTab:
+            return "api/HopDong/GetTab"
+        case .GetListHopDongTheoLoai:
+            return "api/HopDong/GetListHopDongTheoLoai"
         }
     }
     
@@ -159,6 +170,16 @@ enum APIRouter: URLRequestConvertible {
                 headers["Authorization"] = token
             }
             break
+        case .GetTab:
+            if let token = UserHelper.getUserData(key: UserKey.Token){
+                headers["Authorization"] = token
+            }
+            break
+        case .GetListHopDongTheoLoai:
+            if let token = UserHelper.getUserData(key: UserKey.Token){
+                headers["Authorization"] = token
+            }
+            break
         }
         
         return headers;
@@ -207,6 +228,10 @@ enum APIRouter: URLRequestConvertible {
             
         case .GetChiTietDoGiaDung(let id):
             return ["id": id]
+        case .GetTab:
+            return [:]
+        case .GetListHopDongTheoLoai(let id,let loaidHD):
+            return ["idCuaHang": id, "loaiHD": loaidHD]
         }
     }
     

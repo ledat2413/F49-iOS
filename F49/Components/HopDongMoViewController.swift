@@ -7,48 +7,68 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
-class HopDongMoViewController: UIViewController {
+class HopDongMoViewController: UIViewController,IndicatorInfoProvider {
     
+    public var value: String = ""
     var id: Int = 0
+    var idShop: Int = 0
+    var dataHopDong: [HopDongTheoLoai] = []
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadData()
         switch id {
         case 0:
-            tableView.backgroundColor = UIColor.red
+            return tableView.backgroundColor = .black
         case 1:
-            tableView.backgroundColor = UIColor.blue
-        case 2:
-            tableView.backgroundColor = UIColor.green
+            return tableView.backgroundColor = .red
+        case 4:
+            return tableView.backgroundColor = .blue
         default:
             break
         }
+        
+    
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData), name: Notification.Name("IdShop"), object: nil)
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ContractOpenTableViewCell", bundle: nil), forCellReuseIdentifier: "ContractOpenTableViewCell")
     }
     
+    @objc func reloadData(){
+        
+    }
+    
     func loadData(){
-        switch id {
-        case 0:
-            return
-        case 1:
-            return
-        case 2:
-            return
-        default:
-            break
+        MGConnection.requestArray(APIRouter.GetListHopDongTheoLoai(id: 18, loaidHD: id), HopDongTheoLoai.self) { (result, error) in
+            guard error == nil else {
+                print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                return
+            }
+            if let result = result {
+                self.dataHopDong = result
+                self.tableView.reloadData()
+            }
         }
+    }
+    
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: value)
     }
     
 }
 
 extension HopDongMoViewController: UITableViewDelegate, UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,6 +78,6 @@ extension HopDongMoViewController: UITableViewDelegate, UITableViewDataSource{
         
         return cell
     }
-    
-    
 }
+
+
