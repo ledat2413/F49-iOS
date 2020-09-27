@@ -19,6 +19,15 @@ class ContractOpenTableViewCell: UITableViewCell {
     @IBOutlet weak var tienLabel: UILabel!
     @IBOutlet weak var tongLabel: UILabel!
     
+    @IBOutlet weak var title1Label: UILabel!
+    @IBOutlet weak var title2Label: UILabel!
+    @IBOutlet weak var title3Label: UILabel!
+    
+    @IBOutlet weak var icon1ImageView: UIImageView!
+    @IBOutlet weak var icon2ImageView: UIImageView!
+    @IBOutlet weak var icon3Imageview: UIImageView!
+    
+    @IBOutlet weak var betweenLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -59,6 +59,7 @@ class MGConnection {
             case .success:
                 if response.response?.statusCode == 200 {
                     completion(response.result.value?.data, nil)
+                    print(response.request)
                 } else {
                     let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.HTTP_ERROR, (response.response?.statusCode)!, "Request is error!")
                     completion(nil, err)

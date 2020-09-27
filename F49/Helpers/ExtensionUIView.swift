@@ -22,4 +22,10 @@ extension UIView {
         
         layer.insertSublayer(gradientLayer, at: 0)
     }
+    
+    func display20(){
+        self.layer.cornerRadius = 20
+        self.clipsToBounds = true
+    }
+
 }

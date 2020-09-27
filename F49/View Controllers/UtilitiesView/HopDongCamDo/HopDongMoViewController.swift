@@ -14,6 +14,8 @@ class HopDongMoViewController: UIViewController,IndicatorInfoProvider {
     public var value: String = ""
     var id: Int = 0
     var idShop: Int = 0
+    var idStatus: String?
+    var keyWord: String?
     var dataHopDong: [HopDongTheoLoai] = []
     
     
@@ -21,33 +23,26 @@ class HopDongMoViewController: UIViewController,IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadData()
-        switch id {
-        case 0:
-            return tableView.backgroundColor = .black
-        case 1:
-            return tableView.backgroundColor = .red
-        case 4:
-            return tableView.backgroundColor = .blue
-        default:
-            break
-        }
-        
-    
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData), name: Notification.Name("IdShop"), object: nil)
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ContractOpenTableViewCell", bundle: nil), forCellReuseIdentifier: "ContractOpenTableViewCell")
+       
     }
     
-    @objc func reloadData(){
-        
-    }
     
     func loadData(){
-        MGConnection.requestArray(APIRouter.GetListHopDongTheoLoai(id: 18, loaidHD: id), HopDongTheoLoai.self) { (result, error) in
+        var params: [String: Any] = ["idCuaHang": idShop, "loaiHD": id]
+        
+        if let idStatus = self.idStatus {
+            params["trangThai"] = idStatus
+        }
+        if let keyWord = self.keyWord {
+            params["tuKhoa"] = keyWord
+        }
+    
+        MGConnection.requestArray(APIRouter.GetListHopDongTheoLoai(params: params), HopDongTheoLoai.self) { (result, error) in
             guard error == nil else {
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return
@@ -68,16 +63,36 @@ class HopDongMoViewController: UIViewController,IndicatorInfoProvider {
 extension HopDongMoViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return dataHopDong.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContractOpenTableViewCell", for: indexPath) as? ContractOpenTableViewCell else{
             fatalError()
         }
+        let data = dataHopDong[indexPath.row]
+        
+        cell.idLabel.text = "\(data.id)"
+        cell.id2Label.text = data.soHopDong
+        cell.tangGiamLabel.text = "\(data.soNgayQuaHan)"
+        cell.nameLabel.text = data.tenKhachHang
+        cell.tienLabel.text = data.duNoHienTai
+        cell.tongLabel.text = data.laiPhaiThu
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(100)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChiTietHopDongViewController") as! ChiTietHopDongViewController
+        itemVC.id = dataHopDong[indexPath.row].id
+        self.navigationController?.pushViewController(itemVC, animated: true)
+    }
+    
+
 }
 
 

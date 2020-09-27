@@ -18,28 +18,28 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Key" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zk2-8h-WLi">
-                        <rect key="frame" x="15" y="5" width="100" height="34"/>
+                        <rect key="frame" x="15" y="5" width="110" height="34"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="100" id="pPg-u7-h7H"/>
+                            <constraint firstAttribute="width" constant="110" id="pPg-u7-h7H"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rya-PI-qkM">
-                        <rect key="frame" x="135" y="5" width="170" height="34"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aaa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rya-PI-qkM">
+                        <rect key="frame" x="130" y="5" width="190" height="34"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.08540076531448812" green="0.09017209005566533" blue="0.097777687823834225" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Rya-PI-qkM" secondAttribute="bottom" constant="5" id="46y-rR-aM5"/>
                     <constraint firstItem="Zk2-8h-WLi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="DfO-X4-TTh"/>
-                    <constraint firstItem="Rya-PI-qkM" firstAttribute="leading" secondItem="Zk2-8h-WLi" secondAttribute="trailing" constant="20" id="Mp8-RQ-fkr"/>
+                    <constraint firstItem="Rya-PI-qkM" firstAttribute="leading" secondItem="Zk2-8h-WLi" secondAttribute="trailing" constant="5" id="Mp8-RQ-fkr"/>
                     <constraint firstAttribute="bottom" secondItem="Zk2-8h-WLi" secondAttribute="bottom" constant="5" id="PWT-QD-YDN"/>
                     <constraint firstItem="Rya-PI-qkM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Qz3-D9-5pz"/>
-                    <constraint firstAttribute="trailing" secondItem="Rya-PI-qkM" secondAttribute="trailing" constant="15" id="YDB-VX-qGS"/>
+                    <constraint firstAttribute="trailing" secondItem="Rya-PI-qkM" secondAttribute="trailing" id="YDB-VX-qGS"/>
                     <constraint firstItem="Zk2-8h-WLi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="c3c-oy-H6E"/>
                 </constraints>
             </tableViewCellContentView>

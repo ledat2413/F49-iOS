@@ -10,8 +10,7 @@ import UIKit
 import XLPagerTabStrip
 import SnapKit
 
-
-class HopDongCamDoViewController: ButtonBarPagerTabStripViewController {
+class HopDongCamDoViewController: ButtonBarPagerTabStripViewController{
     
     //MARK: --Vars
     var views: [UIView] = []
@@ -19,13 +18,17 @@ class HopDongCamDoViewController: ButtonBarPagerTabStripViewController {
     var dataCuaHang: [CuaHang] = []
     var dataTab: [Tab] = [Tab(id: 0, value: "")]
     var selectedCuaHang: String?
-    var callBackIdShop: ((_ id: Int) -> Void)?
-    
+//    var callBackIdShop: ((_ id: Int) -> Void)?
+    var idShop: Int = 0
+    var idStatus: String?
+    var keyWord: String?
     
     //MARK: --IBOutlet
     @IBOutlet weak var headerView: NavigationBar!
     @IBOutlet weak var shopTextField: UITextField!
-    
+    @IBOutlet weak var contrectLabel: UILabel!
+
+    @IBOutlet var viewTo: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +38,27 @@ class HopDongCamDoViewController: ButtonBarPagerTabStripViewController {
         loadStatus()
         createPickerView()
         dismissPickerView()
+        contrectLabel.underlined()
     }
     
     //MARK: --IBAction
-    @IBAction func locButtonPressed(_ sender: Any) {
+    
+    @IBAction func locButtonPressed(_ sender: UIButton) {
+        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BoLocViewController") as! BoLocViewController
+        itemVC.modalPresentationStyle = .overCurrentContext
+        itemVC.modalTransitionStyle = .crossDissolve
+        itemVC.callBackValue = { (idStatus, text) in
+            self.idStatus = idStatus
+            self.keyWord = text
+            self.reloadPagerTabStripView()
+        }
+        self.present(itemVC, animated: true, completion: nil)
+       
+        
     }
     
     //MARK: --Func
+        
     
     
     private func loadData(){
@@ -69,7 +86,6 @@ class HopDongCamDoViewController: ButtonBarPagerTabStripViewController {
         }
     }
     
-    
     func setUpUI(){
         settings.style.buttonBarBackgroundColor = .white
         settings.style.buttonBarItemBackgroundColor = .white
@@ -93,6 +109,7 @@ class HopDongCamDoViewController: ButtonBarPagerTabStripViewController {
         headerView.title = "Quản lí hợp đồng cầm đồ"
         headerView.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
         headerView.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
+        
     }
     
     @objc func backView(){
@@ -125,6 +142,9 @@ class HopDongCamDoViewController: ButtonBarPagerTabStripViewController {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HopDongMoViewController") as! HopDongMoViewController
             vc.id = i.id
             vc.value = i.value
+            vc.idShop = self.idShop
+            vc.idStatus = self.idStatus
+            vc.keyWord = self.keyWord
             viewControllers.append(vc)
             
         }
@@ -145,7 +165,11 @@ extension HopDongCamDoViewController: UIPickerViewDelegate, UIPickerViewDataSour
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCuaHang = dataCuaHang[row].tenCuaHang
         shopTextField.text = selectedCuaHang
-        callBackIdShop?(dataCuaHang[row].id)
-
+//        let imageDataDict:[String: Int] = ["idShop": dataCuaHang[row].id]
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notificationName"), object: nil, userInfo: imageDataDict)
+        idShop = dataCuaHang[row].id
+        reloadPagerTabStripView()
     }
 }
+
+

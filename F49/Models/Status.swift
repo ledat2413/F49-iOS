@@ -23,5 +23,19 @@ class Status: Object, Mappable{
         id <- map["id"]
         value <- map["value"]
     }
+}
+
+class StatusHopDong: Object, Mappable{
     
+    @objc dynamic var id: Int = 0
+    @objc dynamic var value: String = ""
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        value <- map["value"]
+    }
 }

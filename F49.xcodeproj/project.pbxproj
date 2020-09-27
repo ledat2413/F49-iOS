@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C20FF73B251F18E20096A38F /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20FF73A251F18E20096A38F /* NotificationViewController.swift */; };
+		C20FF73F251F36500096A38F /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20FF73D251F36500096A38F /* NotificationTableViewCell.swift */; };
+		C20FF740251F36500096A38F /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20FF73E251F36500096A38F /* NotificationTableViewCell.xib */; };
+		C243DCC4251D8806004C6347 /* ThuChiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243DCC3251D8806004C6347 /* ThuChiViewController.swift */; };
+		C243DCCB251D9043004C6347 /* ThuChi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243DCCA251D9043004C6347 /* ThuChi.swift */; };
+		C243DCCD251DA276004C6347 /* ThongTinThuChiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243DCCC251DA276004C6347 /* ThongTinThuChiViewController.swift */; };
+		C243DCCF251DA539004C6347 /* ThongTinThuChi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243DCCE251DA539004C6347 /* ThongTinThuChi.swift */; };
+		C243DCD2251DF001004C6347 /* LogOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243DCD0251DF001004C6347 /* LogOutTableViewCell.swift */; };
+		C243DCD3251DF001004C6347 /* LogOutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C243DCD1251DF001004C6347 /* LogOutTableViewCell.xib */; };
 		C2594D062519A1A000A99713 /* HopDongCamDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D052519A1A000A99713 /* HopDongCamDoViewController.swift */; };
 		C2594D102519A71F00A99713 /* ContractOpenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D0E2519A71F00A99713 /* ContractOpenTableViewCell.swift */; };
 		C2594D112519A71F00A99713 /* ContractOpenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2594D0F2519A71F00A99713 /* ContractOpenTableViewCell.xib */; };
@@ -44,6 +53,10 @@
 		C265C19D25073A0D000D4FAE /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C19C25073A0D000D4FAE /* Token.swift */; };
 		C265C19F250777A1000D4FAE /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C19E250777A1000D4FAE /* UserToken.swift */; };
 		C265C1A125078812000D4FAE /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C1A025078812000D4FAE /* UserProfile.swift */; };
+		C26704A9251C2C5C00B82116 /* Underline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704A8251C2C5C00B82116 /* Underline.swift */; };
+		C26704AB251C329E00B82116 /* BoLocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704AA251C329E00B82116 /* BoLocViewController.swift */; };
+		C26704AD251C92E500B82116 /* ChiTietHopDong.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704AC251C92E500B82116 /* ChiTietHopDong.swift */; };
+		C26704B3251C9B9D00B82116 /* ChiTietHopDongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704B2251C9B9D00B82116 /* ChiTietHopDongViewController.swift */; };
 		C2695BEB2508BF9200E3A3C8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEA2508BF9200E3A3C8 /* HomeViewController.swift */; };
 		C2695BED2508C62400E3A3C8 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEC2508C62400E3A3C8 /* UserViewController.swift */; };
 		C2695BEF2508F69B00E3A3C8 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEE2508F69B00E3A3C8 /* SplashScreenViewController.swift */; };
@@ -84,6 +97,15 @@
 
 /* Begin PBXFileReference section */
 		07E3FC27611B8020906915F1 /* Pods_F49.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_F49.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C20FF73A251F18E20096A38F /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		C20FF73D251F36500096A38F /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		C20FF73E251F36500096A38F /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
+		C243DCC3251D8806004C6347 /* ThuChiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThuChiViewController.swift; sourceTree = "<group>"; };
+		C243DCCA251D9043004C6347 /* ThuChi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThuChi.swift; sourceTree = "<group>"; };
+		C243DCCC251DA276004C6347 /* ThongTinThuChiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThongTinThuChiViewController.swift; sourceTree = "<group>"; };
+		C243DCCE251DA539004C6347 /* ThongTinThuChi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThongTinThuChi.swift; sourceTree = "<group>"; };
+		C243DCD0251DF001004C6347 /* LogOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutTableViewCell.swift; sourceTree = "<group>"; };
+		C243DCD1251DF001004C6347 /* LogOutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogOutTableViewCell.xib; sourceTree = "<group>"; };
 		C2594D052519A1A000A99713 /* HopDongCamDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopDongCamDoViewController.swift; sourceTree = "<group>"; };
 		C2594D0E2519A71F00A99713 /* ContractOpenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractOpenTableViewCell.swift; sourceTree = "<group>"; };
 		C2594D0F2519A71F00A99713 /* ContractOpenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContractOpenTableViewCell.xib; sourceTree = "<group>"; };
@@ -124,6 +146,10 @@
 		C265C19C25073A0D000D4FAE /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		C265C19E250777A1000D4FAE /* UserToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToken.swift; sourceTree = "<group>"; };
 		C265C1A025078812000D4FAE /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		C26704A8251C2C5C00B82116 /* Underline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Underline.swift; sourceTree = "<group>"; };
+		C26704AA251C329E00B82116 /* BoLocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoLocViewController.swift; sourceTree = "<group>"; };
+		C26704AC251C92E500B82116 /* ChiTietHopDong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChiTietHopDong.swift; sourceTree = "<group>"; };
+		C26704B2251C9B9D00B82116 /* ChiTietHopDongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChiTietHopDongViewController.swift; sourceTree = "<group>"; };
 		C2695BEA2508BF9200E3A3C8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C2695BEC2508C62400E3A3C8 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		C2695BEE2508F69B00E3A3C8 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
@@ -184,10 +210,39 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C20FF739251F18BB0096A38F /* NotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				C20FF73A251F18E20096A38F /* NotificationViewController.swift */,
+			);
+			path = NotificationView;
+			sourceTree = "<group>";
+		};
+		C20FF73C251F36220096A38F /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				C20FF73D251F36500096A38F /* NotificationTableViewCell.swift */,
+				C20FF73E251F36500096A38F /* NotificationTableViewCell.xib */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		C243DCC2251D87DF004C6347 /* QuanLyThuChi */ = {
+			isa = PBXGroup;
+			children = (
+				C243DCC3251D8806004C6347 /* ThuChiViewController.swift */,
+				C243DCCC251DA276004C6347 /* ThongTinThuChiViewController.swift */,
+			);
+			path = QuanLyThuChi;
+			sourceTree = "<group>";
+		};
 		C2594D042519A16100A99713 /* HopDongCamDo */ = {
 			isa = PBXGroup;
 			children = (
+				C2594D122519F65400A99713 /* HopDongMoViewController.swift */,
 				C2594D052519A1A000A99713 /* HopDongCamDoViewController.swift */,
+				C26704AA251C329E00B82116 /* BoLocViewController.swift */,
+				C26704B2251C9B9D00B82116 /* ChiTietHopDongViewController.swift */,
 			);
 			path = HopDongCamDo;
 			sourceTree = "<group>";
@@ -229,6 +284,8 @@
 				C2659CB22510AA760021BC9D /* MatKhauTableViewCell.xib */,
 				C2659CB52510AA810021BC9D /* CauHinhTableViewCell.swift */,
 				C2659CB62510AA810021BC9D /* CauHinhTableViewCell.xib */,
+				C243DCD0251DF001004C6347 /* LogOutTableViewCell.swift */,
+				C243DCD1251DF001004C6347 /* LogOutTableViewCell.xib */,
 			);
 			path = SubBodyTableViewCell;
 			sourceTree = "<group>";
@@ -332,6 +389,9 @@
 				C2E4D67F25179F0C00622DF6 /* DoGiaDungChiTiet.swift */,
 				C25AD64D251B27890091CA6D /* GetTab.swift */,
 				C25AD64F251B2A290091CA6D /* HopDongTheoLoai.swift */,
+				C26704AC251C92E500B82116 /* ChiTietHopDong.swift */,
+				C243DCCA251D9043004C6347 /* ThuChi.swift */,
+				C243DCCE251DA539004C6347 /* ThongTinThuChi.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -339,6 +399,7 @@
 		C265C18D25071F09000D4FAE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C20FF739251F18BB0096A38F /* NotificationView */,
 				C2C2584E25145F380048FAB2 /* InfoCamDoView */,
 				C2C2583D25135A9D0048FAB2 /* TopMenuView */,
 				C282CC0825120A4A00F62B63 /* UtilitiesView */,
@@ -363,6 +424,7 @@
 		C2661CCE2509D5BE00430595 /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
+				C20FF73C251F36220096A38F /* Notification */,
 				C2594D0D2519A6FD00A99713 /* ContractOpen */,
 				C2C258412513739B0048FAB2 /* CamDo */,
 				C2C2585125148F180048FAB2 /* InfoCamDo */,
@@ -381,7 +443,7 @@
 				C282CBF42511A73400F62B63 /* NavigationBar.swift */,
 				C2C258682514B1E10048FAB2 /* Menu.xib */,
 				C2C2586A2514B1ED0048FAB2 /* Menu.swift */,
-				C2594D122519F65400A99713 /* HopDongMoViewController.swift */,
+				C26704A8251C2C5C00B82116 /* Underline.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -407,6 +469,7 @@
 		C282CC0825120A4A00F62B63 /* UtilitiesView */ = {
 			isa = PBXGroup;
 			children = (
+				C243DCC2251D87DF004C6347 /* QuanLyThuChi */,
 				C2594D042519A16100A99713 /* HopDongCamDo */,
 				C282CC0925120A6D00F62B63 /* UtilitiesViewController.swift */,
 			);
@@ -546,9 +609,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C265C18425071EE2000D4FAE /* LaunchScreen.storyboard in Resources */,
+				C243DCD3251DF001004C6347 /* LogOutTableViewCell.xib in Resources */,
 				C2C25845251373C90048FAB2 /* CamDoTableViewCell.xib in Resources */,
 				C2659CBC2510AD090021BC9D /* BodyCollectionViewCell.xib in Resources */,
 				C2C2585525148F380048FAB2 /* InfoCamDoTableViewCell.xib in Resources */,
+				C20FF740251F36500096A38F /* NotificationTableViewCell.xib in Resources */,
 				C2E4D6842517A3CD00622DF6 /* ImageTableViewCell.xib in Resources */,
 				C2C25859251491FA0048FAB2 /* CheckBoxTableViewCell.xib in Resources */,
 				C265C18125071EE2000D4FAE /* Assets.xcassets in Resources */,
@@ -626,11 +691,15 @@
 				C282CC14251219B200F62B63 /* UtilitiesBodyCollectionViewCell.swift in Sources */,
 				C265C1962507218E000D4FAE /* MGConnection.swift in Sources */,
 				C288472F250B0F7200CB84FA /* Contants.swift in Sources */,
+				C26704A9251C2C5C00B82116 /* Underline.swift in Sources */,
 				C2659C7C251079C00021BC9D /* NameTableViewCell.swift in Sources */,
 				C2695BEF2508F69B00E3A3C8 /* SplashScreenViewController.swift in Sources */,
 				C2659CBF2510AD1C0021BC9D /* HeaderCollectionViewCell.swift in Sources */,
 				C265C1A125078812000D4FAE /* UserProfile.swift in Sources */,
+				C243DCCF251DA539004C6347 /* ThongTinThuChi.swift in Sources */,
 				C2C25875251642C30048FAB2 /* DinhGia.swift in Sources */,
+				C243DCD2251DF001004C6347 /* LogOutTableViewCell.swift in Sources */,
+				C26704AD251C92E500B82116 /* ChiTietHopDong.swift in Sources */,
 				C2594D062519A1A000A99713 /* HopDongCamDoViewController.swift in Sources */,
 				C2E4D68025179F0C00622DF6 /* DoGiaDungChiTiet.swift in Sources */,
 				C25AD64E251B27890091CA6D /* GetTab.swift in Sources */,
@@ -648,24 +717,31 @@
 				C2695BEB2508BF9200E3A3C8 /* HomeViewController.swift in Sources */,
 				C2C2584925144D7A0048FAB2 /* CamDo.swift in Sources */,
 				C2C2586B2514B1ED0048FAB2 /* Menu.swift in Sources */,
+				C20FF73F251F36500096A38F /* NotificationTableViewCell.swift in Sources */,
 				C2C25844251373C90048FAB2 /* CamDoTableViewCell.swift in Sources */,
 				C282CBF92511CB8500F62B63 /* ShopUITableViewCell.swift in Sources */,
 				C2659CC52510BE740021BC9D /* CuaHangMacDinhViewController.swift in Sources */,
 				C2659CAF2510AA660021BC9D /* MacDinhTableViewCell.swift in Sources */,
+				C243DCCB251D9043004C6347 /* ThuChi.swift in Sources */,
 				C2C25877251643FC0048FAB2 /* DoGiaDung.swift in Sources */,
 				C2659CC92510BE9C0021BC9D /* CaiDatViewController.swift in Sources */,
+				C26704B3251C9B9D00B82116 /* ChiTietHopDongViewController.swift in Sources */,
 				C265C17825071EE0000D4FAE /* AppDelegate.swift in Sources */,
 				C261B4C1250F261900B63043 /* CuaHang.swift in Sources */,
+				C243DCCD251DA276004C6347 /* ThongTinThuChiViewController.swift in Sources */,
 				C2659CBA2510AD010021BC9D /* BodyCollectionViewCell.swift in Sources */,
 				C2C2583C25133EF20048FAB2 /* TienIch.swift in Sources */,
 				C2C25871251626150048FAB2 /* TestCollectionViewController.swift in Sources */,
 				C282CC0A25120A6D00F62B63 /* UtilitiesViewController.swift in Sources */,
+				C26704AB251C329E00B82116 /* BoLocViewController.swift in Sources */,
 				C265C17A25071EE0000D4FAE /* SceneDelegate.swift in Sources */,
 				C2C2585025145FA00048FAB2 /* ThongTinCamDoViewController.swift in Sources */,
 				C2E4D6832517A3CD00622DF6 /* ImageTableViewCell.swift in Sources */,
+				C243DCC4251D8806004C6347 /* ThuChiViewController.swift in Sources */,
 				C2C2584725144BC60048FAB2 /* Status.swift in Sources */,
 				C2C2585B251496770048FAB2 /* CamDoChiTiet.swift in Sources */,
 				C2659CC72510BE8F0021BC9D /* MatKhauViewController.swift in Sources */,
+				C20FF73B251F18E20096A38F /* NotificationViewController.swift in Sources */,
 				C282CBF52511A73400F62B63 /* NavigationBar.swift in Sources */,
 				C265C19D25073A0D000D4FAE /* Token.swift in Sources */,
 				C2C25858251491FA0048FAB2 /* CheckBoxTableViewCell.swift in Sources */,

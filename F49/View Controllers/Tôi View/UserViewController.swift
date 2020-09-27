@@ -13,7 +13,7 @@ class UserViewController: UIViewController {
     //MARK: --Vars
     var dataProfile: [UserProfile] = []
     let cellIdentifier: [String] = ["NameTableViewCell"]
-    let cellIdentifier2: [String] = ["MacDinhTableViewCell","MatKhauTableViewCell","CauHinhTableViewCell"]
+    let cellIdentifier2: [String] = ["MacDinhTableViewCell","MatKhauTableViewCell","CauHinhTableViewCell","LogOutTableViewCell"]
     
     //MARK: --IBOutlet
     
@@ -101,7 +101,7 @@ extension UserViewController: UITableViewDataSource, UITableViewDelegate{
         case bodyTableView:
             return 7
         case subBodyTableView:
-            return 3
+            return 4
         default:
             return 0
         }
@@ -174,7 +174,11 @@ extension UserViewController: UITableViewDataSource, UITableViewDelegate{
                     fatalError()
                 }
                 return cell
-                
+            case 3:
+                guard let cell = subBodyTableView.dequeueReusableCell(withIdentifier: "LogOutTableViewCell", for: indexPath) as? LogOutTableViewCell else {
+                    fatalError()
+                }
+                return cell
             default:
                 return UITableViewCell()
             }
@@ -202,6 +206,11 @@ extension UserViewController: UITableViewDataSource, UITableViewDelegate{
             case 2:
                 let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CaiDatViewController")
                 
+                self.navigationController?.pushViewController(itemVC, animated: true)
+                break
+            case 3:
+                UserHelper.clearUserData(key: UserKey.Token)
+               let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashScreenViewController")
                 self.navigationController?.pushViewController(itemVC, animated: true)
                 break
             default:

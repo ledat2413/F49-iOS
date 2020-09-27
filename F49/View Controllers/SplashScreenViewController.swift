@@ -14,12 +14,12 @@ class SplashScreenViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     var loginSuccess: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
 
         setUpUI()
-        
         print(UserHelper.getUserData(key: UserKey.Token))
         print(UserHelper.getAutoLogin())
         if UserHelper.getAutoLogin() && UserHelper.getUserData(key: UserKey.Token) != nil{
@@ -29,8 +29,6 @@ class SplashScreenViewController: UIViewController {
         }else{
             UserHelper.clearUserData(key: UserKey.Token)
         }
-
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {

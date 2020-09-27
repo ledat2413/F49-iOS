@@ -154,10 +154,10 @@ extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewD
             let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
             self.navigationController?.pushViewController(itemVC, animated: true)
         case 5:
-            //Quan li thu chi
-            print("Quan li thu chi")
+             let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThuChiViewController") as! ThuChiViewController
+                       self.navigationController?.pushViewController(itemVC, animated: true)
+        default:
             break
-        default: break
             
         }
     }

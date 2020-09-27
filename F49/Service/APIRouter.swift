@@ -25,7 +25,11 @@ enum APIRouter: URLRequestConvertible {
     case GetListDoGiaDung(id: String)
     case GetChiTietDoGiaDung(id: Int)
     case GetTab
-    case GetListHopDongTheoLoai(id: Int,loaidHD: Int)
+    case GetListHopDongTheoLoai(params: [String: Any])
+    case GetTrangThaiHopDong
+    case GetChiTietHopDong(id: Int)
+    case GetListThuChi(params: [String: Any])
+    case GetDetailThuChiByID(id: Int)
     
     
     // =========== End define api ===========
@@ -63,7 +67,14 @@ enum APIRouter: URLRequestConvertible {
             return .get
         case .GetListHopDongTheoLoai:
             return .get
-            
+        case .GetTrangThaiHopDong:
+            return .get
+        case .GetChiTietHopDong:
+            return .get
+        case .GetListThuChi:
+            return .get
+        case .GetDetailThuChiByID:
+            return .get
         }
     }
     
@@ -100,6 +111,14 @@ enum APIRouter: URLRequestConvertible {
             return "api/HopDong/GetTab"
         case .GetListHopDongTheoLoai:
             return "api/HopDong/GetListHopDongTheoLoai"
+        case .GetTrangThaiHopDong:
+            return "api/HopDong/GetTrangThaiHD"
+        case .GetChiTietHopDong:
+            return "api/HopDong/GetChiTietHopDong"
+        case .GetListThuChi:
+            return "api/ThuChi/GetListThuChi"
+        case .GetDetailThuChiByID:
+            return "api/ThuChi/GetDetailThuChiByID"
         }
     }
     
@@ -180,6 +199,26 @@ enum APIRouter: URLRequestConvertible {
                 headers["Authorization"] = token
             }
             break
+        case .GetTrangThaiHopDong:
+            if let token = UserHelper.getUserData(key: UserKey.Token){
+                headers["Authorization"] = token
+            }
+            break
+        case .GetChiTietHopDong:
+            if let token = UserHelper.getUserData(key: UserKey.Token){
+                headers["Authorization"] = token
+            }
+            break
+        case .GetListThuChi:
+            if let token = UserHelper.getUserData(key: UserKey.Token){
+                headers["Authorization"] = token
+            }
+            break
+        case .GetDetailThuChiByID:
+            if let token = UserHelper.getUserData(key: UserKey.Token){
+                headers["Authorization"] = token
+            }
+            break
         }
         
         return headers;
@@ -230,8 +269,16 @@ enum APIRouter: URLRequestConvertible {
             return ["id": id]
         case .GetTab:
             return [:]
-        case .GetListHopDongTheoLoai(let id,let loaidHD):
-            return ["idCuaHang": id, "loaiHD": loaidHD]
+        case .GetListHopDongTheoLoai(let params):
+            return params
+        case .GetTrangThaiHopDong:
+            return [:]
+        case .GetChiTietHopDong(let id):
+            return ["idHopDong": id]
+        case .GetListThuChi(let params):
+            return params
+        case .GetDetailThuChiByID(let id):
+            return ["idItem": id]
         }
     }
     

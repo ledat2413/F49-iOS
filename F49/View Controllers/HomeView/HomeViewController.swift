@@ -86,7 +86,8 @@ class HomeViewController: UIViewController {
         displayView(findTextField, cornerRadius: 18)
         displayView(findContainerView, cornerRadius: 18)
         findContainerView.layer.borderWidth  = 1
-        
+        findContainerView.backgroundColor = UIColor.clear
+        findTextField.backgroundColor = UIColor.clear
         headerView.backgroundColor = UIColor(patternImage: UIImage(named: "home-bg-page")!)
         
         bodyCollectionView.register(UINib(nibName: "BodyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BodyCollectionViewCell")
