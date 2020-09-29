@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icon-footer-home.pdf",
+      "filename" : "icon-footer-home.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "icon-footer-home@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "icon-footer-home@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

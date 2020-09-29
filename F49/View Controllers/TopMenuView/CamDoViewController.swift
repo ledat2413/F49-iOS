@@ -25,6 +25,7 @@ class CamDoViewController: UIViewController {
     @IBOutlet weak var headerView: NavigationBar!
     @IBOutlet weak var findTextField: UITextField!
     @IBOutlet weak var findButton: UIButton!
+    @IBOutlet weak var containerView: UIView!
     
     //MARK: --View Lifecycle
     override func viewDidLoad() {
@@ -37,6 +38,7 @@ class CamDoViewController: UIViewController {
         
         headerView.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
         headerView.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
+        displayShadowView(containerView)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -44,6 +46,15 @@ class CamDoViewController: UIViewController {
     }
     
     //MARK: --Func
+    
+    func displayShadowView(_ view: UIView) {
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        view.layer.shadowRadius = 2
+        view.layer.shadowOpacity = 0.5
+        view.layer.cornerRadius = 6
+        view.clipsToBounds = false
+    }
     
     private func displayTitle(){
         switch index {
@@ -214,21 +225,21 @@ extension CamDoViewController: UITableViewDataSource, UITableViewDelegate{
 
         switch index {
         case 0:
-            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThongTinCamDoViewController") as! ThongTinCamDoViewController
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThongTinCamDoViewController") as! ThongTinCamDoViewController
             itemVC.id = dataListCamDo[indexPath.row].id
             itemVC.index = index
             print(index)
             self.navigationController?.pushViewController(itemVC, animated: true)
             break
         case 1:
-            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThongTinCamDoViewController") as! ThongTinCamDoViewController
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThongTinCamDoViewController") as! ThongTinCamDoViewController
             itemVC.id = dataListDinhGia[indexPath.row].id
             itemVC.index = index
             print(index)
             self.navigationController?.pushViewController(itemVC, animated: true)
             break
         case 2:
-            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThongTinCamDoViewController") as! ThongTinCamDoViewController
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThongTinCamDoViewController") as! ThongTinCamDoViewController
             itemVC.id = dataListDoGiaDung[indexPath.row].id
             itemVC.index = index
             print(index)

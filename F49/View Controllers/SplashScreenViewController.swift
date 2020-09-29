@@ -20,14 +20,16 @@ class SplashScreenViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
 
         setUpUI()
-        print(UserHelper.getUserData(key: UserKey.Token))
+        print(UserHelper.getUserData(key: UserKey.Token) ?? "")
         print(UserHelper.getAutoLogin())
-        if UserHelper.getAutoLogin() && UserHelper.getUserData(key: UserKey.Token) != nil{
+        
+        if UserHelper.getAutoLogin() == true && UserHelper.getUserData(key: UserKey.Token) != nil{
             let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabarController")
             loginSuccess = true
             self.navigationController?.pushViewController(itemVC, animated: true)
         }else{
             UserHelper.clearUserData(key: UserKey.Token)
+            UserHelper.clearUserData(key: UserKey.AutoLogin)
         }
     }
     
@@ -41,7 +43,6 @@ class SplashScreenViewController: UIViewController {
     
     
     private func setUpUI(){
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "loading-bg")!)
         imageView.image = UIImage(named: "hinh_loading")
     }
     
@@ -53,6 +54,7 @@ class SplashScreenViewController: UIViewController {
         }else {
             let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabarController")
             self.navigationController?.pushViewController(itemVC, animated: true)
+//            self.present(itemVC, animated: true, completion: nil)
         }
     }
     

@@ -24,37 +24,47 @@
                             <constraint firstAttribute="height" constant="50" id="cNC-rB-Zor"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ug-aD-qjn">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ug-aD-qjn">
                         <rect key="frame" x="60" y="5" width="338" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="VV2-ih-1QS"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5C-kp-RL3">
-                        <rect key="frame" x="60" y="57" width="338" height="28"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="60" y="55" width="338" height="32"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-check" translatesAutoresizingMaskIntoConstraints="NO" id="sfX-kJ-AH9">
+                        <rect key="frame" x="398" y="10" width="10" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="agd-py-iw2"/>
+                            <constraint firstAttribute="height" constant="10" id="mdu-e7-3Hl"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="S7R-EC-tXq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="0Uw-4h-E1h"/>
                     <constraint firstAttribute="trailing" secondItem="5ug-aD-qjn" secondAttribute="trailing" constant="20" id="2UC-cn-DtD"/>
-                    <constraint firstItem="U5C-kp-RL3" firstAttribute="top" secondItem="5ug-aD-qjn" secondAttribute="bottom" constant="2" id="4GV-m3-glv"/>
+                    <constraint firstItem="U5C-kp-RL3" firstAttribute="top" secondItem="5ug-aD-qjn" secondAttribute="bottom" id="4GV-m3-glv"/>
                     <constraint firstItem="5ug-aD-qjn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="5Gz-MF-Vud"/>
+                    <constraint firstItem="sfX-kJ-AH9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="9Qu-xX-jXq"/>
                     <constraint firstItem="U5C-kp-RL3" firstAttribute="leading" secondItem="S7R-EC-tXq" secondAttribute="trailing" constant="5" id="GAb-kr-j3L"/>
-                    <constraint firstAttribute="bottom" secondItem="U5C-kp-RL3" secondAttribute="bottom" constant="7" id="RZE-7f-8fg"/>
+                    <constraint firstAttribute="bottom" secondItem="U5C-kp-RL3" secondAttribute="bottom" constant="5" id="RZE-7f-8fg"/>
                     <constraint firstItem="5ug-aD-qjn" firstAttribute="leading" secondItem="S7R-EC-tXq" secondAttribute="trailing" constant="5" id="auK-ah-qx1"/>
                     <constraint firstItem="S7R-EC-tXq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="gzC-8T-U66"/>
+                    <constraint firstAttribute="trailing" secondItem="sfX-kJ-AH9" secondAttribute="trailing" constant="10" id="kOe-ZM-uRl"/>
                     <constraint firstAttribute="trailing" secondItem="U5C-kp-RL3" secondAttribute="trailing" constant="20" id="n9X-88-zh3"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="contentLabel" destination="5ug-aD-qjn" id="MUe-cE-tev"/>
+                <outlet property="daDocImageview" destination="sfX-kJ-AH9" id="hwX-yI-vdV"/>
                 <outlet property="dateLabel" destination="U5C-kp-RL3" id="GG6-SO-J8z"/>
                 <outlet property="thumbnailImageView" destination="S7R-EC-tXq" id="MTs-ZN-jKf"/>
             </connections>
@@ -63,5 +73,6 @@
     </objects>
     <resources>
         <image name="icon-dashboard-hangchotrongthang" width="246" height="246"/>
+        <image name="login-check" width="40" height="41"/>
     </resources>
 </document>

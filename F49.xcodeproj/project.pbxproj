@@ -25,6 +25,10 @@
 		C261B4C1250F261900B63043 /* CuaHang.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C0250F261900B63043 /* CuaHang.swift */; };
 		C261B4C5250F556900B63043 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C4250F556900B63043 /* ExtensionUIView.swift */; };
 		C261B4C7250F58AD00B63043 /* DashBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C6250F58AD00B63043 /* DashBoard.swift */; };
+		C263108A2522C6B10056FD6F /* RutLaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26310892522C6B10056FD6F /* RutLaiViewController.swift */; };
+		C263108C2522D0310056FD6F /* TabTrangThai.swift in Sources */ = {isa = PBXBuildFile; fileRef = C263108B2522D0310056FD6F /* TabTrangThai.swift */; };
+		C263108E2522D4E70056FD6F /* RutLaiContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C263108D2522D4E70056FD6F /* RutLaiContainerViewController.swift */; };
+		C26310902522D84B0056FD6F /* ListRutLai.swift in Sources */ = {isa = PBXBuildFile; fileRef = C263108F2522D84B0056FD6F /* ListRutLai.swift */; };
 		C2659C7C251079C00021BC9D /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2659C7A251079C00021BC9D /* NameTableViewCell.swift */; };
 		C2659C7D251079C00021BC9D /* NameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2659C7B251079C00021BC9D /* NameTableViewCell.xib */; };
 		C2659CAF2510AA660021BC9D /* MacDinhTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2659CAD2510AA660021BC9D /* MacDinhTableViewCell.swift */; };
@@ -70,6 +74,12 @@
 		C282CC14251219B200F62B63 /* UtilitiesBodyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282CC12251219B200F62B63 /* UtilitiesBodyCollectionViewCell.swift */; };
 		C282CC15251219B200F62B63 /* UtilitiesBodyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C282CC13251219B200F62B63 /* UtilitiesBodyCollectionViewCell.xib */; };
 		C288472F250B0F7200CB84FA /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C288472E250B0F7200CB84FA /* Contants.swift */; };
+		C2BC99CD2521873900796448 /* HOME.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2BC99C82521873600796448 /* HOME.storyboard */; };
+		C2BC99CE2521873900796448 /* TINNHAN.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2BC99C92521873700796448 /* TINNHAN.storyboard */; };
+		C2BC99CF2521873900796448 /* THONGBAO.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2BC99CA2521873800796448 /* THONGBAO.storyboard */; };
+		C2BC99D02521873900796448 /* USER.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2BC99CB2521873900796448 /* USER.storyboard */; };
+		C2BC99D12521873900796448 /* TIENICH.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2BC99CC2521873900796448 /* TIENICH.storyboard */; };
+		C2BC99D325219D3200796448 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BC99D225219D3200796448 /* Notification.swift */; };
 		C2C2583C25133EF20048FAB2 /* TienIch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2583B25133EF20048FAB2 /* TienIch.swift */; };
 		C2C2583F25135AD30048FAB2 /* CamDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2583E25135AD30048FAB2 /* CamDoViewController.swift */; };
 		C2C25844251373C90048FAB2 /* CamDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C25842251373C90048FAB2 /* CamDoTableViewCell.swift */; };
@@ -115,6 +125,10 @@
 		C261B4C0250F261900B63043 /* CuaHang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuaHang.swift; sourceTree = "<group>"; };
 		C261B4C4250F556900B63043 /* ExtensionUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		C261B4C6250F58AD00B63043 /* DashBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoard.swift; sourceTree = "<group>"; };
+		C26310892522C6B10056FD6F /* RutLaiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RutLaiViewController.swift; sourceTree = "<group>"; };
+		C263108B2522D0310056FD6F /* TabTrangThai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTrangThai.swift; sourceTree = "<group>"; };
+		C263108D2522D4E70056FD6F /* RutLaiContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RutLaiContainerViewController.swift; sourceTree = "<group>"; };
+		C263108F2522D84B0056FD6F /* ListRutLai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRutLai.swift; sourceTree = "<group>"; };
 		C2659C7A251079C00021BC9D /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
 		C2659C7B251079C00021BC9D /* NameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameTableViewCell.xib; sourceTree = "<group>"; };
 		C2659CAD2510AA660021BC9D /* MacDinhTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacDinhTableViewCell.swift; sourceTree = "<group>"; };
@@ -163,6 +177,12 @@
 		C282CC12251219B200F62B63 /* UtilitiesBodyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesBodyCollectionViewCell.swift; sourceTree = "<group>"; };
 		C282CC13251219B200F62B63 /* UtilitiesBodyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UtilitiesBodyCollectionViewCell.xib; sourceTree = "<group>"; };
 		C288472E250B0F7200CB84FA /* Contants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contants.swift; sourceTree = "<group>"; };
+		C2BC99C82521873600796448 /* HOME.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HOME.storyboard; sourceTree = "<group>"; };
+		C2BC99C92521873700796448 /* TINNHAN.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TINNHAN.storyboard; sourceTree = "<group>"; };
+		C2BC99CA2521873800796448 /* THONGBAO.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = THONGBAO.storyboard; sourceTree = "<group>"; };
+		C2BC99CB2521873900796448 /* USER.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = USER.storyboard; sourceTree = "<group>"; };
+		C2BC99CC2521873900796448 /* TIENICH.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TIENICH.storyboard; sourceTree = "<group>"; };
+		C2BC99D225219D3200796448 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		C2C2583B25133EF20048FAB2 /* TienIch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TienIch.swift; sourceTree = "<group>"; };
 		C2C2583E25135AD30048FAB2 /* CamDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamDoViewController.swift; sourceTree = "<group>"; };
 		C2C25842251373C90048FAB2 /* CamDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamDoTableViewCell.swift; sourceTree = "<group>"; };
@@ -256,6 +276,15 @@
 			path = ContractOpen;
 			sourceTree = "<group>";
 		};
+		C26310882522C69C0056FD6F /* RutLai */ = {
+			isa = PBXGroup;
+			children = (
+				C26310892522C6B10056FD6F /* RutLaiViewController.swift */,
+				C263108D2522D4E70056FD6F /* RutLaiContainerViewController.swift */,
+			);
+			path = RutLai;
+			sourceTree = "<group>";
+		};
 		C2659C702510609C0021BC9D /* UserView */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +371,7 @@
 		C265C17625071EE0000D4FAE /* F49 */ = {
 			isa = PBXGroup;
 			children = (
+				C2BC99C7252186C400796448 /* StoryBoard */,
 				C2661CE4250A074500430595 /* Components */,
 				C2661CCE2509D5BE00430595 /* Custom Cell */,
 				C265C18E25071F4E000D4FAE /* Helpers */,
@@ -392,6 +422,9 @@
 				C26704AC251C92E500B82116 /* ChiTietHopDong.swift */,
 				C243DCCA251D9043004C6347 /* ThuChi.swift */,
 				C243DCCE251DA539004C6347 /* ThongTinThuChi.swift */,
+				C2BC99D225219D3200796448 /* Notification.swift */,
+				C263108B2522D0310056FD6F /* TabTrangThai.swift */,
+				C263108F2522D84B0056FD6F /* ListRutLai.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -469,6 +502,7 @@
 		C282CC0825120A4A00F62B63 /* UtilitiesView */ = {
 			isa = PBXGroup;
 			children = (
+				C26310882522C69C0056FD6F /* RutLai */,
 				C243DCC2251D87DF004C6347 /* QuanLyThuChi */,
 				C2594D042519A16100A99713 /* HopDongCamDo */,
 				C282CC0925120A6D00F62B63 /* UtilitiesViewController.swift */,
@@ -500,6 +534,18 @@
 				C265C19E250777A1000D4FAE /* UserToken.swift */,
 			);
 			path = Defaults;
+			sourceTree = "<group>";
+		};
+		C2BC99C7252186C400796448 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				C2BC99CB2521873900796448 /* USER.storyboard */,
+				C2BC99C92521873700796448 /* TINNHAN.storyboard */,
+				C2BC99CA2521873800796448 /* THONGBAO.storyboard */,
+				C2BC99CC2521873900796448 /* TIENICH.storyboard */,
+				C2BC99C82521873600796448 /* HOME.storyboard */,
+			);
+			path = StoryBoard;
 			sourceTree = "<group>";
 		};
 		C2C2583D25135A9D0048FAB2 /* TopMenuView */ = {
@@ -615,16 +661,21 @@
 				C2C2585525148F380048FAB2 /* InfoCamDoTableViewCell.xib in Resources */,
 				C20FF740251F36500096A38F /* NotificationTableViewCell.xib in Resources */,
 				C2E4D6842517A3CD00622DF6 /* ImageTableViewCell.xib in Resources */,
+				C2BC99D02521873900796448 /* USER.storyboard in Resources */,
 				C2C25859251491FA0048FAB2 /* CheckBoxTableViewCell.xib in Resources */,
+				C2BC99CE2521873900796448 /* TINNHAN.storyboard in Resources */,
 				C265C18125071EE2000D4FAE /* Assets.xcassets in Resources */,
 				C282CC11251211E700F62B63 /* UtilitiesHeaderCollectionViewCell.xib in Resources */,
 				C2C258692514B1E10048FAB2 /* Menu.xib in Resources */,
+				C2BC99CF2521873900796448 /* THONGBAO.storyboard in Resources */,
 				C2594D112519A71F00A99713 /* ContractOpenTableViewCell.xib in Resources */,
+				C2BC99D12521873900796448 /* TIENICH.storyboard in Resources */,
 				C282CC15251219B200F62B63 /* UtilitiesBodyCollectionViewCell.xib in Resources */,
 				C282CBF32511A61400F62B63 /* NavigationBar.xib in Resources */,
 				C265C17F25071EE0000D4FAE /* Main.storyboard in Resources */,
 				C2659CC02510AD1C0021BC9D /* HeaderCollectionViewCell.xib in Resources */,
 				C2659C7D251079C00021BC9D /* NameTableViewCell.xib in Resources */,
+				C2BC99CD2521873900796448 /* HOME.storyboard in Resources */,
 				C2659CB02510AA660021BC9D /* MacDinhTableViewCell.xib in Resources */,
 				C282CBFA2511CB8500F62B63 /* ShopUITableViewCell.xib in Resources */,
 				C2659CB42510AA760021BC9D /* MatKhauTableViewCell.xib in Resources */,
@@ -702,6 +753,7 @@
 				C26704AD251C92E500B82116 /* ChiTietHopDong.swift in Sources */,
 				C2594D062519A1A000A99713 /* HopDongCamDoViewController.swift in Sources */,
 				C2E4D68025179F0C00622DF6 /* DoGiaDungChiTiet.swift in Sources */,
+				C263108E2522D4E70056FD6F /* RutLaiContainerViewController.swift in Sources */,
 				C25AD64E251B27890091CA6D /* GetTab.swift in Sources */,
 				C2C2583F25135AD30048FAB2 /* CamDoViewController.swift in Sources */,
 				C265C19225071FF6000D4FAE /* APIRouter.swift in Sources */,
@@ -726,7 +778,9 @@
 				C2C25877251643FC0048FAB2 /* DoGiaDung.swift in Sources */,
 				C2659CC92510BE9C0021BC9D /* CaiDatViewController.swift in Sources */,
 				C26704B3251C9B9D00B82116 /* ChiTietHopDongViewController.swift in Sources */,
+				C263108A2522C6B10056FD6F /* RutLaiViewController.swift in Sources */,
 				C265C17825071EE0000D4FAE /* AppDelegate.swift in Sources */,
+				C2BC99D325219D3200796448 /* Notification.swift in Sources */,
 				C261B4C1250F261900B63043 /* CuaHang.swift in Sources */,
 				C243DCCD251DA276004C6347 /* ThongTinThuChiViewController.swift in Sources */,
 				C2659CBA2510AD010021BC9D /* BodyCollectionViewCell.swift in Sources */,
@@ -736,9 +790,11 @@
 				C26704AB251C329E00B82116 /* BoLocViewController.swift in Sources */,
 				C265C17A25071EE0000D4FAE /* SceneDelegate.swift in Sources */,
 				C2C2585025145FA00048FAB2 /* ThongTinCamDoViewController.swift in Sources */,
+				C263108C2522D0310056FD6F /* TabTrangThai.swift in Sources */,
 				C2E4D6832517A3CD00622DF6 /* ImageTableViewCell.swift in Sources */,
 				C243DCC4251D8806004C6347 /* ThuChiViewController.swift in Sources */,
 				C2C2584725144BC60048FAB2 /* Status.swift in Sources */,
+				C26310902522D84B0056FD6F /* ListRutLai.swift in Sources */,
 				C2C2585B251496770048FAB2 /* CamDoChiTiet.swift in Sources */,
 				C2659CC72510BE8F0021BC9D /* MatKhauViewController.swift in Sources */,
 				C20FF73B251F18E20096A38F /* NotificationViewController.swift in Sources */,

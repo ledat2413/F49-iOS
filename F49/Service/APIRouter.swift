@@ -30,6 +30,9 @@ enum APIRouter: URLRequestConvertible {
     case GetChiTietHopDong(id: Int)
     case GetListThuChi(params: [String: Any])
     case GetDetailThuChiByID(id: Int)
+    case GetListNotification(params: [String: Any])
+    case GetTabTrangThai
+    case GetListRutLai(idShop: Int, idTab: Int )
     
     
     // =========== End define api ===========
@@ -75,6 +78,12 @@ enum APIRouter: URLRequestConvertible {
             return .get
         case .GetDetailThuChiByID:
             return .get
+        case .GetListNotification:
+        return .get
+        case .GetTabTrangThai:
+            return .get
+        case .GetListRutLai:
+            return .get
         }
     }
     
@@ -119,6 +128,12 @@ enum APIRouter: URLRequestConvertible {
             return "api/ThuChi/GetListThuChi"
         case .GetDetailThuChiByID:
             return "api/ThuChi/GetDetailThuChiByID"
+        case .GetListNotification:
+            return "api/Notification/GetListNotification"
+        case .GetTabTrangThai:
+            return "api/RutLai/GetTabTrangThai"
+        case .GetListRutLai:
+            return "api/RutLai/GetListRutLai"
         }
     }
     
@@ -219,6 +234,21 @@ enum APIRouter: URLRequestConvertible {
                 headers["Authorization"] = token
             }
             break
+        case .GetListNotification:
+                   if let token = UserHelper.getUserData(key: UserKey.Token){
+                       headers["Authorization"] = token
+                   }
+                   break
+        case .GetTabTrangThai:
+        if let token = UserHelper.getUserData(key: UserKey.Token){
+            headers["Authorization"] = token
+        }
+        break
+        case .GetListRutLai:
+               if let token = UserHelper.getUserData(key: UserKey.Token){
+                   headers["Authorization"] = token
+               }
+               break
         }
         
         return headers;
@@ -279,6 +309,12 @@ enum APIRouter: URLRequestConvertible {
             return params
         case .GetDetailThuChiByID(let id):
             return ["idItem": id]
+        case .GetListNotification(let params):
+            return params
+        case .GetTabTrangThai:
+            return [:]
+        case .GetListRutLai(let idShop, let idTab):
+            return ["idCuaHang": idShop , "idTab": idTab]
         }
     }
     

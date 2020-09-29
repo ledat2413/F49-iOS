@@ -77,11 +77,8 @@ class LoginViewController: UIViewController {
                 UserHelper.saveUserData(self!.saveButton.isSelected, key: UserKey.AutoLogin)
                 
                 UserHelper.saveUserData("\(result.token_type) \(result.access_token)", key: UserKey.Token)
-                
-                print(UserHelper.getUserData(key: UserKey.Token))
-                print(UserHelper.getAutoLogin())
-                print("Login Success and Save Login")
-                
+            
+
                 wself.dismiss(animated: true, completion: nil)
             }
             
@@ -101,7 +98,7 @@ class LoginViewController: UIViewController {
         displayShadowView(passView)
         displayTextField(emailTextField)
         displayTextField(passTextField)
-        displayShadowView(buttonView)
+        displayShadowViewB(buttonView)
         displayTextField(loginButton)
         displayForgotButton()
         loginButton.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
@@ -120,12 +117,22 @@ class LoginViewController: UIViewController {
         
     }
     func displayShadowView(_ view: UIView) {
-        view.layer.shadowColor = UIColor.darkGray.cgColor
+        view.layer.shadowColor = UIColor.flatGreenColorDark().cgColor
         view.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
         view.layer.shadowRadius = 1
         view.layer.shadowOpacity = 0.9
         view.layer.cornerRadius = 25
         view.layer.borderColor = UIColor.green.cgColor
+        view.layer.borderWidth = 0.5
+        view.clipsToBounds = false
+    }
+    func displayShadowViewB(_ view: UIView) {
+        view.layer.shadowColor = UIColor.orange.cgColor
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        view.layer.shadowRadius = 1
+        view.layer.shadowOpacity = 0.9
+        view.layer.cornerRadius = 25
+        
         view.clipsToBounds = false
     }
     

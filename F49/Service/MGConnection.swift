@@ -18,7 +18,34 @@ class MGConnection {
     static func isConnectedToInternet() ->Bool {
         return NetworkReachabilityManager()!.isReachable
     }
+
+    //MARK: --Request String
     
+    static func requestString(_ apiRouter: APIRouter, returnType: String, completion: @escaping (_ result: String?, _ error: BaseResponseError?) -> Void) {
+        if !isConnectedToInternet() { return }
+        Alamofire.request(apiRouter).responseString { (response: DataResponse<String>) in
+            switch response.result {
+            case .success:
+                if response.response?.statusCode == 200 {
+                    completion(response.result.value, nil)
+                } else {
+                    let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.HTTP_ERROR, (response.response?.statusCode)!, "Request is error!")
+                    completion(nil, err)
+                }
+                break
+                
+            case .failure(let error):
+                if error is AFError {
+                    let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.HTTP_ERROR, error._code, "Request is error!")
+                    completion(nil, err)
+                } else if error is AFError{
+                    let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.EMAIL_ISVALID, error._code, "Email is valid!")
+                }
+                
+                break
+            }
+        }
+    }
     //MARK: --Request Token
     static func requestToken<T: Mappable>(_ apiRouter: APIRouter,_ returnType: T.Type, completion: @escaping (_ result: T?, _ error: BaseResponseError?) -> Void) {
         if !isConnectedToInternet() {

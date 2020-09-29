@@ -13,7 +13,7 @@ class UserViewController: UIViewController {
     //MARK: --Vars
     var dataProfile: [UserProfile] = []
     let cellIdentifier: [String] = ["NameTableViewCell"]
-    let cellIdentifier2: [String] = ["MacDinhTableViewCell","MatKhauTableViewCell","CauHinhTableViewCell","LogOutTableViewCell"]
+    let cellIdentifier2: [String] = ["MacDinhTableViewCell"]
     
     //MARK: --IBOutlet
     
@@ -35,7 +35,6 @@ class UserViewController: UIViewController {
                 return
             }
             if let result = result {
-                print(result)
                 self.dataProfile = result
                 self.bodyTableView.reloadData()
             }
@@ -147,8 +146,8 @@ extension UserViewController: UITableViewDataSource, UITableViewDelegate{
                 cell.thumbnailValue.text = "IT"
                 return cell
             case 5:
-                cell.thumbnailKey.text = "Cửa hàng"
-                cell.thumbnailValue.text = "F49"
+                cell.thumbnailKey.text = "Điện thoại"
+                cell.thumbnailValue.text = data.dienThoai
                 return cell
             case 6:
                 cell.thumbnailKey.text = "Phân quyền"
@@ -158,26 +157,25 @@ extension UserViewController: UITableViewDataSource, UITableViewDelegate{
                 return cell
             }
         case subBodyTableView:
+            guard let cell = subBodyTableView.dequeueReusableCell(withIdentifier: "MacDinhTableViewCell", for: indexPath) as? MacDinhTableViewCell else {
+                fatalError()
+            }
             switch indexPath.section {
             case 0:
-                guard let cell = subBodyTableView.dequeueReusableCell(withIdentifier: "MacDinhTableViewCell", for: indexPath) as? MacDinhTableViewCell else {
-                    fatalError()
-                }
+                cell.iconImage.image = UIImage(named: "icon-profile-macdinhcuahang")
+                cell.titleLabel.text = "Cửa hàng mặc định"
                 return cell
             case 1:
-                guard let cell = subBodyTableView.dequeueReusableCell(withIdentifier: "MatKhauTableViewCell", for: indexPath) as? MatKhauTableViewCell else {
-                    fatalError()
-                }
+                cell.iconImage.image = UIImage(named: "icon-profile-mk")
+                cell.titleLabel.text = "Cài đặt mật khẩu"
                 return cell
             case 2:
-                guard let cell = subBodyTableView.dequeueReusableCell(withIdentifier: "CauHinhTableViewCell", for: indexPath) as? CauHinhTableViewCell else {
-                    fatalError()
-                }
+                cell.iconImage.image = UIImage(named: "icon-profile-caidat")
+                cell.titleLabel.text = "Cài đặt chung"
                 return cell
             case 3:
-                guard let cell = subBodyTableView.dequeueReusableCell(withIdentifier: "LogOutTableViewCell", for: indexPath) as? LogOutTableViewCell else {
-                    fatalError()
-                }
+                cell.iconImage.image = UIImage(named: "icon-profile-macdinhcuahang")
+                cell.titleLabel.text = "Đăng xuất"
                 return cell
             default:
                 return UITableViewCell()
@@ -193,25 +191,27 @@ extension UserViewController: UITableViewDataSource, UITableViewDelegate{
         if tableView == subBodyTableView {
             switch indexPath.section {
             case 0:
-                let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CuaHangMacDinhViewController")
-                
-                self.navigationController?.pushViewController(itemVC, animated: true)
+//                let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CuaHangMacDinhViewController")
+//
+//                self.navigationController?.pushViewController(itemVC, animated: true)
                 break
                 
             case 1:
-                let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MatKhauViewController")
+                let itemVC = UIStoryboard.init(name: "USER", bundle: nil).instantiateViewController(withIdentifier: "MatKhauViewController")
                 
                 self.navigationController?.pushViewController(itemVC, animated: true)
                 break
             case 2:
-                let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CaiDatViewController")
+                let itemVC = UIStoryboard.init(name: "USER", bundle: nil).instantiateViewController(withIdentifier: "CaiDatViewController")
                 
                 self.navigationController?.pushViewController(itemVC, animated: true)
                 break
             case 3:
-                UserHelper.clearUserData(key: UserKey.Token)
-               let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashScreenViewController")
-                self.navigationController?.pushViewController(itemVC, animated: true)
+//               let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashScreenViewController")
+               UserHelper.clearUserData(key: UserKey.Token)
+               UserHelper.clearUserData(key: UserKey.AutoLogin)
+//               self.dismiss(animated: true, completion: nil)
+               self.navigationController?.popViewController(animated: true)
                 break
             default:
                 break

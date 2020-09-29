@@ -58,8 +58,6 @@ class HopDongCamDoViewController: ButtonBarPagerTabStripViewController{
     }
     
     //MARK: --Func
-        
-    
     
     private func loadData(){
         MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
@@ -139,7 +137,7 @@ class HopDongCamDoViewController: ButtonBarPagerTabStripViewController{
         
         var viewControllers: [UIViewController] = []
         for i in dataTab {
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HopDongMoViewController") as! HopDongMoViewController
+            let vc = UIStoryboard(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "HopDongMoViewController") as! HopDongMoViewController
             vc.id = i.id
             vc.value = i.value
             vc.idShop = self.idShop

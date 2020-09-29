@@ -11,16 +11,19 @@ import UIKit
 class NotificationViewController: UIViewController {
 
     //MARK: --Vars
-    var dataNotifi: [String] = []
+    var dataNotifi: [Notification] = []
     var selectedCuaHang: String?
     var dataCuaHang: [CuaHang] = []
+    var pageIndex: Int?
 //    var dataTableView: [T] = []
     
     //MARK: --IBOutlet
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var headerContainerView: UIView!
     @IBOutlet weak var shopTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var itemTabBar: UITabBarItem!
     
     //MARK: --View Lifecycle
     
@@ -37,9 +40,31 @@ class NotificationViewController: UIViewController {
         tableView.delegate = self
         tableView.register(UINib(nibName: "NotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationTableViewCell")
         loadCuaHang()
+        createPickerView()
+        dismissPickerView()
+        displayView(shopTextField, cornerRadius: 15)
+        displayView(containerView, cornerRadius: 15)
+        containerView.layer.borderWidth  = 1
+
     }
     
-    func loadTableView(id: Int){
+    func loadTableView(idShop: Int){
+        var params: [String: Any] = ["idCuaHang" : idShop, "pageSize": 40]
+        
+        if let pageIndex = pageIndex {
+            params = ["pageIndex" : pageIndex]
+        }
+        
+        MGConnection.requestArray(APIRouter.GetListNotification(params: params), Notification.self) { (result, error) in
+            guard error == nil else {
+                print("Error: \(error?.mErrorCode ?? 0) and \(error?.mErrorMessage ?? "")")
+                return
+            }
+            if let result = result {
+                self.dataNotifi = result
+                self.tableView.reloadData()
+            }
+        }
         
     }
     
@@ -54,6 +79,46 @@ class NotificationViewController: UIViewController {
             }
         }
     }
+    
+    func displayView(_ view: UIView, cornerRadius: CGFloat) {
+        view.layer.cornerRadius = cornerRadius
+        view.clipsToBounds = true
+        view.backgroundColor = UIColor.clear
+        view.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    func displayShadowView(_ view: UIView) {
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        view.layer.shadowRadius = 2
+        view.layer.shadowOpacity = 0.5
+        view.layer.cornerRadius = 6
+        view.clipsToBounds = false
+    }
+    
+    func cornerRadius(_ view: UIView){
+        view.layer.cornerRadius = 6
+        view.clipsToBounds = true
+    }
+    
+    func createPickerView() {
+        let pickerView = UIPickerView()
+        pickerView.delegate = self
+        shopTextField.inputView = pickerView
+    }
+    
+    func dismissPickerView() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
+        toolBar.setItems([button], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        shopTextField.inputAccessoryView = toolBar
+    }
+    
+    @objc func action() {
+        view.endEditing(true)
+    }
 
 }
 
@@ -63,13 +128,34 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(100)
+        return CGFloat(110)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as? NotificationTableViewCell else {
             fatalError()
         }
+        let data = dataNotifi[indexPath.row]
+        
+        switch data.screenId {
+        case "RutVon_ChiTiet":
+            cell.thumbnailImageView.sd_setImage(with: URL(string: data.hinhAnh), placeholderImage: UIImage(named: "heart.fill"))
+            
+        case "HopDongCamDo_ChiTiet":
+            cell.thumbnailImageView.sd_setImage(with: URL(string: data.hinhAnh), placeholderImage: UIImage(named: "heart.fill"))
+        default:
+            break
+        }
+        
+        if data.daDoc == true {
+            cell.daDocImageview.image = UIImage(named: "login-checked")
+        }else{
+            cell.daDocImageview.isHidden = true
+        }
+        
+        cell.contentLabel.text = data.tieuDe
+        cell.dateLabel.text = data.ngayGui
+        
         return cell
         
     }
@@ -88,6 +174,6 @@ extension NotificationViewController: UIPickerViewDelegate, UIPickerViewDataSour
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCuaHang = dataCuaHang[row].tenCuaHang
         shopTextField.text = selectedCuaHang
-        loadTableView(id: dataCuaHang[row].id)
+        loadTableView(idShop: dataCuaHang[row].id)
     }
 }

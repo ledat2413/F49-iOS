@@ -14,6 +14,8 @@ pod 'SDWebImage'
 pod 'GMStepper'
 pod 'SnapKit', '~> 5.0.0'
 pod 'ChameleonFramework'
+pod 'XLPagerTabStrip', '~> 9.0'
+
   # Pods for F49
 
 end

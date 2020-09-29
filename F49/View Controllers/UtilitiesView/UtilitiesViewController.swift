@@ -37,7 +37,7 @@ class UtilitiesViewController: UIViewController {
             
             guard let wself = self else { return }
             print(index)
-            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
             itemVC.index = index
             wself.navigationController?.pushViewController(itemVC, animated: true)
         }
@@ -151,10 +151,13 @@ extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch dataTienIch[indexPath.row].id {
         case 1:
-            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
+            self.navigationController?.pushViewController(itemVC, animated: true)
+        case 4:
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
             self.navigationController?.pushViewController(itemVC, animated: true)
         case 5:
-             let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThuChiViewController") as! ThuChiViewController
+             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThuChiViewController") as! ThuChiViewController
                        self.navigationController?.pushViewController(itemVC, animated: true)
         default:
             break

@@ -43,7 +43,7 @@ class HomeViewController: UIViewController {
         
             guard let wself = self else { return }
             print(index)
-            let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
             itemVC.index = index
             wself.navigationController?.pushViewController(itemVC, animated: true)
         }
@@ -86,8 +86,7 @@ class HomeViewController: UIViewController {
         displayView(findTextField, cornerRadius: 18)
         displayView(findContainerView, cornerRadius: 18)
         findContainerView.layer.borderWidth  = 1
-        findContainerView.backgroundColor = UIColor.clear
-        findTextField.backgroundColor = UIColor.clear
+       
         headerView.backgroundColor = UIColor(patternImage: UIImage(named: "home-bg-page")!)
         
         bodyCollectionView.register(UINib(nibName: "BodyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BodyCollectionViewCell")
@@ -174,7 +173,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView {
         case bodyCollectionView:
-            return CGSize(width: (bodyCollectionView.frame.width)/2 - 20, height: (bodyCollectionView.frame.height ) / 3 - 20)
+            return CGSize(width: (bodyCollectionView.frame.width)/2 - 20, height: (bodyCollectionView.frame.height ) / 3 - 30)
         default:
             return CGSize()
         }
@@ -183,7 +182,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch collectionView {
         case bodyCollectionView:
-            return UIEdgeInsets(top: 15, left: 10, bottom: 15, right: 10)
+            return UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         default:
             return UIEdgeInsets()
         }
