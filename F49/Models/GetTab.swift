@@ -12,24 +12,18 @@ import ObjectMapper
 import RealmSwift
 
 class Tab: Mappable{
+    
+    var id: Int = 0
+    var value: String = ""
+    
     required init?(map: Map) {
         
     }
-    
-    
-      var id: Int = 0
-      var value: String = ""
-    
     
     init(id: Int, value: String) {
         self.id = id
         self.value = value
     }
-    
-//    required convenience init?(map: Map) {
-//        self.init()
-//    }
-    
     
     func mapping(map: Map) {
         id <- map["id"]

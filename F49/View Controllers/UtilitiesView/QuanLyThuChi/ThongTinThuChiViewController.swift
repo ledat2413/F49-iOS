@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThongTinThuChiViewController: UIViewController {
+class ThongTinThuChiViewController: BaseController {
     
     var id: Int = 0
     var dataDetail: [ThongTinThuChi] = []
@@ -22,7 +22,9 @@ class ThongTinThuChiViewController: UIViewController {
     }
     
     func loadData(){
+        self.showSpinner(onView: self.view)
         MGConnection.requestArray(APIRouter.GetDetailThuChiByID(id: id), ThongTinThuChi.self) { (result, error) in
+            self.removeSpinner()
             guard error == nil else {
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return

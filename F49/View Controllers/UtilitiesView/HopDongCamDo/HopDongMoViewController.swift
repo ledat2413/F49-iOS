@@ -9,7 +9,7 @@
 import UIKit
 import XLPagerTabStrip
 
-class HopDongMoViewController: UIViewController,IndicatorInfoProvider {
+class HopDongMoViewController: BaseController,IndicatorInfoProvider {
     
     public var value: String = ""
     var id: Int = 0
@@ -31,7 +31,6 @@ class HopDongMoViewController: UIViewController,IndicatorInfoProvider {
        
     }
     
-    
     func loadData(){
         var params: [String: Any] = ["idCuaHang": idShop, "loaiHD": id]
         
@@ -41,7 +40,7 @@ class HopDongMoViewController: UIViewController,IndicatorInfoProvider {
         if let keyWord = self.keyWord {
             params["tuKhoa"] = keyWord
         }
-    
+        
         MGConnection.requestArray(APIRouter.GetListHopDongTheoLoai(params: params), HopDongTheoLoai.self) { (result, error) in
             guard error == nil else {
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")

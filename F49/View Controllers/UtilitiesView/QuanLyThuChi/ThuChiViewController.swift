@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThuChiViewController: UIViewController {
+class ThuChiViewController: BaseController {
     
     //MARK: --Vars
     var dataCuaHang: [CuaHang] = []
@@ -47,13 +47,16 @@ class ThuChiViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ContractOpenTableViewCell", bundle: nil), forCellReuseIdentifier: "ContractOpenTableViewCell")
+        
         loadCuaHang()
         createPickerView()
         dismissPickerView()
-        displayShadowView(containerCuaHang)
-        displayShadowView(containerToday)
-        displayShadowView(containerFrom)
-        displayShadowView(containerTo)
+        
+        containerCuaHang.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
+        containerToday.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
+        containerFrom.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
+        containerTo.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
+        
         displayNavigation()
     }
     
@@ -67,18 +70,6 @@ class ThuChiViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func displayShadowView(_ view: UIView) {
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        view.layer.shadowRadius = 2
-        view.layer.shadowOpacity = 0.5
-        view.layer.cornerRadius = 6
-    }
-    
-    func cornerRadius(_ view: UIView){
-        view.layer.cornerRadius = 6
-        view.clipsToBounds = true
-    }
     
     func createPickerView() {
         let pickerView = UIPickerView()
@@ -122,7 +113,9 @@ class ThuChiViewController: UIViewController {
         //            params["dtDenNgay"] = fromDate
         //
         //        }
+        self.showSpinner(onView: self.view)
         MGConnection.requestArray(APIRouter.GetListThuChi(params: params), ThuChi.self) { (result, error) in
+            self.removeSpinner()
             guard error == nil else {
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return

@@ -8,12 +8,10 @@
 
 import UIKit
 import XLPagerTabStrip
-import SnapKit
 
 class HopDongCamDoViewController: ButtonBarPagerTabStripViewController{
     
     //MARK: --Vars
-    var views: [UIView] = []
     let purpleInspireColor = UIColor.orange
     var dataCuaHang: [CuaHang] = []
     var dataTab: [Tab] = [Tab(id: 0, value: "")]
@@ -27,18 +25,12 @@ class HopDongCamDoViewController: ButtonBarPagerTabStripViewController{
     @IBOutlet weak var headerView: NavigationBar!
     @IBOutlet weak var shopTextField: UITextField!
     @IBOutlet weak var contrectLabel: UILabel!
-
     @IBOutlet var viewTo: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        displayHeaderView()
-        loadData()
-        loadStatus()
-        createPickerView()
-        dismissPickerView()
-        contrectLabel.underlined()
+        
     }
     
     //MARK: --IBAction
@@ -59,7 +51,7 @@ class HopDongCamDoViewController: ButtonBarPagerTabStripViewController{
     
     //MARK: --Func
     
-    private func loadData(){
+    private func loadShop(){
         MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
             guard error == nil else {
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
@@ -85,6 +77,12 @@ class HopDongCamDoViewController: ButtonBarPagerTabStripViewController{
     }
     
     func setUpUI(){
+        displayHeaderView()
+        loadShop()
+        loadStatus()
+        createPickerView()
+        dismissPickerView()
+        contrectLabel.underlined()
         settings.style.buttonBarBackgroundColor = .white
         settings.style.buttonBarItemBackgroundColor = .white
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 13)

@@ -27,5 +27,22 @@ extension UIView {
         self.layer.cornerRadius = 20
         self.clipsToBounds = true
     }
+    
+    func displayTextField( radius: CGFloat, color: UIColor){
+        self.layer.borderColor = color.cgColor
+        self.layer.cornerRadius = radius
+        self.clipsToBounds = true
+    }
+    
+    func displayShadowView( shadowColor: UIColor, borderColor: UIColor, radius: CGFloat) {
+        self.layer.shadowColor = shadowColor.cgColor
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        self.layer.shadowRadius = 1
+        self.layer.shadowOpacity = 0.9
+        self.layer.cornerRadius = radius
+        self.layer.borderColor = borderColor.cgColor
+        self.layer.borderWidth = 0.5
+        self.clipsToBounds = false
+    }
 
 }

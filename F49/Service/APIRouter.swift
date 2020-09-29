@@ -79,7 +79,7 @@ enum APIRouter: URLRequestConvertible {
         case .GetDetailThuChiByID:
             return .get
         case .GetListNotification:
-        return .get
+            return .get
         case .GetTabTrangThai:
             return .get
         case .GetListRutLai:
@@ -235,20 +235,20 @@ enum APIRouter: URLRequestConvertible {
             }
             break
         case .GetListNotification:
-                   if let token = UserHelper.getUserData(key: UserKey.Token){
-                       headers["Authorization"] = token
-                   }
-                   break
+            if let token = UserHelper.getUserData(key: UserKey.Token){
+                headers["Authorization"] = token
+            }
+            break
         case .GetTabTrangThai:
-        if let token = UserHelper.getUserData(key: UserKey.Token){
-            headers["Authorization"] = token
-        }
-        break
+            if let token = UserHelper.getUserData(key: UserKey.Token){
+                headers["Authorization"] = token
+            }
+            break
         case .GetListRutLai:
-               if let token = UserHelper.getUserData(key: UserKey.Token){
-                   headers["Authorization"] = token
-               }
-               break
+            if let token = UserHelper.getUserData(key: UserKey.Token){
+                headers["Authorization"] = token
+            }
+            break
         }
         
         return headers;

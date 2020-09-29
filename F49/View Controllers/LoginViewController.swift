@@ -8,14 +8,14 @@
 
 import UIKit
 
-@available(iOS 13.0, *)
-class LoginViewController: UIViewController {
+class LoginViewController: BaseController {
     
     //MARK: --Vars
     let width = CGFloat(1.0)
     let cornerRadius : CGFloat = 25.0
     var gradientLayer = CAGradientLayer()
     var token: String = ""
+    
     
     //MARK: --IBOutlet
     @IBOutlet weak var buttonView: UIView!
@@ -27,13 +27,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var forgotPassButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet var containerView: UIView!
     //MARK: --View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         displayUI()
+        hideKeyboardWhenTappedAround()
     }
-    
-    
     
     //MARK: --IBAction
     
@@ -43,48 +43,34 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonPressed(_ sender: Any) {
         
+        if !isValidEmail(emailTextField.text) {
+            Alert("Tài khoản không hợp lệ")
+            return
+        } else if !isValidPassword(password: passTextField.text){
+            Alert("Mật khẩu không hợp lệ")
+            return
+        }
+        
+        self.showSpinner(onView: self.containerView)
+        
         MGConnection.requestToken(APIRouter.Login(grant_type: "password", username: emailTextField.text ?? "", password: passTextField.text ?? ""), Token.self) { [weak self] (result, error) in
+            self?.removeSpinner()
             guard let wself = self else {return}
-                if !wself.isValidEmail(wself.emailTextField.text ?? ""){
-                    let alert = UIAlertController(title: "Thông Báo", message: "Tài khoản không hợp lệ", preferredStyle: UIAlertController.Style.alert)
-                    // add an action (button)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                    
-                    // show the alert
-                    wself.present(alert, animated: true, completion: nil)
-                }else if !wself.isValidPassword(password: wself.passTextField.text ?? ""){
-                    
-                    let alert = UIAlertController(title: "Thông Báo", message: "Mật khẩu không hợp lệ", preferredStyle: UIAlertController.Style.alert)
-                    // add an action (button)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                    
-                    // show the alert
-                    wself.present(alert, animated: true, completion: nil)
-                }
-                guard error == nil else {
-                let alert = UIAlertController(title: "Thông Báo", message: "Sai tài khoản hoặc mật khẩu", preferredStyle: UIAlertController.Style.alert)
-                // add an action (button)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                
-                // show the alert
-                wself.present(alert, animated: true, completion: nil)
+            guard error == nil else {
+                wself.Alert("Sai tài khoản hoặc mật khẩu")
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return
                 
             }
-            
             if let result = result {
+                
                 UserHelper.saveUserData(self!.saveButton.isSelected, key: UserKey.AutoLogin)
                 
                 UserHelper.saveUserData("\(result.token_type) \(result.access_token)", key: UserKey.Token)
-            
-
+                
                 wself.dismiss(animated: true, completion: nil)
             }
-            
         }
-        
-        
     }
     
     deinit {
@@ -92,16 +78,24 @@ class LoginViewController: UIViewController {
     }
     
     //MARK: --Func
+    
     func displayUI(){
+        //        createSpinnerView()
         hideKeyboardWhenTappedAround()
-        displayShadowView(emailView)
-        displayShadowView(passView)
-        displayTextField(emailTextField)
-        displayTextField(passTextField)
-        displayShadowViewB(buttonView)
-        displayTextField(loginButton)
-        displayForgotButton()
+        
+        emailTextField.displayTextField(radius: 25, color: UIColor.green)
+        emailView.displayShadowView(shadowColor: UIColor.green, borderColor: UIColor.green, radius: 25)
+        
+        passTextField.displayTextField(radius: 25, color: UIColor.green)
+        passView.displayShadowView(shadowColor: UIColor.green, borderColor: UIColor.green, radius: 25)
+        
+        loginButton.displayTextField(radius: 25, color: UIColor.orange)
         loginButton.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
+        buttonView.displayShadowView(shadowColor: UIColor.orange, borderColor: UIColor.clear, radius: 25)
+        
+        displayForgotButton()
+        
+        
     }
     
     func displayForgotButton() {
@@ -113,58 +107,7 @@ class LoginViewController: UIViewController {
         border.borderWidth = width
         self.forgotPassButton.layer.addSublayer(border)
         self.forgotPassButton.layer.masksToBounds = true
-        
-        
     }
-    func displayShadowView(_ view: UIView) {
-        view.layer.shadowColor = UIColor.flatGreenColorDark().cgColor
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        view.layer.shadowRadius = 1
-        view.layer.shadowOpacity = 0.9
-        view.layer.cornerRadius = 25
-        view.layer.borderColor = UIColor.green.cgColor
-        view.layer.borderWidth = 0.5
-        view.clipsToBounds = false
-    }
-    func displayShadowViewB(_ view: UIView) {
-        view.layer.shadowColor = UIColor.orange.cgColor
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        view.layer.shadowRadius = 1
-        view.layer.shadowOpacity = 0.9
-        view.layer.cornerRadius = 25
-        
-        view.clipsToBounds = false
-    }
-    
-    func displayTextField(_ textField: UIView){
-        textField.layer.cornerRadius = 25
-        textField.clipsToBounds = true
-    }
-    
-    func isValidEmail(_ email: String?) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
-    
-    func isValidPassword(password: String?) -> Bool {
-        guard password != nil else { return false }
-        
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{6,32}")
-        return passwordTest.evaluate(with: password)
-    }
-    
 }
 
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
+

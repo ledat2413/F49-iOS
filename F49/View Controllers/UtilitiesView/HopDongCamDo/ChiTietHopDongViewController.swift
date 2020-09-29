@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChiTietHopDongViewController: UIViewController {
+class ChiTietHopDongViewController: BaseController {
     
     //MARK: --Vars
     var id: Int = 0
@@ -37,7 +37,9 @@ class ChiTietHopDongViewController: UIViewController {
     }
     
     func loadData(){
+        self.showSpinner(onView: self.view)
         MGConnection.requestObject(APIRouter.GetChiTietHopDong(id: id), ChiTietHopDong.self) { (result, error) in
+            self.removeSpinner()
             guard error == nil else {
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return
@@ -64,7 +66,6 @@ extension ChiTietHopDongViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCamDoTableViewCell", for: indexPath) as? InfoCamDoTableViewCell else { fatalError() }
-        let title: [String] = ["Số HĐ","Tên KH","Điện thoại","Dư nợ","Ngày đến hạn","+/-","Lãi","Phí","Tổng","Nhắc nợ","Ngày hẹn","Nội dung","Đồ để lại"]
         switch indexPath.row {
         case 0:
             cell.keyLabel.text = "Số HĐ"

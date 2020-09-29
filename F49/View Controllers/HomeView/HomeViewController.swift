@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseController {
     
     //MARK: --Vars
     var dataCuaHang: [CuaHang] = []
@@ -62,7 +62,9 @@ class HomeViewController: UIViewController {
     }
     
     private func loadDashBoard(id: Int){
+        self.showSpinner(onView: self.view)
         MGConnection.requestArray(APIRouter.GetDashBoard(id: id), DashBoard.self) { (result, error) in
+            self.removeSpinner()
             guard error == nil else {
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return
@@ -83,9 +85,13 @@ class HomeViewController: UIViewController {
         
         menuCollectionView.backgroundColor = UIColor.clear
         findButton.backgroundColor = UIColor.clear
-        displayView(findTextField, cornerRadius: 18)
-        displayView(findContainerView, cornerRadius: 18)
         findContainerView.layer.borderWidth  = 1
+        
+        findTextField.displayTextField(radius: 18, color: UIColor.white)
+        findTextField.backgroundColor = UIColor.clear
+        
+        findContainerView.displayTextField(radius: 18, color: UIColor.white)
+        findContainerView.backgroundColor = UIColor.clear
        
         headerView.backgroundColor = UIColor(patternImage: UIImage(named: "home-bg-page")!)
         
@@ -94,26 +100,6 @@ class HomeViewController: UIViewController {
         bodyCollectionView.dataSource = self
     }
     
-    func displayView(_ view: UIView, cornerRadius: CGFloat) {
-        view.layer.cornerRadius = cornerRadius
-        view.clipsToBounds = true
-        view.backgroundColor = UIColor.clear
-        view.layer.borderColor = UIColor.white.cgColor
-    }
-    
-    func displayShadowView(_ view: UIView) {
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        view.layer.shadowRadius = 2
-        view.layer.shadowOpacity = 0.5
-        view.layer.cornerRadius = 6
-        view.clipsToBounds = false
-    }
-    
-    func cornerRadius(_ view: UIView){
-        view.layer.cornerRadius = 6
-        view.clipsToBounds = true
-    }
     
     func createPickerView() {
         let pickerView = UIPickerView()
@@ -156,9 +142,9 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
             cell.thumbnailCountLabel.text = data.giaTri
             cell.thumbnailImageView.sd_setImage(with: URL(string: data.hinhAnh), placeholderImage: UIImage(named: "heart"))
             
-            displayShadowView(cell)
-            cell.layer.shadowPath = UIBezierPath(roundedRect:  cell.bounds, cornerRadius: cell.thumbnailCornerRadiusView.layer.cornerRadius).cgPath
-            
+            cell.displayShadowView(shadowColor: UIColor.gray, borderColor: UIColor.clear, radius: 15)
+            cell.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+
             return cell
             
         default:

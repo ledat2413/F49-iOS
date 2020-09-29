@@ -38,23 +38,13 @@ class CamDoViewController: UIViewController {
         
         headerView.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
         headerView.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
-        displayShadowView(containerView)
-        
+        containerView.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "CamDoTableViewCell", bundle: nil), forCellReuseIdentifier: "CamDoTableViewCell")
     }
     
     //MARK: --Func
-    
-    func displayShadowView(_ view: UIView) {
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        view.layer.shadowRadius = 2
-        view.layer.shadowOpacity = 0.5
-        view.layer.cornerRadius = 6
-        view.clipsToBounds = false
-    }
     
     private func displayTitle(){
         switch index {

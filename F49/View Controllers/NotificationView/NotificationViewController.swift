@@ -39,11 +39,16 @@ class NotificationViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "NotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationTableViewCell")
+        
         loadCuaHang()
+        
         createPickerView()
         dismissPickerView()
-        displayView(shopTextField, cornerRadius: 15)
-        displayView(containerView, cornerRadius: 15)
+        
+        shopTextField.displayTextField(radius: 15, color: UIColor.white)
+        containerView.displayTextField(radius: 15, color: UIColor.white)
+        shopTextField.backgroundColor = UIColor.clear
+        containerView.backgroundColor = UIColor.clear
         containerView.layer.borderWidth  = 1
 
     }

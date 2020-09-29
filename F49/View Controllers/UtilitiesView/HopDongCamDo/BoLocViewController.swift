@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BoLocViewController: UIViewController {
+class BoLocViewController: BaseController {
 
     //MARK: --Vars
     var dataStatus: [StatusHopDong] = []
@@ -60,7 +60,9 @@ class BoLocViewController: UIViewController {
     //MARK: --Func
     
     func loadStatus(){
+        self.showSpinner(onView: self.view)
         MGConnection.requestArray(APIRouter.GetTrangThaiHopDong, StatusHopDong.self) { (result, error) in
+            self.removeSpinner()
             guard error == nil else {   
                 print("Error \(error?.mErrorMessage ?? "") and \(error?.mErrorCode ?? 0)")
                 return

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UtilitiesViewController: UIViewController {
+class UtilitiesViewController: BaseController {
     
     //MARK: --Vars
     var dataCuaHang: [CuaHang] = []
@@ -57,7 +57,9 @@ class UtilitiesViewController: UIViewController {
     }
     
     private func loadDashBoard(id: Int){
+        self.showSpinner(onView: self.view)
         MGConnection.requestArray(APIRouter.GetTienIch(id: id), TienIch.self) { (result, error) in
+            self.removeSpinner()
             guard error == nil else {
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return
@@ -74,38 +76,17 @@ class UtilitiesViewController: UIViewController {
         loadData()
         createPickerView()
         dismissPickerView()
-        headerButton.backgroundColor = UIColor.clear
-        headerTextField.layer.cornerRadius = 18
-        headerTextField.clipsToBounds = true
-        headerTextField.backgroundColor = UIColor.clear
         
-        headerView.backgroundColor = UIColor.clear
-        headerView.layer.cornerRadius = 18
-        headerView.clipsToBounds = true
-        headerView.layer.borderColor = UIColor.white.cgColor
         headerView.layer.borderWidth  = 1
-        
-        
+        headerView.displayTextField(radius: 18, color: UIColor.white)
+        headerView.backgroundColor = UIColor.clear
+        headerTextField.displayTextField(radius: 18, color: UIColor.white)
+        headerTextField.backgroundColor = UIColor.clear
         
         bodyCollectionView.register(UINib(nibName: "UtilitiesBodyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "UtilitiesBodyCollectionViewCell")
         bodyCollectionView.delegate = self
         bodyCollectionView.dataSource = self
-        displayShadowView(bodyView)
-        cornerRadius(bodyCollectionView)
-    }
-    
-    
-    func displayShadowView(_ view: UIView) {
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        view.layer.shadowRadius = 2
-        view.layer.shadowOpacity = 0.5
-        view.layer.cornerRadius = 6
-    }
-    
-    func cornerRadius(_ view: UIView){
-        view.layer.cornerRadius = 6
-        view.clipsToBounds = true
+        
     }
     
     func createPickerView() {
@@ -154,11 +135,11 @@ extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewD
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
             self.navigationController?.pushViewController(itemVC, animated: true)
         case 4:
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
+           let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
             self.navigationController?.pushViewController(itemVC, animated: true)
         case 5:
-             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThuChiViewController") as! ThuChiViewController
-                       self.navigationController?.pushViewController(itemVC, animated: true)
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThuChiViewController") as! ThuChiViewController
+            self.navigationController?.pushViewController(itemVC, animated: true)
         default:
             break
             

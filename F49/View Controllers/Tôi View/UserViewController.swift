@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserViewController: UIViewController {
+class UserViewController: BaseController {
     
     //MARK: --Vars
     var dataProfile: [UserProfile] = []
@@ -29,7 +29,9 @@ class UserViewController: UIViewController {
     }
     
     private func loadUserProfile(){
+        self.showSpinner(onView: self.view)
         MGConnection.requestArray(APIRouter.GetUserProfile, UserProfile.self) { (result, error) in
+            self.removeSpinner()
             guard error == nil else {
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorType))")
                 return
