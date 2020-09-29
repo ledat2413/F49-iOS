@@ -36,6 +36,7 @@ class RutLaiViewController: ButtonBarPagerTabStripViewController  {
         
         setUpUI()
         loadData()
+        getTabTrangThai()
         createPickerView()
         dismissPickerView()
 
@@ -98,6 +99,8 @@ class RutLaiViewController: ButtonBarPagerTabStripViewController  {
             }
             if let result = result {
                 self.dataTabTrangThai = result
+                self.reloadPagerTabStripView()
+
             }
         }
     }
