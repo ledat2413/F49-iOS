@@ -35,9 +35,7 @@ class SplashScreenViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         //        NotificationCenter.default.addObserver(self, selector: #selector(checkLogin), name: NSNotification.Name.init("Login"), object: nil)
-        if !loginSuccess {
             checkLogin()
-        }
     }
     
     

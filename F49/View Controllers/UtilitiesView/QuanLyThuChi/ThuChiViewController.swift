@@ -11,8 +11,10 @@ import UIKit
 class ThuChiViewController: BaseController {
     
     //MARK: --Vars
+    var idTienIch: Int = 0
     var dataCuaHang: [CuaHang] = []
     var dataThuChi: [ThuChi] = []
+    var dataVon: [VonDauTu] = []
     var selectedCuaHang: String?
     var idShop: Int = 0
     
@@ -46,7 +48,16 @@ class ThuChiViewController: BaseController {
     func setUpUI(){
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "ContractOpenTableViewCell", bundle: nil), forCellReuseIdentifier: "ContractOpenTableViewCell")
+        switch idTienIch {
+        case 5:
+            tableView.register(UINib(nibName: "ContractOpenTableViewCell", bundle: nil), forCellReuseIdentifier: "ContractOpenTableViewCell")
+            break
+        case 8:
+            tableView.register(UINib(nibName: "RutVonTableViewCell", bundle: nil), forCellReuseIdentifier: "RutVonTableViewCell")
+            break
+        default:
+            break
+        }
         
         loadCuaHang()
         createPickerView()
@@ -61,9 +72,18 @@ class ThuChiViewController: BaseController {
     }
     
     func displayNavigation() {
-        navigation.title = "Quản lí thu chi"
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
-        
+        switch idTienIch {
+        case 5:
+            navigation.title = "Quản lí thu chi"
+            navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+            break
+        case 8:
+            navigation.title = "Rút vốn"
+            navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+            break
+        default:
+            break
+        }
     }
     
     @objc func backView(){
@@ -103,7 +123,40 @@ class ThuChiViewController: BaseController {
     }
     
     func loadData() {
+        
         var params: [String: Any] = ["idCuaHang": idShop]
+        switch idTienIch {
+        case 5:
+            self.showSpinner(onView: self.view)
+            MGConnection.requestArray(APIRouter.GetListThuChi(params: params), ThuChi.self) { (result, error) in
+                self.removeSpinner()
+                guard error == nil else {
+                    print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                    return
+                }
+                if let result = result {
+                    self.dataThuChi = result
+                    self.tableView.reloadData()
+                }
+            }
+            break
+        case 8:
+            self.showSpinner(onView: self.view)
+            MGConnection.requestArray(APIRouter.GetListVonDauTu(params: params), VonDauTu.self) { (result, error) in
+                self.removeSpinner()
+                guard error == nil else {
+                    print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                    return
+                }
+                if let result = result {
+                    self.dataVon = result
+                    self.tableView.reloadData()
+                }
+            }
+        default:
+            break
+        }
+        
         
         //              if let toDate = self.idStatus {
         //                  params["dtTuNgay"] = toDate
@@ -113,24 +166,19 @@ class ThuChiViewController: BaseController {
         //            params["dtDenNgay"] = fromDate
         //
         //        }
-        self.showSpinner(onView: self.view)
-        MGConnection.requestArray(APIRouter.GetListThuChi(params: params), ThuChi.self) { (result, error) in
-            self.removeSpinner()
-            guard error == nil else {
-                print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
-                return
-            }
-            if let result = result {
-                self.dataThuChi = result
-                self.tableView.reloadData()
-            }
-        }
     }
 }
 
 extension ThuChiViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  dataThuChi.count
+        switch idTienIch {
+        case 5:
+            return  dataThuChi.count
+        case 8:
+            return dataVon.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -138,34 +186,59 @@ extension ThuChiViewController: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+        switch idTienIch {
+            
+        case 5:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContractOpenTableViewCell", for: indexPath) as? ContractOpenTableViewCell else {fatalError()}
+            let data = dataThuChi[indexPath.row]
+            cell.icon1ImageView.image = UIImage(named: "icon-content-tien")
+            cell.icon2ImageView.image = UIImage(named: "icon-content-tien")
+            cell.icon3Imageview.image = UIImage(named: "icon-content-nhanvien")
+            
+            cell.title1Label.text = "Thu"
+            cell.title2Label.text = "Chi"
+            cell.title3Label.text = "Người thực hiện"
+            
+            cell.tangGiamLabel.text = data.thu
+            cell.tienLabel.text = data.chi
+            cell.tongLabel.text = data.nguoiThucHien
+            cell.idLabel.text = "\(data.id)"
+            cell.id2Label.text = data.tenCuaHang
+            cell.nameLabel.isHidden = true
+            cell.betweenLabel.isHidden = true
+            
+            return cell
+        case 8:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "RutVonTableViewCell", for: indexPath) as? RutVonTableViewCell else {fatalError()}
+            let data = dataVon[indexPath.row]
+            cell.idLabel.text = "\(data.idCuaHang)"
+            cell.nameLabel.text = data.tenCuaHang
+            cell.dateLabel.text = data.ngayGiaoDich
+            cell.moneyLabel.text = "\(data.soTien)"
+            cell.peopleLabel.text = data.nguoiThucHien
+            
+            return cell
+        default:
+            return UITableViewCell()
+        }
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContractOpenTableViewCell", for: indexPath) as? ContractOpenTableViewCell else {fatalError()}
-        
-        let data = dataThuChi[indexPath.row]
-        cell.icon1ImageView.image = UIImage(named: "icon-content-tien")
-        cell.icon2ImageView.image = UIImage(named: "icon-content-tien")
-        cell.icon3Imageview.image = UIImage(named: "icon-content-nhanvien")
-        
-        cell.title1Label.text = "Thu"
-        cell.title2Label.text = "Chi"
-        cell.title3Label.text = "Người thực hiện"
-        
-        cell.tangGiamLabel.text = data.thu
-        cell.tienLabel.text = data.chi
-        cell.tongLabel.text = data.nguoiThucHien
-        cell.idLabel.text = "\(data.id)"
-        cell.id2Label.text = data.tenCuaHang
-        cell.nameLabel.isHidden = true
-        cell.betweenLabel.isHidden = true
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThongTinThuChiViewController") as! ThongTinThuChiViewController
-        itemVC.id = dataThuChi[indexPath.row].id
-        self.navigationController?.pushViewController(itemVC, animated: true)
-        
+        switch idTienIch {
+        case 5:
+            itemVC.idTienIch = idTienIch
+              itemVC.id = dataThuChi[indexPath.row].id
+                  self.navigationController?.pushViewController(itemVC, animated: true)
+        case 8:
+            itemVC.idTienIch = idTienIch
+            itemVC.id = dataVon[indexPath.row].idItem
+                  self.navigationController?.pushViewController(itemVC, animated: true)
+        default:
+            break
+        }
     }
 }
 

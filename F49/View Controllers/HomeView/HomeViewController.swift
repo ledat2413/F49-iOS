@@ -31,12 +31,6 @@ class HomeViewController: BaseController {
     }
     
     //MARK: --Func
-    //    @objc func pushCamDoController() {
-    //        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
-    //        itemVC.key = "A"
-    //        self.navigationController?.pushViewController(itemVC, animated: true)
-    //        print("PushToCamDoView")
-    //    }
     
     private func navigation(){
         menuCollectionView.callBack = { [weak self] (index) in
@@ -57,6 +51,7 @@ class HomeViewController: BaseController {
             }
             if let result = result {
                 self.dataCuaHang = result
+                self.findTextField.text = self.dataCuaHang[0].tenCuaHang
             }
         }
     }
@@ -80,6 +75,7 @@ class HomeViewController: BaseController {
     func setUpUI() {
         
         loadData()
+        loadDashBoard(id: 0)
         createPickerView()
         dismissPickerView()
         
@@ -119,7 +115,6 @@ class HomeViewController: BaseController {
     @objc func action() {
         view.endEditing(true)
     }
-    
 }
 
 extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSource{

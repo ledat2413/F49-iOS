@@ -12,6 +12,7 @@ import UIKit
 class BaseController: UIViewController {
     var vSpinner: UIView!
     
+    //Validation
     func isValidEmail(_ email: String?) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         
@@ -26,6 +27,7 @@ class BaseController: UIViewController {
         return passwordTest.evaluate(with: password)
     }
     
+    //Alert
     func Alert(_ message: String){
         let alert = UIAlertController(title: "Thông Báo", message: message, preferredStyle: UIAlertController.Style.alert)
         // add an action (button)
@@ -36,7 +38,7 @@ class BaseController: UIViewController {
     }
     
     
-    
+    //Hide Keyboard
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -47,21 +49,8 @@ class BaseController: UIViewController {
         view.endEditing(true)
     }
     
-//    var spinner = UIActivityIndicatorView(style: .whiteLarge)
-//
-//    override func loadView() {
-//        view = UIView()
-//        view.backgroundColor = UIColor(white: 0, alpha: 0.7)
-//
-//        spinner.translatesAutoresizingMaskIntoConstraints = false
-//        spinner.startAnimating()
-//        view.addSubview(spinner)
-//
-//        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//    }
-//
     
+    //Spinner
     func showSpinner(onView : UIView) {
         let spinnerView = UIView.init(frame: onView.bounds)
         spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
@@ -83,6 +72,5 @@ class BaseController: UIViewController {
             self.vSpinner = nil
         }
     }
-
     
 }

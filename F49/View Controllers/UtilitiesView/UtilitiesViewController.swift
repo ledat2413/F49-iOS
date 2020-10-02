@@ -52,6 +52,8 @@ class UtilitiesViewController: BaseController {
             }
             if let result = result {
                 self.dataCuaHang = result
+                self.headerTextField.text = self.dataCuaHang[0].tenCuaHang
+            
             }
         }
     }
@@ -74,6 +76,7 @@ class UtilitiesViewController: BaseController {
     func setUpUI() {
         
         loadData()
+        loadDashBoard(id: 0)
         createPickerView()
         dismissPickerView()
         
@@ -82,6 +85,9 @@ class UtilitiesViewController: BaseController {
         headerView.backgroundColor = UIColor.clear
         headerTextField.displayTextField(radius: 18, color: UIColor.white)
         headerTextField.backgroundColor = UIColor.clear
+        
+        bodyView.displayShadowView(shadowColor: UIColor.gray, borderColor: UIColor.clear, radius: 10)
+        bodyCollectionView.displayTextField(radius: 10, color: UIColor.clear)
         
         bodyCollectionView.register(UINib(nibName: "UtilitiesBodyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "UtilitiesBodyCollectionViewCell")
         bodyCollectionView.delegate = self
@@ -136,9 +142,16 @@ extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewD
             self.navigationController?.pushViewController(itemVC, animated: true)
         case 4:
            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
+           itemVC.idTienIch = 4
             self.navigationController?.pushViewController(itemVC, animated: true)
+            
         case 5:
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThuChiViewController") as! ThuChiViewController
+            itemVC.idTienIch = 5
+            self.navigationController?.pushViewController(itemVC, animated: true)
+        case 8:
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
+            itemVC.idTienIch = 8
             self.navigationController?.pushViewController(itemVC, animated: true)
         default:
             break

@@ -9,9 +9,10 @@
 import UIKit
 import XLPagerTabStrip
 
-class RutLaiViewController: ButtonBarPagerTabStripViewController {
+class RutLaiViewController: TabbarButton {
     
     //MARK: --Vars
+    var idTienIch: Int = 0
     let purpleInspireColor = UIColor.orange
     var dataCuaHang: [CuaHang] = []
     var dataTabTrangThai: [TabTrangThai] = [TabTrangThai(id: 0, tenTrangThai: "")]
@@ -29,9 +30,7 @@ class RutLaiViewController: ButtonBarPagerTabStripViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUpUI()
-        
     }
     
     //MARK: --Func
@@ -43,26 +42,10 @@ class RutLaiViewController: ButtonBarPagerTabStripViewController {
         shopContainerView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 10)
         loadShop()
         getTabTrangThai()
-        
         createPickerView()
         dismissPickerView()
         displayHeaderView()
-        settings.style.buttonBarBackgroundColor = .white
-        settings.style.buttonBarItemBackgroundColor = .white
-        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 13)
-        settings.style.selectedBarHeight = 1.0
-        settings.style.selectedBarBackgroundColor = UIColor.red
-        settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = .orange
-        settings.style.buttonBarLeftContentInset = 0
-        settings.style.buttonBarItemsShouldFillAvailableWidth = true
-        settings.style.buttonBarRightContentInset = 0
-        
-        changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
-            guard changeCurrentIndex == true else { return }
-            oldCell?.label.textColor = .orange
-            newCell?.label.textColor = self?.purpleInspireColor
-        }
+        displayTabbarButton(colors: purpleInspireColor)
     }
     
     private func loadShop(){
@@ -73,6 +56,8 @@ class RutLaiViewController: ButtonBarPagerTabStripViewController {
             }
             if let result = result {
                 self.dataCuaHang = result
+                self.shopTextField.text = self.dataCuaHang[0].tenCuaHang
+
             }
         }
     }
@@ -95,11 +80,12 @@ class RutLaiViewController: ButtonBarPagerTabStripViewController {
         var viewControllers: [UIViewController] = []
         for i in dataTabTrangThai {
             let vc = UIStoryboard(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiContainerViewController") as! RutLaiContainerViewController
-            //            vc.id = i.id
-            //            vc.idShop = self.idShop
             
             vc.tenTrangThai = i.tenTrangThai
-            
+            vc.idTab = i.id
+            vc.idShop = self.idShop
+            vc.idTienIch = self.idTienIch
+
             viewControllers.append(vc)
             
         }
@@ -108,10 +94,22 @@ class RutLaiViewController: ButtonBarPagerTabStripViewController {
     
     
     private func displayHeaderView(){
-        navigation.title = "Rút lãi cửa hàng"
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
-        navigation.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
-        
+        switch idTienIch {
+        case 4:
+             navigation.title = "Rút lãi cửa hàng"
+                   navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+                   navigation.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
+            break
+        case 8:
+            navigation.title = "Rút vốn cửa hàng"
+                   navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+                   navigation.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
+            break
+            
+        default:
+            break
+            
+        }
     }
     
     @objc func backView(){
@@ -158,4 +156,5 @@ extension RutLaiViewController: UIPickerViewDelegate, UIPickerViewDataSource, UI
         idShop = dataCuaHang[row].id
         reloadPagerTabStripView()
     }
+    
 }

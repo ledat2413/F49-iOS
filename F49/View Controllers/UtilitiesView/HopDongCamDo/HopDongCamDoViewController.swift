@@ -9,14 +9,13 @@
 import UIKit
 import XLPagerTabStrip
 
-class HopDongCamDoViewController: ButtonBarPagerTabStripViewController{
+class HopDongCamDoViewController: TabbarButton{
     
     //MARK: --Vars
     let purpleInspireColor = UIColor.orange
     var dataCuaHang: [CuaHang] = []
     var dataTab: [Tab] = [Tab(id: 0, value: "")]
     var selectedCuaHang: String?
-//    var callBackIdShop: ((_ id: Int) -> Void)?
     var idShop: Int = 0
     var idStatus: String?
     var keyWord: String?
@@ -36,7 +35,7 @@ class HopDongCamDoViewController: ButtonBarPagerTabStripViewController{
     //MARK: --IBAction
     
     @IBAction func locButtonPressed(_ sender: UIButton) {
-        let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BoLocViewController") as! BoLocViewController
+        let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "BoLocViewController") as! BoLocViewController
         itemVC.modalPresentationStyle = .overCurrentContext
         itemVC.modalTransitionStyle = .crossDissolve
         itemVC.callBackValue = { (idStatus, text) in
@@ -59,6 +58,7 @@ class HopDongCamDoViewController: ButtonBarPagerTabStripViewController{
             }
             if let result = result {
                 self.dataCuaHang = result
+                self.shopTextField.text = self.dataCuaHang[0].tenCuaHang
             }
         }
     }
@@ -83,22 +83,8 @@ class HopDongCamDoViewController: ButtonBarPagerTabStripViewController{
         createPickerView()
         dismissPickerView()
         contrectLabel.underlined()
-        settings.style.buttonBarBackgroundColor = .white
-        settings.style.buttonBarItemBackgroundColor = .white
-        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 13)
-        settings.style.selectedBarHeight = 1.0
-        settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = .orange
-        settings.style.selectedBarBackgroundColor = .orange
-        settings.style.buttonBarLeftContentInset = 0
-        settings.style.buttonBarItemsShouldFillAvailableWidth = true
-        settings.style.buttonBarRightContentInset = 0
+        displayTabbarButton(colors: UIColor.orange)
         
-        changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
-            guard changeCurrentIndex == true else { return }
-            oldCell?.label.textColor = .orange
-            newCell?.label.textColor = self?.purpleInspireColor
-        }
     }
     
     private func displayHeaderView(){

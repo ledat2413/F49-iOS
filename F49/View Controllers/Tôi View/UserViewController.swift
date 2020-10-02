@@ -73,7 +73,7 @@ class UserViewController: BaseController {
         //display body table view
         bodyView.backgroundColor = UIColor.clear
         bodyView.layer.shadowColor = UIColor.systemGreen.cgColor
-        bodyView.layer.shadowOffset = CGSize(width: 3.0, height: 3.0)
+        bodyView.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
         bodyView.layer.shadowOpacity = 0.9
         bodyView.layer.shadowRadius = 1
         self.bodyTableView.layer.cornerRadius = 10

@@ -86,7 +86,7 @@ class MGConnection {
             case .success:
                 if response.response?.statusCode == 200 {
                     completion(response.result.value?.data, nil)
-                    print(response.request)
+                    print(response.request ?? "")
                 } else {
                     let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.HTTP_ERROR, (response.response?.statusCode)!, "Request is error!")
                     completion(nil, err)
@@ -109,7 +109,6 @@ class MGConnection {
         if !isConnectedToInternet(){
             return
         }
-        
         Alamofire.request(apiRouter).responseObject{(response: DataResponse<BaseResponseObject<T>>) in
             switch response.result {
             case .success:
@@ -129,6 +128,7 @@ class MGConnection {
                 break
             }
         }
+        
     }
 }
 

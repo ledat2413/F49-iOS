@@ -9,7 +9,7 @@
 import Foundation
 
 struct Production{
-    static let BASE_URL: String = "http://apif49.itpsolution.net/"
+    static let BASE_URL: String = "http://uatapiportal.f247.com.vn/"
 }
 
 enum NetworkErrorType {

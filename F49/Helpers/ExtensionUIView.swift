@@ -44,5 +44,17 @@ extension UIView {
         self.layer.borderWidth = 0.5
         self.clipsToBounds = false
     }
+    
+    func displayShadowView2( shadowColor: UIColor, borderColor: UIColor, radius: CGFloat, offSet: CGSize) {
+        self.layer.shadowColor = shadowColor.cgColor
+        self.layer.shadowOffset = offSet
+        self.layer.shadowRadius = 1
+        self.layer.shadowOpacity = 0.9
+        self.layer.cornerRadius = radius
+        self.layer.borderColor = borderColor.cgColor
+        self.layer.borderWidth = 0.5
+        self.clipsToBounds = false
+    }
 
 }
+

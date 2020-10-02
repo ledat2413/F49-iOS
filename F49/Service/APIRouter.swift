@@ -33,6 +33,12 @@ enum APIRouter: URLRequestConvertible {
     case GetListNotification(params: [String: Any])
     case GetTabTrangThai
     case GetListRutLai(idShop: Int, idTab: Int )
+    case GetDanhSachNhanVien
+    case GetListVonDauTu(params: [String: Any])
+    case GetDetailVonDauTu(id: Int)
+    case GetListRutVon(idShop: Int, idTab: Int )
+    case GetDetailRutVonByID(id: Int)
+    case PutDuyetRutVon(params: [String: Any])
     
     
     // =========== End define api ===========
@@ -42,48 +48,11 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .Login:
             return .post
-        case .GetUserProfile:
+        case .PutDuyetRutVon:
+            return .put
+        default:
             return .get
-        case .GetCuaHang:
-            return .get
-        case .GetDashBoard:
-            return .get
-        case .GetStatus:
-            return .get
-        case .GetTienIch:
-            return .get
-        case .GetListCamDo:
-            return .get
-        case .GetChiTietCamDo:
-            return .get
-        case .GetTopMenu:
-            return .get
-        case .GetListDinhGia:
-            return .get
-        case .GetListDoGiaDung:
-            return .get
-        case .GetChiTietDinhGia:
-            return .get
-        case .GetChiTietDoGiaDung:
-            return .get
-        case .GetTab:
-            return .get
-        case .GetListHopDongTheoLoai:
-            return .get
-        case .GetTrangThaiHopDong:
-            return .get
-        case .GetChiTietHopDong:
-            return .get
-        case .GetListThuChi:
-            return .get
-        case .GetDetailThuChiByID:
-            return .get
-        case .GetListNotification:
-            return .get
-        case .GetTabTrangThai:
-            return .get
-        case .GetListRutLai:
-            return .get
+            
         }
     }
     
@@ -134,117 +103,29 @@ enum APIRouter: URLRequestConvertible {
             return "api/RutLai/GetTabTrangThai"
         case .GetListRutLai:
             return "api/RutLai/GetListRutLai"
+        case .GetDanhSachNhanVien:
+            return "api/TienHoaHong/GetDanhSachNhanVien"
+        case .GetListVonDauTu:
+            return "api/QuanLyVonDauTu/GetListVonDauTu"
+        case .GetDetailVonDauTu:
+            return "api/QuanLyVonDauTu/GetDetailVonDauTu"
+        case .GetListRutVon:
+            return "api/RutVon/GetListRutVon"
+        case .GetDetailRutVonByID:
+            return "api/RutVon/GetDetailRutVonByID"
+        case .PutDuyetRutVon:
+            return "api/RutVon/PutDuyetRutVon"
         }
     }
     
     // MARK: - Headers
-    private var headers: HTTPHeaders {
-        var headers = ["Accept": "application/json"]
+    public var headers: HTTPHeaders {
+        var headers = [ "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"]
+        
         switch self {
         case .Login:
             break
-        case .GetUserProfile:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetCuaHang:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-            
-        case .GetDashBoard:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetTienIch:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetStatus:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetListCamDo:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetChiTietCamDo:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetTopMenu:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetListDinhGia:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetListDoGiaDung:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetChiTietDinhGia:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetChiTietDoGiaDung:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetTab:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetListHopDongTheoLoai:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetTrangThaiHopDong:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetChiTietHopDong:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetListThuChi:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetDetailThuChiByID:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetListNotification:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetTabTrangThai:
-            if let token = UserHelper.getUserData(key: UserKey.Token){
-                headers["Authorization"] = token
-            }
-            break
-        case .GetListRutLai:
+        default:
             if let token = UserHelper.getUserData(key: UserKey.Token){
                 headers["Authorization"] = token
             }
@@ -255,7 +136,7 @@ enum APIRouter: URLRequestConvertible {
     }
     
     // MARK: - Parameters
-    private var parameters: Parameters? {
+    public var parameters: Parameters? {
         switch self {
         case .Login(let grant_type, let username, let password):
             return ["grant_type": grant_type,
@@ -315,6 +196,18 @@ enum APIRouter: URLRequestConvertible {
             return [:]
         case .GetListRutLai(let idShop, let idTab):
             return ["idCuaHang": idShop , "idTab": idTab]
+        case .GetDanhSachNhanVien:
+            return [:]
+        case .GetListVonDauTu(let params):
+            return params
+        case .GetDetailVonDauTu(let id):
+            return ["id" : id]
+        case .GetListRutVon(let idShop, let idTab):
+            return ["idCuaHang": idShop , "idTab": idTab]
+        case .GetDetailRutVonByID(let id):
+            return ["idItem": id]
+        case .PutDuyetRutVon(let params):
+            return params
         }
     }
     
@@ -334,11 +227,9 @@ enum APIRouter: URLRequestConvertible {
         }
         
         if let parameters = parameters {
-            do {
-                urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
-            } catch {
-                print("Encoding fail")
-            }
+            
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+            
         }
         return urlRequest
     }

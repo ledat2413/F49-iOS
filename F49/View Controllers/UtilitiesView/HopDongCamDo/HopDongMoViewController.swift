@@ -40,8 +40,9 @@ class HopDongMoViewController: BaseController,IndicatorInfoProvider {
         if let keyWord = self.keyWord {
             params["tuKhoa"] = keyWord
         }
-        
+        self.showSpinner(onView: self.view)
         MGConnection.requestArray(APIRouter.GetListHopDongTheoLoai(params: params), HopDongTheoLoai.self) { (result, error) in
+            self.removeSpinner()
             guard error == nil else {
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return

@@ -8,14 +8,14 @@
 
 import UIKit
 
-class NotificationViewController: UIViewController {
-
+class NotificationViewController: BaseController {
+    
     //MARK: --Vars
     var dataNotifi: [Notification] = []
     var selectedCuaHang: String?
     var dataCuaHang: [CuaHang] = []
     var pageIndex: Int?
-//    var dataTableView: [T] = []
+    //    var dataTableView: [T] = []
     
     //MARK: --IBOutlet
     
@@ -41,7 +41,7 @@ class NotificationViewController: UIViewController {
         tableView.register(UINib(nibName: "NotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationTableViewCell")
         
         loadCuaHang()
-        
+        loadTableView(idShop: 0)
         createPickerView()
         dismissPickerView()
         
@@ -50,7 +50,7 @@ class NotificationViewController: UIViewController {
         shopTextField.backgroundColor = UIColor.clear
         containerView.backgroundColor = UIColor.clear
         containerView.layer.borderWidth  = 1
-
+        
     }
     
     func loadTableView(idShop: Int){
@@ -59,8 +59,11 @@ class NotificationViewController: UIViewController {
         if let pageIndex = pageIndex {
             params = ["pageIndex" : pageIndex]
         }
+        self.showSpinner(onView: self.view)
         
         MGConnection.requestArray(APIRouter.GetListNotification(params: params), Notification.self) { (result, error) in
+            self.removeSpinner()
+            
             guard error == nil else {
                 print("Error: \(error?.mErrorCode ?? 0) and \(error?.mErrorMessage ?? "")")
                 return
@@ -81,6 +84,7 @@ class NotificationViewController: UIViewController {
             }
             if let result = result {
                 self.dataCuaHang = result
+                self.shopTextField.text = self.dataCuaHang[0].tenCuaHang
             }
         }
     }
@@ -124,7 +128,7 @@ class NotificationViewController: UIViewController {
     @objc func action() {
         view.endEditing(true)
     }
-
+    
 }
 
 extension NotificationViewController: UITableViewDelegate, UITableViewDataSource{
