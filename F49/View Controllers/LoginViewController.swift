@@ -27,7 +27,6 @@ class LoginViewController: BaseController {
     @IBOutlet weak var forgotPassButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
-    @IBOutlet var containerView: UIView!
     //MARK: --View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +50,7 @@ class LoginViewController: BaseController {
             return
         }
         
-        self.showSpinner(onView: self.containerView)
-        
+        self.showSpinner(onView: self.view)
         MGConnection.requestToken(APIRouter.Login(grant_type: "password", username: emailTextField.text ?? "", password: passTextField.text ?? ""), Token.self) { [weak self] (result, error) in
             self?.removeSpinner()
             guard let wself = self else {return}
