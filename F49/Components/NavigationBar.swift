@@ -22,6 +22,7 @@ final class NavigationBar: UIView{
             titleLabel.text = title
         }
     }
+
     
     override func awakeFromNib() {
         initWithNib()

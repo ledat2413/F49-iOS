@@ -32,23 +32,36 @@
                         <color key="textColor" red="0.08540076531448812" green="0.09017209005566533" blue="0.097777687823834225" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-check" translatesAutoresizingMaskIntoConstraints="NO" id="acX-xf-iHL">
+                        <rect key="frame" x="135" y="15" width="25" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="tkd-Yx-ddf"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Rya-PI-qkM" secondAttribute="bottom" constant="5" id="46y-rR-aM5"/>
                     <constraint firstItem="Zk2-8h-WLi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="DfO-X4-TTh"/>
+                    <constraint firstItem="acX-xf-iHL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="F2Q-GV-ehB"/>
                     <constraint firstItem="Rya-PI-qkM" firstAttribute="leading" secondItem="Zk2-8h-WLi" secondAttribute="trailing" constant="5" id="Mp8-RQ-fkr"/>
                     <constraint firstAttribute="bottom" secondItem="Zk2-8h-WLi" secondAttribute="bottom" constant="5" id="PWT-QD-YDN"/>
                     <constraint firstItem="Rya-PI-qkM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Qz3-D9-5pz"/>
                     <constraint firstAttribute="trailing" secondItem="Rya-PI-qkM" secondAttribute="trailing" id="YDB-VX-qGS"/>
                     <constraint firstItem="Zk2-8h-WLi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="c3c-oy-H6E"/>
+                    <constraint firstItem="acX-xf-iHL" firstAttribute="leading" secondItem="Zk2-8h-WLi" secondAttribute="trailing" constant="10" id="hyn-Q1-4vW"/>
+                    <constraint firstAttribute="bottom" secondItem="acX-xf-iHL" secondAttribute="bottom" constant="15" id="yuk-MW-AI3"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="keyLabel" destination="Zk2-8h-WLi" id="Tkd-62-Ibj"/>
+                <outlet property="valueImage" destination="acX-xf-iHL" id="3bb-KM-Qnk"/>
                 <outlet property="valueLabel" destination="Rya-PI-qkM" id="aVm-Ki-j98"/>
             </connections>
-            <point key="canvasLocation" x="139" y="122"/>
+            <point key="canvasLocation" x="137.68115942028987" y="121.875"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="login-check" width="40" height="41"/>
+    </resources>
 </document>

@@ -39,6 +39,11 @@ enum APIRouter: URLRequestConvertible {
     case GetListRutVon(idShop: Int, idTab: Int )
     case GetDetailRutVonByID(id: Int)
     case PutDuyetRutVon(params: [String: Any])
+    case GetDLNhomTaiSan
+    case GetDLTenTaiSan(id: Int)
+    case GetTabTrangThaiTaiSan
+    case GetDLTaiSan(idNhomVatCamDo: Int, idVatCamDo: Int, trangThai: Int)
+    case GetDetailTaiSan(id: Int)
     
     
     // =========== End define api ===========
@@ -115,12 +120,22 @@ enum APIRouter: URLRequestConvertible {
             return "api/RutVon/GetDetailRutVonByID"
         case .PutDuyetRutVon:
             return "api/RutVon/PutDuyetRutVon"
+        case .GetDLNhomTaiSan:
+            return "api/QuanLyTaiSan/GetDLNhomTS"
+        case .GetDLTenTaiSan:
+            return "api/QuanLyTaiSan/GetDLTenTaiSan"
+        case .GetTabTrangThaiTaiSan:
+            return "api/QuanLyTaiSan/GetTabTrangThaiTaiSan"
+        case .GetDLTaiSan:
+            return "api/QuanLyTaiSan/GetDSTaiSan"
+        case .GetDetailTaiSan:
+            return "api/QuanLyTaiSan/GetDetailTaiSan"
         }
     }
     
     // MARK: - Headers
     public var headers: HTTPHeaders {
-        var headers = [ "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"]
+       var headers = ["Accept": "application/json", "Content-Type": "application/json"]
         
         switch self {
         case .Login:
@@ -208,6 +223,16 @@ enum APIRouter: URLRequestConvertible {
             return ["idItem": id]
         case .PutDuyetRutVon(let params):
             return params
+        case .GetDLNhomTaiSan:
+            return [:]
+        case .GetDLTenTaiSan(let id):
+            return ["idNhom" : id]
+        case .GetTabTrangThaiTaiSan:
+            return [:]
+        case .GetDLTaiSan(let idNhomVatCamDo, let idVatCamDo, let trangThai):
+            return ["idNhomVatCamDo": idNhomVatCamDo, "idVatCamDo" : idVatCamDo, "trangThai" : trangThai]
+        case .GetDetailTaiSan(let id):
+            return ["idItem" : id]
         }
     }
     
@@ -219,7 +244,7 @@ enum APIRouter: URLRequestConvertible {
         var urlRequest: URLRequest = URLRequest(url: url.appendingPathComponent(path))
         
         // setting method
-        urlRequest.httpMethod = method.rawValue
+       
         
         // setting header
         for (key, value) in headers {
@@ -231,6 +256,8 @@ enum APIRouter: URLRequestConvertible {
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
             
         }
+        
+        urlRequest.httpMethod = method.rawValue
         return urlRequest
     }
     

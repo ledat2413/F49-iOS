@@ -12,6 +12,7 @@ class InfoCamDoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var keyLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var valueImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

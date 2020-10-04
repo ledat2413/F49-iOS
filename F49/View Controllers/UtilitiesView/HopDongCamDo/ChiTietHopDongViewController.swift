@@ -94,7 +94,7 @@ extension ChiTietHopDongViewController: UITableViewDelegate, UITableViewDataSour
             
         case 6:
             cell.keyLabel.text = "Lãi"
-            cell.valueLabel.text = "\(dataChiTiet?.catLai ?? false)"
+            cell.valueLabel.text = dataChiTiet?.interest ?? ""
             return cell
         case 7:
             cell.keyLabel.text = "Phí"

@@ -149,6 +149,9 @@ extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewD
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThuChiViewController") as! ThuChiViewController
             itemVC.idTienIch = 5
             self.navigationController?.pushViewController(itemVC, animated: true)
+        case 6:
+        let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThanhLyTaiSanViewController") as! ThanhLyTaiSanViewController
+        self.navigationController?.pushViewController(itemVC, animated: true)
         case 8:
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
             itemVC.idTienIch = 8

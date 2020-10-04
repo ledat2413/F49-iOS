@@ -28,8 +28,7 @@ class RutLaiContainerViewController: BaseController, IndicatorInfoProvider {
         super.viewDidLoad()
         
        setUpUI()
-        
-        
+       NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: NSNotification.Name.init("Accept"), object: nil)
     }
     
     func setUpUI(){
@@ -48,7 +47,7 @@ class RutLaiContainerViewController: BaseController, IndicatorInfoProvider {
         loadData()
     }
     
-    func loadData(){
+    @objc func loadData(){
         
         switch idTienIch {
         case 4:
