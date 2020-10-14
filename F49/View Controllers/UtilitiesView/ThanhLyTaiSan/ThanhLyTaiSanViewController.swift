@@ -32,6 +32,7 @@ class ThanhLyTaiSanViewController: BaseController {
     @IBOutlet weak var navigation: NavigationBar!
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var nhomTaiSanView: UIView!
     @IBOutlet weak var nhomTaiSanTextField: UITextField!
@@ -180,7 +181,9 @@ extension ThanhLyTaiSanViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        if dataDSTaiSan.count != 0 {
+            contentView.isHidden = true
+        }
         return dataDSTaiSan.count
     }
     

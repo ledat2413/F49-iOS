@@ -10,6 +10,42 @@ import Foundation
 import ObjectMapper
 import RealmSwift
 
+class BaseResponseBool: Object, Mappable{
+    dynamic var success: Bool = false
+    dynamic var message: String = ""
+    dynamic var msgType: Int = 0
+    dynamic var data: Bool = false
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        success <- map["success"]
+        message <- map["message"]
+        msgType <- map["msgType"]
+        data <- map["data"]
+    }
+}
+
+class BaseResponseInt: Object, Mappable{
+    dynamic var success: Bool = false
+    dynamic var message: String = ""
+    dynamic var msgType: Int = 0
+    dynamic var data: Int = 0
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        success <- map["success"]
+        message <- map["message"]
+        msgType <- map["msgType"]
+        data <- map["data"]
+    }
+}
+
 class BaseResponseString: Object, Mappable{
     dynamic var success: Bool = false
     dynamic var message: String = ""

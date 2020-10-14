@@ -18,6 +18,12 @@ class ThuChiViewController: BaseController {
     var selectedCuaHang: String?
     var idShop: Int = 0
     
+    private var fromPicker: UIDatePicker?
+    private var toPicker: UIDatePicker?
+    
+    var fromValue: String?
+    var toValue: String?
+    
     //MARK: --IBOutlet
     @IBOutlet weak var navigation: NavigationBar!
     
@@ -34,6 +40,7 @@ class ThuChiViewController: BaseController {
     @IBOutlet weak var toTextField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var content: UIView!
     
     //MARK: --IBAction
     
@@ -45,7 +52,47 @@ class ThuChiViewController: BaseController {
     
     //MARK: --Func
     
+    //DatePicker
+    func datePicker(){
+        
+        fromPicker = UIDatePicker()
+        fromPicker?.datePickerMode = .date
+        fromPicker?.addTarget(self, action: #selector(dateChanged(fromPicker:)), for: .valueChanged)
+        fromTextField.inputView = fromPicker
+        
+        toPicker = UIDatePicker()
+        toPicker?.datePickerMode = .date
+        toPicker?.addTarget(self, action: #selector(dateChanged(toPicker:)), for: .valueChanged)
+        toTextField.inputView = toPicker
+    }
+    
+    
+    
+    @objc func dateChanged(fromPicker: UIDatePicker){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        fromPicker.dateFormatte(txt: fromTextField)
+        fromValue = dateFormatter.string(from: fromPicker.date)
+        loadData()
+        
+        print(fromValue ?? "")
+        view.endEditing(true)
+    }
+    
+    @objc func dateChanged(toPicker: UIDatePicker){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        toPicker.dateFormatte(txt: toTextField)
+        toValue = dateFormatter.string(from: toPicker.date)
+        loadData()
+        print(toValue ?? "")
+        view.endEditing(true)
+    }
+    
+    
     func setUpUI(){
+        datePicker()
+        
         tableView.delegate = self
         tableView.dataSource = self
         switch idTienIch {
@@ -61,7 +108,6 @@ class ThuChiViewController: BaseController {
         
         loadCuaHang()
         createPickerView()
-        dismissPickerView()
         
         containerCuaHang.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
         containerToday.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
@@ -90,25 +136,13 @@ class ThuChiViewController: BaseController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
     func createPickerView() {
-        let pickerView = UIPickerView()
+        let pickerView = UIPickerView().createPicker(tf: shopTextField)
         pickerView.delegate = self
-        shopTextField.inputView = pickerView
+        
     }
     
-    func dismissPickerView() {
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
-        toolBar.setItems([button], animated: true)
-        toolBar.isUserInteractionEnabled = true
-        shopTextField.inputAccessoryView = toolBar
-    }
     
-    @objc func action() {
-        view.endEditing(true)
-    }
     
     func loadCuaHang() {
         MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
@@ -125,6 +159,14 @@ class ThuChiViewController: BaseController {
     func loadData() {
         
         var params: [String: Any] = ["idCuaHang": idShop]
+        
+        if let fromValue = self.fromValue {
+            params["dtTuNgay"] = fromValue
+        }
+        
+        if let toValue = self.toValue {
+            params["dtDenNgay"] = toValue
+        }
         switch idTienIch {
         case 5:
             self.showSpinner(onView: self.view)
@@ -158,14 +200,7 @@ class ThuChiViewController: BaseController {
         }
         
         
-        //              if let toDate = self.idStatus {
-        //                  params["dtTuNgay"] = toDate
-        //              }
         
-        //        if let fromDate = self.fromDate {
-        //            params["dtDenNgay"] = fromDate
-        //
-        //        }
     }
 }
 
@@ -173,8 +208,14 @@ extension ThuChiViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch idTienIch {
         case 5:
+            if dataThuChi.count != 0 {
+                content.isHidden = true
+            }
             return  dataThuChi.count
         case 8:
+            if dataVon.count != 0 {
+                content.isHidden = true
+            }
             return dataVon.count
         default:
             return 0
@@ -186,7 +227,7 @@ extension ThuChiViewController: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+        
         switch idTienIch {
             
         case 5:
@@ -230,12 +271,12 @@ extension ThuChiViewController: UITableViewDelegate,UITableViewDataSource{
         switch idTienIch {
         case 5:
             itemVC.idTienIch = idTienIch
-              itemVC.id = dataThuChi[indexPath.row].id
-                  self.navigationController?.pushViewController(itemVC, animated: true)
+            itemVC.id = dataThuChi[indexPath.row].id
+            self.navigationController?.pushViewController(itemVC, animated: true)
         case 8:
             itemVC.idTienIch = idTienIch
             itemVC.id = dataVon[indexPath.row].idItem
-                  self.navigationController?.pushViewController(itemVC, animated: true)
+            self.navigationController?.pushViewController(itemVC, animated: true)
         default:
             break
         }

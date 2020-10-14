@@ -28,10 +28,11 @@ class HopDongMoViewController: BaseController,IndicatorInfoProvider {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ContractOpenTableViewCell", bundle: nil), forCellReuseIdentifier: "ContractOpenTableViewCell")
+        NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: NSNotification.Name.init("DongLai"), object: nil)
        
     }
     
-    func loadData(){
+   @objc func loadData(){
         var params: [String: Any] = ["idCuaHang": idShop, "loaiHD": id]
         
         if let idStatus = self.idStatus {
@@ -70,6 +71,7 @@ extension HopDongMoViewController: UITableViewDelegate, UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContractOpenTableViewCell", for: indexPath) as? ContractOpenTableViewCell else{
             fatalError()
         }
+        
         let data = dataHopDong[indexPath.row]
         
         cell.idLabel.text = "\(data.id)"
@@ -78,6 +80,7 @@ extension HopDongMoViewController: UITableViewDelegate, UITableViewDataSource{
         cell.nameLabel.text = data.tenKhachHang
         cell.tienLabel.text = data.duNoHienTai
         cell.tongLabel.text = data.laiPhaiThu
+        cell.backgroundColor = UIColor(hexString: data.maMau)
         
         return cell
     }

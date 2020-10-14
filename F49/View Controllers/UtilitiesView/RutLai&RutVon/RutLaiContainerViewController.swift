@@ -24,6 +24,8 @@ class RutLaiContainerViewController: BaseController, IndicatorInfoProvider {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var contentView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,7 +88,11 @@ extension RutLaiContainerViewController: UITableViewDelegate, UITableViewDataSou
         case 4:
             return 0
         case 8:
+            if dataRutVon.count != 0 {
+                contentView.isHidden = true
+            }
             return dataRutVon.count
+
         default:
             return 0
             
@@ -101,7 +107,9 @@ extension RutLaiContainerViewController: UITableViewDelegate, UITableViewDataSou
             return cell
         case 8:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RutVonTableViewCell", for: indexPath) as? RutVonTableViewCell else { fatalError() }
+            
             let data = dataRutVon[indexPath.row]
+            
             cell.idLabel.text = "\(data.idItem)"
             cell.nameLabel.text = data.tenCuaHang
             cell.moneyLabel.text = "\(data.soTien)"

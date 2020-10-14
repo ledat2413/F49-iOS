@@ -53,7 +53,7 @@ class UtilitiesViewController: BaseController {
             if let result = result {
                 self.dataCuaHang = result
                 self.headerTextField.text = self.dataCuaHang[0].tenCuaHang
-            
+                
             }
         }
     }
@@ -141,8 +141,8 @@ extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewD
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
             self.navigationController?.pushViewController(itemVC, animated: true)
         case 4:
-           let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
-           itemVC.idTienIch = 4
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
+            itemVC.idTienIch = 4
             self.navigationController?.pushViewController(itemVC, animated: true)
             
         case 5:
@@ -150,11 +150,17 @@ extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewD
             itemVC.idTienIch = 5
             self.navigationController?.pushViewController(itemVC, animated: true)
         case 6:
-        let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThanhLyTaiSanViewController") as! ThanhLyTaiSanViewController
-        self.navigationController?.pushViewController(itemVC, animated: true)
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThanhLyTaiSanViewController") as! ThanhLyTaiSanViewController
+            self.navigationController?.pushViewController(itemVC, animated: true)
+        case 7:
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "BaoCaoViewController") as! BaoCaoViewController
+            self.navigationController?.pushViewController(itemVC, animated: true)
         case 8:
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
             itemVC.idTienIch = 8
+            self.navigationController?.pushViewController(itemVC, animated: true)
+        case 9:
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "TienHoaHongViewController") as! TienHoaHongViewController
             self.navigationController?.pushViewController(itemVC, animated: true)
         default:
             break

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="BodyTienHoaHongTableViewCell" customModule="F49" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="398" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="398" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVK-3J-KvU">
+                        <rect key="frame" x="20" y="10" width="42" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="gCW-lh-60J"/>
+                            <constraint firstAttribute="width" constant="42" id="zOA-bN-Iwj"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số HĐ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCu-so-oGJ">
+                        <rect key="frame" x="62" y="10" width="100" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="KLw-fQ-P2E"/>
+                            <constraint firstAttribute="height" constant="21" id="gCs-PY-7va"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Khách hàng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5BT-9A-Unm">
+                        <rect key="frame" x="172" y="10" width="96" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số tiền" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEW-sE-c4P">
+                        <rect key="frame" x="278" y="10" width="100" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="YhY-uY-V20"/>
+                            <constraint firstAttribute="width" constant="100" id="axu-4O-cso"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Không có dữ liệu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4S-fz-Bio">
+                        <rect key="frame" x="0.0" y="0.0" width="398" height="41"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="5BT-9A-Unm" secondAttribute="bottom" constant="10" id="2pE-ag-AeV"/>
+                    <constraint firstAttribute="trailing" secondItem="a4S-fz-Bio" secondAttribute="trailing" id="8cl-La-sEY"/>
+                    <constraint firstAttribute="bottom" secondItem="fCu-so-oGJ" secondAttribute="bottom" constant="10" id="LRI-UJ-eJp"/>
+                    <constraint firstItem="fCu-so-oGJ" firstAttribute="leading" secondItem="sVK-3J-KvU" secondAttribute="trailing" id="Mwo-VE-J6D"/>
+                    <constraint firstItem="fCu-so-oGJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="OxJ-2i-1gi"/>
+                    <constraint firstItem="5BT-9A-Unm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="SF2-g1-Tql"/>
+                    <constraint firstAttribute="trailing" secondItem="PEW-sE-c4P" secondAttribute="trailing" constant="20" id="TQy-WD-ilm"/>
+                    <constraint firstAttribute="bottom" secondItem="sVK-3J-KvU" secondAttribute="bottom" constant="10" id="W6c-cU-3WB"/>
+                    <constraint firstItem="sVK-3J-KvU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="XBK-cq-qZz"/>
+                    <constraint firstAttribute="bottom" secondItem="PEW-sE-c4P" secondAttribute="bottom" constant="10" id="a9W-Fy-Mte"/>
+                    <constraint firstItem="PEW-sE-c4P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="b2H-PJ-k2w"/>
+                    <constraint firstAttribute="bottom" secondItem="a4S-fz-Bio" secondAttribute="bottom" id="fK5-qf-yvO"/>
+                    <constraint firstItem="5BT-9A-Unm" firstAttribute="leading" secondItem="fCu-so-oGJ" secondAttribute="trailing" constant="10" id="gC3-Be-Dcp"/>
+                    <constraint firstItem="sVK-3J-KvU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="jRi-LN-5m1"/>
+                    <constraint firstItem="PEW-sE-c4P" firstAttribute="leading" secondItem="5BT-9A-Unm" secondAttribute="trailing" constant="10" id="lK4-Tf-DJ4"/>
+                    <constraint firstItem="a4S-fz-Bio" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nbu-eP-sYT"/>
+                    <constraint firstItem="a4S-fz-Bio" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="wdM-ca-Zkn"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="idHopDongLabel" destination="fCu-so-oGJ" id="L79-Yi-WP1"/>
+                <outlet property="khachHangLabel" destination="5BT-9A-Unm" id="uPF-De-e2h"/>
+                <outlet property="moneyLabel" destination="PEW-sE-c4P" id="Lwe-gH-QXg"/>
+                <outlet property="noDataLabel" destination="a4S-fz-Bio" id="UfB-BO-d1y"/>
+                <outlet property="sttLabel" destination="sVK-3J-KvU" id="YBs-JW-6b6"/>
+            </connections>
+            <point key="canvasLocation" x="194.20289855072465" y="144.64285714285714"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -18,7 +18,7 @@ class CamDoViewController: UIViewController {
     var dataListDoGiaDung: [DoGiaDung] = []
     var selectedStatus: String?
     var callBack: ((_ index: Int) -> Void)?
-
+    
     
     //MARK: --IBOutlet
     @IBOutlet weak var tableView: UITableView!
@@ -26,6 +26,7 @@ class CamDoViewController: UIViewController {
     @IBOutlet weak var findTextField: UITextField!
     @IBOutlet weak var findButton: UIButton!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var contentView: UIView!
     
     //MARK: --View Lifecycle
     override func viewDidLoad() {
@@ -144,12 +145,23 @@ class CamDoViewController: UIViewController {
 extension CamDoViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
         switch index {
         case 0:
+            if dataListCamDo.count != 0 {
+                contentView.isHidden = true
+            }
             return dataListCamDo.count
         case 1:
+            if dataListDinhGia.count != 0 {
+                contentView.isHidden = true
+            }
             return dataListDinhGia.count
         case 2:
+            if dataListDoGiaDung.count != 0 {
+                contentView.isHidden = true
+            }
             return dataListDoGiaDung.count
         default:
             break
@@ -212,7 +224,7 @@ extension CamDoViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         switch index {
         case 0:
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThongTinCamDoViewController") as! ThongTinCamDoViewController

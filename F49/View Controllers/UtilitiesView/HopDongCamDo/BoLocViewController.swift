@@ -29,7 +29,6 @@ class BoLocViewController: BaseController {
         
         loadStatus()
         createPickerView()
-        dismissPickerView()
         doneButton.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
         doneButton.display20()
         reMakeButton.display20()
@@ -45,7 +44,7 @@ class BoLocViewController: BaseController {
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         //request api
-        callBackValue?(selectedStatus!,findTextFiled.text!)
+        callBackValue?(selectedStatus ?? "" ,findTextFiled.text!)
 
         self.dismiss(animated: true, completion: nil)
 
@@ -75,17 +74,9 @@ class BoLocViewController: BaseController {
     }
     
     func createPickerView() {
-           let pickerView = UIPickerView()
+           let pickerView = UIPickerView().createPicker(tf: statusTextField)
            pickerView.delegate = self
-           statusTextField.inputView = pickerView
-       }
-       
-       func dismissPickerView() {
-           let toolBar = UIToolbar()
-           toolBar.sizeToFit()
-           let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
-           toolBar.setItems([button], animated: true)
-           toolBar.isUserInteractionEnabled = true
+           let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(BoLocViewController.action))
            statusTextField.inputAccessoryView = toolBar
        }
        

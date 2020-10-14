@@ -13,6 +13,7 @@ class RutLaiChiTietViewController: BaseController {
     //MARK: --Vars
     var idItem: Int = 0
     var idTab: Int = 0
+    var text: String = ""
     
     var dataChiTiet: VonDauTuChiTiet?
     
@@ -23,7 +24,6 @@ class RutLaiChiTietViewController: BaseController {
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var yKienTextView: UITextView!
     
     //MARK: --View LifeCycle
     
@@ -40,18 +40,12 @@ class RutLaiChiTietViewController: BaseController {
         displayTableView()
         displayCollectionView()
         loadChiTiet()
-        displayYkienLabel()
         hideKeyboardWhenTappedAround()
         displayFooterView()
     }
     
     func displayFooterView(){
         footerView.displayShadowView2(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 0, offSet: CGSize(width: 3, height: 0))
-    }
-    
-    func displayYkienLabel(){
-        yKienTextView.displayTextField(radius: 10, color: UIColor.gray)
-        yKienTextView.layer.borderWidth = 0.5
     }
     
     func displayCollectionView() {
@@ -65,6 +59,7 @@ class RutLaiChiTietViewController: BaseController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "RutVonChiTietTableViewCell", bundle: nil), forCellReuseIdentifier: "RutVonChiTietTableViewCell")
         tableView.register(UINib(nibName: "InfoCamDoTableViewCell", bundle: nil), forCellReuseIdentifier: "InfoCamDoTableViewCell")
+        tableView.register(UINib(nibName: "RutVon2TableViewCell", bundle: nil), forCellReuseIdentifier: "RutVon2TableViewCell")
     }
     
     func loadChiTiet(){
@@ -86,7 +81,7 @@ class RutLaiChiTietViewController: BaseController {
         navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
         navigation.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
     }
- 
+    
     @objc func backView(){
         self.navigationController?.popViewController(animated: true)
     }
@@ -94,48 +89,85 @@ class RutLaiChiTietViewController: BaseController {
 
 extension RutLaiChiTietViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(tableView.frame.height/7)
-       
+        switch indexPath.section {
+        case 0:
+            return 60
+        default:
+            return 130
+        }
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        switch section {
+        case 0:
+            return 7
+        default:
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        switch indexPath.section {
+        case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCamDoTableViewCell", for: indexPath) as? InfoCamDoTableViewCell else { fatalError() }
             switch indexPath.row {
             case 0:
                 cell.keyLabel.text = "Cửa hàng"
                 cell.valueLabel.text = dataChiTiet?.tenCuaHang ?? ""
+                return cell
             case 1:
                 cell.keyLabel.text = "Ngày đầu tư"
                 cell.valueLabel.text = dataChiTiet?.ngayGiaoDich ?? ""
+                return cell
+                
             case 2:
                 cell.keyLabel.text = "Số tiền"
                 cell.valueLabel.text = "\(dataChiTiet?.soTien ?? 0)"
+                return cell
+                
             case 3:
                 cell.keyLabel.text = "Người thực hiện"
                 cell.valueLabel.text = dataChiTiet?.nguoiThucHien ?? ""
+                return cell
+                
             case 4:
                 cell.keyLabel.text = "Ghi chú"
                 cell.valueLabel.text = dataChiTiet?.ghiChu ?? ""
+                return cell
+                
             case 5:
                 cell.keyLabel.text = "Trạng thái"
                 cell.valueLabel.text = dataChiTiet?.tenTrangThai ?? ""
                 cell.valueLabel.textColor = UIColor.systemOrange
+                return cell
+                
             case 6:
                 cell.keyLabel.text = "Ý kiến"
                 cell.keyLabel.textColor = UIColor.systemGreen
                 cell.valueLabel.text = ""
+                return cell
+                
             default:
-              return cell
+                return cell
             }
-          return cell
-    }
+        default:
+            if idTab == 1 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "RutVonChiTietTableViewCell", for: indexPath) as? RutVonChiTietTableViewCell else { fatalError()}
+                cell.contentLabel.text = text
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "RutVon2TableViewCell", for: indexPath) as? RutVon2TableViewCell else { fatalError()}
+                cell.upLabel.text = "\(dataChiTiet?.yKien?.HoTen ?? ""),\(dataChiTiet?.yKien?.ThoiGian ?? "")"
+                cell.underLabel.text = dataChiTiet?.yKien?.NoiDung
+                return cell
+            }
+            
+        }}
 }
 
 extension RutLaiChiTietViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -180,7 +212,7 @@ extension RutLaiChiTietViewController: UICollectionViewDelegate, UICollectionVie
                 self.navigationController?.popViewController(animated: true)
                 break
             case 1:
-                let params: [String: Any] = ["id": idItem, "yKien": yKienTextView.text ?? "", "trangThai": "true"]
+                let params: [String: Any] = ["id": idItem, "yKien": text, "trangThai": "true"]
                 MGConnection.requestObject(APIRouter.PutDuyetRutVon(params: params), VonDauTuChiTiet.self) { (result, error) in
                     guard error == nil else {
                         print("Error: \(error?.mErrorMessage ?? "") and \(error?.mErrorCode ?? 0)")
@@ -216,10 +248,10 @@ extension RutLaiChiTietViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if idTab == 1{
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-
+            
         }else {
             return UIEdgeInsets(top: 0, left: collectionView.frame.width / 3 - 30, bottom: 0, right: 0)
-
+            
         }
         
     }

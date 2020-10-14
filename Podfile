@@ -15,6 +15,9 @@ pod 'GMStepper'
 pod 'SnapKit', '~> 5.0.0'
 pod 'ChameleonFramework'
 pod 'XLPagerTabStrip', '~> 9.0'
+pod 'Floaty', '~> 4.2.0'
+pod 'Gallery'
+
 
   # Pods for F49
 

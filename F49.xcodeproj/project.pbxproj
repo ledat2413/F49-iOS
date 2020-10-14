@@ -20,8 +20,20 @@
 		C2594D102519A71F00A99713 /* ContractOpenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D0E2519A71F00A99713 /* ContractOpenTableViewCell.swift */; };
 		C2594D112519A71F00A99713 /* ContractOpenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2594D0F2519A71F00A99713 /* ContractOpenTableViewCell.xib */; };
 		C2594D142519F65400A99713 /* HopDongMoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D122519F65400A99713 /* HopDongMoViewController.swift */; };
+		C259CD95253708CA00CD527D /* CreateHĐCamDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259CD94253708CA00CD527D /* CreateHĐCamDoViewController.swift */; };
+		C25A9F9A2531908000F1D062 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A9F992531908000F1D062 /* CameraViewController.swift */; };
 		C25AD64E251B27890091CA6D /* GetTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25AD64D251B27890091CA6D /* GetTab.swift */; };
 		C25AD650251B2A290091CA6D /* HopDongTheoLoai.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25AD64F251B2A290091CA6D /* HopDongTheoLoai.swift */; };
+		C25E7ED1252D680000490F8D /* TienHoaHongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7ED0252D680000490F8D /* TienHoaHongViewController.swift */; };
+		C25E7ED5252D68FA00490F8D /* HeaderTienHoaHongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7ED3252D68FA00490F8D /* HeaderTienHoaHongTableViewCell.swift */; };
+		C25E7ED6252D68FA00490F8D /* HeaderTienHoaHongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25E7ED4252D68FA00490F8D /* HeaderTienHoaHongTableViewCell.xib */; };
+		C25E7ED9252D6E2800490F8D /* BodyTienHoaHongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7ED7252D6E2800490F8D /* BodyTienHoaHongTableViewCell.swift */; };
+		C25E7EDA252D6E2800490F8D /* BodyTienHoaHongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25E7ED8252D6E2800490F8D /* BodyTienHoaHongTableViewCell.xib */; };
+		C25E7EDD252D75B600490F8D /* NhanVien.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7EDC252D75B600490F8D /* NhanVien.swift */; };
+		C25E7EE0252DB4C900490F8D /* RutVon2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7EDE252DB4C900490F8D /* RutVon2TableViewCell.swift */; };
+		C25E7EE1252DB4C900490F8D /* RutVon2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25E7EDF252DB4C900490F8D /* RutVon2TableViewCell.xib */; };
+		C25E7EE3252DC52300490F8D /* DongLaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7EE2252DC52300490F8D /* DongLaiViewController.swift */; };
+		C25E7EE6252DCB1E00490F8D /* ThuLai.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7EE5252DCB1E00490F8D /* ThuLai.swift */; };
 		C25ED68F25271E21004662A1 /* ThanhLyTaiSanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25ED68E25271E21004662A1 /* ThanhLyTaiSanViewController.swift */; };
 		C25ED6922527253A004662A1 /* NhomTaiSan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25ED6912527253A004662A1 /* NhomTaiSan.swift */; };
 		C261B4C1250F261900B63043 /* CuaHang.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C0250F261900B63043 /* CuaHang.swift */; };
@@ -32,6 +44,21 @@
 		C263108E2522D4E70056FD6F /* RutLaiContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C263108D2522D4E70056FD6F /* RutLaiContainerViewController.swift */; };
 		C26310902522D84B0056FD6F /* ListRutLai.swift in Sources */ = {isa = PBXBuildFile; fileRef = C263108F2522D84B0056FD6F /* ListRutLai.swift */; };
 		C26310942522EF900056FD6F /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26310932522EF900056FD6F /* BaseController.swift */; };
+		C264151F252ABE10001CB558 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264151E252ABE10001CB558 /* OptionViewController.swift */; };
+		C2641522252ACC1D001CB558 /* ThongTinHopDongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2641520252ACC1D001CB558 /* ThongTinHopDongTableViewCell.swift */; };
+		C2641523252ACC1D001CB558 /* ThongTinHopDongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2641521252ACC1D001CB558 /* ThongTinHopDongTableViewCell.xib */; };
+		C2641526252AD19C001CB558 /* TacVuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2641524252AD19C001CB558 /* TacVuTableViewCell.swift */; };
+		C2641527252AD19C001CB558 /* TacVuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2641525252AD19C001CB558 /* TacVuTableViewCell.xib */; };
+		C264152A252AD793001CB558 /* LichSuGiaoDich.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2641529252AD793001CB558 /* LichSuGiaoDich.swift */; };
+		C264152C252B06D4001CB558 /* LichSuVayNo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264152B252B06D4001CB558 /* LichSuVayNo.swift */; };
+		C264152E252B0CC3001CB558 /* LichSuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264152D252B0CC3001CB558 /* LichSuViewController.swift */; };
+		C2641532252B105D001CB558 /* LichSuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2641530252B105D001CB558 /* LichSuTableViewCell.swift */; };
+		C2641533252B105D001CB558 /* LichSuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2641531252B105D001CB558 /* LichSuTableViewCell.xib */; };
+		C2641536252B1151001CB558 /* LichSu2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2641534252B1151001CB558 /* LichSu2TableViewCell.swift */; };
+		C2641537252B1151001CB558 /* LichSu2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2641535252B1151001CB558 /* LichSu2TableViewCell.xib */; };
+		C2641539252B25D3001CB558 /* ChiTietLichSuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2641538252B25D3001CB558 /* ChiTietLichSuViewController.swift */; };
+		C264414D252C0997001610A6 /* BaoCaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264414C252C0997001610A6 /* BaoCaoViewController.swift */; };
+		C2644150252C10CB001610A6 /* BaoCao.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264414F252C10CB001610A6 /* BaoCao.swift */; };
 		C2659C7C251079C00021BC9D /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2659C7A251079C00021BC9D /* NameTableViewCell.swift */; };
 		C2659C7D251079C00021BC9D /* NameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2659C7B251079C00021BC9D /* NameTableViewCell.xib */; };
 		C2659CAF2510AA660021BC9D /* MacDinhTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2659CAD2510AA660021BC9D /* MacDinhTableViewCell.swift */; };
@@ -64,6 +91,11 @@
 		C26704AB251C329E00B82116 /* BoLocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704AA251C329E00B82116 /* BoLocViewController.swift */; };
 		C26704AD251C92E500B82116 /* ChiTietHopDong.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704AC251C92E500B82116 /* ChiTietHopDong.swift */; };
 		C26704B3251C9B9D00B82116 /* ChiTietHopDongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704B2251C9B9D00B82116 /* ChiTietHopDongViewController.swift */; };
+		C267ACE22533F0F3007BCD49 /* CameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ACE02533F0F3007BCD49 /* CameraCollectionViewCell.swift */; };
+		C267ACE32533F0F3007BCD49 /* CameraCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C267ACE12533F0F3007BCD49 /* CameraCollectionViewCell.xib */; };
+		C267ACE62533F725007BCD49 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ACE52533F725007BCD49 /* Camera.swift */; };
+		C267ACEA25355EEC007BCD49 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ACE825355EEC007BCD49 /* ImageCollectionViewCell.swift */; };
+		C267ACEB25355EEC007BCD49 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C267ACE925355EEC007BCD49 /* ImageCollectionViewCell.xib */; };
 		C268E51B252568B600FAF711 /* RutVon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268E51A252568B600FAF711 /* RutVon.swift */; };
 		C268E5232525783D00FAF711 /* RutVonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268E5212525783D00FAF711 /* RutVonTableViewCell.swift */; };
 		C268E5242525783D00FAF711 /* RutVonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C268E5222525783D00FAF711 /* RutVonTableViewCell.xib */; };
@@ -77,7 +109,6 @@
 		C2695BED2508C62400E3A3C8 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEC2508C62400E3A3C8 /* UserViewController.swift */; };
 		C2695BEF2508F69B00E3A3C8 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEE2508F69B00E3A3C8 /* SplashScreenViewController.swift */; };
 		C26BB5DF25241A050024D236 /* TabbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5DE25241A050024D236 /* TabbarButton.swift */; };
-		C26BB5E125241C720024D236 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5E025241C720024D236 /* PickerView.swift */; };
 		C26BB5E3252430BD0024D236 /* DanhSachNhanVien.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5E2252430BD0024D236 /* DanhSachNhanVien.swift */; };
 		C26BB5E5252434CD0024D236 /* RutLaiChiTietViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5E4252434CD0024D236 /* RutLaiChiTietViewController.swift */; };
 		C26BB5E7252437F70024D236 /* QuanLyVonDauTu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5E6252437F70024D236 /* QuanLyVonDauTu.swift */; };
@@ -126,6 +157,8 @@
 		C2E4D68025179F0C00622DF6 /* DoGiaDungChiTiet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E4D67F25179F0C00622DF6 /* DoGiaDungChiTiet.swift */; };
 		C2E4D6832517A3CD00622DF6 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E4D6812517A3CD00622DF6 /* ImageTableViewCell.swift */; };
 		C2E4D6842517A3CD00622DF6 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2E4D6822517A3CD00622DF6 /* ImageTableViewCell.xib */; };
+		C2F4F69A252EAC3600A9C86C /* ThuLai3TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F698252EAC3600A9C86C /* ThuLai3TableViewCell.swift */; };
+		C2F4F69B252EAC3600A9C86C /* ThuLai3TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F4F699252EAC3600A9C86C /* ThuLai3TableViewCell.xib */; };
 		CAB33D739092F3991E860E43 /* Pods_F49.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E3FC27611B8020906915F1 /* Pods_F49.framework */; };
 /* End PBXBuildFile section */
 
@@ -144,8 +177,20 @@
 		C2594D0E2519A71F00A99713 /* ContractOpenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractOpenTableViewCell.swift; sourceTree = "<group>"; };
 		C2594D0F2519A71F00A99713 /* ContractOpenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContractOpenTableViewCell.xib; sourceTree = "<group>"; };
 		C2594D122519F65400A99713 /* HopDongMoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopDongMoViewController.swift; sourceTree = "<group>"; };
+		C259CD94253708CA00CD527D /* CreateHĐCamDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateHĐCamDoViewController.swift"; sourceTree = "<group>"; };
+		C25A9F992531908000F1D062 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		C25AD64D251B27890091CA6D /* GetTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTab.swift; sourceTree = "<group>"; };
 		C25AD64F251B2A290091CA6D /* HopDongTheoLoai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopDongTheoLoai.swift; sourceTree = "<group>"; };
+		C25E7ED0252D680000490F8D /* TienHoaHongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TienHoaHongViewController.swift; sourceTree = "<group>"; };
+		C25E7ED3252D68FA00490F8D /* HeaderTienHoaHongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTienHoaHongTableViewCell.swift; sourceTree = "<group>"; };
+		C25E7ED4252D68FA00490F8D /* HeaderTienHoaHongTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTienHoaHongTableViewCell.xib; sourceTree = "<group>"; };
+		C25E7ED7252D6E2800490F8D /* BodyTienHoaHongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTienHoaHongTableViewCell.swift; sourceTree = "<group>"; };
+		C25E7ED8252D6E2800490F8D /* BodyTienHoaHongTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BodyTienHoaHongTableViewCell.xib; sourceTree = "<group>"; };
+		C25E7EDC252D75B600490F8D /* NhanVien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NhanVien.swift; sourceTree = "<group>"; };
+		C25E7EDE252DB4C900490F8D /* RutVon2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RutVon2TableViewCell.swift; sourceTree = "<group>"; };
+		C25E7EDF252DB4C900490F8D /* RutVon2TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RutVon2TableViewCell.xib; sourceTree = "<group>"; };
+		C25E7EE2252DC52300490F8D /* DongLaiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DongLaiViewController.swift; sourceTree = "<group>"; };
+		C25E7EE5252DCB1E00490F8D /* ThuLai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThuLai.swift; sourceTree = "<group>"; };
 		C25ED68E25271E21004662A1 /* ThanhLyTaiSanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanhLyTaiSanViewController.swift; sourceTree = "<group>"; };
 		C25ED6912527253A004662A1 /* NhomTaiSan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NhomTaiSan.swift; sourceTree = "<group>"; };
 		C261B4C0250F261900B63043 /* CuaHang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuaHang.swift; sourceTree = "<group>"; };
@@ -156,6 +201,21 @@
 		C263108D2522D4E70056FD6F /* RutLaiContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RutLaiContainerViewController.swift; sourceTree = "<group>"; };
 		C263108F2522D84B0056FD6F /* ListRutLai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRutLai.swift; sourceTree = "<group>"; };
 		C26310932522EF900056FD6F /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
+		C264151E252ABE10001CB558 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
+		C2641520252ACC1D001CB558 /* ThongTinHopDongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThongTinHopDongTableViewCell.swift; sourceTree = "<group>"; };
+		C2641521252ACC1D001CB558 /* ThongTinHopDongTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThongTinHopDongTableViewCell.xib; sourceTree = "<group>"; };
+		C2641524252AD19C001CB558 /* TacVuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TacVuTableViewCell.swift; sourceTree = "<group>"; };
+		C2641525252AD19C001CB558 /* TacVuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TacVuTableViewCell.xib; sourceTree = "<group>"; };
+		C2641529252AD793001CB558 /* LichSuGiaoDich.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LichSuGiaoDich.swift; sourceTree = "<group>"; };
+		C264152B252B06D4001CB558 /* LichSuVayNo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LichSuVayNo.swift; sourceTree = "<group>"; };
+		C264152D252B0CC3001CB558 /* LichSuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LichSuViewController.swift; sourceTree = "<group>"; };
+		C2641530252B105D001CB558 /* LichSuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LichSuTableViewCell.swift; sourceTree = "<group>"; };
+		C2641531252B105D001CB558 /* LichSuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LichSuTableViewCell.xib; sourceTree = "<group>"; };
+		C2641534252B1151001CB558 /* LichSu2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LichSu2TableViewCell.swift; sourceTree = "<group>"; };
+		C2641535252B1151001CB558 /* LichSu2TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LichSu2TableViewCell.xib; sourceTree = "<group>"; };
+		C2641538252B25D3001CB558 /* ChiTietLichSuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChiTietLichSuViewController.swift; sourceTree = "<group>"; };
+		C264414C252C0997001610A6 /* BaoCaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaoCaoViewController.swift; sourceTree = "<group>"; };
+		C264414F252C10CB001610A6 /* BaoCao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaoCao.swift; sourceTree = "<group>"; };
 		C2659C7A251079C00021BC9D /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
 		C2659C7B251079C00021BC9D /* NameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameTableViewCell.xib; sourceTree = "<group>"; };
 		C2659CAD2510AA660021BC9D /* MacDinhTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacDinhTableViewCell.swift; sourceTree = "<group>"; };
@@ -191,6 +251,11 @@
 		C26704AA251C329E00B82116 /* BoLocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoLocViewController.swift; sourceTree = "<group>"; };
 		C26704AC251C92E500B82116 /* ChiTietHopDong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChiTietHopDong.swift; sourceTree = "<group>"; };
 		C26704B2251C9B9D00B82116 /* ChiTietHopDongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChiTietHopDongViewController.swift; sourceTree = "<group>"; };
+		C267ACE02533F0F3007BCD49 /* CameraCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewCell.swift; sourceTree = "<group>"; };
+		C267ACE12533F0F3007BCD49 /* CameraCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraCollectionViewCell.xib; sourceTree = "<group>"; };
+		C267ACE52533F725007BCD49 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		C267ACE825355EEC007BCD49 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		C267ACE925355EEC007BCD49 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		C268E51A252568B600FAF711 /* RutVon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RutVon.swift; sourceTree = "<group>"; };
 		C268E5212525783D00FAF711 /* RutVonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RutVonTableViewCell.swift; sourceTree = "<group>"; };
 		C268E5222525783D00FAF711 /* RutVonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RutVonTableViewCell.xib; sourceTree = "<group>"; };
@@ -204,7 +269,6 @@
 		C2695BEC2508C62400E3A3C8 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		C2695BEE2508F69B00E3A3C8 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		C26BB5DE25241A050024D236 /* TabbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarButton.swift; sourceTree = "<group>"; };
-		C26BB5E025241C720024D236 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		C26BB5E2252430BD0024D236 /* DanhSachNhanVien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanhSachNhanVien.swift; sourceTree = "<group>"; };
 		C26BB5E4252434CD0024D236 /* RutLaiChiTietViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RutLaiChiTietViewController.swift; sourceTree = "<group>"; };
 		C26BB5E6252437F70024D236 /* QuanLyVonDauTu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuanLyVonDauTu.swift; sourceTree = "<group>"; };
@@ -253,6 +317,8 @@
 		C2E4D67F25179F0C00622DF6 /* DoGiaDungChiTiet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoGiaDungChiTiet.swift; sourceTree = "<group>"; };
 		C2E4D6812517A3CD00622DF6 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		C2E4D6822517A3CD00622DF6 /* ImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
+		C2F4F698252EAC3600A9C86C /* ThuLai3TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThuLai3TableViewCell.swift; sourceTree = "<group>"; };
+		C2F4F699252EAC3600A9C86C /* ThuLai3TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThuLai3TableViewCell.xib; sourceTree = "<group>"; };
 		E42C8533E2BF20FFED4D10D1 /* Pods-F49.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F49.release.xcconfig"; path = "Target Support Files/Pods-F49/Pods-F49.release.xcconfig"; sourceTree = "<group>"; };
 		E65DEDA807C3DBF97E92936A /* Pods-F49.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F49.debug.xcconfig"; path = "Target Support Files/Pods-F49/Pods-F49.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -307,10 +373,16 @@
 		C2594D042519A16100A99713 /* HopDongCamDo */ = {
 			isa = PBXGroup;
 			children = (
-				C2594D122519F65400A99713 /* HopDongMoViewController.swift */,
 				C2594D052519A1A000A99713 /* HopDongCamDoViewController.swift */,
+				C2594D122519F65400A99713 /* HopDongMoViewController.swift */,
 				C26704AA251C329E00B82116 /* BoLocViewController.swift */,
 				C26704B2251C9B9D00B82116 /* ChiTietHopDongViewController.swift */,
+				C264151E252ABE10001CB558 /* OptionViewController.swift */,
+				C264152D252B0CC3001CB558 /* LichSuViewController.swift */,
+				C2641538252B25D3001CB558 /* ChiTietLichSuViewController.swift */,
+				C25E7EE2252DC52300490F8D /* DongLaiViewController.swift */,
+				C25A9F992531908000F1D062 /* CameraViewController.swift */,
+				C259CD94253708CA00CD527D /* CreateHĐCamDoViewController.swift */,
 			);
 			path = HopDongCamDo;
 			sourceTree = "<group>";
@@ -322,6 +394,33 @@
 				C2594D0F2519A71F00A99713 /* ContractOpenTableViewCell.xib */,
 			);
 			path = ContractOpen;
+			sourceTree = "<group>";
+		};
+		C25E7ED2252D68C700490F8D /* TienHoaHongView */ = {
+			isa = PBXGroup;
+			children = (
+				C25E7ED3252D68FA00490F8D /* HeaderTienHoaHongTableViewCell.swift */,
+				C25E7ED4252D68FA00490F8D /* HeaderTienHoaHongTableViewCell.xib */,
+				C25E7ED7252D6E2800490F8D /* BodyTienHoaHongTableViewCell.swift */,
+				C25E7ED8252D6E2800490F8D /* BodyTienHoaHongTableViewCell.xib */,
+			);
+			path = TienHoaHongView;
+			sourceTree = "<group>";
+		};
+		C25E7EDB252D757600490F8D /* TienHoaHong */ = {
+			isa = PBXGroup;
+			children = (
+				C25E7EDC252D75B600490F8D /* NhanVien.swift */,
+			);
+			path = TienHoaHong;
+			sourceTree = "<group>";
+		};
+		C25E7EE4252DCB0E00490F8D /* ThuLai */ = {
+			isa = PBXGroup;
+			children = (
+				C25E7EE5252DCB1E00490F8D /* ThuLai.swift */,
+			);
+			path = ThuLai;
 			sourceTree = "<group>";
 		};
 		C25ED68D25271E08004662A1 /* ThanhLyTaiSan */ = {
@@ -349,6 +448,62 @@
 				C26BB5E4252434CD0024D236 /* RutLaiChiTietViewController.swift */,
 			);
 			path = "RutLai&RutVon";
+			sourceTree = "<group>";
+		};
+		C2641519252AB4A9001CB558 /* ThongTinHopDong */ = {
+			isa = PBXGroup;
+			children = (
+				C264152F252B1034001CB558 /* LichSu */,
+				C2641520252ACC1D001CB558 /* ThongTinHopDongTableViewCell.swift */,
+				C2641521252ACC1D001CB558 /* ThongTinHopDongTableViewCell.xib */,
+				C2641524252AD19C001CB558 /* TacVuTableViewCell.swift */,
+				C2641525252AD19C001CB558 /* TacVuTableViewCell.xib */,
+			);
+			path = ThongTinHopDong;
+			sourceTree = "<group>";
+		};
+		C2641528252AD780001CB558 /* LichSu */ = {
+			isa = PBXGroup;
+			children = (
+				C2641529252AD793001CB558 /* LichSuGiaoDich.swift */,
+				C264152B252B06D4001CB558 /* LichSuVayNo.swift */,
+			);
+			path = LichSu;
+			sourceTree = "<group>";
+		};
+		C264152F252B1034001CB558 /* LichSu */ = {
+			isa = PBXGroup;
+			children = (
+				C2641530252B105D001CB558 /* LichSuTableViewCell.swift */,
+				C2641531252B105D001CB558 /* LichSuTableViewCell.xib */,
+				C2641534252B1151001CB558 /* LichSu2TableViewCell.swift */,
+				C2641535252B1151001CB558 /* LichSu2TableViewCell.xib */,
+			);
+			path = LichSu;
+			sourceTree = "<group>";
+		};
+		C264414A252C08DD001610A6 /* TienHoaHong */ = {
+			isa = PBXGroup;
+			children = (
+				C25E7ED0252D680000490F8D /* TienHoaHongViewController.swift */,
+			);
+			path = TienHoaHong;
+			sourceTree = "<group>";
+		};
+		C264414B252C0985001610A6 /* BaoCaoTongHop */ = {
+			isa = PBXGroup;
+			children = (
+				C264414C252C0997001610A6 /* BaoCaoViewController.swift */,
+			);
+			path = BaoCaoTongHop;
+			sourceTree = "<group>";
+		};
+		C264414E252C10B3001610A6 /* BaoCao */ = {
+			isa = PBXGroup;
+			children = (
+				C264414F252C10CB001610A6 /* BaoCao.swift */,
+			);
+			path = BaoCao;
 			sourceTree = "<group>";
 		};
 		C2659C702510609C0021BC9D /* UserView */ = {
@@ -470,6 +625,11 @@
 		C265C18C25071EFE000D4FAE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C267ACE42533F6FB007BCD49 /* Camera */,
+				C25E7EE4252DCB0E00490F8D /* ThuLai */,
+				C25E7EDB252D757600490F8D /* TienHoaHong */,
+				C264414E252C10B3001610A6 /* BaoCao */,
+				C2641528252AD780001CB558 /* LichSu */,
 				C25ED690252724F4004662A1 /* QuanLyTaiSan */,
 				C265C19C25073A0D000D4FAE /* Token.swift */,
 				C265C1A025078812000D4FAE /* UserProfile.swift */,
@@ -522,7 +682,6 @@
 				C261B4C4250F556900B63043 /* ExtensionUIView.swift */,
 				C26310932522EF900056FD6F /* BaseController.swift */,
 				C26BB5DE25241A050024D236 /* TabbarButton.swift */,
-				C26BB5E025241C720024D236 /* PickerView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -530,6 +689,11 @@
 		C2661CCE2509D5BE00430595 /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
+				C267ACE725355ED7007BCD49 /* ChiTietHopDong */,
+				C2EBBCB32532E617007F4214 /* Camera */,
+				C2F4F68F252EA6F900A9C86C /* ThuLai */,
+				C25E7ED2252D68C700490F8D /* TienHoaHongView */,
+				C2641519252AB4A9001CB558 /* ThongTinHopDong */,
 				C28821B4252895BF00EF6B91 /* ThanhLyTaiSan */,
 				C268E51C2525778A00FAF711 /* QuanLyVon */,
 				C26BB5ED25247FAA0024D236 /* RutVon */,
@@ -557,6 +721,23 @@
 				C268E52B2525C89400FAF711 /* Footer.xib */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		C267ACE42533F6FB007BCD49 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				C267ACE52533F725007BCD49 /* Camera.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		C267ACE725355ED7007BCD49 /* ChiTietHopDong */ = {
+			isa = PBXGroup;
+			children = (
+				C267ACE825355EEC007BCD49 /* ImageCollectionViewCell.swift */,
+				C267ACE925355EEC007BCD49 /* ImageCollectionViewCell.xib */,
+			);
+			path = ChiTietHopDong;
 			sourceTree = "<group>";
 		};
 		C268E51C2525778A00FAF711 /* QuanLyVon */ = {
@@ -593,6 +774,8 @@
 				C268E5222525783D00FAF711 /* RutVonTableViewCell.xib */,
 				C268E52525258D9F00FAF711 /* RutVonChiTietTableViewCell.swift */,
 				C268E52625258D9F00FAF711 /* RutVonChiTietTableViewCell.xib */,
+				C25E7EDE252DB4C900490F8D /* RutVon2TableViewCell.swift */,
+				C25E7EDF252DB4C900490F8D /* RutVon2TableViewCell.xib */,
 			);
 			path = RutVon;
 			sourceTree = "<group>";
@@ -618,6 +801,8 @@
 		C282CC0825120A4A00F62B63 /* UtilitiesView */ = {
 			isa = PBXGroup;
 			children = (
+				C264414B252C0985001610A6 /* BaoCaoTongHop */,
+				C264414A252C08DD001610A6 /* TienHoaHong */,
 				C25ED68D25271E08004662A1 /* ThanhLyTaiSan */,
 				C26BB5E825243A7D0024D236 /* VonDauTu */,
 				C26310882522C69C0056FD6F /* RutLai&RutVon */,
@@ -714,6 +899,24 @@
 			path = InfoCamDo;
 			sourceTree = "<group>";
 		};
+		C2EBBCB32532E617007F4214 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				C267ACE02533F0F3007BCD49 /* CameraCollectionViewCell.swift */,
+				C267ACE12533F0F3007BCD49 /* CameraCollectionViewCell.xib */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		C2F4F68F252EA6F900A9C86C /* ThuLai */ = {
+			isa = PBXGroup;
+			children = (
+				C2F4F698252EAC3600A9C86C /* ThuLai3TableViewCell.swift */,
+				C2F4F699252EAC3600A9C86C /* ThuLai3TableViewCell.xib */,
+			);
+			path = ThuLai;
+			sourceTree = "<group>";
+		};
 		FB6D794E8FEFCEC15328425A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -787,8 +990,12 @@
 				C2C25845251373C90048FAB2 /* CamDoTableViewCell.xib in Resources */,
 				C2659CBC2510AD090021BC9D /* BodyCollectionViewCell.xib in Resources */,
 				C2C2585525148F380048FAB2 /* InfoCamDoTableViewCell.xib in Resources */,
+				C267ACE32533F0F3007BCD49 /* CameraCollectionViewCell.xib in Resources */,
+				C2641533252B105D001CB558 /* LichSuTableViewCell.xib in Resources */,
 				C268E52825258D9F00FAF711 /* RutVonChiTietTableViewCell.xib in Resources */,
+				C2F4F69B252EAC3600A9C86C /* ThuLai3TableViewCell.xib in Resources */,
 				C20FF740251F36500096A38F /* NotificationTableViewCell.xib in Resources */,
+				C267ACEB25355EEC007BCD49 /* ImageCollectionViewCell.xib in Resources */,
 				C2E4D6842517A3CD00622DF6 /* ImageTableViewCell.xib in Resources */,
 				C2BC99D02521873900796448 /* USER.storyboard in Resources */,
 				C2C25859251491FA0048FAB2 /* CheckBoxTableViewCell.xib in Resources */,
@@ -799,8 +1006,10 @@
 				C265C18125071EE2000D4FAE /* Assets.xcassets in Resources */,
 				C282CC11251211E700F62B63 /* UtilitiesHeaderCollectionViewCell.xib in Resources */,
 				C268E5242525783D00FAF711 /* RutVonTableViewCell.xib in Resources */,
+				C25E7EDA252D6E2800490F8D /* BodyTienHoaHongTableViewCell.xib in Resources */,
 				C2C258692514B1E10048FAB2 /* Menu.xib in Resources */,
 				C2BC99CF2521873900796448 /* THONGBAO.storyboard in Resources */,
+				C2641523252ACC1D001CB558 /* ThongTinHopDongTableViewCell.xib in Resources */,
 				C2594D112519A71F00A99713 /* ContractOpenTableViewCell.xib in Resources */,
 				C2BC99D12521873900796448 /* TIENICH.storyboard in Resources */,
 				C268E5312525D4DA00FAF711 /* ButtonFooterCollectionViewCell.xib in Resources */,
@@ -810,10 +1019,14 @@
 				C2659CC02510AD1C0021BC9D /* HeaderCollectionViewCell.xib in Resources */,
 				C2659C7D251079C00021BC9D /* NameTableViewCell.xib in Resources */,
 				C2BC99CD2521873900796448 /* HOME.storyboard in Resources */,
+				C25E7ED6252D68FA00490F8D /* HeaderTienHoaHongTableViewCell.xib in Resources */,
 				C2659CB02510AA660021BC9D /* MacDinhTableViewCell.xib in Resources */,
 				C282CBFA2511CB8500F62B63 /* ShopUITableViewCell.xib in Resources */,
 				C2659CB42510AA760021BC9D /* MatKhauTableViewCell.xib in Resources */,
 				C2659CB82510AA810021BC9D /* CauHinhTableViewCell.xib in Resources */,
+				C2641537252B1151001CB558 /* LichSu2TableViewCell.xib in Resources */,
+				C2641527252AD19C001CB558 /* TacVuTableViewCell.xib in Resources */,
+				C25E7EE1252DB4C900490F8D /* RutVon2TableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,28 +1085,36 @@
 				C282CC10251211E700F62B63 /* UtilitiesHeaderCollectionViewCell.swift in Sources */,
 				C26BB5DF25241A050024D236 /* TabbarButton.swift in Sources */,
 				C25AD650251B2A290091CA6D /* HopDongTheoLoai.swift in Sources */,
+				C25E7EE6252DCB1E00490F8D /* ThuLai.swift in Sources */,
 				C2659CB32510AA760021BC9D /* MatKhauTableViewCell.swift in Sources */,
 				C2695BED2508C62400E3A3C8 /* UserViewController.swift in Sources */,
+				C25E7ED9252D6E2800490F8D /* BodyTienHoaHongTableViewCell.swift in Sources */,
 				C268E52725258D9F00FAF711 /* RutVonChiTietTableViewCell.swift in Sources */,
 				C282CC14251219B200F62B63 /* UtilitiesBodyCollectionViewCell.swift in Sources */,
 				C265C1962507218E000D4FAE /* MGConnection.swift in Sources */,
+				C264151F252ABE10001CB558 /* OptionViewController.swift in Sources */,
 				C288472F250B0F7200CB84FA /* Contants.swift in Sources */,
 				C26704A9251C2C5C00B82116 /* Underline.swift in Sources */,
 				C2659C7C251079C00021BC9D /* NameTableViewCell.swift in Sources */,
 				C28821B7252895DE00EF6B91 /* ThanhLyTaiSanTableViewCell.swift in Sources */,
 				C2695BEF2508F69B00E3A3C8 /* SplashScreenViewController.swift in Sources */,
+				C25E7ED5252D68FA00490F8D /* HeaderTienHoaHongTableViewCell.swift in Sources */,
 				C2659CBF2510AD1C0021BC9D /* HeaderCollectionViewCell.swift in Sources */,
 				C265C1A125078812000D4FAE /* UserProfile.swift in Sources */,
 				C26BB5EC25244CB40024D236 /* VonDauTuChiTiet.swift in Sources */,
 				C268E52A2525C86C00FAF711 /* Footer.swift in Sources */,
 				C243DCCF251DA539004C6347 /* ThongTinThuChi.swift in Sources */,
+				C2641539252B25D3001CB558 /* ChiTietLichSuViewController.swift in Sources */,
 				C2C25875251642C30048FAB2 /* DinhGia.swift in Sources */,
 				C243DCD2251DF001004C6347 /* LogOutTableViewCell.swift in Sources */,
 				C26704AD251C92E500B82116 /* ChiTietHopDong.swift in Sources */,
-				C26BB5E125241C720024D236 /* PickerView.swift in Sources */,
 				C2594D062519A1A000A99713 /* HopDongCamDoViewController.swift in Sources */,
 				C2E4D68025179F0C00622DF6 /* DoGiaDungChiTiet.swift in Sources */,
+				C2F4F69A252EAC3600A9C86C /* ThuLai3TableViewCell.swift in Sources */,
+				C2644150252C10CB001610A6 /* BaoCao.swift in Sources */,
+				C2641526252AD19C001CB558 /* TacVuTableViewCell.swift in Sources */,
 				C263108E2522D4E70056FD6F /* RutLaiContainerViewController.swift in Sources */,
+				C267ACE62533F725007BCD49 /* Camera.swift in Sources */,
 				C25AD64E251B27890091CA6D /* GetTab.swift in Sources */,
 				C2C2583F25135AD30048FAB2 /* CamDoViewController.swift in Sources */,
 				C265C19225071FF6000D4FAE /* APIRouter.swift in Sources */,
@@ -906,24 +1127,32 @@
 				C265C19425072158000D4FAE /* BaseResponse.swift in Sources */,
 				C2594D142519F65400A99713 /* HopDongMoViewController.swift in Sources */,
 				C2C2585425148F380048FAB2 /* InfoCamDoTableViewCell.swift in Sources */,
+				C25E7ED1252D680000490F8D /* TienHoaHongViewController.swift in Sources */,
+				C25E7EE0252DB4C900490F8D /* RutVon2TableViewCell.swift in Sources */,
 				C265C19F250777A1000D4FAE /* UserToken.swift in Sources */,
 				C26BB5EA25243A8F0024D236 /* VonDauTuViewController.swift in Sources */,
 				C2695BEB2508BF9200E3A3C8 /* HomeViewController.swift in Sources */,
 				C26BB5F025247FC50024D236 /* QuanLyVonTableViewCell.swift in Sources */,
 				C2C2584925144D7A0048FAB2 /* CamDo.swift in Sources */,
+				C267ACEA25355EEC007BCD49 /* ImageCollectionViewCell.swift in Sources */,
 				C2C2586B2514B1ED0048FAB2 /* Menu.swift in Sources */,
+				C25E7EE3252DC52300490F8D /* DongLaiViewController.swift in Sources */,
 				C26BB5E7252437F70024D236 /* QuanLyVonDauTu.swift in Sources */,
 				C20FF73F251F36500096A38F /* NotificationTableViewCell.swift in Sources */,
 				C26BB5E5252434CD0024D236 /* RutLaiChiTietViewController.swift in Sources */,
 				C2C25844251373C90048FAB2 /* CamDoTableViewCell.swift in Sources */,
 				C282CBF92511CB8500F62B63 /* ShopUITableViewCell.swift in Sources */,
 				C2659CC52510BE740021BC9D /* CuaHangMacDinhViewController.swift in Sources */,
+				C264152A252AD793001CB558 /* LichSuGiaoDich.swift in Sources */,
+				C264414D252C0997001610A6 /* BaoCaoViewController.swift in Sources */,
 				C2659CAF2510AA660021BC9D /* MacDinhTableViewCell.swift in Sources */,
 				C243DCCB251D9043004C6347 /* ThuChi.swift in Sources */,
+				C264152E252B0CC3001CB558 /* LichSuViewController.swift in Sources */,
 				C25ED6922527253A004662A1 /* NhomTaiSan.swift in Sources */,
 				C2C25877251643FC0048FAB2 /* DoGiaDung.swift in Sources */,
 				C2659CC92510BE9C0021BC9D /* CaiDatViewController.swift in Sources */,
 				C268E5232525783D00FAF711 /* RutVonTableViewCell.swift in Sources */,
+				C264152C252B06D4001CB558 /* LichSuVayNo.swift in Sources */,
 				C26704B3251C9B9D00B82116 /* ChiTietHopDongViewController.swift in Sources */,
 				C25ED68F25271E21004662A1 /* ThanhLyTaiSanViewController.swift in Sources */,
 				C263108A2522C6B10056FD6F /* RutLaiViewController.swift in Sources */,
@@ -938,9 +1167,13 @@
 				C2C25871251626150048FAB2 /* TestCollectionViewController.swift in Sources */,
 				C282CC0A25120A6D00F62B63 /* UtilitiesViewController.swift in Sources */,
 				C26704AB251C329E00B82116 /* BoLocViewController.swift in Sources */,
+				C2641522252ACC1D001CB558 /* ThongTinHopDongTableViewCell.swift in Sources */,
 				C265C17A25071EE0000D4FAE /* SceneDelegate.swift in Sources */,
 				C2C2585025145FA00048FAB2 /* ThongTinCamDoViewController.swift in Sources */,
 				C263108C2522D0310056FD6F /* TabTrangThai.swift in Sources */,
+				C2641536252B1151001CB558 /* LichSu2TableViewCell.swift in Sources */,
+				C25E7EDD252D75B600490F8D /* NhanVien.swift in Sources */,
+				C25A9F9A2531908000F1D062 /* CameraViewController.swift in Sources */,
 				C26BB5E3252430BD0024D236 /* DanhSachNhanVien.swift in Sources */,
 				C2E4D6832517A3CD00622DF6 /* ImageTableViewCell.swift in Sources */,
 				C243DCC4251D8806004C6347 /* ThuChiViewController.swift in Sources */,
@@ -952,7 +1185,10 @@
 				C20FF73B251F18E20096A38F /* NotificationViewController.swift in Sources */,
 				C282CBF52511A73400F62B63 /* NavigationBar.swift in Sources */,
 				C265C19D25073A0D000D4FAE /* Token.swift in Sources */,
+				C267ACE22533F0F3007BCD49 /* CameraCollectionViewCell.swift in Sources */,
 				C2C25858251491FA0048FAB2 /* CheckBoxTableViewCell.swift in Sources */,
+				C2641532252B105D001CB558 /* LichSuTableViewCell.swift in Sources */,
+				C259CD95253708CA00CD527D /* CreateHĐCamDoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -44,7 +44,18 @@ enum APIRouter: URLRequestConvertible {
     case GetTabTrangThaiTaiSan
     case GetDLTaiSan(idNhomVatCamDo: Int, idVatCamDo: Int, trangThai: Int)
     case GetDetailTaiSan(id: Int)
-    
+    case GetLichSuGiaoDich(id: Int)
+    case GetCountLichSuGiaoDich(id: Int)
+    case GetChiTietLichSuGiaoDich(idGiaoDich: Int, idHopDong: Int)
+    case GetLichSuVayNo(id: Int)
+    case GetCountLichSuVayNo(id: Int)
+    case GetChiTietLichSuVayNo( idHopDong: Int)
+    case GetBaoCaoTongHop(params: [String: Any])
+    case GetTienHoaHong(params: [String: Any])
+    case GetChiTietHopDongThuLai(idHopDong: Int, ngayHieuLuc: String)
+    case GetLoaiGiaoDich
+    case PutThucHienThuLai(idHopDong: Int,loaiGiaoDich: Int,idCuaHangFormApp: Int, tienThucTe: Double, ngayHieuLuc: String)
+    case UploadImage(imgStr: String, soHopDong: String)
     
     // =========== End define api ===========
     
@@ -55,6 +66,10 @@ enum APIRouter: URLRequestConvertible {
             return .post
         case .PutDuyetRutVon:
             return .put
+        case .PutThucHienThuLai:
+            return .put
+        case .UploadImage:
+            return .post
         default:
             return .get
             
@@ -130,12 +145,37 @@ enum APIRouter: URLRequestConvertible {
             return "api/QuanLyTaiSan/GetDSTaiSan"
         case .GetDetailTaiSan:
             return "api/QuanLyTaiSan/GetDetailTaiSan"
+        case .GetLichSuGiaoDich:
+            return "api/LichSu/GetLichSuGiaoDich"
+        case .GetCountLichSuGiaoDich:
+            return "api/LichSu/GetCountLichSuGiaoDich"
+        case .GetChiTietLichSuGiaoDich:
+            return "api/LichSu/GetChiTietLichSuGiaoDich"
+        case .GetLichSuVayNo:
+            return "api/LichSu/GetLichSuVayNo"
+        case .GetCountLichSuVayNo:
+            return "api/LichSu/GetCountLichSuVayNo"
+        case .GetChiTietLichSuVayNo:
+            return "api/LichSu/GetChiTietLichSuVayNo"
+        case .GetBaoCaoTongHop:
+            return "api/BaoCao/GetBaoCaoTongHop"
+        case .GetTienHoaHong:
+            return "api/TienHoaHong/GetTienHoaHong"
+        case .GetChiTietHopDongThuLai:
+            return "api/ThuLai/GetChiTietHopDongThuLai"
+        case .GetLoaiGiaoDich:
+            return "api/ThuLai/GetLoaiGiaoDich"
+        case .PutThucHienThuLai:
+            return "api/ThuLai/PutThucHienThuLai"
+        case .UploadImage:
+            return "api/HopDong/UploadImage"
         }
     }
     
     // MARK: - Headers
     public var headers: HTTPHeaders {
-       var headers = ["Accept": "application/json", "Content-Type": "application/json"]
+        var headers = ["Accept": "application/json", "Content-Type": "application/json"]
+        //        var headers = ["Accept": "application/json"]
         
         switch self {
         case .Login:
@@ -233,6 +273,30 @@ enum APIRouter: URLRequestConvertible {
             return ["idNhomVatCamDo": idNhomVatCamDo, "idVatCamDo" : idVatCamDo, "trangThai" : trangThai]
         case .GetDetailTaiSan(let id):
             return ["idItem" : id]
+        case .GetLichSuGiaoDich(let id):
+            return ["idHopDong" : id]
+        case .GetCountLichSuGiaoDich(let id):
+            return ["idHopDong" : id]
+        case .GetChiTietLichSuGiaoDich(let idGiaoDich, let idHopDong):
+            return ["idGiaoDich": idGiaoDich, "idHopDong": idHopDong]
+        case .GetLichSuVayNo(let id):
+            return ["idKhachHang" : id]
+        case .GetChiTietLichSuVayNo(let idHopDong):
+            return ["idHopDong" : idHopDong]
+        case .GetCountLichSuVayNo(let id):
+            return ["idKhachHang" : id]
+        case .GetBaoCaoTongHop(let params):
+            return params
+        case .GetTienHoaHong(let params):
+            return params
+        case .GetChiTietHopDongThuLai(let idHopDong, let ngayHieuLuc):
+            return ["idHopDong": idHopDong, "ngayHieuLuc": ngayHieuLuc]
+        case .GetLoaiGiaoDich:
+            return [:]
+        case .PutThucHienThuLai(let idHopDong,let loaiGiaoDich,let idCuaHangFormApp,let tienThucTe,let ngayHieuLuc):
+            return ["idHopDong" : idHopDong, "loaiGiaoDich": loaiGiaoDich , "idCuaHangFormApp": idCuaHangFormApp, "tienThuThucTe": tienThucTe, "ngayHieuLuc": ngayHieuLuc]
+        case .UploadImage(let imgStr, let soHopDong):
+            return ["imgStr" : imgStr, "soHopDong" : soHopDong]
         }
     }
     
@@ -243,23 +307,36 @@ enum APIRouter: URLRequestConvertible {
         // setting path
         var urlRequest: URLRequest = URLRequest(url: url.appendingPathComponent(path))
         
-        // setting method
-       
-        
         // setting header
         for (key, value) in headers {
             urlRequest.addValue(value, forHTTPHeaderField: key)
         }
-        
-        if let parameters = parameters {
+        switch method {
+        case .post:
+            urlRequest.httpMethod = method.rawValue
             
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
             
+            switch self {
+            case .UploadImage:
+                urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
+                
+            default:
+                if let parameters = parameters {
+                    urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+                }}
+                
+            default:
+                
+                if let parameters = parameters {
+                    urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+                }
+                urlRequest.httpMethod = method.rawValue
+            }
+            
+            
+            
+            return urlRequest
         }
         
-        urlRequest.httpMethod = method.rawValue
-        return urlRequest
-    }
-    
 }
 

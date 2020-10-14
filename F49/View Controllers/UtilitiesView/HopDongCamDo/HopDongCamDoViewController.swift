@@ -20,19 +20,28 @@ class HopDongCamDoViewController: TabbarButton{
     var idStatus: String?
     var keyWord: String?
     
+    var isHidden: Bool = false
+    
     //MARK: --IBOutlet
     @IBOutlet weak var headerView: NavigationBar!
     @IBOutlet weak var shopTextField: UITextField!
     @IBOutlet weak var contrectLabel: UILabel!
     @IBOutlet var viewTo: UIView!
     
+    @IBOutlet weak var floatingButton: UIButton!
+    @IBOutlet weak var floatingButtonContainer: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         
+        
     }
-    
+
     //MARK: --IBAction
+    
+    @IBAction func floatingButtonPressed(_ sender: Any) {
+        
+    }
     
     @IBAction func locButtonPressed(_ sender: UIButton) {
         let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "BoLocViewController") as! BoLocViewController
@@ -44,9 +53,10 @@ class HopDongCamDoViewController: TabbarButton{
             self.reloadPagerTabStripView()
         }
         self.present(itemVC, animated: true, completion: nil)
-       
+        
         
     }
+    
     
     //MARK: --Func
     
@@ -59,6 +69,7 @@ class HopDongCamDoViewController: TabbarButton{
             if let result = result {
                 self.dataCuaHang = result
                 self.shopTextField.text = self.dataCuaHang[0].tenCuaHang
+                self.floatingButtonContainer.isHidden = true
             }
         }
     }
@@ -77,11 +88,15 @@ class HopDongCamDoViewController: TabbarButton{
     }
     
     func setUpUI(){
+        
+        floatingButton.layer.cornerRadius = floatingButton.frame.width / 2
+        floatingButton.clipsToBounds = true
+        floatingButtonContainer.layer.cornerRadius = floatingButtonContainer.frame.width / 2
+        floatingButtonContainer.clipsToBounds = true
         displayHeaderView()
         loadShop()
         loadStatus()
         createPickerView()
-        dismissPickerView()
         contrectLabel.underlined()
         displayTabbarButton(colors: UIColor.orange)
         
@@ -99,23 +114,24 @@ class HopDongCamDoViewController: TabbarButton{
     }
     
     func createPickerView() {
-           let pickerView = UIPickerView()
-           pickerView.delegate = self
-           shopTextField.inputView = pickerView
-       }
-       
-       func dismissPickerView() {
+        let pickerView = UIPickerView().createPicker(tf: shopTextField)
+        pickerView.delegate = self
+        dismissPickerView()
+    }
+     func dismissPickerView() {
            let toolBar = UIToolbar()
            toolBar.sizeToFit()
            let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
            toolBar.setItems([button], animated: true)
            toolBar.isUserInteractionEnabled = true
            shopTextField.inputAccessoryView = toolBar
+        
        }
        
        @objc func action() {
            view.endEditing(true)
        }
+    
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
@@ -147,9 +163,15 @@ extension HopDongCamDoViewController: UIPickerViewDelegate, UIPickerViewDataSour
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCuaHang = dataCuaHang[row].tenCuaHang
         shopTextField.text = selectedCuaHang
-//        let imageDataDict:[String: Int] = ["idShop": dataCuaHang[row].id]
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notificationName"), object: nil, userInfo: imageDataDict)
+        //        let imageDataDict:[String: Int] = ["idShop": dataCuaHang[row].id]
+        //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notificationName"), object: nil, userInfo: imageDataDict)
         idShop = dataCuaHang[row].id
+        if dataCuaHang[row].id == 0 {
+            self.floatingButtonContainer.isHidden = true
+        }else{
+             self.floatingButtonContainer.isHidden = false
+        }
+        self.view.reloadInputViews()
         reloadPagerTabStripView()
     }
 }

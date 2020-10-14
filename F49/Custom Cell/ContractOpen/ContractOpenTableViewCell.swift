@@ -27,6 +27,8 @@ class ContractOpenTableViewCell: UITableViewCell {
     @IBOutlet weak var icon2ImageView: UIImageView!
     @IBOutlet weak var icon3Imageview: UIImageView!
     
+    @IBOutlet weak var noDataLabel: UILabel!
+    
     @IBOutlet weak var betweenLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

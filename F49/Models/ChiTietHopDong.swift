@@ -10,30 +10,30 @@ import Foundation
 import ObjectMapper
 import RealmSwift
 
-class ChiTietHopDong: Object, Mappable{
+class ChiTietHopDong: Mappable{
     
-    @objc dynamic var id: Int = 0
-    @objc dynamic var numberContract: String = ""
-    @objc dynamic var idKhachHang: Int = 0
-    @objc dynamic var fullName: String = ""
-    @objc dynamic var phoneNumber: String = ""
-    @objc dynamic var duNo: String = ""
-    @objc dynamic var expiredDate: String = ""
-    @objc dynamic var plusMin: Int = 0
-    @objc dynamic var interest: String = ""
-    @objc dynamic var fee: String = ""
-    @objc dynamic var total: String = ""
-    @objc dynamic var appointmentDate: String = ""
-    @objc dynamic var content: String = ""
-    @objc dynamic var doDeLai: String = ""
-    @objc dynamic var catLai: Bool = false
-    @objc dynamic var ngayNhacNho: String = ""
-    @objc dynamic var countLichSuGiaoDich: Int = 0
-    @objc dynamic var countLichSuVay: Int = 0
+   var id: Int = 0
+     var numberContract: String = ""
+   var idKhachHang: Int = 0
+     var fullName: String = ""
+     var phoneNumber: String = ""
+    var duNo: String = ""
+     var expiredDate: String = ""
+     var plusMin: Int = 0
+     var interest: String = ""
+     var fee: String = ""
+    var total: String = ""
+     var appointmentDate: String = ""
+    var content: String = ""
+     var doDeLai: String = ""
+     var catLai: Bool = false
+    var ngayNhacNho: String = ""
+     var countLichSuGiaoDich: Int = 0
+     var countLichSuVay: Int = 0
+    var hinhAnh: [HinhAnh] = []
     
     
-    required convenience init?(map: Map) {
-        self.init()
+    required  init?(map: Map) {
     }
     
     func mapping(map: Map) {
@@ -55,17 +55,17 @@ class ChiTietHopDong: Object, Mappable{
         ngayNhacNho <- map["ngayNhacNho"]
         countLichSuGiaoDich <- map["countLichSuGiaoDich"]
         countLichSuVay <- map["countLichSuVay"]
+        hinhAnh <- map["hinhAnh"]
         
     }
 }
 
-class HinhAnh: Object, Mappable{
-    @objc dynamic var url: String = ""
-    @objc dynamic var name: String = ""
-    @objc dynamic var extensions: String = ""
+class HinhAnh: Mappable{
+     var url: String = ""
+     var name: String = ""
+     var extensions: String = ""
     
-    required convenience init?(map: Map) {
-        self.init()
+    required  init?(map: Map) {
     }
     
     func mapping(map: Map) {
