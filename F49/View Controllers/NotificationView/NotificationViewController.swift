@@ -11,7 +11,7 @@ import UIKit
 class NotificationViewController: BaseController {
     
     //MARK: --Vars
-    var dataNotifi: [Notification] = []
+    var dataNotifi: [Notificationn] = []
     var selectedCuaHang: String?
     var dataCuaHang: [CuaHang] = []
     var pageIndex: Int?
@@ -44,7 +44,7 @@ class NotificationViewController: BaseController {
         loadTableView(idShop: 0)
         createPickerView()
         dismissPickerView()
-        
+        headerContainerView.displayShadowView2(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 0, offSet: CGSize(width: 3, height: 0))
         shopTextField.displayTextField(radius: 15, color: UIColor.white)
         containerView.displayTextField(radius: 15, color: UIColor.white)
         shopTextField.backgroundColor = UIColor.clear
@@ -61,7 +61,7 @@ class NotificationViewController: BaseController {
         }
         self.showSpinner(onView: self.view)
         
-        MGConnection.requestArray(APIRouter.GetListNotification(params: params), Notification.self) { (result, error) in
+        MGConnection.requestArray(APIRouter.GetListNotification(params: params), Notificationn.self) { (result, error) in
             self.removeSpinner()
             
             guard error == nil else {

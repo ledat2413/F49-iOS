@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="131" id="KGk-i7-Jjw" customClass="KhachHangHopDongTheChapTableViewCell" customModule="F49" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bsh-js-h6s">
+                        <rect key="frame" x="10" y="10" width="30" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="NHS-4E-veN"/>
+                            <constraint firstAttribute="width" constant="30" id="Tbp-y1-cvn"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Họ và tên" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUy-3q-qSI">
+                        <rect key="frame" x="45" y="10" width="100" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="lia-bJ-0ui"/>
+                            <constraint firstAttribute="width" constant="100" id="s5C-MU-hPc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSe-h2-576">
+                        <rect key="frame" x="150" y="10" width="160" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="gI3-Av-Y1d"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số CMND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7I-LT-q9u">
+                        <rect key="frame" x="45" y="41" width="100" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="9P6-uX-HRV"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="ZHH-ai-o8g"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="f6t-pM-awN"/>
+                            <constraint firstAttribute="width" constant="100" id="pP0-i8-SHi"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Om-RM-dqh">
+                        <rect key="frame" x="150" y="41" width="160" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="bJV-BT-hvu"/>
+                            <constraint firstAttribute="height" constant="21" id="zbI-hV-HfK"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Điện thoại" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xyh-8L-9Mo">
+                        <rect key="frame" x="45" y="72" width="100" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="Fdv-ds-E4p"/>
+                            <constraint firstAttribute="height" constant="21" id="LJh-3D-XsY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vS-OJ-xSS">
+                        <rect key="frame" x="150" y="72" width="160" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="43F-6B-HMV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quê quán" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXE-HP-Vbo">
+                        <rect key="frame" x="45" y="103" width="100" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="6Nb-dC-yrp"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJx-bz-xww">
+                        <rect key="frame" x="150" y="103" width="160" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="YXE-HP-Vbo" firstAttribute="top" secondItem="Xyh-8L-9Mo" secondAttribute="bottom" constant="10" id="0zd-FN-Huh"/>
+                    <constraint firstItem="Bsh-js-h6s" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="2S4-2d-0iN"/>
+                    <constraint firstItem="1Om-RM-dqh" firstAttribute="leading" secondItem="V7I-LT-q9u" secondAttribute="trailing" constant="5" id="3zY-kP-4A7"/>
+                    <constraint firstItem="zSe-h2-576" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="5Ys-S3-Ydj"/>
+                    <constraint firstAttribute="trailing" secondItem="zSe-h2-576" secondAttribute="trailing" constant="10" id="8uO-Mc-sAZ"/>
+                    <constraint firstItem="Xyh-8L-9Mo" firstAttribute="top" secondItem="V7I-LT-q9u" secondAttribute="bottom" constant="10" id="EJW-aN-anW"/>
+                    <constraint firstAttribute="trailing" secondItem="1Om-RM-dqh" secondAttribute="trailing" constant="10" id="EdD-X1-VIf"/>
+                    <constraint firstItem="tUy-3q-qSI" firstAttribute="leading" secondItem="Bsh-js-h6s" secondAttribute="trailing" constant="5" id="Ii5-DD-Qmh"/>
+                    <constraint firstItem="dJx-bz-xww" firstAttribute="leading" secondItem="YXE-HP-Vbo" secondAttribute="trailing" constant="5" id="K7l-KR-WOh"/>
+                    <constraint firstAttribute="bottom" secondItem="YXE-HP-Vbo" secondAttribute="bottom" constant="10" id="L5Y-24-S6t"/>
+                    <constraint firstAttribute="bottom" secondItem="dJx-bz-xww" secondAttribute="bottom" constant="10" id="LrZ-cb-abg"/>
+                    <constraint firstItem="dJx-bz-xww" firstAttribute="top" secondItem="8vS-OJ-xSS" secondAttribute="bottom" constant="10" id="NMf-lf-YMm"/>
+                    <constraint firstItem="Xyh-8L-9Mo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="45" id="PAX-wy-INR"/>
+                    <constraint firstItem="YXE-HP-Vbo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="45" id="SGB-Y9-Ts2"/>
+                    <constraint firstAttribute="trailing" secondItem="dJx-bz-xww" secondAttribute="trailing" constant="10" id="dzi-nB-ioH"/>
+                    <constraint firstItem="V7I-LT-q9u" firstAttribute="top" secondItem="tUy-3q-qSI" secondAttribute="bottom" constant="10" id="g1T-LF-cl3"/>
+                    <constraint firstItem="8vS-OJ-xSS" firstAttribute="top" secondItem="1Om-RM-dqh" secondAttribute="bottom" constant="10" id="ghZ-He-1Lm"/>
+                    <constraint firstItem="V7I-LT-q9u" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="45" id="irQ-QW-tx0"/>
+                    <constraint firstItem="Bsh-js-h6s" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="lJ2-ov-Ph8"/>
+                    <constraint firstAttribute="trailing" secondItem="8vS-OJ-xSS" secondAttribute="trailing" constant="10" id="n4V-Fl-c7o"/>
+                    <constraint firstItem="1Om-RM-dqh" firstAttribute="top" secondItem="zSe-h2-576" secondAttribute="bottom" constant="10" id="qCk-lt-myW"/>
+                    <constraint firstItem="8vS-OJ-xSS" firstAttribute="leading" secondItem="Xyh-8L-9Mo" secondAttribute="trailing" constant="5" id="rag-kc-aOA"/>
+                    <constraint firstItem="zSe-h2-576" firstAttribute="leading" secondItem="tUy-3q-qSI" secondAttribute="trailing" constant="5" id="uUG-ug-lh7"/>
+                    <constraint firstItem="tUy-3q-qSI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="yzC-dQ-SHm"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cmndLabel" destination="1Om-RM-dqh" id="p2s-YC-VIy"/>
+                <outlet property="idLabel" destination="Bsh-js-h6s" id="EmI-qB-DNs"/>
+                <outlet property="nameLabel" destination="zSe-h2-576" id="Ous-RY-jjW"/>
+                <outlet property="phoneLabel" destination="8vS-OJ-xSS" id="eP7-Yt-WaO"/>
+                <outlet property="queQuanLabel" destination="dJx-bz-xww" id="AJC-sp-GMQ"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="151.67410714285714"/>
+        </tableViewCell>
+    </objects>
+</document>

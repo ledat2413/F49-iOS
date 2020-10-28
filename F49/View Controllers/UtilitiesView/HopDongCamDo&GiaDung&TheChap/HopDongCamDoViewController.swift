@@ -12,6 +12,7 @@ import XLPagerTabStrip
 class HopDongCamDoViewController: TabbarButton{
     
     //MARK: --Vars
+    var loaiHD: Int = 0
     let purpleInspireColor = UIColor.orange
     var dataCuaHang: [CuaHang] = []
     var dataTab: [Tab] = [Tab(id: 0, value: "")]
@@ -26,7 +27,6 @@ class HopDongCamDoViewController: TabbarButton{
     @IBOutlet weak var headerView: NavigationBar!
     @IBOutlet weak var shopTextField: UITextField!
     @IBOutlet weak var contrectLabel: UILabel!
-    @IBOutlet var viewTo: UIView!
     
     @IBOutlet weak var floatingButton: UIButton!
     @IBOutlet weak var floatingButtonContainer: UIView!
@@ -36,11 +36,28 @@ class HopDongCamDoViewController: TabbarButton{
         
         
     }
-
+    
     //MARK: --IBAction
     
     @IBAction func floatingButtonPressed(_ sender: Any) {
-        
+        switch loaiHD {
+        case 1:
+             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "CreateHDCamDoViewController") as! CreateHDCamDoViewController
+                   
+                   itemVC.idCuaHang = idShop
+                   self.navigationController?.pushViewController(itemVC, animated: true)
+        break
+        case 2:
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "CreateHDGiaDungViewController") as! CreateHDGiaDungViewController
+                   
+                   itemVC.idCuaHang = idShop
+            
+                   self.navigationController?.pushViewController(itemVC, animated: true)
+            break
+        default:
+            break
+        }
+       
     }
     
     @IBAction func locButtonPressed(_ sender: UIButton) {
@@ -59,7 +76,9 @@ class HopDongCamDoViewController: TabbarButton{
     
     
     //MARK: --Func
-    
+    func loadTaoMoi(){
+        
+    }
     private func loadShop(){
         MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
             guard error == nil else {
@@ -103,7 +122,17 @@ class HopDongCamDoViewController: TabbarButton{
     }
     
     private func displayHeaderView(){
-        headerView.title = "Quản lí hợp đồng cầm đồ"
+        switch loaiHD {
+        case 1:
+            headerView.title = "Quản lí hợp đồng cầm đồ"
+        case 2:
+            headerView.title = "Hợp đồng gia dụng"
+        case 3:
+            headerView.title = "Hợp đồng thế chấp"
+        default:
+            break
+        }
+       
         headerView.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
         headerView.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
         
@@ -118,34 +147,30 @@ class HopDongCamDoViewController: TabbarButton{
         pickerView.delegate = self
         dismissPickerView()
     }
-     func dismissPickerView() {
-           let toolBar = UIToolbar()
-           toolBar.sizeToFit()
-           let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
-           toolBar.setItems([button], animated: true)
-           toolBar.isUserInteractionEnabled = true
-           shopTextField.inputAccessoryView = toolBar
+    func dismissPickerView() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
+        toolBar.setItems([button], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        shopTextField.inputAccessoryView = toolBar
         
-       }
-       
-       @objc func action() {
-           view.endEditing(true)
-       }
+    }
+    
+    @objc func action() {
+        view.endEditing(true)
+    }
     
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
         var viewControllers: [UIViewController] = []
-        for i in dataTab {
-            let vc = UIStoryboard(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "HopDongMoViewController") as! HopDongMoViewController
-            vc.id = i.id
-            vc.value = i.value
-            vc.idShop = self.idShop
-            vc.idStatus = self.idStatus
-            vc.keyWord = self.keyWord
-            viewControllers.append(vc)
-            
-        }
+        let vc = UIStoryboard(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "HopDongMoViewController") as! HopDongMoViewController
+        vc.id = self.loaiHD
+        vc.idShop = self.idShop
+        vc.idStatus = self.idStatus
+        vc.keyWord = self.keyWord
+        viewControllers.append(vc)
         return viewControllers
     }
 }
@@ -169,7 +194,7 @@ extension HopDongCamDoViewController: UIPickerViewDelegate, UIPickerViewDataSour
         if dataCuaHang[row].id == 0 {
             self.floatingButtonContainer.isHidden = true
         }else{
-             self.floatingButtonContainer.isHidden = false
+            self.floatingButtonContainer.isHidden = false
         }
         self.view.reloadInputViews()
         reloadPagerTabStripView()

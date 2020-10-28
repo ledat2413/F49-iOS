@@ -11,18 +11,19 @@ import XLPagerTabStrip
 
 class HopDongMoViewController: BaseController,IndicatorInfoProvider {
     
-    public var value: String = ""
     var id: Int = 0
     var idShop: Int = 0
     var idStatus: String?
     var keyWord: String?
     var dataHopDong: [HopDongTheoLoai] = []
+        
     
-    
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         loadData()
         
         tableView.delegate = self
@@ -50,13 +51,16 @@ class HopDongMoViewController: BaseController,IndicatorInfoProvider {
             }
             if let result = result {
                 self.dataHopDong = result
+                if self.dataHopDong.count > 0 {
+                    self.containerView.isHidden = true
+                }
                 self.tableView.reloadData()
             }
         }
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: value)
+        return IndicatorInfo(title: "value")
     }
     
 }
@@ -90,9 +94,11 @@ extension HopDongMoViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ChiTietHopDongViewController") as! ChiTietHopDongViewController
         itemVC.id = dataHopDong[indexPath.row].id
         self.navigationController?.pushViewController(itemVC, animated: true)
+     
     }
     
 

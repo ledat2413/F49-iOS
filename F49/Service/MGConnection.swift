@@ -18,74 +18,80 @@ class MGConnection {
     static func isConnectedToInternet() ->Bool {
         return NetworkReachabilityManager()!.isReachable
     }
-
+    
     //MARK: --Request Boolean
-       
-       static func requestBoolean(_ apiRouter: APIRouter, returnType: Bool?, completion: @escaping (_ result: Bool?, _ error: BaseResponseError?) -> Void) {
-              if !isConnectedToInternet() { return }
-              
-              Alamofire.request(apiRouter).responseObject { (response: DataResponse<BaseResponseBool>) in
-                  switch response.result {
-                  case .success:
-                      if response.response?.statusCode == 200 {
-                          completion(response.result.value?.data, nil)
-                          print(response.request ?? "")
-                      } else {
-                          let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.HTTP_ERROR, (response.response?.statusCode)!, "Request is error!")
-                          completion(nil, err)
-                      }
-                      break
-                      
-                  case .failure(let error):
-                   if response.response?.statusCode != 200 {
-                       completion(response.result.value?.data, nil)
-                       print(response)
-                   }
-                     else if error is AFError {
-                          let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.HTTP_ERROR, error._code, "Request is error!")
-                          completion(nil, err)
-                      }
-                      
-                      break
-                  }
-              }
-          }
+    
+    static func requestBoolean(_ apiRouter: APIRouter, returnType: Bool?, completion: @escaping (_ result: Bool?, _ error: BaseResponseError?) -> Void) {
+        if !isConnectedToInternet() { return }
+        
+        Alamofire.request(apiRouter).responseObject { (response: DataResponse<BaseResponseBool>) in
+            APIRouter.printResponse(request: response.request, data: response.data!)
+            
+            switch response.result {
+            case .success:
+                if response.response?.statusCode == 200 {
+                    completion(response.result.value?.data, nil)
+                    print(response.request ?? "")
+                } else {
+                    let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.HTTP_ERROR, (response.response?.statusCode)!, "Request is error!")
+                    completion(nil, err)
+                }
+                break
+                
+            case .failure(let error):
+                if response.response?.statusCode != 200 {
+                    completion(response.result.value?.data, nil)
+                    print(response)
+                }
+                else if error is AFError {
+                    let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.HTTP_ERROR, error._code, "Request is error!")
+                    completion(nil, err)
+                }
+                
+                break
+            }
+        }
+    }
     //MARK: --Request String
     
     static func requestString(_ apiRouter: APIRouter, returnType: String?, completion: @escaping (_ result: String?, _ error: BaseResponseError?) -> Void) {
-           if !isConnectedToInternet() { return }
-           
-           Alamofire.request(apiRouter).responseObject { (response: DataResponse<BaseResponseString>) in
-               switch response.result {
-               case .success:
-                   if response.response?.statusCode == 200 {
-                       completion(response.result.value?.data, nil)
-                       print(response.request ?? "")
-                   } else {
-                       let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.HTTP_ERROR, (response.response?.statusCode)!, "Request is error!")
-                       completion(nil, err)
-                   }
-                   break
-                   
-               case .failure(let error):
+        if !isConnectedToInternet() { return }
+        
+        Alamofire.request(apiRouter).responseObject { (response: DataResponse<BaseResponseString>) in
+            APIRouter.printResponse(request: response.request, data: response.data!)
+            
+            switch response.result {
+            case .success:
+                if response.response?.statusCode == 200 {
+                    completion(response.result.value?.data, nil)
+                    print(response.request ?? "")
+                } else {
+                    let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.HTTP_ERROR, (response.response?.statusCode)!, "Request is error!")
+                    completion(nil, err)
+                }
+                break
+                
+            case .failure(let error):
                 if response.response?.statusCode != 200 {
                     completion(response.result.value?.data, nil)
                     print(response.request ?? "")
                 }
-                  else if error is AFError {
-                       let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.HTTP_ERROR, error._code, "Request is error!")
-                       completion(nil, err)
-                   }
-                   
-                   break
-               }
-           }
-       }
+                else if error is AFError {
+                    let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.HTTP_ERROR, error._code, "Request is error!")
+                    completion(nil, err)
+                }
+                
+                break
+            }
+        }
+    }
     
     static func requestInt(_ apiRouter: APIRouter, returnType: Int?, completion: @escaping (_ result: Int?, _ error: BaseResponseError?) -> Void) {
         if !isConnectedToInternet() { return }
         
         Alamofire.request(apiRouter).responseObject { (response: DataResponse<BaseResponseInt>) in
+            APIRouter.printResponse(request: response.request, data: response.data!)
+            
             switch response.result {
             case .success:
                 if response.response?.statusCode == 200 {
@@ -116,6 +122,8 @@ class MGConnection {
             return
         }
         Alamofire.request(apiRouter).responseObject{(response: DataResponse<T>) in
+            APIRouter.printResponse(request: response.request, data: response.data!)
+            
             switch response.result {
             case .success:
                 if response.response?.statusCode == 200 {
@@ -146,6 +154,8 @@ class MGConnection {
         }
         
         Alamofire.request(apiRouter).responseObject {(response: DataResponse<BaseResponseArray<T>>) in
+            APIRouter.printResponse(request: response.request, data: response.data!)
+            
             switch response.result {
             case .success:
                 if response.response?.statusCode == 200 {
@@ -173,7 +183,10 @@ class MGConnection {
         if !isConnectedToInternet(){
             return
         }
+        
         Alamofire.request(apiRouter).responseObject{(response: DataResponse<BaseResponseObject<T>>) in
+            APIRouter.printResponse(request: response.request, data: response.data!)
+            
             switch response.result {
             case .success:
                 if response.response?.statusCode == 200 {
@@ -196,6 +209,14 @@ class MGConnection {
     }
 }
 
-
-
+extension Data {
+    
+    var prettyPrintedJSONString: NSString? { /// NSString gives us a nice sanitized debugDescription
+        guard let object = try? JSONSerialization.jsonObject(with: self, options: []),
+            let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]),
+            let prettyPrintedString = NSString(data: data, encoding: String.Encoding.utf8.rawValue) else { return nil }
+        
+        return prettyPrintedString
+    }
+}
 

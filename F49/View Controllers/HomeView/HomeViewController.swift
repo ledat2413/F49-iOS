@@ -90,7 +90,8 @@ class HomeViewController: BaseController {
         findContainerView.backgroundColor = UIColor.clear
        
         headerView.backgroundColor = UIColor(patternImage: UIImage(named: "home-bg-page")!)
-        
+        headerView.displayShadowView2(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 0, offSet: CGSize(width: 3, height: 0))
+
         bodyCollectionView.register(UINib(nibName: "BodyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BodyCollectionViewCell")
         bodyCollectionView.delegate = self
         bodyCollectionView.dataSource = self

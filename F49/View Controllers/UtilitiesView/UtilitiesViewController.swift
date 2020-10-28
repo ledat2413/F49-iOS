@@ -139,7 +139,18 @@ extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewD
         switch dataTienIch[indexPath.row].id {
         case 1:
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
+            itemVC.loaiHD = dataTienIch[indexPath.row].id
             self.navigationController?.pushViewController(itemVC, animated: true)
+        case 2:
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
+            itemVC.loaiHD = dataTienIch[indexPath.row].id
+
+            self.navigationController?.pushViewController(itemVC, animated: true)
+        case 3:
+        let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
+            itemVC.loaiHD = dataTienIch[indexPath.row].id
+
+        self.navigationController?.pushViewController(itemVC, animated: true)
         case 4:
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
             itemVC.idTienIch = 4

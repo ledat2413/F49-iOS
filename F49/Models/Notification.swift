@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 import RealmSwift
 
-class Notification: Object, Mappable{
+class Notificationn: Object, Mappable{
     
     @objc dynamic var id: Int = 0
     @objc dynamic var tieuDe: String = ""

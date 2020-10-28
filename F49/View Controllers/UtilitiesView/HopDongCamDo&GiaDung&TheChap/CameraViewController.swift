@@ -85,7 +85,6 @@ class CameraViewController: BaseController{
     @IBAction func cameraButtonPressed(_ sender: Any) {
         itemImages = []
         showImageGallery()
-    
     }
     
     private func showImageGallery(){

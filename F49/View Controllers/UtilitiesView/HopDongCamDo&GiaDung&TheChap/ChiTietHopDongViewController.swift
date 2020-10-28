@@ -27,7 +27,6 @@ class ChiTietHopDongViewController: BaseController {
     @IBOutlet weak var collectionViewContainer: UIView!
     
     
-    @IBOutlet weak var heightConstrainCollectionView: NSLayoutConstraint!
     
     //MARK: --View Lifecycle
     override func viewDidLoad() {
@@ -48,14 +47,17 @@ class ChiTietHopDongViewController: BaseController {
         floatingButton.clipsToBounds = true
         floatingContainer.layer.cornerRadius = floatingContainer.frame.width / 2
         floatingContainer.clipsToBounds = true
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "InfoCamDoTableViewCell", bundle: nil), forCellReuseIdentifier: "InfoCamDoTableViewCell")
+        
         loadData()
+        
         navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
         navigation.title = "Thông tin hợp đồng cầm đồ"
         navigation.rightButton.isHidden = false
-        navigation.rightButton.addTarget(self, action: #selector(optionView), for: .allTouchEvents)
+        navigation.rightButton.addTarget(self, action: #selector(optionView), for: .allEvents)
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
