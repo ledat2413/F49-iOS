@@ -146,8 +146,12 @@ enum APIRouter: URLRequestConvertible {
             return "api/ThuChi/GetListThuChi"
         case .GetDetailThuChiByID:
             return "api/ThuChi/GetDetailThuChiByID"
+            
+            //Notification
         case .GetListNotification:
             return "api/Notification/GetListNotification"
+            
+            
         case .GetTabTrangThai:
             return "api/RutLai/GetTabTrangThai"
         case .GetListRutLai:

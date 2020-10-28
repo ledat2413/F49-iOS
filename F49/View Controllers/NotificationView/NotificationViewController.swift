@@ -14,7 +14,8 @@ class NotificationViewController: BaseController {
     var dataNotifi: [Notificationn] = []
     var selectedCuaHang: String?
     var dataCuaHang: [CuaHang] = []
-    var pageIndex: Int?
+    var pageIndex: Int = 0
+    var idCuaHang: Int = 0
     //    var dataTableView: [T] = []
     
     //MARK: --IBOutlet
@@ -40,7 +41,7 @@ class NotificationViewController: BaseController {
         tableView.register(UINib(nibName: "NotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationTableViewCell")
         
         loadCuaHang()
-        loadTableView(idShop: 0)
+        loadTableView()
         createPickerView()
         dismissPickerView()
         shopTextField.displayTextField(radius: 15, color: UIColor.white)
@@ -51,12 +52,11 @@ class NotificationViewController: BaseController {
         
     }
     
-    func loadTableView(idShop: Int){
-        var params: [String: Any] = ["idCuaHang" : idShop, "pageSize": 40]
+    func loadTableView(){
+        var params: [String: Any] = ["idCuaHang" : idCuaHang, "pageSize": 40]
         
-        if let pageIndex = pageIndex {
-            params = ["pageIndex" : pageIndex]
-        }
+        params["pageIndex"] = pageIndex 
+        
         self.showSpinner(onView: self.view)
         
         MGConnection.requestArray(APIRouter.GetListNotification(params: params), Notificationn.self) { (result, error) in
@@ -67,7 +67,7 @@ class NotificationViewController: BaseController {
                 return
             }
             if let result = result {
-                self.dataNotifi = result
+                self.dataNotifi += result
                 self.tableView.reloadData()
             }
         }
@@ -129,7 +129,17 @@ class NotificationViewController: BaseController {
     
 }
 
+
+
 extension NotificationViewController: UITableViewDelegate, UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == dataNotifi.count - 1 {
+            self.pageIndex += 1
+            self.loadTableView()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataNotifi.count
     }
@@ -166,6 +176,8 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
         return cell
         
     }
+    
+    
 }
 
 extension NotificationViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
@@ -181,6 +193,7 @@ extension NotificationViewController: UIPickerViewDelegate, UIPickerViewDataSour
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCuaHang = dataCuaHang[row].tenCuaHang
         shopTextField.text = selectedCuaHang
-        loadTableView(idShop: dataCuaHang[row].id)
+        idCuaHang =  dataCuaHang[row].id
     }
 }
+
