@@ -19,7 +19,6 @@ class NotificationViewController: BaseController {
     
     //MARK: --IBOutlet
     
-    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var headerContainerView: UIView!
     @IBOutlet weak var shopTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -44,12 +43,11 @@ class NotificationViewController: BaseController {
         loadTableView(idShop: 0)
         createPickerView()
         dismissPickerView()
-        headerContainerView.displayShadowView2(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 0, offSet: CGSize(width: 3, height: 0))
         shopTextField.displayTextField(radius: 15, color: UIColor.white)
-        containerView.displayTextField(radius: 15, color: UIColor.white)
+        headerContainerView.displayTextField(radius: 15, color: UIColor.white)
         shopTextField.backgroundColor = UIColor.clear
-        containerView.backgroundColor = UIColor.clear
-        containerView.layer.borderWidth  = 1
+        headerContainerView.backgroundColor = UIColor.clear
+        headerContainerView.layer.borderWidth  = 1
         
     }
     

@@ -14,6 +14,7 @@ class RutLaiChiTietViewController: BaseController {
     var idItem: Int = 0
     var idTab: Int = 0
     var text: String = ""
+    var tableCellIdentifier: [String] = ["RutVonChiTietTableViewCell","InfoCamDoTableViewCell","RutVon2TableViewCell"]
     
     var dataChiTiet: VonDauTuChiTiet?
     
@@ -57,9 +58,10 @@ class RutLaiChiTietViewController: BaseController {
     func displayTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "RutVonChiTietTableViewCell", bundle: nil), forCellReuseIdentifier: "RutVonChiTietTableViewCell")
-        tableView.register(UINib(nibName: "InfoCamDoTableViewCell", bundle: nil), forCellReuseIdentifier: "InfoCamDoTableViewCell")
-        tableView.register(UINib(nibName: "RutVon2TableViewCell", bundle: nil), forCellReuseIdentifier: "RutVon2TableViewCell")
+        
+        for i in tableCellIdentifier {
+            tableView.register(UINib(nibName: i, bundle: nil), forCellReuseIdentifier: i)
+        }
     }
     
     func loadChiTiet(){
@@ -91,9 +93,9 @@ extension RutLaiChiTietViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 60
+            return 50
         default:
-            return 130
+            return tableView.frame.height - 40
         }
         
     }
@@ -144,11 +146,14 @@ extension RutLaiChiTietViewController: UITableViewDelegate, UITableViewDataSourc
                 cell.keyLabel.text = "Trạng thái"
                 cell.valueLabel.text = dataChiTiet?.tenTrangThai ?? ""
                 cell.valueLabel.textColor = UIColor.systemOrange
+                cell.valueLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.subheadline)
+
                 return cell
                 
             case 6:
                 cell.keyLabel.text = "Ý kiến"
                 cell.keyLabel.textColor = UIColor.systemGreen
+                
                 cell.valueLabel.text = ""
                 return cell
                 

@@ -47,7 +47,7 @@ class UserViewController: BaseController {
         mainTableView.dataSource = self
         for i in cellIdentifier {
             mainTableView.register(UINib(nibName: i, bundle: nil), forCellReuseIdentifier: i)
-
+            
         }
     }
 }
@@ -97,7 +97,20 @@ extension UserViewController: UITableViewDelegate,UITableViewDataSource {
             return cell
             
         default:
-           return UITableViewCell()
+            return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 4:
+            UserHelper.clearUserData(key: UserKey.Token)
+            UserHelper.clearUserData(key: UserKey.AutoLogin)
+            //               self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
+            break
+        default:
+            break
         }
     }
     
@@ -210,36 +223,6 @@ extension UserViewController: UITableViewDelegate,UITableViewDataSource {
 //
 //
 //
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if tableView == subBodyTableView {
-//            switch indexPath.section {
-//            case 0:
-////                let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CuaHangMacDinhViewController")
-////
-////                self.navigationController?.pushViewController(itemVC, animated: true)
-//                break
 //
-//            case 1:
-//                let itemVC = UIStoryboard.init(name: "USER", bundle: nil).instantiateViewController(withIdentifier: "MatKhauViewController")
-//
-//                self.navigationController?.pushViewController(itemVC, animated: true)
-//                break
-//            case 2:
-//                let itemVC = UIStoryboard.init(name: "USER", bundle: nil).instantiateViewController(withIdentifier: "CaiDatViewController")
-//
-//                self.navigationController?.pushViewController(itemVC, animated: true)
-//                break
-//            case 3:
-////               let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashScreenViewController")
-//               UserHelper.clearUserData(key: UserKey.Token)
-//               UserHelper.clearUserData(key: UserKey.AutoLogin)
-////               self.dismiss(animated: true, completion: nil)
-//               self.navigationController?.popViewController(animated: true)
-//                break
-//            default:
-//                break
-//            }
-//        }
-//    }
 //}
 //

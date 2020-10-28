@@ -16,7 +16,6 @@ class HomeViewController: BaseController {
     var selectedCuaHang: String?    
     
     //MARK: --IBOutlet
-    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var findContainerView: UIView!
     @IBOutlet weak var bodyCollectionView: UICollectionView!
     @IBOutlet weak var findButton: UIButton!
@@ -89,8 +88,8 @@ class HomeViewController: BaseController {
         findContainerView.displayTextField(radius: 18, color: UIColor.white)
         findContainerView.backgroundColor = UIColor.clear
        
-        headerView.backgroundColor = UIColor(patternImage: UIImage(named: "home-bg-page")!)
-        headerView.displayShadowView2(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 0, offSet: CGSize(width: 3, height: 0))
+//        headerView.backgroundColor = UIColor(patternImage: UIImage(named: "home-bg-page")!)
+//        headerView.displayShadowView2(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 0, offSet: CGSize(width: 3, height: 0))
 
         bodyCollectionView.register(UINib(nibName: "BodyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BodyCollectionViewCell")
         bodyCollectionView.delegate = self

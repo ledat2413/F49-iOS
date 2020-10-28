@@ -81,15 +81,15 @@ class LoginViewController: BaseController {
         //        createSpinnerView()
         hideKeyboardWhenTappedAround()
         
-        emailTextField.displayTextField(radius: 25, color: UIColor.green)
-        emailView.displayShadowView(shadowColor: UIColor.green, borderColor: UIColor.green, radius: 25)
+        emailTextField.displayTextField(radius: 22, color: UIColor.green)
+        emailView.displayShadowView(shadowColor: UIColor.systemGreen, borderColor: UIColor.systemGreen, radius: 22)
         
-        passTextField.displayTextField(radius: 25, color: UIColor.green)
-        passView.displayShadowView(shadowColor: UIColor.green, borderColor: UIColor.green, radius: 25)
+        passTextField.displayTextField(radius: 22, color: UIColor.green)
+        passView.displayShadowView(shadowColor: UIColor.systemGreen, borderColor: UIColor.systemGreen, radius: 22)
         
-        loginButton.displayTextField(radius: 25, color: UIColor.orange)
+        loginButton.displayTextField(radius: 22, color: UIColor.orange)
         loginButton.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
-        buttonView.displayShadowView(shadowColor: UIColor.orange, borderColor: UIColor.clear, radius: 25)
+        buttonView.displayShadowView(shadowColor: UIColor.orange, borderColor: UIColor.clear, radius: 22)
         
         displayForgotButton()
         
