@@ -9,7 +9,58 @@
 import Foundation
 import UIKit
 
+
+extension UIColor {
+    
+}
 extension UIView {
+    
+
+        /**
+        Set x Position
+
+        :param: x CGFloat
+        by DaRk-_-D0G
+        */
+        func setX( x:CGFloat) {
+            var frame:CGRect = self.frame
+            frame.origin.x = x
+            self.frame = frame
+        }
+        /**
+        Set y Position
+
+        :param: y CGFloat
+        by DaRk-_-D0G
+        */
+        func setY( y:CGFloat) {
+            var frame:CGRect = self.frame
+            frame.origin.y = y
+            self.frame = frame
+        }
+        /**
+        Set Width
+
+        :param: width CGFloat
+        by DaRk-_-D0G
+        */
+        func setWidth( width:CGFloat) {
+            var frame:CGRect = self.frame
+            frame.size.width = width
+            self.frame = frame
+        }
+        /**
+        Set Height
+
+        :param: height CGFloat
+        by DaRk-_-D0G
+        */
+        func setHeight(height:CGFloat) {
+            var frame:CGRect = self.frame
+            frame.size.height = height
+            self.frame = frame
+    }
+    
     func addTopBorderWithColor(color: UIColor, width: CGFloat) {
            let border = CALayer()
            border.backgroundColor = color.cgColor
@@ -24,7 +75,7 @@ extension UIView {
            self.layer.addSublayer(border)
        }
 
-       func addBottomBorderWithColor(color: UIColor, width: CGFloat) {
+       func     addBottomBorderWithColor(color: UIColor, width: CGFloat) {
            let border = CALayer()
            border.backgroundColor = color.cgColor
            border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)

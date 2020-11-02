@@ -121,11 +121,11 @@ class ThuChiViewController: BaseController {
         switch idTienIch {
         case 5:
             navigation.title = "Quản lí thu chi"
-            navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+            navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
             break
         case 8:
             navigation.title = "Rút vốn"
-            navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+            navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
             break
         default:
             break
@@ -139,9 +139,20 @@ class ThuChiViewController: BaseController {
     func createPickerView() {
         let pickerView = UIPickerView().createPicker(tf: shopTextField)
         pickerView.delegate = self
-        
+        dismissPickerView()
+    }
+    func dismissPickerView() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
+        toolBar.setItems([button], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        shopTextField.inputAccessoryView = toolBar
     }
     
+    @objc func action() {
+        view.endEditing(true)
+    }
     
     
     func loadCuaHang() {

@@ -19,3 +19,21 @@ class KeyValueModel {
     }
     
 }
+
+class TSTheChap {
+    var tenTS: String = ""
+    var idTS: Int = 0
+    var dinhGia: Int = 0
+    var viTri: String = ""
+    var moTa: String = ""
+    var imgURL: String = ""
+    
+    init(tenTS: String,idTS: Int, dinhGia: Int, viTri: String, moTa: String, imgURL: String) {
+        self.tenTS = tenTS
+        self.idTS = idTS
+        self.dinhGia = dinhGia
+        self.viTri = viTri
+        self.moTa = moTa
+        self.imgURL = imgURL
+    }
+}

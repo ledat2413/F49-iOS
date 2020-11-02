@@ -4,10 +4,6 @@ import Gallery
 
 extension CreateHDCamDoViewController {
     
-    func handlerImage(handler: @escaping (_ images: [UIImage?]) -> Void){
-        self.callBackSelectImage = handler
-    }
-    
     func luuHopDong(){
         var params: [String: Any] = [:]
         if dataLoadTaoMoi?.canChangeNgayVay == false {
@@ -29,10 +25,10 @@ extension CreateHDCamDoViewController {
                 "TenVatCamCo" : self.tenTS ,
                 "IDVatCamCo" : self.idTS,
                 "HangSanXuat" : self.hangSX ,
-                //            "HinhAnh" : [
-                //                "Name" : "Ô tô huyndai xịn",
-                //                "DataAsURL" : "Base64String"
-                //            ],
+                            "HinhAnh" : [[
+                                 "Name" : self.tenTS,
+                                 "DataAsURL" : self.imgStr
+                            ]],
                 ]]
         } else {
             params["ThongTinHopDong"] = [
@@ -54,19 +50,19 @@ extension CreateHDCamDoViewController {
                 "TenVatCamCo" : self.tenTS ,
                 "IDVatCamCo" : self.idTS,
                 "HangSanXuat" : self.hangSX ,
-                //            "HinhAnh" : [
-                //                "Name" : "Ô tô huyndai xịn",
-                //                "DataAsURL" : "Base64String"
-                //            ],
+                            "HinhAnh" : [[
+                                "Name" : self.tenTS,
+                                "DataAsURL" : self.imgStr
+                           ] ],
                 ]]
         }
         
         MGConnection.requestObject(APIRouter.LuuHopDongTheChap(params: params), SoHopDong.self) { (result, error) in
             guard error == nil else {
-                self.Alert("Lỗi")
                 return
             }
             if let result = result {
+                self.Success = true
                 self.soHopDong = result
             }
         }
@@ -78,7 +74,6 @@ extension CreateHDCamDoViewController {
             if let result = result {
                 self.dataLoadTaoMoi = result
                 self.tinhSoTienKhachNhan()
-                
                 self.tableView.reloadData()
             }
         }
@@ -121,8 +116,6 @@ extension CreateHDCamDoViewController {
         for i in cellIdentifierTableView{
             tableView.register(UINib(nibName: i, bundle: nil), forCellReuseIdentifier: i)
         }
-        loadTaoMoi()
-        
         
         //CollectionView
         footerCollectionView.delegate = self
@@ -133,8 +126,12 @@ extension CreateHDCamDoViewController {
         
         //Navigation
         navigation.title = "Lập hợp đồng cầm đồ"
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
         navigation.displayShadowView2(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 0, offSet: CGSize(width: 3, height: 0))
+        
+        //Data
+        loadTaoMoi()
+
     }
     
     
@@ -157,13 +154,15 @@ extension CreateHDCamDoViewController {
     //Date Picker
     @objc func openCelendar(_ idCell: Int,textField: UITextField){
         switch idCell {
-        case 2:
+            
+        case 1:
             ngayPicker = UIDatePicker()
             ngayPicker?.datePickerMode = .date
             textField.inputView = ngayPicker
             let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(CreateHDCamDoViewController.dismissPicker1))
             textField.inputAccessoryView = toolBar
-        case 3:
+            
+        case 2:
             ngayPicker = UIDatePicker()
             ngayPicker?.datePickerMode = .date
             textField.inputView = ngayPicker
@@ -197,7 +196,32 @@ extension CreateHDCamDoViewController {
     @objc func openView(_ idCell: Int){
         if dataLoadTaoMoi?.canChangeNgayVay == false {
             switch idCell {
-            case 1: //Khach Hang
+            case 0: //Khach Hang
+                let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "KhachHangViewController") as! KhachHangViewController
+                itemVC.handlerTenKH { (name, id) in
+                    self.tenKH = name
+                    self.idKH = id
+                    self.tableView.reloadData()
+                }
+                present(itemVC, animated: true, completion: nil)
+                break
+                
+            case 2: // Tai San
+                let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "TaiSanViewController") as! TaiSanViewController
+                itemVC.handlerValueTS { (ten, id, hang) in
+                    self.tenTS = ten
+                    self.idTS = id
+                    self.hangSX = hang
+                    self.tableView.reloadData()
+                }
+                present(itemVC, animated: true, completion: nil)
+                break
+            default:
+                break
+            }
+        } else {
+            switch idCell {
+            case 0: //Khach Hang
                 let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "KhachHangViewController") as! KhachHangViewController
                 itemVC.handlerTenKH { (name, id) in
                     self.tenKH = name
@@ -220,35 +244,13 @@ extension CreateHDCamDoViewController {
             default:
                 break
             }
-        } else {
-            switch idCell {
-            case 1: //Khach Hang
-                let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "KhachHangViewController") as! KhachHangViewController
-                itemVC.handlerTenKH { (name, id) in
-                    self.tenKH = name
-                    self.idKH = id
-                    self.tableView.reloadData()
-                }
-                present(itemVC, animated: true, completion: nil)
-                break
-                
-            case 4: // Tai San
-                let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "TaiSanViewController") as! TaiSanViewController
-                itemVC.handlerValueTS { (ten, id, hang) in
-                    self.tenTS = ten
-                    self.idTS = id
-                    self.hangSX = hang
-                    self.tableView.reloadData()
-                }
-                present(itemVC, animated: true, completion: nil)
-                break
-            default:
-                break
-            }
         }
-        
-        
     }
+    
+    @objc func backView(){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
     @objc func showImageGallery(){
         self.gallery  = GalleryController()
@@ -258,10 +260,6 @@ extension CreateHDCamDoViewController {
         Config.tabsToShow = [.imageTab,.cameraTab]
         
         self.present(self.gallery, animated: true, completion: nil)
-    }
-    
-    @objc func backView(){
-        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -293,8 +291,19 @@ extension CreateHDCamDoViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            luuHopDong()
-            self.navigationController?.popViewController(animated: true)
+            if !Success {
+                let alert = UIAlertController(title: "Thông Báo", message: "Tạo thành công!", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
+                    self.luuHopDong()
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true, completion: nil)
+               
+            }else{
+                Alert("Tạo không thành không")
+            }
+           
+           
             break
         default:
             self.navigationController?.popViewController(animated: true)
@@ -320,26 +329,34 @@ extension CreateHDCamDoViewController: GalleryControllerDelegate{
         
         if images.count > 0 {
             Image.resolve(images: images) { (imageResolve) in
-                 if let images = self.callBackSelectImage {
-                               images(imageResolve)
-                           }
-                print("imageResolve")
+                print(imageResolve)
+                if let image = imageResolve.first ?? UIImage() {
+                    let imageData: Data? = self.resizeImage(image: image, newWidth: CGFloat(150.0)).jpegData(compressionQuality: 1)
+                    self.imgStr = imageData?.base64EncodedString(options: .lineLength64Characters) ?? ""
+                    print(self.imgStr)
+                    self.itemImages.append(image)
+                    self.tableView.reloadData()
+                }
             }
         }
         controller.dismiss(animated: true, completion: nil)
     }
     
     func galleryController(_ controller: GalleryController, didSelectVideo video: Video) {
-        
+        self.tableView.reloadData()
+
         controller.dismiss(animated: true, completion: nil)
     }
     
     func galleryController(_ controller: GalleryController, requestLightbox images: [Image]) {
-        
+        self.tableView.reloadData()
+
         controller.dismiss(animated: true, completion: nil)
     }
     
     func galleryControllerDidCancel(_ controller: GalleryController) {
+        self.tableView.reloadData()
+
         controller.dismiss(animated: true, completion: nil)
     }
 }

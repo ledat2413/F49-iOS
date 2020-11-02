@@ -54,7 +54,7 @@ class DongLaiViewController: BaseController {
         tableView.register(UINib(nibName: "ThuLai3TableViewCell", bundle: nil), forCellReuseIdentifier: "ThuLai3TableViewCell")
         loadGiaoDich()
         navigation.title = "Đóng lãi"
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
         doButton.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
         doButton.displayTextField(radius: 20, color: UIColor.clear)
         buttonContainerView.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 20)

@@ -31,6 +31,9 @@ class KhachHangViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    deinit {
+        print("deinit khachhangview")
+    }
     //MARK: --IBAction
     @IBAction func dismissButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

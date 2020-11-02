@@ -18,11 +18,11 @@ enum APIRouter: URLRequestConvertible {
     case GetTienIch(id: Int)
     case GetTopMenu
     case GetStatus
-    case GetListCamDo(id: String)
+    case GetListCamDo(trangThai: String)
     case GetChiTietCamDo(id: Int)
-    case GetListDinhGia(id: String)
+    case GetListDinhGia(trangThai: String)
     case GetChiTietDinhGia(id: Int)
-    case GetListDoGiaDung(id: String)
+    case GetListDoGiaDung(trangThai: String)
     case GetChiTietDoGiaDung(id: Int)
     case GetTab
     case GetListHopDongTheoLoai(params: [String: Any])
@@ -30,7 +30,12 @@ enum APIRouter: URLRequestConvertible {
     case GetChiTietHopDong(id: Int)
     case GetListThuChi(params: [String: Any])
     case GetDetailThuChiByID(id: Int)
+    
+    //Notification
     case GetListNotification(params: [String: Any])
+    case PutReadAllNotification(idCuaHang: Int)
+    
+    
     case GetTabTrangThai
     case GetListRutLai(idShop: Int, idTab: Int )
     case GetDanhSachNhanVien
@@ -99,6 +104,8 @@ enum APIRouter: URLRequestConvertible {
             return .post
         case .LuuHopDongTraGop:
             return .post
+        case .PutReadAllNotification:
+            return .put
         default:
             return .get
             
@@ -150,7 +157,8 @@ enum APIRouter: URLRequestConvertible {
             //Notification
         case .GetListNotification:
             return "api/Notification/GetListNotification"
-            
+        case .PutReadAllNotification:
+            return "api/Notification/PutReadAll"
             
         case .GetTabTrangThai:
             return "api/RutLai/GetTabTrangThai"
@@ -272,14 +280,14 @@ enum APIRouter: URLRequestConvertible {
         case .GetStatus:
             return [:]
             
-        case .GetListCamDo(let id):
-            return ["trangThai": id]
+        case .GetListCamDo(let trangThai):
+            return ["trangThai": trangThai]
             
-        case .GetListDinhGia(let id):
-            return ["trangThai": id]
+        case .GetListDinhGia(let trangThai):
+            return ["trangThai": trangThai]
             
-        case .GetListDoGiaDung(let id):
-            return ["trangThai": id]
+        case .GetListDoGiaDung(let trangThai):
+            return ["trangThai": trangThai]
             
         case .GetChiTietCamDo(let id):
             return ["id": id]
@@ -301,8 +309,13 @@ enum APIRouter: URLRequestConvertible {
             return params
         case .GetDetailThuChiByID(let id):
             return ["idItem": id]
+            
         case .GetListNotification(let params):
             return params
+        case .PutReadAllNotification(let idCuaHang):
+            return ["idCuaHang": idCuaHang]
+            
+            
         case .GetTabTrangThai:
             return [:]
         case .GetListRutLai(let idShop, let idTab):

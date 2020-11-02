@@ -13,6 +13,7 @@ class Cell1UserTableViewCell: UITableViewCell {
     
     private var dataProfile: [UserProfile] = []
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var thumbnailTableView: UITableView!
     @IBOutlet weak var thumbnailContainerView: UIView!
     
@@ -29,6 +30,8 @@ class Cell1UserTableViewCell: UITableViewCell {
 
         thumbnailContainerView.displayShadowView2(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 18, offSet: CGSize(width: 1, height: 1))
 
+        containerView.displayShadowView2(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 18, offSet: CGSize(width: 1, height: 1))
+        
         thumbnailTableView.layer.cornerRadius = 18
         thumbnailTableView.clipsToBounds = true
         thumbnailTableView.delegate = self

@@ -47,6 +47,13 @@
                             <action selector="buttonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ak6-aj-hm6"/>
                         </connections>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iUx-2H-X8X">
+                        <rect key="frame" x="20" y="40" width="343" height="1"/>
+                        <color key="backgroundColor" red="0.18072179460000001" green="0.35328286920000002" blue="0.18422594279999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Bn7-Uc-ZYP"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="MC4-Js-EJo" secondAttribute="bottom" constant="5" id="5eB-JU-p29"/>
@@ -59,9 +66,12 @@
                     <constraint firstAttribute="bottom" secondItem="etI-p4-sOF" secondAttribute="bottom" constant="5" id="RMG-Bm-AqD"/>
                     <constraint firstItem="xQ1-FT-EVd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="TQa-Od-Pvi"/>
                     <constraint firstItem="MC4-Js-EJo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="YNy-Ew-HOe"/>
+                    <constraint firstAttribute="bottom" secondItem="iUx-2H-X8X" secondAttribute="bottom" id="f3a-7e-GhV"/>
+                    <constraint firstItem="iUx-2H-X8X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="hct-WL-hKa"/>
                     <constraint firstAttribute="trailing" secondItem="xQ1-FT-EVd" secondAttribute="trailing" constant="20" id="m4N-J9-ecV"/>
                     <constraint firstAttribute="bottom" secondItem="etI-p4-sOF" secondAttribute="bottom" constant="5" id="pjd-Lv-Kn5"/>
                     <constraint firstItem="etI-p4-sOF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="qOK-4b-uT8"/>
+                    <constraint firstAttribute="trailing" secondItem="iUx-2H-X8X" secondAttribute="trailing" constant="20" id="tBd-j2-4VW"/>
                     <constraint firstItem="rMW-Tu-IFX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="wiu-eb-VyH"/>
                     <constraint firstItem="MC4-Js-EJo" firstAttribute="leading" secondItem="etI-p4-sOF" secondAttribute="trailing" constant="5" id="zeI-0B-YDs"/>
                 </constraints>

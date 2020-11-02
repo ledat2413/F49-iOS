@@ -30,7 +30,7 @@ class LichSuViewController: UIViewController {
     }
     
     func displayNavigation(){
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
         switch code {
         case 0:
             navigation.title = "Lịch sử giao dịch"

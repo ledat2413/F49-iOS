@@ -14,6 +14,7 @@ class TaiSanViewController: UIViewController {
     private var DSTSHDTheChap: [TaiSanHDTheChap] = []
     private var datathuocTinh: [ThuocTinhTaiSanHDTheChap] = []
     private var selectedTaiSan: String?
+    private var idTaiSan: Int?
     private var pickerTaiSan: UIPickerView?
     
     var valueTaiSan:((_ ten: String, _ id: Int, _ hang: String) -> Void)?
@@ -31,7 +32,9 @@ class TaiSanViewController: UIViewController {
         setUPUI()
     }
     
-    
+    deinit {
+        print("deinit taisanview")
+    }
     //MARK: --Func
     
     func handlerValueTS(handler: @escaping (_ ten: String, _ id: Int , _ hang: String) -> Void){
@@ -153,7 +156,7 @@ extension TaiSanViewController: UICollectionViewDelegate, UICollectionViewDataSo
         case 0:
             self.dismiss(animated: true) {
                 if let valueTaiSan = self.valueTaiSan {
-                    valueTaiSan(self.DSTSHDTheChap[indexPath.row].tenVatCamCo, self.DSTSHDTheChap[indexPath.row].id, self.datathuocTinh[indexPath.row].title)
+                    valueTaiSan(self.selectedTaiSan ?? "nil", self.idTaiSan ?? 0, self.datathuocTinh[indexPath.row].title)
                     }
             }
             break
@@ -188,6 +191,7 @@ extension TaiSanViewController: UIPickerViewDelegate, UIPickerViewDataSource, UI
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedTaiSan =  DSTSHDTheChap[row].tenVatCamCo
+        idTaiSan = DSTSHDTheChap[row].id
         findTextField.text = selectedTaiSan
         loadThuocTinh(DSTSHDTheChap[row].loai)
     }

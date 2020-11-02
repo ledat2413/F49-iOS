@@ -16,6 +16,9 @@ class NotificationViewController: BaseController {
     var dataCuaHang: [CuaHang] = []
     var pageIndex: Int = 0
     var idCuaHang: Int = 0
+    
+    var valueBack: String = ""
+    var dataStr: String?
     //    var dataTableView: [T] = []
     
     //MARK: --IBOutlet
@@ -25,6 +28,7 @@ class NotificationViewController: BaseController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var itemTabBar: UITabBarItem!
     
+    
     //MARK: --View Lifecycle
     
     override func viewDidLoad() {
@@ -32,6 +36,11 @@ class NotificationViewController: BaseController {
         setUpUI()
     }
     
+    //MARK: --IBAction
+    
+    @IBAction func readAllPressed(_ sender: Any) {
+        putReadAll(idCuaHang)
+    }
     
     //MARK: --Func
     
@@ -50,6 +59,18 @@ class NotificationViewController: BaseController {
         headerContainerView.backgroundColor = UIColor.clear
         headerContainerView.layer.borderWidth  = 1
         
+    
+        
+    }
+    
+    func putReadAll(_ idCuaHang: Int) {
+        MGConnection.requestString(APIRouter.PutReadAllNotification(idCuaHang: idCuaHang), returnType: valueBack) { (value, error) in
+            guard error == nil else { return }
+            if let value = value {
+                self.dataStr = value
+                self.tableView.reloadData()
+            }
+        }
     }
     
     func loadTableView(){
@@ -176,8 +197,6 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
         return cell
         
     }
-    
-    
 }
 
 extension NotificationViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
@@ -194,6 +213,7 @@ extension NotificationViewController: UIPickerViewDelegate, UIPickerViewDataSour
         selectedCuaHang = dataCuaHang[row].tenCuaHang
         shopTextField.text = selectedCuaHang
         idCuaHang =  dataCuaHang[row].id
+        loadTableView()
     }
 }
 

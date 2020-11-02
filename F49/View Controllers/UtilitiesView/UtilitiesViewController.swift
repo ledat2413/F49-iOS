@@ -116,6 +116,9 @@ class UtilitiesViewController: BaseController {
 }
 
 extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewDelegate{
+
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataTienIch.count
     }
@@ -126,53 +129,62 @@ extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewD
         }
         
         let data = dataTienIch[indexPath.row]
+        let upCase = data.tieuDe.uppercased()
         cell.layer.borderWidth = 0.5
         cell.layer.borderColor = UIColor.groupTableViewBackground.cgColor
-        cell.titleLabel.text = data.tieuDe
+        cell.titleLabel.text = upCase
         cell.imageView.sd_setImage(with: URL(string: data.hinhAnh), placeholderImage: UIImage(named: "heart"))
         cell.countLabel.text = data.giaTri
+        cell.imageView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 15)
         return cell
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch dataTienIch[indexPath.row].id {
-        case 1:
+        switch dataTienIch[indexPath.row].screenId {
+            
+        case "HopDongCamDo":
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
             itemVC.loaiHD = dataTienIch[indexPath.row].id
             self.navigationController?.pushViewController(itemVC, animated: true)
-        case 2:
+            
+        case "CamDoGiaDung":
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
             itemVC.loaiHD = dataTienIch[indexPath.row].id
 
             self.navigationController?.pushViewController(itemVC, animated: true)
-        case 3:
+        case "HopDongTraGop":
         let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
             itemVC.loaiHD = dataTienIch[indexPath.row].id
 
         self.navigationController?.pushViewController(itemVC, animated: true)
-        case 4:
+        case "RutLai":
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
             itemVC.idTienIch = 4
             self.navigationController?.pushViewController(itemVC, animated: true)
             
-        case 5:
+        case "ThuChi":
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThuChiViewController") as! ThuChiViewController
             itemVC.idTienIch = 5
             self.navigationController?.pushViewController(itemVC, animated: true)
-        case 6:
+            
+        case "TaiSanThanhLy":
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThanhLyTaiSanViewController") as! ThanhLyTaiSanViewController
             self.navigationController?.pushViewController(itemVC, animated: true)
-        case 7:
+            
+        case "BaoCaoTongHop":
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "BaoCaoViewController") as! BaoCaoViewController
             self.navigationController?.pushViewController(itemVC, animated: true)
-        case 8:
+            
+        case "RutVon":
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
             itemVC.idTienIch = 8
             self.navigationController?.pushViewController(itemVC, animated: true)
-        case 9:
+            
+        case "TienHoaHong":
             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "TienHoaHongViewController") as! TienHoaHongViewController
             self.navigationController?.pushViewController(itemVC, animated: true)
+            
         default:
             break
             
@@ -183,8 +195,9 @@ extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewD
 
 extension UtilitiesViewController: UICollectionViewDelegateFlowLayout{
     
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: bodyCollectionView.frame.width/2, height: bodyCollectionView.frame.height/3)
+        return CGSize(width: bodyCollectionView.frame.width/2, height: bodyCollectionView.frame.height/4)
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

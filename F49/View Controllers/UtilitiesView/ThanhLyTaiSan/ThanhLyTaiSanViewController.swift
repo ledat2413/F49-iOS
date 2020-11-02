@@ -52,7 +52,7 @@ class ThanhLyTaiSanViewController: BaseController {
     // MARK: --Navigation
     func displayNavigation(){
         navigation.title = "Quản lí tài sản"
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
         navigation.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
     }
     

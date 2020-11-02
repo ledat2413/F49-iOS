@@ -18,7 +18,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="PUC-61-jR7"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="TIN NHẮN" image="message.fill" catalog="system" id="0zR-60-o2g"/>
+                    <tabBarItem key="tabBarItem" title="TIN NHẮN" image="resize-chat2" selectedImage="resize-chat1" id="0zR-60-o2g"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xmp-2O-LYJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -27,6 +27,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="message.fill" catalog="system" width="128" height="113"/>
+        <image name="resize-chat1" width="30" height="30"/>
+        <image name="resize-chat2" width="30" height="30"/>
     </resources>
 </document>

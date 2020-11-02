@@ -133,7 +133,7 @@ class HopDongCamDoViewController: TabbarButton{
             break
         }
        
-        headerView.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+        headerView.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
         headerView.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
         
     }

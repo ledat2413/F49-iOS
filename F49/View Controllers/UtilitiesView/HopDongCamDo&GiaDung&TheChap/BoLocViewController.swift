@@ -74,9 +74,15 @@ class BoLocViewController: BaseController {
     }
     
     func createPickerView() {
-           let pickerView = UIPickerView().createPicker(tf: statusTextField)
+           let pickerView = UIPickerView()
            pickerView.delegate = self
-           let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(BoLocViewController.action))
+           statusTextField.inputView = pickerView
+           
+           let toolBar = UIToolbar()
+           toolBar.sizeToFit()
+           let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
+           toolBar.setItems([button], animated: true)
+           toolBar.isUserInteractionEnabled = true
            statusTextField.inputAccessoryView = toolBar
        }
        

@@ -53,7 +53,7 @@ class CameraViewController: BaseController{
         
         //Navigation
         navigation.title = "Hình ảnh"
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
         
         //Footer
         footerView.displayShadowView2(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 0, offSet: CGSize(width: 3, height: 0))

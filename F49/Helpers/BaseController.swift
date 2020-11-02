@@ -37,6 +37,15 @@ class BaseController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func alertWithHandle(_ message: String){
+         let alert = UIAlertController(title: "Thông Báo", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        
+        self.present(alert, animated: true) {
+            
+        }
+    }
+    
     
     //Hide Keyboard
     func hideKeyboardWhenTappedAround() {

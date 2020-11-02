@@ -97,19 +97,19 @@ class RutLaiViewController: TabbarButton {
         switch idTienIch {
         case 4:
              navigation.title = "Rút lãi cửa hàng"
-                   navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
-                   navigation.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
+              
             break
         case 8:
             navigation.title = "Rút vốn cửa hàng"
-                   navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
-                   navigation.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
+                   
             break
             
         default:
             break
             
         }
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
+        navigation.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
     }
     
     @objc func backView(){

@@ -70,29 +70,78 @@
                                     <constraint firstAttribute="bottom" secondItem="4rj-eR-iUt" secondAttribute="bottom" constant="10" id="wWu-Sg-EVv"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpK-GH-djL">
+                                <rect key="frame" x="0.0" y="105" width="414" height="41"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbO-vj-NRu">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGs-YF-Xd7">
+                                                <rect key="frame" x="304" y="5.5" width="110" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="110" id="xzY-Oe-NhD"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <state key="normal" title="Đọc tất cả">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="readAllPressed:" destination="H4l-o2-ksC" eventType="touchUpInside" id="djr-1u-h0f"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-thongbao-doctatca" translatesAutoresizingMaskIntoConstraints="NO" id="gGI-kU-ZM9">
+                                                <rect key="frame" x="379" y="7.5" width="25" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="25" id="Uzg-05-SvU"/>
+                                                    <constraint firstAttribute="height" constant="25" id="itj-Gj-E2D"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="qGs-YF-Xd7" firstAttribute="centerY" secondItem="VbO-vj-NRu" secondAttribute="centerY" id="Ojg-lE-emW"/>
+                                            <constraint firstAttribute="trailing" secondItem="gGI-kU-ZM9" secondAttribute="trailing" constant="10" id="UXE-tt-jIz"/>
+                                            <constraint firstAttribute="trailing" secondItem="qGs-YF-Xd7" secondAttribute="trailing" id="hVb-4n-EaL"/>
+                                            <constraint firstItem="gGI-kU-ZM9" firstAttribute="centerY" secondItem="VbO-vj-NRu" secondAttribute="centerY" id="jTw-Nu-Rk2"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="VbO-vj-NRu" secondAttribute="bottom" constant="1" id="4Jl-Qh-1Pv"/>
+                                    <constraint firstItem="VbO-vj-NRu" firstAttribute="top" secondItem="kpK-GH-djL" secondAttribute="top" id="Hoe-ZD-wtt"/>
+                                    <constraint firstAttribute="trailing" secondItem="VbO-vj-NRu" secondAttribute="trailing" id="b1M-u7-LEG"/>
+                                    <constraint firstItem="VbO-vj-NRu" firstAttribute="leading" secondItem="kpK-GH-djL" secondAttribute="leading" id="hEi-eG-qm0"/>
+                                    <constraint firstAttribute="height" constant="41" id="qO9-X3-iGf"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AwL-5F-utc">
-                                <rect key="frame" x="0.0" y="107.5" width="414" height="705.5"/>
+                                <rect key="frame" x="0.0" y="146" width="414" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8c9-Ga-Q2T" firstAttribute="trailing" secondItem="awI-Kg-PHt" secondAttribute="trailing" id="4gz-Vv-Dvp"/>
+                            <constraint firstItem="AwL-5F-utc" firstAttribute="trailing" secondItem="8c9-Ga-Q2T" secondAttribute="trailing" id="7VJ-9v-0Wr"/>
+                            <constraint firstItem="AwL-5F-utc" firstAttribute="bottom" secondItem="8c9-Ga-Q2T" secondAttribute="bottom" id="96k-Z9-RkQ"/>
                             <constraint firstItem="awI-Kg-PHt" firstAttribute="top" secondItem="8c9-Ga-Q2T" secondAttribute="top" id="AvL-jO-vaW"/>
                             <constraint firstItem="icu-02-N4a" firstAttribute="height" secondItem="7f3-bG-FQ5" secondAttribute="height" multiplier="0.12" id="EPj-H5-lf4"/>
+                            <constraint firstItem="AwL-5F-utc" firstAttribute="leading" secondItem="8c9-Ga-Q2T" secondAttribute="leading" id="IC2-EN-Nye"/>
                             <constraint firstItem="icu-02-N4a" firstAttribute="top" secondItem="7f3-bG-FQ5" secondAttribute="top" id="JUz-4R-HQD"/>
                             <constraint firstItem="8c9-Ga-Q2T" firstAttribute="trailing" secondItem="icu-02-N4a" secondAttribute="trailing" id="QMe-39-fTy"/>
-                            <constraint firstItem="8c9-Ga-Q2T" firstAttribute="trailing" secondItem="AwL-5F-utc" secondAttribute="trailing" id="SUj-wj-gN1"/>
-                            <constraint firstItem="8c9-Ga-Q2T" firstAttribute="bottom" secondItem="AwL-5F-utc" secondAttribute="bottom" id="T0F-RG-0Bh"/>
-                            <constraint firstItem="AwL-5F-utc" firstAttribute="top" secondItem="icu-02-N4a" secondAttribute="bottom" id="YMc-lP-txg"/>
+                            <constraint firstItem="kpK-GH-djL" firstAttribute="trailing" secondItem="8c9-Ga-Q2T" secondAttribute="trailing" id="bkg-Zr-5Df"/>
                             <constraint firstItem="awI-Kg-PHt" firstAttribute="bottom" secondItem="icu-02-N4a" secondAttribute="bottom" multiplier="0.9" id="d1C-WQ-ZdA"/>
-                            <constraint firstItem="AwL-5F-utc" firstAttribute="leading" secondItem="8c9-Ga-Q2T" secondAttribute="leading" id="dwc-pE-tFk"/>
+                            <constraint firstItem="AwL-5F-utc" firstAttribute="top" secondItem="kpK-GH-djL" secondAttribute="bottom" id="heF-Fa-ehb"/>
+                            <constraint firstItem="kpK-GH-djL" firstAttribute="top" secondItem="awI-Kg-PHt" secondAttribute="bottom" constant="8" id="iez-bf-LxG"/>
+                            <constraint firstItem="kpK-GH-djL" firstAttribute="centerX" secondItem="8c9-Ga-Q2T" secondAttribute="centerX" id="kuq-Do-QOb"/>
                             <constraint firstItem="awI-Kg-PHt" firstAttribute="leading" secondItem="8c9-Ga-Q2T" secondAttribute="leading" id="laT-gg-Txf"/>
+                            <constraint firstItem="kpK-GH-djL" firstAttribute="leading" secondItem="8c9-Ga-Q2T" secondAttribute="leading" id="ujW-j0-UEz"/>
                             <constraint firstItem="icu-02-N4a" firstAttribute="leading" secondItem="8c9-Ga-Q2T" secondAttribute="leading" id="vax-za-hXy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8c9-Ga-Q2T"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="THÔNG BÁO" image="bell.fill" catalog="system" id="Tgf-Dh-XxL"/>
+                    <tabBarItem key="tabBarItem" title="THÔNG BÁO" image="resize-bell2" selectedImage="resize-bell1" id="Tgf-Dh-XxL"/>
                     <navigationItem key="navigationItem" id="pEh-yX-t4n"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -109,8 +158,10 @@
     </scenes>
     <resources>
         <image name="arrow-top-1" width="68" height="48"/>
-        <image name="bell.fill" catalog="system" width="128" height="124"/>
+        <image name="icon-thongbao-doctatca" width="75" height="50"/>
         <image name="logo-top" width="150" height="82"/>
         <image name="profile-bg-home" width="1242" height="435"/>
+        <image name="resize-bell1" width="30" height="30"/>
+        <image name="resize-bell2" width="30" height="30"/>
     </resources>
 </document>

@@ -15,7 +15,7 @@ class Cell3CreateTableViewCell: UITableViewCell {
     var itemImages: [UIImage?] = [UIImage(named: "photo-camera")]
     var gallery: GalleryController!
     var callBackOpenCamera: (() -> Void)?
-    let createHD = CreateHDCamDoViewController()
+    
     
     //MARK: --IBOutlet
     @IBOutlet weak var thumbnailCollectionView: UICollectionView!
@@ -34,7 +34,10 @@ class Cell3CreateTableViewCell: UITableViewCell {
     }
     
     //MARK: --Func
-
+    func loadData(_ images: [UIImage?]){
+        self.itemImages += images
+        self.thumbnailCollectionView.reloadData()
+    }
 }
 
 extension Cell3CreateTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
@@ -48,17 +51,11 @@ extension Cell3CreateTableViewCell: UICollectionViewDelegate, UICollectionViewDa
         switch indexPath.row {
         case 0:
             guard let cell = thumbnailCollectionView.dequeueReusableCell(withReuseIdentifier: "Cell3CreateCollectionViewCell", for: indexPath) as? Cell3CreateCollectionViewCell else { fatalError() }
-            cell.imageCell3CollectionView.backgroundColor = .lightGray
+            cell.imageCell3CollectionView.image = itemImages[0]
             return cell
         default:
             guard let cell = thumbnailCollectionView.dequeueReusableCell(withReuseIdentifier: "Cell3CreateCollectionViewCell", for: indexPath) as? Cell3CreateCollectionViewCell else { fatalError() }
-            createHD.callBackSelectImage = { [weak self] (image) in
-                guard let wself = self else { return }
-                wself.itemImages.insert(contentsOf: image, at: 0)
-                collectionView.reloadData()
-            }
             cell.imageCell3CollectionView.image = itemImages[indexPath.row]
-            cell.imageCell3CollectionView.backgroundColor = .red
             return cell
         }
         

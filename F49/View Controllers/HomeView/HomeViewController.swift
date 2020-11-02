@@ -22,10 +22,12 @@ class HomeViewController: BaseController {
     @IBOutlet weak var findTextField: UITextField!
     @IBOutlet weak var menuCollectionView: Menu!
     
+    @IBOutlet weak var barItem: UITabBarItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         navigation()
+
         //        NotificationCenter.default.addObserver(self, selector: #selector(pushCamDoController), name: NSNotification.Name.init("CamDoController"), object: nil)
     }
     
@@ -132,12 +134,13 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
             guard let cell = bodyCollectionView.dequeueReusableCell(withReuseIdentifier: "BodyCollectionViewCell", for: indexPath) as? BodyCollectionViewCell else {fatalError()}
             
             let data = dataDashBoard[indexPath.row]
-            
-            cell.thumbnailTitleLabel.text = data.tieuDe
+            let newStr = data.tieuDe.uppercased()
+            cell.thumbnailTitleLabel.text = newStr
             cell.thumbnailCountLabel.text = data.giaTri
             cell.thumbnailImageView.sd_setImage(with: URL(string: data.hinhAnh), placeholderImage: UIImage(named: "heart"))
             
             cell.displayShadowView(shadowColor: UIColor.gray, borderColor: UIColor.clear, radius: 15)
+            cell.thumbnailImageView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 15)
             cell.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
 
             return cell
@@ -154,7 +157,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView {
         case bodyCollectionView:
-            return CGSize(width: (bodyCollectionView.frame.width)/2 - 20, height: (bodyCollectionView.frame.height ) / 3 - 30)
+            return CGSize(width: (bodyCollectionView.frame.width)/2 - 10, height: (bodyCollectionView.frame.height ) / 3 - 30)
         default:
             return CGSize()
         }
@@ -163,7 +166,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch collectionView {
         case bodyCollectionView:
-            return UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+            return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         default:
             return UIEdgeInsets()
         }

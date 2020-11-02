@@ -93,7 +93,6 @@
 		C26704AB251C329E00B82116 /* BoLocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704AA251C329E00B82116 /* BoLocViewController.swift */; };
 		C26704AD251C92E500B82116 /* ChiTietHopDong.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704AC251C92E500B82116 /* ChiTietHopDong.swift */; };
 		C26704B3251C9B9D00B82116 /* ChiTietHopDongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704B2251C9B9D00B82116 /* ChiTietHopDongViewController.swift */; };
-		C267A07B254278A5003C840B /* CreateHopDongGiaDungViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267A07A254278A5003C840B /* CreateHopDongGiaDungViewController.swift */; };
 		C267A07D2542B102003C840B /* CreateHDGiaDungViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267A07C2542B102003C840B /* CreateHDGiaDungViewController.swift */; };
 		C267A0842542B75D003C840B /* Cell4CreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267A0822542B75D003C840B /* Cell4CreateTableViewCell.swift */; };
 		C267A0852542B75D003C840B /* Cell4CreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C267A0832542B75D003C840B /* Cell4CreateTableViewCell.xib */; };
@@ -154,6 +153,8 @@
 		C288472F250B0F7200CB84FA /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C288472E250B0F7200CB84FA /* Contants.swift */; };
 		C28C743825453CE500AE95BE /* TaiSanHDGDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C743725453CE500AE95BE /* TaiSanHDGDViewController.swift */; };
 		C28C743A25454A6700AE95BE /* DanhSachTaiSan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C743925454A6700AE95BE /* DanhSachTaiSan.swift */; };
+		C2B327E9254B00E100D18662 /* ThongTinTaiSanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B327E7254B00E100D18662 /* ThongTinTaiSanTableViewCell.swift */; };
+		C2B327EA254B00E100D18662 /* ThongTinTaiSanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B327E8254B00E100D18662 /* ThongTinTaiSanTableViewCell.xib */; };
 		C2BC99CD2521873900796448 /* HOME.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2BC99C82521873600796448 /* HOME.storyboard */; };
 		C2BC99CE2521873900796448 /* TINNHAN.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2BC99C92521873700796448 /* TINNHAN.storyboard */; };
 		C2BC99CF2521873900796448 /* THONGBAO.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2BC99CA2521873800796448 /* THONGBAO.storyboard */; };
@@ -284,7 +285,6 @@
 		C26704AA251C329E00B82116 /* BoLocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoLocViewController.swift; sourceTree = "<group>"; };
 		C26704AC251C92E500B82116 /* ChiTietHopDong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChiTietHopDong.swift; sourceTree = "<group>"; };
 		C26704B2251C9B9D00B82116 /* ChiTietHopDongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChiTietHopDongViewController.swift; sourceTree = "<group>"; };
-		C267A07A254278A5003C840B /* CreateHopDongGiaDungViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHopDongGiaDungViewController.swift; sourceTree = "<group>"; };
 		C267A07C2542B102003C840B /* CreateHDGiaDungViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHDGiaDungViewController.swift; sourceTree = "<group>"; };
 		C267A0822542B75D003C840B /* Cell4CreateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell4CreateTableViewCell.swift; sourceTree = "<group>"; };
 		C267A0832542B75D003C840B /* Cell4CreateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Cell4CreateTableViewCell.xib; sourceTree = "<group>"; };
@@ -345,6 +345,8 @@
 		C288472E250B0F7200CB84FA /* Contants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contants.swift; sourceTree = "<group>"; };
 		C28C743725453CE500AE95BE /* TaiSanHDGDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaiSanHDGDViewController.swift; sourceTree = "<group>"; };
 		C28C743925454A6700AE95BE /* DanhSachTaiSan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanhSachTaiSan.swift; sourceTree = "<group>"; };
+		C2B327E7254B00E100D18662 /* ThongTinTaiSanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThongTinTaiSanTableViewCell.swift; sourceTree = "<group>"; };
+		C2B327E8254B00E100D18662 /* ThongTinTaiSanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThongTinTaiSanTableViewCell.xib; sourceTree = "<group>"; };
 		C2BC99C82521873600796448 /* HOME.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HOME.storyboard; sourceTree = "<group>"; };
 		C2BC99C92521873700796448 /* TINNHAN.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TINNHAN.storyboard; sourceTree = "<group>"; };
 		C2BC99CA2521873800796448 /* THONGBAO.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = THONGBAO.storyboard; sourceTree = "<group>"; };
@@ -808,14 +810,8 @@
 		C267A078254276C9003C840B /* HopDongGiaDung */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = HopDongGiaDung;
-			sourceTree = "<group>";
-		};
-		C267A0792542787D003C840B /* HopDongGiaDung */ = {
-			isa = PBXGroup;
-			children = (
-				C267A07A254278A5003C840B /* CreateHopDongGiaDungViewController.swift */,
+				C2B327E7254B00E100D18662 /* ThongTinTaiSanTableViewCell.swift */,
+				C2B327E8254B00E100D18662 /* ThongTinTaiSanTableViewCell.xib */,
 			);
 			path = HopDongGiaDung;
 			sourceTree = "<group>";
@@ -928,7 +924,6 @@
 		C282CC0825120A4A00F62B63 /* UtilitiesView */ = {
 			isa = PBXGroup;
 			children = (
-				C267A0792542787D003C840B /* HopDongGiaDung */,
 				C264414B252C0985001610A6 /* BaoCaoTongHop */,
 				C264414A252C08DD001610A6 /* TienHoaHong */,
 				C25ED68D25271E08004662A1 /* ThanhLyTaiSan */,
@@ -1196,6 +1191,7 @@
 				C2E4D6842517A3CD00622DF6 /* ImageTableViewCell.xib in Resources */,
 				C2BC99D02521873900796448 /* USER.storyboard in Resources */,
 				C287736D2537E9B400A8B3E8 /* Cell1CreateTableViewCell.xib in Resources */,
+				C2B327EA254B00E100D18662 /* ThongTinTaiSanTableViewCell.xib in Resources */,
 				C2C25859251491FA0048FAB2 /* CheckBoxTableViewCell.xib in Resources */,
 				C28821B8252895DE00EF6B91 /* ThanhLyTaiSanTableViewCell.xib in Resources */,
 				C2BC99CE2521873900796448 /* TINNHAN.storyboard in Resources */,
@@ -1341,7 +1337,6 @@
 				C25E7ED1252D680000490F8D /* TienHoaHongViewController.swift in Sources */,
 				C25E7EE0252DB4C900490F8D /* RutVon2TableViewCell.swift in Sources */,
 				C265C19F250777A1000D4FAE /* UserToken.swift in Sources */,
-				C267A07B254278A5003C840B /* CreateHopDongGiaDungViewController.swift in Sources */,
 				C26BB5EA25243A8F0024D236 /* VonDauTuViewController.swift in Sources */,
 				C2695BEB2508BF9200E3A3C8 /* HomeViewController.swift in Sources */,
 				C26BB5F025247FC50024D236 /* QuanLyVonTableViewCell.swift in Sources */,
@@ -1413,6 +1408,7 @@
 				C258EFE0253EE85F00FA72C2 /* KeyValue.swift in Sources */,
 				C260996D253ABA7000A20621 /* TaiSanViewController.swift in Sources */,
 				C265C19D25073A0D000D4FAE /* Token.swift in Sources */,
+				C2B327E9254B00E100D18662 /* ThongTinTaiSanTableViewCell.swift in Sources */,
 				C267ACE22533F0F3007BCD49 /* CameraCollectionViewCell.swift in Sources */,
 				C2C25858251491FA0048FAB2 /* CheckBoxTableViewCell.swift in Sources */,
 				C2C5A981253E880600CC4EB0 /* LoadTaoMoi.swift in Sources */,

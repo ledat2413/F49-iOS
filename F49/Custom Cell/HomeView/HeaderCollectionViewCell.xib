@@ -28,20 +28,17 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fg8-og-B9E">
-                                <rect key="frame" x="46" y="24" width="63" height="17"/>
+                                <rect key="frame" x="46" y="27" width="63" height="12"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="17" id="WF2-ig-yEf"/>
+                                    <constraint firstAttribute="height" constant="12" id="WF2-ig-yEf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CẦM ĐỒ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Te-Fh-sy2">
-                                <rect key="frame" x="46" y="5" width="63" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="bXf-Ve-NOp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                <rect key="frame" x="46" y="5" width="63" height="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="9"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -49,13 +46,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="fg8-og-B9E" secondAttribute="trailing" constant="1" id="1si-pj-SWt"/>
-                            <constraint firstAttribute="bottom" secondItem="fg8-og-B9E" secondAttribute="bottom" constant="5" id="Fkb-KU-18s"/>
-                            <constraint firstAttribute="trailing" secondItem="6Te-Fh-sy2" secondAttribute="trailing" constant="1" id="Rpa-PT-56d"/>
-                            <constraint firstItem="6Te-Fh-sy2" firstAttribute="leading" secondItem="elm-tF-VPl" secondAttribute="trailing" constant="1" id="TEy-wK-XP1"/>
+                            <constraint firstItem="fg8-og-B9E" firstAttribute="top" secondItem="6Te-Fh-sy2" secondAttribute="bottom" constant="2" id="2TZ-lB-iIv"/>
+                            <constraint firstAttribute="bottom" secondItem="fg8-og-B9E" secondAttribute="bottom" constant="7" id="Fkb-KU-18s"/>
                             <constraint firstItem="elm-tF-VPl" firstAttribute="leading" secondItem="1E3-lU-33x" secondAttribute="leading" constant="5" id="a1r-4j-etr"/>
+                            <constraint firstAttribute="trailing" secondItem="6Te-Fh-sy2" secondAttribute="trailing" constant="1" id="bgq-Ne-ceE"/>
                             <constraint firstItem="fg8-og-B9E" firstAttribute="leading" secondItem="elm-tF-VPl" secondAttribute="trailing" constant="1" id="f8o-8f-5d5"/>
-                            <constraint firstItem="6Te-Fh-sy2" firstAttribute="top" secondItem="1E3-lU-33x" secondAttribute="top" constant="5" id="fJz-7I-hWY"/>
+                            <constraint firstItem="6Te-Fh-sy2" firstAttribute="leading" secondItem="elm-tF-VPl" secondAttribute="trailing" constant="1" id="hAo-9O-TEX"/>
                             <constraint firstAttribute="bottom" secondItem="elm-tF-VPl" secondAttribute="bottom" constant="5" id="iM8-DN-pDs"/>
+                            <constraint firstItem="6Te-Fh-sy2" firstAttribute="top" secondItem="1E3-lU-33x" secondAttribute="top" constant="5" id="ksQ-2f-DTS"/>
                             <constraint firstItem="elm-tF-VPl" firstAttribute="top" secondItem="1E3-lU-33x" secondAttribute="top" constant="5" id="y1M-Bd-1NA"/>
                         </constraints>
                     </view>

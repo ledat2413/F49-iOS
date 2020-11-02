@@ -67,7 +67,7 @@ class BaoCaoViewController: BaseController {
         dismissPickerView()
         
         navigation.title = "Báo cáo tổng hợp"
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
         
         shopContainerView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 5)
         fromView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 5)
@@ -133,7 +133,7 @@ class BaoCaoViewController: BaseController {
         fromPicker.dateFormatte(txt: fromTextField)
         fromValue = dateFormatter.string(from: fromPicker.date)
         loadBaoCao()
-
+        
         print(fromValue ?? "")
         view.endEditing(true)
     }
@@ -171,24 +171,51 @@ class BaoCaoViewController: BaseController {
 extension BaoCaoViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         switch section {
-        case 1:
-            return 3
-        case 3:
-            return 3
-        case 5:
-            return 7
+        case 2:
+            return 6
         default:
-            return 1
+            return 3
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TacVuTableViewCell") as? TacVuTableViewCell else { fatalError() }
+            cell.titleLabel.text = "Tiền đầu kì"
+            cell.titleLabel.textColor = .systemGreen
+            cell.backgroundColor = UIColor.white
+            return cell
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TacVuTableViewCell") as? TacVuTableViewCell else { fatalError() }
+            cell.titleLabel.text = "Tiền cuối kì"
+            cell.titleLabel.textColor = .systemGreen
+            cell.backgroundColor = UIColor.white
+
+            return cell
+        case 2:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TacVuTableViewCell") as? TacVuTableViewCell else { fatalError() }
+            cell.titleLabel.text = "Biến động trong kì"
+            cell.titleLabel.textColor = .systemGreen
+            cell.backgroundColor = UIColor.white
+
+            return cell
+        default:
+            return UIView()
         }
     }
     
@@ -196,13 +223,6 @@ extension BaoCaoViewController: UITableViewDelegate, UITableViewDataSource{
         
         switch indexPath.section {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TacVuTableViewCell", for: indexPath) as? TacVuTableViewCell else { fatalError() }
-            cell.titleLabel.text = "Tiền đầu kì"
-            cell.titleLabel.textColor = .systemGreen
-            
-            return cell
-            
-        case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCamDoTableViewCell", for: indexPath) as? InfoCamDoTableViewCell else { fatalError() }
             switch indexPath.row {
             case 0:
@@ -219,15 +239,7 @@ extension BaoCaoViewController: UITableViewDelegate, UITableViewDataSource{
                 return cell
             }
             return cell
-            
-        case 2:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TacVuTableViewCell", for: indexPath) as? TacVuTableViewCell else { fatalError() }
-            cell.titleLabel.text = "Tiền cuối kì"
-            cell.titleLabel.textColor = .systemGreen
-            
-            return cell
-            
-        case 3:
+        case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCamDoTableViewCell", for: indexPath) as? InfoCamDoTableViewCell else { fatalError() }
             switch indexPath.row {
             case 0:
@@ -243,14 +255,7 @@ extension BaoCaoViewController: UITableViewDelegate, UITableViewDataSource{
                 return cell
             }
             return cell
-            
-        case 4:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TacVuTableViewCell", for: indexPath) as? TacVuTableViewCell else { fatalError() }
-            cell.titleLabel.text = "Biến động tiền trong kì"
-            cell.titleLabel.textColor = .systemGreen
-            return cell
-            
-        case 5:
+        case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCamDoTableViewCell", for: indexPath) as? InfoCamDoTableViewCell else { fatalError() }
             switch indexPath.row {
             case 0:

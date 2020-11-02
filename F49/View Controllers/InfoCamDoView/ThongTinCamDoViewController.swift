@@ -32,22 +32,20 @@ class ThongTinCamDoViewController: UIViewController {
         switch index {
         case 0:
             headerView.title = "Thông tin cầm đồ"
-            headerView.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
-            headerView.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
+            
             break
         case 1:
             headerView.title = "Thông tin định giá"
-            headerView.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
-            headerView.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
+           
             break
         case 2:
             headerView.title = "Thông tin cầm đồ gia dụng"
-            headerView.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
-            headerView.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
             break
         default:
             break
         }
+        headerView.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
+        headerView.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
         
         
         tableView.delegate = self

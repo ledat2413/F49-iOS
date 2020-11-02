@@ -7,23 +7,32 @@
 //
 
 import UIKit
+import Gallery
 
 class TaiSanHDGDViewController: BaseController {
     
     //MARK: --Vars
     
     var cellIdentifier: [String] = ["Cell2CreateTableViewCell","Cell3CreateTableViewCell"]
-    
+    var gallery: GalleryController!
+    var itemImages: [UIImage] = []
+
     var dataTaiSan: [HDGDDSTaiSan] = []
     
-    var selectedTaiSan: String?
-    var callBackTS: ((_ idTS: Int, _ TenTS: String) -> Void)?
-    //MARK: --IBOutlet
+    var callBackTS: (([TSTheChap]) -> Void)?
     
+    var imgStr: String = ""
+    var tenTaiSan: String = ""
+    var idTenSan: Int = 0
+    var viTri: String = ""
+    var dinhGia: Int = 0
+    var moTa: String = ""
+    var itemImg: [UIImage] = []
+    
+    //MARK: --IBOutlet
     
     @IBOutlet weak var headerContainerView: UIView!
     @IBOutlet weak var headerTextField: UITextField!
-    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -47,9 +56,10 @@ class TaiSanHDGDViewController: BaseController {
     //MARK: --Func
     
     
-    func handlerTaiSan(_ handler: @escaping (_ idTS: Int, _ tenTS: String) -> Void){
+    func handlerTaiSan(_ handler: @escaping ([TSTheChap]) -> Void){
         self.callBackTS = handler
     }
+    
     func setUpUI(){
         
         //Table View
@@ -89,26 +99,39 @@ class TaiSanHDGDViewController: BaseController {
     
     //Picker View
     func createPickerView() {
-            let pickerView = UIPickerView()
-            pickerView.delegate = self
-            headerTextField.inputView = pickerView
+        let pickerView = UIPickerView()
+        pickerView.delegate = self
+        headerTextField.inputView = pickerView
+        
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
+        toolBar.setItems([button], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        headerTextField.inputAccessoryView = toolBar
+    }
+    
+    @objc func action() {
+        view.endEditing(true)
+    }
+    
+    @objc func showImageGallery(){
+           self.gallery  = GalleryController()
+           self.gallery.delegate = self
            
-           let toolBar = UIToolbar()
-           toolBar.sizeToFit()
-           let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
-           toolBar.setItems([button], animated: true)
-           toolBar.isUserInteractionEnabled = true
-           headerTextField.inputAccessoryView = toolBar
-        }
-
-        @objc func action() {
-            view.endEditing(true)
-        }
+           Config.Camera.imageLimit = 1
+           Config.tabsToShow = [.imageTab,.cameraTab]
+           
+           self.present(self.gallery, animated: true, completion: nil)
+       }
 }
+
+
 
 extension TaiSanHDGDViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         switch indexPath.row {
         case 3:
             return CGFloat(120)
@@ -125,31 +148,51 @@ extension TaiSanHDGDViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2CreateTableViewCell", for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
             cell.keyLabel.text = "Vị trí"
-            cell.thumbnailtextField.text = "Vị trí"
+            
+            cell.callBackValue = { (value) in
+                self.viTri = value
+                cell.thumbnailtextField.text = self.viTri
+                
+            }
             return cell
             
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2CreateTableViewCell", for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-            cell.thumbnailtextField.text = "Định giá"
             cell.keyLabel.text = "Định giá"
-
+            
+            cell.callBackValue = { (value) in
+                self.dinhGia = Int(value)!
+                cell.thumbnailtextField.text = "\(self.dinhGia)"
+                
+            }
             return cell
             
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2CreateTableViewCell", for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-            cell.thumbnailtextField.text = "Mô tả"
             cell.keyLabel.text = "Mô tả"
+            cell.callBackValue = { (value) in
+                self.moTa = value
+                cell.thumbnailtextField.text = self.moTa
+            }
+            
             return cell
             
         default:
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell3CreateTableViewCell", for: indexPath) as? Cell3CreateTableViewCell else { fatalError() }
+            cell.callBackOpenCamera = { () in
+                self.showImageGallery()
+                self.itemImages = []
+            }
+            cell.loadData(itemImages)
+
             return cell
         }
     }
     
     
 }
+
 
 
 extension TaiSanHDGDViewController: UICollectionViewDelegate, UICollectionViewDataSource{
@@ -178,19 +221,19 @@ extension TaiSanHDGDViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-                        self.dismiss(animated: true) {
-                            if let callBackTS = self.callBackTS {
-                                callBackTS(self.dataTaiSan[indexPath.row].id, self.dataTaiSan[indexPath.row].tenVatCamCo)
-                                }
-                        }
+            self.dismiss(animated: true) {
+                if let callBackTS = self.callBackTS {
+                    callBackTS([TSTheChap(tenTS: self.tenTaiSan, idTS: self.idTenSan, dinhGia: self.dinhGia, viTri: self.viTri, moTa: self.moTa, imgURL: self.imgStr)])
+                }
+            }
             break
         default:
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
-    
 }
+
+
 
 extension TaiSanHDGDViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -204,6 +247,7 @@ extension TaiSanHDGDViewController: UICollectionViewDelegateFlowLayout{
 }
 
 
+
 extension TaiSanHDGDViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -215,7 +259,44 @@ extension TaiSanHDGDViewController: UIPickerViewDelegate, UIPickerViewDataSource
         return dataTaiSan[row].tenVatCamCo
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedTaiSan =  dataTaiSan[row].tenVatCamCo
-        headerTextField.text = selectedTaiSan
+        tenTaiSan =  dataTaiSan[row].tenVatCamCo
+        idTenSan = dataTaiSan[row].id
+        headerTextField.text = tenTaiSan
+    }
+}
+
+
+
+//Gallery
+extension TaiSanHDGDViewController: GalleryControllerDelegate{
+    
+    func galleryController(_ controller: GalleryController, didSelectImages images: [Image]) {
+        
+        if images.count > 0 {
+            Image.resolve(images: images) { (imageResolve) in
+                print(imageResolve)
+                if let image = imageResolve.first ?? UIImage() {
+                    let imageData: Data? = self.resizeImage(image: image, newWidth: CGFloat(150)).jpegData(compressionQuality: 1)
+                    self.imgStr = imageData?.base64EncodedString(options: .lineLength64Characters) ?? ""
+                    self.itemImages.append(image)
+                     self.tableView.reloadData()
+                }
+            }
+        }
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func galleryController(_ controller: GalleryController, didSelectVideo video: Video) {
+        
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func galleryController(_ controller: GalleryController, requestLightbox images: [Image]) {
+        
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func galleryControllerDidCancel(_ controller: GalleryController) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

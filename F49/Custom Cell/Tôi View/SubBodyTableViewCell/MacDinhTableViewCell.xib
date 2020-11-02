@@ -38,16 +38,26 @@
                             <constraint firstAttribute="width" constant="10" id="aEB-8M-w9J"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqB-MX-rVx">
+                        <rect key="frame" x="0.0" y="43" width="320" height="1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="2gv-ag-Xnl"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="wja-ah-FTa" secondAttribute="trailing" constant="30" id="5Fl-gB-Znu"/>
                     <constraint firstItem="wSD-hd-NJT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Erz-Ci-eIM"/>
+                    <constraint firstAttribute="bottom" secondItem="gqB-MX-rVx" secondAttribute="bottom" id="FMI-Hd-vbc"/>
+                    <constraint firstAttribute="trailing" secondItem="gqB-MX-rVx" secondAttribute="trailing" id="UeH-v8-O5L"/>
                     <constraint firstItem="wSD-hd-NJT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="YSH-ux-lre"/>
                     <constraint firstAttribute="bottom" secondItem="wSD-hd-NJT" secondAttribute="bottom" constant="5" id="YTU-u3-qLI"/>
                     <constraint firstItem="wja-ah-FTa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ZDG-8L-Sdc"/>
                     <constraint firstItem="tyt-Qa-aSB" firstAttribute="leading" secondItem="wSD-hd-NJT" secondAttribute="trailing" constant="20" id="e1v-3B-YTo"/>
                     <constraint firstItem="tyt-Qa-aSB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="fnO-Zo-ZB3"/>
                     <constraint firstAttribute="bottom" secondItem="tyt-Qa-aSB" secondAttribute="bottom" constant="5" id="jYF-hN-OKR"/>
+                    <constraint firstItem="gqB-MX-rVx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pNW-CU-MgE"/>
                     <constraint firstAttribute="bottom" secondItem="wja-ah-FTa" secondAttribute="bottom" constant="10" id="ubv-Sq-Xju"/>
                 </constraints>
             </tableViewCellContentView>
@@ -56,7 +66,7 @@
                 <outlet property="iconImage" destination="wSD-hd-NJT" id="A5F-IP-a5V"/>
                 <outlet property="titleLabel" destination="tyt-Qa-aSB" id="eBw-rV-1cS"/>
             </connections>
-            <point key="canvasLocation" x="101" y="117"/>
+            <point key="canvasLocation" x="100.00000000000001" y="116.51785714285714"/>
         </tableViewCell>
     </objects>
     <resources>

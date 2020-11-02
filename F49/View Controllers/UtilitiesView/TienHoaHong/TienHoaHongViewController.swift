@@ -79,7 +79,7 @@ class TienHoaHongViewController: UIViewController {
     
     func displayNavigation(){
         navigation.title = "Tiền hoa hồng"
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
     }
     
     @objc func backView(){

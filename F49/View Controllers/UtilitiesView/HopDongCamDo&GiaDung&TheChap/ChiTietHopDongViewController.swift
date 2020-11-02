@@ -54,10 +54,10 @@ class ChiTietHopDongViewController: BaseController {
         
         loadData()
         
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
         navigation.title = "Thông tin hợp đồng cầm đồ"
         navigation.rightButton.isHidden = false
-        navigation.rightButton.addTarget(self, action: #selector(optionView), for: .allEvents)
+        navigation.rightButton.addTarget(self, action: #selector(optionView), for: .touchDown)
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -79,8 +79,8 @@ class ChiTietHopDongViewController: BaseController {
                 self.dataChiTiet = result
                 self.tableView.reloadData()
                 self.collectionView.reloadData()
-                if (self.dataChiTiet?.hinhAnh.isEmpty)! {
-                         self.collectionViewContainer.isHidden = true
+                if !(self.dataChiTiet?.hinhAnh.isEmpty)!  {
+                         self.collectionViewContainer.isHidden = false
                      }
             }
         }

@@ -58,7 +58,7 @@ class ChiTietLichSuViewController: UIViewController {
     }
     
     func displayNavigation() {
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
         switch code {
         case 0:
             navigation.title = "Chi tiết lịch sử giao dịch"

@@ -37,7 +37,7 @@ class CamDoViewController: UIViewController {
         createPickerView()
         dismissPickerView()
         
-        headerView.leftButton.addTarget(self, action: #selector(backView), for: .allEvents)
+        headerView.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
         headerView.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
         containerView.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
         tableView.dataSource = self
@@ -60,10 +60,10 @@ class CamDoViewController: UIViewController {
         }
     }
     
-    private func loadData(id: String){
+    private func loadData(trangThai: String){
         switch index {
         case 0:
-            MGConnection.requestArray(APIRouter.GetListCamDo(id: id), CamDo.self) { (result, error) in
+            MGConnection.requestArray(APIRouter.GetListCamDo(trangThai: trangThai), CamDo.self) { (result, error) in
                 guard error == nil else {
                     print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                     return
@@ -76,7 +76,7 @@ class CamDoViewController: UIViewController {
             break
             
         case 1:
-            MGConnection.requestArray(APIRouter.GetListDinhGia(id: id), DinhGia.self) { (result, error) in
+            MGConnection.requestArray(APIRouter.GetListDinhGia(trangThai: trangThai), DinhGia.self) { (result, error) in
                 guard error == nil else {
                     print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                     return
@@ -89,7 +89,7 @@ class CamDoViewController: UIViewController {
             break
             
         case 2:
-            MGConnection.requestArray(APIRouter.GetListDoGiaDung(id: id), DoGiaDung.self) { (result, error) in
+            MGConnection.requestArray(APIRouter.GetListDoGiaDung(trangThai: trangThai), DoGiaDung.self) { (result, error) in
                 guard error == nil else {
                     print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                     return
@@ -172,11 +172,11 @@ extension CamDoViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CamDoTableViewCell", for: indexPath) as? CamDoTableViewCell else {
             fatalError()}
-        //        if dataStatus[indexPath.row].id == "1" {
-        //            cell.statusImage.image = UIImage(named: "icon-dangxuly")
-        //        }else{
-        //            cell.statusImage.isHidden = true
-        //        }
+                if dataStatus[indexPath.row].id == "1" {
+                    cell.statusImage.image = UIImage(named: "icon-dangxuly")
+                }else{
+                    cell.statusImage.isHidden = true
+                }
         
         switch index {
         case 0:
@@ -264,7 +264,7 @@ extension CamDoViewController: UIPickerViewDelegate, UIPickerViewDataSource, UIT
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedStatus = dataStatus[row].value
-        loadData(id: dataStatus[row].id)
+        loadData(trangThai: dataStatus[row].value)
         findTextField.text = selectedStatus
     }
 }
