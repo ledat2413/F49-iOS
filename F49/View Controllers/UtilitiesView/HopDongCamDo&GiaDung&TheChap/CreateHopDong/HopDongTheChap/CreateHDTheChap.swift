@@ -25,10 +25,10 @@ extension CreateHDCamDoViewController {
                 "TenVatCamCo" : self.tenTS ,
                 "IDVatCamCo" : self.idTS,
                 "HangSanXuat" : self.hangSX ,
-                            "HinhAnh" : [[
-                                 "Name" : self.tenTS,
-                                 "DataAsURL" : self.imgStr
-                            ]],
+                "HinhAnh" : [[
+                    "Name" : self.tenTS,
+                    "DataAsURL" : self.imgStr
+                    ]],
                 ]]
         } else {
             params["ThongTinHopDong"] = [
@@ -50,15 +50,16 @@ extension CreateHDCamDoViewController {
                 "TenVatCamCo" : self.tenTS ,
                 "IDVatCamCo" : self.idTS,
                 "HangSanXuat" : self.hangSX ,
-                            "HinhAnh" : [[
-                                "Name" : self.tenTS,
-                                "DataAsURL" : self.imgStr
-                           ] ],
+                "HinhAnh" : [[
+                    "Name" : self.tenTS,
+                    "DataAsURL" : self.imgStr
+                    ] ],
                 ]]
         }
         
         MGConnection.requestObject(APIRouter.LuuHopDongTheChap(params: params), SoHopDong.self) { (result, error) in
             guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                 return
             }
             if let result = result {
@@ -70,10 +71,13 @@ extension CreateHDCamDoViewController {
     
     func loadTaoMoi(){
         MGConnection.requestObject(APIRouter.LoadTaoMoiHDTC(idCuaHang: idCuaHang), LoadTaoMoiHDTC.self) { (result, error) in
-            guard error == nil else { return }
+            guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
+                return }
             if let result = result {
                 self.dataLoadTaoMoi = result
                 self.tinhSoTienKhachNhan()
+                
                 self.tableView.reloadData()
             }
         }
@@ -98,7 +102,8 @@ extension CreateHDCamDoViewController {
         
         
         MGConnection.requestObject(APIRouter.TinhSoTienKhachNhan(params: params), SoTienKhachNhan.self) { (result, error) in
-            guard error == nil else { return }
+            guard error == nil else {
+                return }
             if let result = result {
                 self.dataTienKhach = result
                 self.tableView.reloadData()
@@ -126,12 +131,12 @@ extension CreateHDCamDoViewController {
         
         //Navigation
         navigation.title = "Lập hợp đồng cầm đồ"
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
         navigation.displayShadowView2(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 0, offSet: CGSize(width: 3, height: 0))
         
         //Data
         loadTaoMoi()
-
+        
     }
     
     
@@ -141,8 +146,7 @@ extension CreateHDCamDoViewController {
         let catLaiPickerView = UIPickerView()
         catLaiPickerView.delegate = self
         textField.inputView = catLaiPickerView
-        let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(CreateHDCamDoViewController.endPicker))
-        textField.inputAccessoryView = toolBar
+        self.createToolbar(textField: textField, selector: #selector(CreateHDCamDoViewController.endPicker))
     }
     
     @objc func endPicker(){
@@ -157,17 +161,13 @@ extension CreateHDCamDoViewController {
             
         case 1:
             ngayPicker = UIDatePicker()
-            ngayPicker?.datePickerMode = .date
-            textField.inputView = ngayPicker
-            let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(CreateHDCamDoViewController.dismissPicker1))
-            textField.inputAccessoryView = toolBar
+            self.createDatePicker(picker: ngayPicker!, selector: #selector(dismissPicker1), textField: textField)
+            self.createToolbar(textField: textField, selector: #selector(doneButton))
             
         case 2:
             ngayPicker = UIDatePicker()
-            ngayPicker?.datePickerMode = .date
-            textField.inputView = ngayPicker
-            let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(CreateHDCamDoViewController.dismissPicker2))
-            textField.inputAccessoryView = toolBar
+            self.createDatePicker(picker: ngayPicker!, selector: #selector(dismissPicker2), textField: textField)
+            self.createToolbar(textField: textField, selector: #selector(doneButton1))
         default:
             break
         }
@@ -178,15 +178,21 @@ extension CreateHDCamDoViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         ngayVay = dateFormatter.string(from: ngayPicker!.date)
         print(ngayVay)
-        tableView.reloadData()
-        tinhSoTienKhachNhan()
-        
-        view.endEditing(true)
     }
+    
     @objc func dismissPicker2() {
         dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
         ngayVaoSo = dateFormatter.string(from: ngayPicker!.date)
         print(ngayVaoSo)
+    }
+    
+    @objc func doneButton(){
+        tinhSoTienKhachNhan()
+        tableView.reloadData()
+        view.endEditing(true)
+    }
+    
+    @objc func doneButton1(){
         tableView.reloadData()
         view.endEditing(true)
     }
@@ -291,25 +297,28 @@ extension CreateHDCamDoViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            if !Success {
-                let alert = UIAlertController(title: "Thông Báo", message: "Tạo thành công!", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
-                    self.luuHopDong()
-                    self.navigationController?.popViewController(animated: true)
-                }))
-                self.present(alert, animated: true, completion: nil)
-               
-            }else{
-                Alert("Tạo không thành không")
-            }
-           
-           
+            
+           luuHopDong()
+           if Success {
+            let alert = UIAlertController(title: "Thành công", message:  "Số hợp đồng của bạn là \(soHopDong?.soHopDong ?? "1")", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
+                
+                self.navigationController?.popViewController(animated: true)
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+           }else {
+            self.Alert("Tạo hợp đồng không thành công. Vui lòng thử lại!")
+           }
+                        
             break
         default:
             self.navigationController?.popViewController(animated: true)
         }
     }
 }
+
+
 
 extension CreateHDCamDoViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -321,6 +330,8 @@ extension CreateHDCamDoViewController: UICollectionViewDelegateFlowLayout{
         
     }
 }
+
+
 
 //Gallery
 extension CreateHDCamDoViewController: GalleryControllerDelegate{
@@ -344,19 +355,19 @@ extension CreateHDCamDoViewController: GalleryControllerDelegate{
     
     func galleryController(_ controller: GalleryController, didSelectVideo video: Video) {
         self.tableView.reloadData()
-
+        
         controller.dismiss(animated: true, completion: nil)
     }
     
     func galleryController(_ controller: GalleryController, requestLightbox images: [Image]) {
         self.tableView.reloadData()
-
+        
         controller.dismiss(animated: true, completion: nil)
     }
     
     func galleryControllerDidCancel(_ controller: GalleryController) {
         self.tableView.reloadData()
-
+        
         controller.dismiss(animated: true, completion: nil)
     }
 }

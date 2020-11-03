@@ -14,6 +14,7 @@ class UtilitiesViewController: BaseController {
     var dataCuaHang: [CuaHang] = []
     var dataTienIch: [TienIch] = []
     var selectedCuaHang: String?
+    var idCuaHang: Int = 0
     
     //MARK: --IBOutlet
     
@@ -63,6 +64,7 @@ class UtilitiesViewController: BaseController {
         MGConnection.requestArray(APIRouter.GetTienIch(id: id), TienIch.self) { (result, error) in
             self.removeSpinner()
             guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return
             }
@@ -78,7 +80,6 @@ class UtilitiesViewController: BaseController {
         loadData()
         loadDashBoard(id: 0)
         createPickerView()
-        dismissPickerView()
         
         headerView.layer.borderWidth  = 1
         headerView.displayTextField(radius: 18, color: UIColor.white)
@@ -99,18 +100,11 @@ class UtilitiesViewController: BaseController {
         let pickerView = UIPickerView()
         pickerView.delegate = self
         headerTextField.inputView = pickerView
+        self.createToolbar(textField: headerTextField, selector: #selector(action))
     }
-    
-    func dismissPickerView() {
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
-        toolBar.setItems([button], animated: true)
-        toolBar.isUserInteractionEnabled = true
-        headerTextField.inputAccessoryView = toolBar
-    }
-    
+
     @objc func action() {
+        loadDashBoard(id: idCuaHang)
         view.endEditing(true)
     }
 }
@@ -218,7 +212,7 @@ extension UtilitiesViewController: UIPickerViewDelegate, UIPickerViewDataSource,
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCuaHang = dataCuaHang[row].tenCuaHang
-        loadDashBoard(id: dataCuaHang[row].id)
         headerTextField.text = selectedCuaHang
+        idCuaHang = dataCuaHang[row].id
     }
 }

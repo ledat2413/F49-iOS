@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CamDoViewController: UIViewController {
+class CamDoViewController: BaseController {
     
     //MARK: --Vars
     var index: Int = 0
@@ -26,7 +26,6 @@ class CamDoViewController: UIViewController {
     @IBOutlet weak var findTextField: UITextField!
     @IBOutlet weak var findButton: UIButton!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var contentView: UIView!
     
     //MARK: --View Lifecycle
     override func viewDidLoad() {
@@ -35,10 +34,8 @@ class CamDoViewController: UIViewController {
         displayTitle()
         loadStatus()
         createPickerView()
-        dismissPickerView()
         
-        headerView.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
-        headerView.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
+        headerView.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
         containerView.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
         tableView.dataSource = self
         tableView.delegate = self
@@ -65,11 +62,16 @@ class CamDoViewController: UIViewController {
         case 0:
             MGConnection.requestArray(APIRouter.GetListCamDo(trangThai: trangThai), CamDo.self) { (result, error) in
                 guard error == nil else {
+                    self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
+                    
                     print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                     return
                 }
                 if let result = result{
                     self.dataListCamDo = result
+                    if result.count == 0 {
+                        self.Alert("Không có dữ liệu")
+                    }
                     self.tableView.reloadData()
                 }
             }
@@ -78,11 +80,16 @@ class CamDoViewController: UIViewController {
         case 1:
             MGConnection.requestArray(APIRouter.GetListDinhGia(trangThai: trangThai), DinhGia.self) { (result, error) in
                 guard error == nil else {
+                    self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
+                    
                     print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                     return
                 }
                 if let result = result{
                     self.dataListDinhGia = result
+                    if result.count == 0 {
+                        self.Alert("Không có dữ liệu")
+                    }
                     self.tableView.reloadData()
                 }
             }
@@ -91,11 +98,16 @@ class CamDoViewController: UIViewController {
         case 2:
             MGConnection.requestArray(APIRouter.GetListDoGiaDung(trangThai: trangThai), DoGiaDung.self) { (result, error) in
                 guard error == nil else {
+                    self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
+                    
                     print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                     return
                 }
                 if let result = result{
                     self.dataListDoGiaDung = result
+                    if result.count == 0 {
+                        self.Alert("Không có dữ liệu")
+                    }
                     self.tableView.reloadData()
                 }
             }
@@ -109,6 +121,7 @@ class CamDoViewController: UIViewController {
     private func loadStatus(){
         MGConnection.requestArray(APIRouter.GetStatus, Status.self) { (result, error) in
             guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return
             }
@@ -126,15 +139,7 @@ class CamDoViewController: UIViewController {
         let pickerView = UIPickerView()
         pickerView.delegate = self
         findTextField.inputView = pickerView
-    }
-    
-    func dismissPickerView() {
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
-        toolBar.setItems([button], animated: true)
-        toolBar.isUserInteractionEnabled = true
-        findTextField.inputAccessoryView = toolBar
+        self.createToolbar(textField: findTextField, selector: #selector(action))
     }
     
     @objc func action() {
@@ -149,19 +154,13 @@ extension CamDoViewController: UITableViewDataSource, UITableViewDelegate{
         
         switch index {
         case 0:
-            if dataListCamDo.count != 0 {
-                contentView.isHidden = true
-            }
+            
             return dataListCamDo.count
         case 1:
-            if dataListDinhGia.count != 0 {
-                contentView.isHidden = true
-            }
+            
             return dataListDinhGia.count
         case 2:
-            if dataListDoGiaDung.count != 0 {
-                contentView.isHidden = true
-            }
+            
             return dataListDoGiaDung.count
         default:
             break
@@ -172,11 +171,11 @@ extension CamDoViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CamDoTableViewCell", for: indexPath) as? CamDoTableViewCell else {
             fatalError()}
-                if dataStatus[indexPath.row].id == "1" {
-                    cell.statusImage.image = UIImage(named: "icon-dangxuly")
-                }else{
-                    cell.statusImage.isHidden = true
-                }
+        if dataStatus[indexPath.row].id == "1" {
+            cell.statusImage.image = UIImage(named: "icon-dangxuly")
+        }else{
+            cell.statusImage.isHidden = true
+        }
         
         switch index {
         case 0:

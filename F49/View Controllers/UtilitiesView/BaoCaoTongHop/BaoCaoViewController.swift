@@ -64,10 +64,9 @@ class BaoCaoViewController: BaseController {
         loadBaoCao()
         
         createPickerView()
-        dismissPickerView()
         
         navigation.title = "Báo cáo tổng hợp"
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
         
         shopContainerView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 5)
         fromView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 5)
@@ -117,14 +116,14 @@ class BaoCaoViewController: BaseController {
     func datePicker(){
         
         fromPicker = UIDatePicker()
-        fromPicker?.datePickerMode = .date
-        fromPicker?.addTarget(self, action: #selector(dateChanged(fromPicker:)), for: .valueChanged)
-        fromTextField.inputView = fromPicker
-        
         toPicker = UIDatePicker()
-        toPicker?.datePickerMode = .date
-        toPicker?.addTarget(self, action: #selector(dateChanged(toPicker:)), for: .valueChanged)
-        toTextField.inputView = toPicker
+        
+        self.createDatePicker(picker: fromPicker!, selector: #selector(dateChanged(fromPicker:)), textField: fromTextField)
+        self.createDatePicker(picker: toPicker!, selector: #selector(dateChanged(toPicker:)), textField: toTextField)
+        self.createToolbar(textField: fromTextField, selector: #selector(doneButton))
+        self.createToolbar(textField: toTextField, selector: #selector(doneButton))
+
+
     }
     
     @objc func dateChanged(fromPicker: UIDatePicker){
@@ -132,37 +131,35 @@ class BaoCaoViewController: BaseController {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         fromPicker.dateFormatte(txt: fromTextField)
         fromValue = dateFormatter.string(from: fromPicker.date)
-        loadBaoCao()
         
         print(fromValue ?? "")
-        view.endEditing(true)
     }
+
     
     @objc func dateChanged(toPicker: UIDatePicker){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         toPicker.dateFormatte(txt: toTextField)
         toValue = dateFormatter.string(from: toPicker.date)
-        loadBaoCao()
         print(toValue ?? "")
+    }
+    
+    
+    @objc func doneButton(){
+        loadBaoCao()
         view.endEditing(true)
+
     }
     
     //PickerView
     func createPickerView() {
         pickerView.delegate = self
         shopTextField.inputView = pickerView
-    }
-    
-    func dismissPickerView() {
-        toolBar.sizeToFit()
-        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
-        toolBar.setItems([button], animated: true)
-        toolBar.isUserInteractionEnabled = true
-        shopTextField.inputAccessoryView = toolBar
+        self.createToolbar(textField: shopTextField, selector: #selector(action))
     }
     
     @objc func action() {
+        loadBaoCao()
         view.endEditing(true)
     }
     
@@ -303,7 +300,6 @@ extension BaoCaoViewController: UIPickerViewDelegate, UIPickerViewDataSource, UI
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCuaHang = dataCuaHang[row].tenCuaHang
         id = dataCuaHang[row].id
-        loadBaoCao()
         shopTextField.text = selectedCuaHang
     }
 }

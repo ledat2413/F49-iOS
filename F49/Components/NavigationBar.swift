@@ -17,6 +17,7 @@ final class NavigationBar: UIView{
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var image3Cham: UIImageView!
     
     var title: String = "" {
         didSet {

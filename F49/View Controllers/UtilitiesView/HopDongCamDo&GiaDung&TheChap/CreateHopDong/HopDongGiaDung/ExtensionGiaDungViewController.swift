@@ -43,9 +43,13 @@ extension CreateHDGiaDungViewController{
              ]],
              ]]
          MGConnection.requestObject(APIRouter.LuuHopDongTraGop(params: params), SoHopDong.self) { (result, error) in
-             guard error == nil else { return }
+             guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? "" ). Vui lòng thử lại!!!")
+                return }
              if let result = result {
+                self.Success = false
                  self.dataHopDong = result
+                 
              }
          }
          
@@ -68,7 +72,7 @@ extension CreateHDGiaDungViewController{
          
          //Navigation
          navigation.title = "Tạo hợp đồng gia dụng"
-         navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
+         navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
          
          //Data
          loadTaoMoi()
@@ -184,16 +188,14 @@ extension CreateHDGiaDungViewController{
          switch idCell {
          case 1:
              ngayPicker = UIDatePicker()
-             ngayPicker?.datePickerMode = .date
-             textField.inputView = ngayPicker
-             let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(CreateHDGiaDungViewController.dismissPicker1))
-             textField.inputAccessoryView = toolBar
+             self.createDatePicker(picker: ngayPicker!, selector: #selector(dismissPicker1), textField: textField)
+           self.createToolbar(textField: textField, selector: #selector(doneButton))
+
          case 2:
              ngayPicker = UIDatePicker()
-             ngayPicker?.datePickerMode = .date
-             textField.inputView = ngayPicker
-             let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(CreateHDGiaDungViewController.dismissPicker2))
-             textField.inputAccessoryView = toolBar
+             self.createDatePicker(picker: ngayPicker!, selector: #selector(dismissPicker2), textField: textField)
+             self.createToolbar(textField: textField, selector: #selector(doneButton))
+
          default:
              break
          }
@@ -204,14 +206,18 @@ extension CreateHDGiaDungViewController{
          dateFormatter.dateFormat = "yyyy-MM-dd"
          ngayVay = dateFormatter.string(from: ngayPicker!.date)
          print(ngayVay)
-         tableView1.reloadData()
-         view.endEditing(true)
+       
      }
+
      
      @objc func dismissPicker2() {
          dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
          ngayVaoSo = dateFormatter.string(from: ngayPicker!.date)
          print(ngayVaoSo)
+    
+     }
+    
+    @objc func doneButton(){
          tableView1.reloadData()
          view.endEditing(true)
      }
@@ -221,11 +227,11 @@ extension CreateHDGiaDungViewController{
          let catLaiPickerView = UIPickerView()
          catLaiPickerView.delegate = self
          textField.inputView = catLaiPickerView
-         let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(CreateHDGiaDungViewController.endPicker))
-         textField.inputAccessoryView = toolBar
+        self.createToolbar(textField: textField, selector: #selector(endPicker))
      }
      
      @objc func endPicker(){
+        tinhSoTienKhachNhan()
          view.endEditing(true)
      }
 }

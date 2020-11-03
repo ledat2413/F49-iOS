@@ -23,8 +23,7 @@ class CuaHangMacDinhViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         headerView.title = "Cửa hàng mặc định"
-        headerView.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
-        headerView.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
+        headerView.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
         acceptButton.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
         displayButton(acceptButton)
         displayButton(cancelButton)

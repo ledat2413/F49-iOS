@@ -18,19 +18,15 @@ class RutLaiContainerViewController: BaseController, IndicatorInfoProvider {
     var idShop: Int = 0
     var idTab: Int = 0
     var dataRutVon: [RutVon] = []
-    //    private var dataTable: [ListRutLai] = []
-    //    private var dataTable: String = ""
-    //    var text: String = ""
+    
     
     @IBOutlet weak var tableView: UITableView!
-    
-    @IBOutlet weak var contentView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       setUpUI()
-       NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: NSNotification.Name.init("Accept"), object: nil)
+        setUpUI()
+        NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: NSNotification.Name.init("Accept"), object: nil)
     }
     
     func setUpUI(){
@@ -64,10 +60,16 @@ class RutLaiContainerViewController: BaseController, IndicatorInfoProvider {
             self.showSpinner(onView: self.view)
             MGConnection.requestArray(APIRouter.GetListRutVon(idShop: idShop, idTab: idTab), RutVon.self) { (result, error) in
                 self.removeSpinner()
-                guard error == nil else { return }
+                guard error == nil else {
+                    self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
+                    
+                    return }
                 if let result = result {
                     self.dataRutVon = result
                     
+                    if result.count == 0 {
+                        self.Alert("Không có dữ liệu")
+                    }
                     self.tableView.reloadData()
                 }
             }
@@ -82,17 +84,15 @@ class RutLaiContainerViewController: BaseController, IndicatorInfoProvider {
 }
 
 extension RutLaiContainerViewController: UITableViewDelegate, UITableViewDataSource{
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch idTienIch {
         case 4:
             return 0
         case 8:
-            if dataRutVon.count != 0 {
-                contentView.isHidden = true
-            }
+            
             return dataRutVon.count
-
+            
         default:
             return 0
             
@@ -100,10 +100,10 @@ extension RutLaiContainerViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         switch idTienIch {
         case 4:
-             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContractOpenTableViewCell", for: indexPath) as? ContractOpenTableViewCell else { fatalError() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContractOpenTableViewCell", for: indexPath) as? ContractOpenTableViewCell else { fatalError() }
             return cell
         case 8:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RutVonTableViewCell", for: indexPath) as? RutVonTableViewCell else { fatalError() }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TienHoaHongViewController: UIViewController {
+class TienHoaHongViewController: BaseController {
     
     //MARK: --Vars
     var selectedNhanVien: String?
@@ -17,6 +17,13 @@ class TienHoaHongViewController: UIViewController {
     
     var idNhanVien: Int = 0
     var string: String?
+    
+    private var fromPicker: UIDatePicker?
+    private var toPicker: UIDatePicker?
+    
+    var fromValue: String?
+    var toValue: String?
+    
     //MARK: --IBOutlet
     @IBOutlet weak var navigation: NavigationBar!
     
@@ -51,14 +58,21 @@ class TienHoaHongViewController: UIViewController {
         tableView.register(UINib(nibName: "BodyTienHoaHongTableViewCell", bundle: nil), forCellReuseIdentifier: "BodyTienHoaHongTableViewCell")
         loadNhanVien()
         createPickerView()
-        dismissPickerView()
+        datePicker()
     }
     
     func loadNhanVien(){
         MGConnection.requestArray(APIRouter.GetDanhSachNhanVien, NhanVien.self) { (result, error) in
-            guard error == nil else { return }
+            guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
+                return
+                
+            }
             if let result = result {
                 self.dataNhanVien = result
+                if result.count == 0 {
+                    self.Alert("Không có dữ liệu")
+                }
                 self.tableView.reloadData()
             }
         }
@@ -66,12 +80,26 @@ class TienHoaHongViewController: UIViewController {
     
     func loadTableView(){
         
-        let params: [String: Any] = ["idNhanVien" : idNhanVien ]
+        var params: [String: Any] = ["idNhanVien" : idNhanVien ]
+        
+        if let fromValue = self.fromValue {
+            params["tuNgay"] = fromValue
+        }
+        
+        if let toValue = self.toValue {
+            params["denNgay"] = toValue
+        }
         
         MGConnection.requestArray(APIRouter.GetTienHoaHong(params: params), NhanVien.self) { (result, error) in
-            guard error == nil else { return }
+            guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
+                
+                return }
             if let result = result{
                 self.dataTienHoaHong = result
+                if result.count == 0 {
+                    self.Alert("Không có dữ liệu")
+                }
                 self.tableView.reloadData()
             }
         }
@@ -79,7 +107,7 @@ class TienHoaHongViewController: UIViewController {
     
     func displayNavigation(){
         navigation.title = "Tiền hoa hồng"
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
     }
     
     @objc func backView(){
@@ -87,23 +115,55 @@ class TienHoaHongViewController: UIViewController {
     }
     
     func createPickerView() {
-          let pickerView = UIPickerView()
-          pickerView.delegate = self
-          shopTextField.inputView = pickerView
-      }
-      
-      func dismissPickerView() {
-          let toolBar = UIToolbar()
-          toolBar.sizeToFit()
-          let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
-          toolBar.setItems([button], animated: true)
-          toolBar.isUserInteractionEnabled = true
-          shopTextField.inputAccessoryView = toolBar
-      }
-      
-      @objc func action() {
-          view.endEditing(true)
-      }
+        let pickerView = UIPickerView()
+        pickerView.delegate = self
+        shopTextField.inputView = pickerView
+        self.createToolbar(textField: shopTextField, selector: #selector(action))
+    }
+    
+    
+    @objc func action() {
+        loadTableView()
+        view.endEditing(true)
+    }
+    
+    func datePicker(){
+        
+        fromPicker = UIDatePicker()
+        toPicker = UIDatePicker()
+        
+        self.createDatePicker(picker: fromPicker!, selector: #selector(dateChanged(fromPicker:)), textField: fromTextField)
+        self.createDatePicker(picker: toPicker!, selector: #selector(dateChanged(toPicker:)), textField: toTextField)
+        self.createToolbar(textField: fromTextField, selector: #selector(doneButton))
+        self.createToolbar(textField: toTextField, selector: #selector(doneButton))
+        
+        
+    }
+    
+    @objc func dateChanged(fromPicker: UIDatePicker){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        fromPicker.dateFormatte(txt: fromTextField)
+        fromValue = dateFormatter.string(from: fromPicker.date)
+        
+        print(fromValue ?? "")
+    }
+    
+    
+    @objc func dateChanged(toPicker: UIDatePicker){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        toPicker.dateFormatte(txt: toTextField)
+        toValue = dateFormatter.string(from: toPicker.date)
+        print(toValue ?? "")
+    }
+    
+    
+    @objc func doneButton(){
+        loadTableView()
+        view.endEditing(true)
+        
+    }
     
 }
 extension TienHoaHongViewController: UITableViewDelegate, UITableViewDataSource{
@@ -127,10 +187,7 @@ extension TienHoaHongViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "BodyTienHoaHongTableViewCell", for: indexPath) as? BodyTienHoaHongTableViewCell else { fatalError() }
-            
-            if dataTienHoaHong.count == 0 {
-                cell.noDataLabel.isHidden = false
-            }
+
             
             return cell
         }
@@ -151,7 +208,6 @@ extension TienHoaHongViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         selectedNhanVien = dataNhanVien[row].hoTen
         shopTextField.text = selectedNhanVien
         idNhanVien = dataNhanVien[row].id
-        loadTableView()
     }
 }
 

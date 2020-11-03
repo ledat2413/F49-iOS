@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LichSuViewController: UIViewController {
+class LichSuViewController: BaseController {
     
     var dataLichSuGiaoDich: [LichSuGiaoDich] = []
     var dataLichSuVayNo: [LichSuVayNo] = []
@@ -30,7 +30,7 @@ class LichSuViewController: UIViewController {
     }
     
     func displayNavigation(){
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
         switch code {
         case 0:
             navigation.title = "Lịch sử giao dịch"
@@ -55,17 +55,27 @@ class LichSuViewController: UIViewController {
         switch code {
         case 0:
             MGConnection.requestArray(APIRouter.GetLichSuGiaoDich(id: idHopDong), LichSuGiaoDich.self) { (result, error) in
-                guard error == nil else { return }
+                guard error == nil else {
+                    self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
+                    return }
                 if let result = result {
                     self.dataLichSuGiaoDich = result
+                    if result.isEmpty {
+                        self.Alert("Không có dữ liệu")
+                    }
                     self.tableView.reloadData()
                 }
             }
         default:
             MGConnection.requestArray(APIRouter.GetLichSuVayNo(id: idKhachHang), LichSuVayNo.self) { (result, error) in
-                guard error == nil else { return }
+                guard error == nil else {
+                    self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
+                    return }
                 if let result = result {
                     self.dataLichSuVayNo = result
+                    if result.isEmpty {
+                        self.Alert("Không có dữ liệu")
+                    }
                     self.tableView.reloadData()
                 }
             }

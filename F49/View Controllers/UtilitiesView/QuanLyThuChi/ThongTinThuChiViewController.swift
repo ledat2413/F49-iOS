@@ -71,11 +71,11 @@ class ThongTinThuChiViewController: BaseController {
         switch idTienIch {
         case 5:
             navigation.title = "Thông tin thu chi"
-            navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
+            navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
             break
         case 8:
             navigation.title = "Thông tin quản lí vốn"
-            navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
+            navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
             break
         default:
             break

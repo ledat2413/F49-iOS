@@ -16,8 +16,7 @@ class CaiDatViewController: UIViewController {
         super.viewDidLoad()
 
         headerView.title = "Cài đặt"
-        headerView.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
-        headerView.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
+        headerView.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
         
     }
     @objc func backView(){

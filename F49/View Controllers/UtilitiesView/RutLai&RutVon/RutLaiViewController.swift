@@ -108,8 +108,7 @@ class RutLaiViewController: TabbarButton {
             break
             
         }
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
-        navigation.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
     }
     
     @objc func backView(){
@@ -132,6 +131,7 @@ class RutLaiViewController: TabbarButton {
     }
     
     @objc func action() {
+        reloadPagerTabStripView()
         view.endEditing(true)
     }
     
@@ -151,10 +151,7 @@ extension RutLaiViewController: UIPickerViewDelegate, UIPickerViewDataSource, UI
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCuaHang = dataCuaHang[row].tenCuaHang
         shopTextField.text = selectedCuaHang
-        //        let imageDataDict:[String: Int] = ["idShop": dataCuaHang[row].id]
-        //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notificationName"), object: nil, userInfo: imageDataDict)
         idShop = dataCuaHang[row].id
-        reloadPagerTabStripView()
     }
     
 }

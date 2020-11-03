@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChiTietLichSuViewController: UIViewController {
+class ChiTietLichSuViewController: BaseController {
     
     var code: Int = 0
     
@@ -39,18 +39,30 @@ class ChiTietLichSuViewController: UIViewController {
         case 0:
             //            MGConnection.
             MGConnection.requestObject(APIRouter.GetChiTietLichSuGiaoDich(idGiaoDich: idLoaiGiaoDich, idHopDong: idHopDong), ChiTietVayNo.self) { (result, error) in
-                guard error == nil else { return}
+                guard error == nil else {
+                    self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
+                    
+                    return}
                 if let result = result {
                     self.dataChiTietLichSuVayNo = result
+                    if result.soHopDong.isEmpty {
+                        self.Alert("Không có dữ liệu")
+                    }
                     self.tableView.reloadData()
                 }
             }
             break
         default:
             MGConnection.requestObject(APIRouter.GetChiTietLichSuVayNo(idHopDong: idHopDong), ChiTietVayNo.self) { (result, error) in
-                guard error == nil else { return}
+                guard error == nil else {
+                    
+                    self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
+                    return}
                 if let result = result {
                     self.dataChiTietLichSuVayNo = result
+                    if result.soHopDong.isEmpty {
+                        self.Alert("Không có dữ liệu")
+                    }
                     self.tableView.reloadData()
                 }
             }
@@ -58,7 +70,7 @@ class ChiTietLichSuViewController: UIViewController {
     }
     
     func displayNavigation() {
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
         switch code {
         case 0:
             navigation.title = "Chi tiết lịch sử giao dịch"

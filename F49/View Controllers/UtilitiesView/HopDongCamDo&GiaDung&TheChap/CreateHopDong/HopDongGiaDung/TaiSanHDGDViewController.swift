@@ -89,9 +89,14 @@ class TaiSanHDGDViewController: BaseController {
         self.showSpinner(onView: self.view)
         MGConnection.requestArray(APIRouter.DanhSachTaiSanHDGD, HDGDDSTaiSan.self) { (result, error) in
             self.removeSpinner()
-            guard error == nil else { return}
+            guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
+                return}
             if let result = result {
                 self.dataTaiSan = result
+                if result.isEmpty {
+                    self.Alert("Không có dữ liệu")
+                }
                 self.tableView.reloadData()
             }
         }
@@ -102,16 +107,11 @@ class TaiSanHDGDViewController: BaseController {
         let pickerView = UIPickerView()
         pickerView.delegate = self
         headerTextField.inputView = pickerView
-        
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
-        toolBar.setItems([button], animated: true)
-        toolBar.isUserInteractionEnabled = true
-        headerTextField.inputAccessoryView = toolBar
+        self.createToolbar(textField: headerTextField, selector: #selector(action))
     }
     
     @objc func action() {
+        loadDSTaiSan()
         view.endEditing(true)
     }
     

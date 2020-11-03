@@ -54,10 +54,11 @@ class ChiTietHopDongViewController: BaseController {
         
         loadData()
         
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
         navigation.title = "Thông tin hợp đồng cầm đồ"
         navigation.rightButton.isHidden = false
-        navigation.rightButton.addTarget(self, action: #selector(optionView), for: .touchDown)
+        navigation.image3Cham.isHidden = false
+        navigation.rightButton.addTarget(self, action: #selector(optionView), for: .touchUpInside)
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -72,6 +73,7 @@ class ChiTietHopDongViewController: BaseController {
         MGConnection.requestObject(APIRouter.GetChiTietHopDong(id: id), ChiTietHopDong.self) { (result, error) in
             self.removeSpinner()
             guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return
             }

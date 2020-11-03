@@ -63,22 +63,19 @@ extension Cell1UserTableViewCell: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataProfile.count
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
         return 7
     }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = thumbnailTableView.dequeueReusableCell(withIdentifier: "NameTableViewCell", for: indexPath) as? NameTableViewCell else { fatalError() }
-        let data = dataProfile[indexPath.row]
+        let data = dataProfile.first
         
-        switch indexPath.section {
+        switch indexPath.row {
         case 0:
             cell.thumbnailKey.text = "Họ và tên"
-            cell.thumbnailValue.text = data.hoTen
+            cell.thumbnailValue.text = data?.hoTen
             return cell
         case 1:
             cell.thumbnailKey.text = "Ngày sinh"
@@ -90,7 +87,7 @@ extension Cell1UserTableViewCell: UITableViewDataSource, UITableViewDelegate {
             return cell
         case 3:
             cell.thumbnailKey.text = "Email"
-            cell.thumbnailValue.text = data.email
+            cell.thumbnailValue.text = data?.email
             return cell
         case 4:
             cell.thumbnailKey.text = "Phòng"
@@ -102,7 +99,7 @@ extension Cell1UserTableViewCell: UITableViewDataSource, UITableViewDelegate {
             return cell
         case 6:
             cell.thumbnailKey.text = "Phân quyền"
-            cell.thumbnailValue.text = data.phanQuyen
+            cell.thumbnailValue.text = data?.phanQuyen
             return cell
         default:
             return cell

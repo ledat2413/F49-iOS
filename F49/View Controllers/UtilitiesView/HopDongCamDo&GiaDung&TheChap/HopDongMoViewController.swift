@@ -18,7 +18,6 @@ class HopDongMoViewController: BaseController,IndicatorInfoProvider {
     var dataHopDong: [HopDongTheoLoai] = []
         
     
-    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -46,13 +45,14 @@ class HopDongMoViewController: BaseController,IndicatorInfoProvider {
         MGConnection.requestArray(APIRouter.GetListHopDongTheoLoai(params: params), HopDongTheoLoai.self) { (result, error) in
             self.removeSpinner()
             guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return
             }
             if let result = result {
                 self.dataHopDong = result
-                if self.dataHopDong.count > 0 {
-                    self.containerView.isHidden = true
+                if result.count == 0 {
+                    self.Alert("Không có dữ liệu")
                 }
                 self.tableView.reloadData()
             }

@@ -38,7 +38,7 @@ class BaseController: UIViewController {
     }
     
     func alertWithHandle(_ message: String){
-         let alert = UIAlertController(title: "Thông Báo", message: message, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Thông Báo", message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         
         self.present(alert, animated: true) {
@@ -66,15 +66,15 @@ class BaseController: UIViewController {
         let ai = UIActivityIndicatorView.init(style: .whiteLarge)
         ai.startAnimating()
         ai.center = spinnerView.center
-
+        
         DispatchQueue.main.async {
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
         }
-
+        
         vSpinner = spinnerView
     }
-
+    
     func removeSpinner() {
         DispatchQueue.main.async {
             self.vSpinner?.removeFromSuperview()
@@ -88,16 +88,31 @@ class BaseController: UIViewController {
         return strBase64!
     }
     
-     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        
         let scale = newWidth / image.size.width
         let newHeight = image.size.height * scale
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
         image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-
+        
         return newImage!
     }
     
+    public func createToolbar(textField: UITextField, selector: Selector){
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: selector)
+        toolBar.setItems([button], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        textField.inputAccessoryView = toolBar
+    }
+    
+    public func createDatePicker(picker: UIDatePicker, selector: Selector, textField: UITextField) {
+        picker.datePickerMode = .date
+        picker.addTarget(self, action: selector, for: .valueChanged)
+        textField.inputView = picker
+    }
 }

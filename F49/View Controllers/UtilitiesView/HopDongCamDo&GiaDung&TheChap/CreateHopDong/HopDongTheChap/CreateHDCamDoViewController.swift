@@ -448,6 +448,8 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
             cell.keyLabel.text = "Ngày cắt lãi"
             cell.celendarButton.isHidden = false
+            cell.downButton.isHidden = true
+
             cell.enableKeyboard = false
             cell.thumbnailtextField.textColor = .lightGray
             
@@ -470,6 +472,7 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
             cell.keyLabel.text = "Cắt lãi"
             cell.downButton.isHidden = false
+            cell.celendarButton.isHidden = true
             cell.enableKeyboard = true
             
             cell.callBackOpenView =  { [weak self] () in

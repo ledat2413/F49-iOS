@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KhachHangViewController: UIViewController {
+class KhachHangViewController: BaseController {
 
     //MARK: --Vars
     private var dataTimKiem: [TimKiem] = []
@@ -63,11 +63,17 @@ class KhachHangViewController: UIViewController {
         loadKhachHang(findTextField.text!)
     }
     
+    
     private func loadKhachHang(_ key: String){
         MGConnection.requestArray(APIRouter.TimKiemKhachHang(key: key), TimKiem.self) { (result, error) in
-            guard error == nil else { return }
+            guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!!")
+                return }
             if let result = result {
                 self.dataTimKiem = result
+                if result.isEmpty {
+                    self.Alert("Không có dữ liệu")
+                }
                 self.tableView.reloadData()
             }
         }

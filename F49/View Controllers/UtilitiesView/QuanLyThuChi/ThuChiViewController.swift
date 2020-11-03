@@ -21,6 +21,7 @@ class ThuChiViewController: BaseController {
     private var fromPicker: UIDatePicker?
     private var toPicker: UIDatePicker?
     
+    
     var fromValue: String?
     var toValue: String?
     
@@ -40,7 +41,6 @@ class ThuChiViewController: BaseController {
     @IBOutlet weak var toTextField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var content: UIView!
     
     //MARK: --IBAction
     
@@ -52,49 +52,14 @@ class ThuChiViewController: BaseController {
     
     //MARK: --Func
     
-    //DatePicker
-    func datePicker(){
-        
-        fromPicker = UIDatePicker()
-        fromPicker?.datePickerMode = .date
-        fromPicker?.addTarget(self, action: #selector(dateChanged(fromPicker:)), for: .valueChanged)
-        fromTextField.inputView = fromPicker
-        
-        toPicker = UIDatePicker()
-        toPicker?.datePickerMode = .date
-        toPicker?.addTarget(self, action: #selector(dateChanged(toPicker:)), for: .valueChanged)
-        toTextField.inputView = toPicker
-    }
-    
-    
-    
-    @objc func dateChanged(fromPicker: UIDatePicker){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        fromPicker.dateFormatte(txt: fromTextField)
-        fromValue = dateFormatter.string(from: fromPicker.date)
-        loadData()
-        
-        print(fromValue ?? "")
-        view.endEditing(true)
-    }
-    
-    @objc func dateChanged(toPicker: UIDatePicker){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        toPicker.dateFormatte(txt: toTextField)
-        toValue = dateFormatter.string(from: toPicker.date)
-        loadData()
-        print(toValue ?? "")
-        view.endEditing(true)
-    }
     
     
     func setUpUI(){
-        datePicker()
         
+        datePicker()
         tableView.delegate = self
         tableView.dataSource = self
+        
         switch idTienIch {
         case 5:
             tableView.register(UINib(nibName: "ContractOpenTableViewCell", bundle: nil), forCellReuseIdentifier: "ContractOpenTableViewCell")
@@ -121,11 +86,11 @@ class ThuChiViewController: BaseController {
         switch idTienIch {
         case 5:
             navigation.title = "Quản lí thu chi"
-            navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
+            navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
             break
         case 8:
             navigation.title = "Rút vốn"
-            navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
+            navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
             break
         default:
             break
@@ -139,18 +104,49 @@ class ThuChiViewController: BaseController {
     func createPickerView() {
         let pickerView = UIPickerView().createPicker(tf: shopTextField)
         pickerView.delegate = self
-        dismissPickerView()
-    }
-    func dismissPickerView() {
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
-        toolBar.setItems([button], animated: true)
-        toolBar.isUserInteractionEnabled = true
-        shopTextField.inputAccessoryView = toolBar
+        self.createToolbar(textField: shopTextField, selector: #selector(action))
     }
     
+    
     @objc func action() {
+        loadData()
+        view.endEditing(true)
+    }
+    
+    
+    //DatePicker
+    func datePicker(){
+        
+        fromPicker = UIDatePicker()
+        toPicker = UIDatePicker()
+        
+        self.createToolbar(textField: fromTextField, selector: #selector(actionButton))
+        self.createToolbar(textField: toTextField, selector: #selector(actionButton))
+        self.createDatePicker(picker: toPicker! , selector: #selector(dateChanged(toPicker:)), textField: toTextField)
+        self.createDatePicker(picker: fromPicker! , selector: #selector(dateChanged(fromPicker:)), textField: fromTextField)
+        
+    }
+    
+    
+    @objc func dateChanged(fromPicker: UIDatePicker){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        fromPicker.dateFormatte(txt: fromTextField)
+        fromValue = dateFormatter.string(from: fromPicker.date)
+        
+        print(fromValue ?? "")
+    }
+    
+    @objc func dateChanged(toPicker: UIDatePicker){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        toPicker.dateFormatte(txt: toTextField)
+        toValue = dateFormatter.string(from: toPicker.date)
+        print(toValue ?? "")
+    }
+    
+    @objc func actionButton(){
+        loadData()
         view.endEditing(true)
     }
     
@@ -158,6 +154,7 @@ class ThuChiViewController: BaseController {
     func loadCuaHang() {
         MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
             guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return
             }
@@ -184,11 +181,15 @@ class ThuChiViewController: BaseController {
             MGConnection.requestArray(APIRouter.GetListThuChi(params: params), ThuChi.self) { (result, error) in
                 self.removeSpinner()
                 guard error == nil else {
+                    self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
                     print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                     return
                 }
                 if let result = result {
                     self.dataThuChi = result
+                    if result.count == 0 {
+                        self.Alert("Không có dữ liếu")
+                    }
                     self.tableView.reloadData()
                 }
             }
@@ -198,11 +199,15 @@ class ThuChiViewController: BaseController {
             MGConnection.requestArray(APIRouter.GetListVonDauTu(params: params), VonDauTu.self) { (result, error) in
                 self.removeSpinner()
                 guard error == nil else {
+                    self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
                     print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                     return
                 }
                 if let result = result {
                     self.dataVon = result
+                    if result.count == 0 {
+                        self.Alert("Không có dữ liếu")
+                    }
                     self.tableView.reloadData()
                 }
             }
@@ -219,14 +224,10 @@ extension ThuChiViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch idTienIch {
         case 5:
-            if dataThuChi.count != 0 {
-                content.isHidden = true
-            }
+            
             return  dataThuChi.count
         case 8:
-            if dataVon.count != 0 {
-                content.isHidden = true
-            }
+            
             return dataVon.count
         default:
             return 0
@@ -308,6 +309,5 @@ extension ThuChiViewController: UIPickerViewDelegate, UIPickerViewDataSource, UI
         selectedCuaHang = dataCuaHang[row].tenCuaHang
         shopTextField.text = selectedCuaHang
         idShop = dataCuaHang[row].id
-        loadData()
     }
 }

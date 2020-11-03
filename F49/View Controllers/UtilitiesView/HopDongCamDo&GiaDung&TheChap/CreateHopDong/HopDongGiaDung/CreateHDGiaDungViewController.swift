@@ -55,7 +55,7 @@ class CreateHDGiaDungViewController: BaseController {
     var viTriDeDo: String = ""
     var dinhGia: Int = 0
     var giayToKemTheo: String = ""
-    
+    var Success: Bool = false
     //MARK: --IBOutlet
     
     @IBOutlet weak var navigation: NavigationBar!
@@ -410,7 +410,6 @@ extension CreateHDGiaDungViewController: UIPickerViewDelegate, UIPickerViewDataS
         self.selectedCatLai = dataKeyValue[row].title
         self.dataLoadTaoMoi?.catLaiTruoc = dataKeyValue[row].value
         self.valueCatLai = dataKeyValue[row].value
-        tinhSoTienKhachNhan()
         //        selectedCatLai = dataCatLai[row]
     }
 }

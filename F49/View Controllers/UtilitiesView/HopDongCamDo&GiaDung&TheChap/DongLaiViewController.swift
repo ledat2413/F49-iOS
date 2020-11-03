@@ -54,7 +54,7 @@ class DongLaiViewController: BaseController {
         tableView.register(UINib(nibName: "ThuLai3TableViewCell", bundle: nil), forCellReuseIdentifier: "ThuLai3TableViewCell")
         loadGiaoDich()
         navigation.title = "Đóng lãi"
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchDown)
+        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
         doButton.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
         doButton.displayTextField(radius: 20, color: UIColor.clear)
         buttonContainerView.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 20)
@@ -77,28 +77,33 @@ class DongLaiViewController: BaseController {
         }
     }
     
+    
     func loadGiaoDich(){
         MGConnection.requestArray(APIRouter.GetLoaiGiaoDich, LoaiGiaoDich.self) { (result, error) in
             guard error == nil else { return }
             if let result = result {
                 self.dataGiaoDich = result
-                
             }
         }
     }
+    
     
     func putThuLai(){
         self.showSpinner(onView: self.view)
         MGConnection.requestObject(APIRouter.PutThucHienThuLai(idHopDong: idHopDong, loaiGiaoDich: idLoaiGiaoDich, idCuaHangFormApp: dataCTHĐTL?.idCuaHang ?? 0, tienThucTe: Double(dataCTHĐTL?.phaiThu ?? 0) , ngayHieuLuc: ngayHieuLuc ?? ""), ChiTietHopDongThuLai.self) { (result, error) in
             self.removeSpinner()
             guard error == nil else {
+                
                 self.Alert("Đóng lãi không thành công!")
                 print("Error: \(error?.mErrorMessage ?? "") and \(error?.mErrorCode ?? 0)")
-                return }
-             let alert = UIAlertController(title: "Thông Báo", message: "Đóng lãi thành công", preferredStyle: UIAlertController.Style.alert)
+                
+                return
+                
+            }
+
+                let alert = UIAlertController(title: "Thông Báo", message: "Đóng lãi thành công", preferredStyle: UIAlertController.Style.alert)
                    // add an action (button)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: self.popView))
-                   
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: self.popView))
                    // show the alert
                    self.present(alert, animated: true, completion: nil)
            
@@ -116,30 +121,36 @@ class DongLaiViewController: BaseController {
     func datePicker(textField: UITextField){
         ngayHieuLucPicker = UIDatePicker()
         ngayHieuLucPicker?.datePickerMode = .date
-        textField.inputView = ngayHieuLucPicker
-        let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(DongLaiViewController.dismissPicker))
-        textField.inputAccessoryView = toolBar
+
+        self.createDatePicker(picker: ngayHieuLucPicker!, selector: #selector(dateChange(ngayHieuLucPicker:)), textField: textField)
+        self.createToolbar(textField: textField, selector: #selector(actionDate))
+
     }
     
-    @objc func dismissPicker() {
+    @objc func dateChange(ngayHieuLucPicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        ngayHieuLuc = dateFormatter.string(from: ngayHieuLucPicker!.date)
+        ngayHieuLuc = dateFormatter.string(from: ngayHieuLucPicker.date)
         print(ngayHieuLuc!)
+  
+    }
+    
+    @objc func actionDate(){
         loadChiTietHopDongThuLai()
         tableView.reloadData()
-        view.endEditing(true)
+              view.endEditing(true)
     }
+    
     
     //Giao Dich Picker
     func createPickerView(tf: UITextField) {
         let pickerView = UIPickerView().createPicker(tf: tf)
         pickerView.delegate = self
-        let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(DongLaiViewController.action))
-        tf.inputAccessoryView = toolBar
+        self.createToolbar(textField: tf, selector: #selector(action))
     }
     
     @objc func action() {
+        self.tableView.reloadData()
         view.endEditing(true)
     }
     
@@ -181,7 +192,6 @@ extension DongLaiViewController: UITableViewDelegate, UITableViewDataSource{
             
         case 4:
             cell.keyLabel.text = "Ngày hiệu lực"
-            
             cell.valueLabel.isHidden = true
             cell.iconDownButton.isHidden = true
             
@@ -221,7 +231,7 @@ extension DongLaiViewController: UITableViewDelegate, UITableViewDataSource{
             
             cell.keyLabel.text = "Nợ gốc"
             cell.valueLabel.text = "\(dataCTHĐTL?.noGoc ?? 0)"
-            
+
             return cell
         case 7:
             
@@ -260,7 +270,6 @@ extension DongLaiViewController: UIPickerViewDelegate, UIPickerViewDataSource, U
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedGiaoDich = dataGiaoDich[row].value
         idLoaiGiaoDich = dataGiaoDich[row].id
-        self.tableView.reloadData()
     }
 }
 

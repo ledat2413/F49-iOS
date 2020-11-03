@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TaiSanViewController: UIViewController {
+class TaiSanViewController: BaseController {
     
     //MARK: --Vars
     private var DSTSHDTheChap: [TaiSanHDTheChap] = []
@@ -16,6 +16,7 @@ class TaiSanViewController: UIViewController {
     private var selectedTaiSan: String?
     private var idTaiSan: Int?
     private var pickerTaiSan: UIPickerView?
+    private var loadiTaiSan: String?
     
     var valueTaiSan:((_ ten: String, _ id: Int, _ hang: String) -> Void)?
     
@@ -89,16 +90,12 @@ class TaiSanViewController: UIViewController {
          let pickerView = UIPickerView()
          pickerView.delegate = self
          findTextField.inputView = pickerView
+        self.createToolbar(textField: findTextField, selector: #selector(action))
         
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
-        toolBar.setItems([button], animated: true)
-        toolBar.isUserInteractionEnabled = true
-        findTextField.inputAccessoryView = toolBar
      }
 
      @objc func action() {
+        loadThuocTinh(loadiTaiSan ?? "")
          view.endEditing(true)
      }
     
@@ -192,7 +189,7 @@ extension TaiSanViewController: UIPickerViewDelegate, UIPickerViewDataSource, UI
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedTaiSan =  DSTSHDTheChap[row].tenVatCamCo
         idTaiSan = DSTSHDTheChap[row].id
+        loadiTaiSan = DSTSHDTheChap[row].loai
         findTextField.text = selectedTaiSan
-        loadThuocTinh(DSTSHDTheChap[row].loai)
     }
 }

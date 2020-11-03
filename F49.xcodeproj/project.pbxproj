@@ -151,6 +151,8 @@
 		C28821B7252895DE00EF6B91 /* ThanhLyTaiSanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28821B5252895DE00EF6B91 /* ThanhLyTaiSanTableViewCell.swift */; };
 		C28821B8252895DE00EF6B91 /* ThanhLyTaiSanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C28821B6252895DE00EF6B91 /* ThanhLyTaiSanTableViewCell.xib */; };
 		C288472F250B0F7200CB84FA /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C288472E250B0F7200CB84FA /* Contants.swift */; };
+		C289FB53255135E9008FE808 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289FB51255135E9008FE808 /* PopUpViewController.swift */; };
+		C289FB54255135E9008FE808 /* PopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C289FB52255135E9008FE808 /* PopUpViewController.xib */; };
 		C28C743825453CE500AE95BE /* TaiSanHDGDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C743725453CE500AE95BE /* TaiSanHDGDViewController.swift */; };
 		C28C743A25454A6700AE95BE /* DanhSachTaiSan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C743925454A6700AE95BE /* DanhSachTaiSan.swift */; };
 		C2B327E9254B00E100D18662 /* ThongTinTaiSanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B327E7254B00E100D18662 /* ThongTinTaiSanTableViewCell.swift */; };
@@ -343,6 +345,8 @@
 		C28821B5252895DE00EF6B91 /* ThanhLyTaiSanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanhLyTaiSanTableViewCell.swift; sourceTree = "<group>"; };
 		C28821B6252895DE00EF6B91 /* ThanhLyTaiSanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThanhLyTaiSanTableViewCell.xib; sourceTree = "<group>"; };
 		C288472E250B0F7200CB84FA /* Contants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contants.swift; sourceTree = "<group>"; };
+		C289FB51255135E9008FE808 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		C289FB52255135E9008FE808 /* PopUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpViewController.xib; sourceTree = "<group>"; };
 		C28C743725453CE500AE95BE /* TaiSanHDGDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaiSanHDGDViewController.swift; sourceTree = "<group>"; };
 		C28C743925454A6700AE95BE /* DanhSachTaiSan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanhSachTaiSan.swift; sourceTree = "<group>"; };
 		C2B327E7254B00E100D18662 /* ThongTinTaiSanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThongTinTaiSanTableViewCell.swift; sourceTree = "<group>"; };
@@ -772,6 +776,7 @@
 		C2661CCE2509D5BE00430595 /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
+				C289FB50255135BD008FE808 /* Popup */,
 				C28773652537E89400A8B3E8 /* LapHopDong */,
 				C267ACE725355ED7007BCD49 /* ChiTietHopDong */,
 				C2EBBCB32532E617007F4214 /* Camera */,
@@ -1003,6 +1008,15 @@
 			path = Defaults;
 			sourceTree = "<group>";
 		};
+		C289FB50255135BD008FE808 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				C289FB51255135E9008FE808 /* PopUpViewController.swift */,
+				C289FB52255135E9008FE808 /* PopUpViewController.xib */,
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
 		C2BC99C7252186C400796448 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -1179,6 +1193,7 @@
 			files = (
 				C265C18425071EE2000D4FAE /* LaunchScreen.storyboard in Resources */,
 				C2C25845251373C90048FAB2 /* CamDoTableViewCell.xib in Resources */,
+				C289FB54255135E9008FE808 /* PopUpViewController.xib in Resources */,
 				C2659CBC2510AD090021BC9D /* BodyCollectionViewCell.xib in Resources */,
 				C2C2585525148F380048FAB2 /* InfoCamDoTableViewCell.xib in Resources */,
 				C267ACE32533F0F3007BCD49 /* CameraCollectionViewCell.xib in Resources */,
@@ -1349,6 +1364,7 @@
 				C20FF73F251F36500096A38F /* NotificationTableViewCell.swift in Sources */,
 				C28C743825453CE500AE95BE /* TaiSanHDGDViewController.swift in Sources */,
 				C26BB5E5252434CD0024D236 /* RutLaiChiTietViewController.swift in Sources */,
+				C289FB53255135E9008FE808 /* PopUpViewController.swift in Sources */,
 				C2C25844251373C90048FAB2 /* CamDoTableViewCell.swift in Sources */,
 				C258EFE4253F326C00FA72C2 /* TienKhachNhan.swift in Sources */,
 				C282CBF92511CB8500F62B63 /* ShopUITableViewCell.swift in Sources */,
