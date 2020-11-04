@@ -124,7 +124,6 @@
 		C26BB5E3252430BD0024D236 /* DanhSachNhanVien.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5E2252430BD0024D236 /* DanhSachNhanVien.swift */; };
 		C26BB5E5252434CD0024D236 /* RutLaiChiTietViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5E4252434CD0024D236 /* RutLaiChiTietViewController.swift */; };
 		C26BB5E7252437F70024D236 /* QuanLyVonDauTu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5E6252437F70024D236 /* QuanLyVonDauTu.swift */; };
-		C26BB5EA25243A8F0024D236 /* VonDauTuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5E925243A8F0024D236 /* VonDauTuViewController.swift */; };
 		C26BB5EC25244CB40024D236 /* VonDauTuChiTiet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5EB25244CB40024D236 /* VonDauTuChiTiet.swift */; };
 		C26BB5F025247FC50024D236 /* QuanLyVonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5EE25247FC50024D236 /* QuanLyVonTableViewCell.swift */; };
 		C26BB5F125247FC50024D236 /* QuanLyVonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26BB5EF25247FC50024D236 /* QuanLyVonTableViewCell.xib */; };
@@ -318,7 +317,6 @@
 		C26BB5E2252430BD0024D236 /* DanhSachNhanVien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanhSachNhanVien.swift; sourceTree = "<group>"; };
 		C26BB5E4252434CD0024D236 /* RutLaiChiTietViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RutLaiChiTietViewController.swift; sourceTree = "<group>"; };
 		C26BB5E6252437F70024D236 /* QuanLyVonDauTu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuanLyVonDauTu.swift; sourceTree = "<group>"; };
-		C26BB5E925243A8F0024D236 /* VonDauTuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VonDauTuViewController.swift; sourceTree = "<group>"; };
 		C26BB5EB25244CB40024D236 /* VonDauTuChiTiet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VonDauTuChiTiet.swift; sourceTree = "<group>"; };
 		C26BB5EE25247FC50024D236 /* QuanLyVonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuanLyVonTableViewCell.swift; sourceTree = "<group>"; };
 		C26BB5EF25247FC50024D236 /* QuanLyVonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuanLyVonTableViewCell.xib; sourceTree = "<group>"; };
@@ -886,14 +884,6 @@
 			path = "Collection View";
 			sourceTree = "<group>";
 		};
-		C26BB5E825243A7D0024D236 /* VonDauTu */ = {
-			isa = PBXGroup;
-			children = (
-				C26BB5E925243A8F0024D236 /* VonDauTuViewController.swift */,
-			);
-			path = VonDauTu;
-			sourceTree = "<group>";
-		};
 		C26BB5ED25247FAA0024D236 /* RutVon */ = {
 			isa = PBXGroup;
 			children = (
@@ -932,7 +922,6 @@
 				C264414B252C0985001610A6 /* BaoCaoTongHop */,
 				C264414A252C08DD001610A6 /* TienHoaHong */,
 				C25ED68D25271E08004662A1 /* ThanhLyTaiSan */,
-				C26BB5E825243A7D0024D236 /* VonDauTu */,
 				C26310882522C69C0056FD6F /* RutLai&RutVon */,
 				C243DCC2251D87DF004C6347 /* QuanLyThuChi */,
 				C2594D042519A16100A99713 /* HopDongCamDo&GiaDung&TheChap */,
@@ -1352,7 +1341,6 @@
 				C25E7ED1252D680000490F8D /* TienHoaHongViewController.swift in Sources */,
 				C25E7EE0252DB4C900490F8D /* RutVon2TableViewCell.swift in Sources */,
 				C265C19F250777A1000D4FAE /* UserToken.swift in Sources */,
-				C26BB5EA25243A8F0024D236 /* VonDauTuViewController.swift in Sources */,
 				C2695BEB2508BF9200E3A3C8 /* HomeViewController.swift in Sources */,
 				C26BB5F025247FC50024D236 /* QuanLyVonTableViewCell.swift in Sources */,
 				C2C2584925144D7A0048FAB2 /* CamDo.swift in Sources */,
@@ -1574,6 +1562,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 44445494AW;
 				INFOPLIST_FILE = F49/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1593,6 +1582,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 44445494AW;
 				INFOPLIST_FILE = F49/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

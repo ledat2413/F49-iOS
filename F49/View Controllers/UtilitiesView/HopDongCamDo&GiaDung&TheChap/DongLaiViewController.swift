@@ -38,7 +38,8 @@ class DongLaiViewController: BaseController {
         super.viewDidLoad()
         setUpUI()
         loadChiTietHopDongThuLai()
-        
+        self.hideKeyboardWhenTappedAround()
+
     }
     
     //MARK: --IBAction

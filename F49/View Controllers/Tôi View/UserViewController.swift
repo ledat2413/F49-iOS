@@ -39,6 +39,7 @@ class UserViewController: BaseController {
         super.viewDidLayoutSubviews()
         height = headerView.frame.size.height
     }
+    
     func setUpUI() {    
         
         //Header view
@@ -70,16 +71,14 @@ extension UserViewController: UITableViewDelegate,UITableViewDataSource {
         
         var frame = headerView.frame
         
-       
         if offsetY < 0 {
             topConstrainsHeaderViewContainerView.constant = offsetY
             frame.size.height = height - offsetY
         } else {
+            return
             
         }
         
-        
-        headerView.frame = frame
         mainTableView.tableHeaderView = headerView
         
     }

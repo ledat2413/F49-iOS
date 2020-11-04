@@ -48,6 +48,7 @@ class BaoCaoViewController: BaseController {
         super.viewDidLoad()
         displayTableView()
         datePicker()
+        self.hideKeyboardWhenTappedAround()
     }
     
     //MARK: --Func
@@ -106,6 +107,7 @@ class BaoCaoViewController: BaseController {
             guard error == nil else { return }
             if let result = result {
                 self.dataBaoCao = result
+        
                 self.tableView.reloadData()
             }
             

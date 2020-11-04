@@ -53,16 +53,9 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Không có dữ liệu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4S-fz-Bio">
-                        <rect key="frame" x="0.0" y="0.0" width="398" height="41"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="5BT-9A-Unm" secondAttribute="bottom" constant="10" id="2pE-ag-AeV"/>
-                    <constraint firstAttribute="trailing" secondItem="a4S-fz-Bio" secondAttribute="trailing" id="8cl-La-sEY"/>
                     <constraint firstAttribute="bottom" secondItem="fCu-so-oGJ" secondAttribute="bottom" constant="10" id="LRI-UJ-eJp"/>
                     <constraint firstItem="fCu-so-oGJ" firstAttribute="leading" secondItem="sVK-3J-KvU" secondAttribute="trailing" id="Mwo-VE-J6D"/>
                     <constraint firstItem="fCu-so-oGJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="OxJ-2i-1gi"/>
@@ -72,12 +65,9 @@
                     <constraint firstItem="sVK-3J-KvU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="XBK-cq-qZz"/>
                     <constraint firstAttribute="bottom" secondItem="PEW-sE-c4P" secondAttribute="bottom" constant="10" id="a9W-Fy-Mte"/>
                     <constraint firstItem="PEW-sE-c4P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="b2H-PJ-k2w"/>
-                    <constraint firstAttribute="bottom" secondItem="a4S-fz-Bio" secondAttribute="bottom" id="fK5-qf-yvO"/>
                     <constraint firstItem="5BT-9A-Unm" firstAttribute="leading" secondItem="fCu-so-oGJ" secondAttribute="trailing" constant="10" id="gC3-Be-Dcp"/>
                     <constraint firstItem="sVK-3J-KvU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="jRi-LN-5m1"/>
                     <constraint firstItem="PEW-sE-c4P" firstAttribute="leading" secondItem="5BT-9A-Unm" secondAttribute="trailing" constant="10" id="lK4-Tf-DJ4"/>
-                    <constraint firstItem="a4S-fz-Bio" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nbu-eP-sYT"/>
-                    <constraint firstItem="a4S-fz-Bio" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="wdM-ca-Zkn"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -85,7 +75,6 @@
                 <outlet property="idHopDongLabel" destination="fCu-so-oGJ" id="L79-Yi-WP1"/>
                 <outlet property="khachHangLabel" destination="5BT-9A-Unm" id="uPF-De-e2h"/>
                 <outlet property="moneyLabel" destination="PEW-sE-c4P" id="Lwe-gH-QXg"/>
-                <outlet property="noDataLabel" destination="a4S-fz-Bio" id="UfB-BO-d1y"/>
                 <outlet property="sttLabel" destination="sVK-3J-KvU" id="YBs-JW-6b6"/>
             </connections>
             <point key="canvasLocation" x="194.20289855072465" y="144.64285714285714"/>

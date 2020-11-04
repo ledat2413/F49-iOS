@@ -116,9 +116,11 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if dataLoadTaoMoi?.canChangeNgayVay == false {
+            
             switch indexPath.row {
-                
+            
             case 0:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
                 cell.keyLabel.text = "Khách hàng"
@@ -310,6 +312,7 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
         }
         
         switch indexPath.row {
+            
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
             cell.keyLabel.text = "Khách hàng"

@@ -10,6 +10,10 @@ import UIKit
 
 class RutVonTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var header1Label: UILabel!
+    @IBOutlet weak var header2Label: UILabel!
+    @IBOutlet weak var header3Label: UILabel!
+    @IBOutlet weak var header2ImageView: UIImageView!
     
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!

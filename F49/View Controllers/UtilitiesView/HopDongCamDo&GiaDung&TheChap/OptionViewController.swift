@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OptionViewController: UIViewController {
+class OptionViewController: BaseController {
     
     //MARK: --Vars
     var idHopDong: Int = 0
@@ -16,6 +16,8 @@ class OptionViewController: UIViewController {
     var soHopDong: String = ""
     var tenKhachHang: String = ""
     var ngayHieuLuc: String = ""
+    
+    private var heightHeaderSection: CGFloat = 35
     
     var data: Int?
     //    var dataLichSuGiaoDich: [LichSuGiaoDich] = []
@@ -35,6 +37,8 @@ class OptionViewController: UIViewController {
         tableView.register(UINib(nibName: "TacVuTableViewCell", bundle: nil), forCellReuseIdentifier: "TacVuTableViewCell")
         loadCountLichSuGiaoDich()
         loadCountLichSuVayNo()
+        self.hideKeyboardWhenTappedAround()
+        
     }
     
     //MARK: --Func
@@ -68,75 +72,85 @@ class OptionViewController: UIViewController {
 }
 
 extension OptionViewController: UITableViewDelegate, UITableViewDataSource{
-
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return heightHeaderSection
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TacVuTableViewCell") as? TacVuTableViewCell else {
+            fatalError()}
+        cell.backgroundColor = .white
+        return cell
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(tableView.frame.height / 4)
+        return CGFloat(tableView.frame.height / 3 )
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return 4
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TacVuTableViewCell", for: indexPath) as? TacVuTableViewCell else {
-                fatalError()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThongTinHopDongTableViewCell", for: indexPath) as? ThongTinHopDongTableViewCell else { fatalError()}
+            cell.thumnailImageView.image = UIImage(named: "icon-lichsugiaodich")
+            cell.thumbnailTitleLabel.text = "Lịch sử giao dịch"
+            cell.thumbnailNumberLabel.text = "( \(countGiaoDich) )"
+            cell.thumbnailNumberLabel.textColor = .red
             return cell
         case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThongTinHopDongTableViewCell", for: indexPath) as? ThongTinHopDongTableViewCell else { fatalError()}
-                           cell.thumnailImageView.image = UIImage(named: "icon-lichsugiaodich")
-                           cell.thumbnailTitleLabel.text = "Lịch sử giao dịch"
-                           cell.thumbnailNumberLabel.text = "( \(countGiaoDich) )"
-                           cell.thumbnailNumberLabel.textColor = .red
-                           return cell
-        case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThongTinHopDongTableViewCell", for: indexPath) as? ThongTinHopDongTableViewCell else { fatalError()}
             cell.thumnailImageView.image = UIImage(named: "icon-lichsuvay")
             cell.thumbnailTitleLabel.text = "Lịch sử vay"
             cell.thumbnailNumberLabel.text = "( \(countVayNo) )"
             cell.thumbnailNumberLabel.textColor = .red
             return cell
-        case 3:
+            
+        case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThongTinHopDongTableViewCell", for: indexPath) as? ThongTinHopDongTableViewCell else { fatalError()}
-                          cell.thumnailImageView.image = UIImage(named: "icon-lichsuvay")
-                          cell.thumbnailTitleLabel.text = "Đóng lãi"
-                          cell.thumbnailNumberLabel.isHidden = true
-                          return cell
+            cell.thumnailImageView.image = UIImage(named: "icon-lichsuvay")
+            cell.thumbnailTitleLabel.text = "Đóng lãi"
+            cell.thumbnailNumberLabel.isHidden = true
+            return cell
         default:
             return UITableViewCell()
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-           switch indexPath.row {
-                 case 1: //LichSuGiaoDich
-                     let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "LichSuViewController") as! LichSuViewController
-                     itemVC.code = 0
-                     itemVC.modalPresentationStyle = .overCurrentContext
-                     itemVC.modalTransitionStyle = .crossDissolve
-                     itemVC.idHopDong = self.idHopDong
-                     itemVC.soHopDong = self.soHopDong
-                     self.present(itemVC, animated: true, completion: nil)
-                 case 2: //LichSuVayNo
-                     let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "LichSuViewController") as!LichSuViewController
-                     itemVC.code = 1
-                     itemVC.modalPresentationStyle = .overCurrentContext
-                     itemVC.modalTransitionStyle = .crossDissolve
-                     itemVC.idKhachHang = self.idKhachHang
-                     itemVC.tenKH = self.tenKhachHang
-                     self.present(itemVC, animated: true, completion: nil)
-                 case 3: //LichSuVayNo
-                     let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "DongLaiViewController") as!DongLaiViewController
-                     itemVC.modalPresentationStyle = .overCurrentContext
-                     itemVC.modalTransitionStyle = .crossDissolve
-                     itemVC.idHopDong = self.idHopDong
-                     itemVC.ngayHieuLuc = self.ngayHieuLuc
-                     self.present(itemVC, animated: true, completion: nil)
-                 default:
-                     break
-                 }
+        switch indexPath.row {
+        case 0: //LichSuGiaoDich
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "LichSuViewController") as! LichSuViewController
+            itemVC.code = 0
+            itemVC.modalPresentationStyle = .overCurrentContext
+            itemVC.modalTransitionStyle = .crossDissolve
+            itemVC.idHopDong = self.idHopDong
+            itemVC.soHopDong = self.soHopDong
+            self.present(itemVC, animated: true, completion: nil)
+        case 1: //LichSuVayNo
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "LichSuViewController") as!LichSuViewController
+            itemVC.code = 1
+            itemVC.modalPresentationStyle = .overCurrentContext
+            itemVC.modalTransitionStyle = .crossDissolve
+            itemVC.idKhachHang = self.idKhachHang
+            itemVC.tenKH = self.tenKhachHang
+            self.present(itemVC, animated: true, completion: nil)
+        case 2: //LichSuVayNo
+            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "DongLaiViewController") as!DongLaiViewController
+            itemVC.modalPresentationStyle = .overCurrentContext
+            itemVC.modalTransitionStyle = .crossDissolve
+            itemVC.idHopDong = self.idHopDong
+            itemVC.ngayHieuLuc = self.ngayHieuLuc
+            self.present(itemVC, animated: true, completion: nil)
+        default:
+            break
+        }
     }
     
     

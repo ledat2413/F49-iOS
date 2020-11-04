@@ -11,6 +11,7 @@ import UIKit
 class NotificationViewController: BaseController {
     
     //MARK: --Vars
+
     var dataNotifi: [Notificationn] = []
     var selectedCuaHang: String?
     var dataCuaHang: [CuaHang] = []
@@ -49,23 +50,26 @@ class NotificationViewController: BaseController {
         tableView.delegate = self
         tableView.register(UINib(nibName: "NotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationTableViewCell")
         
+        hideKeyboardWhenTappedAround()
         loadCuaHang()
         loadTableView()
         createPickerView()
-        dismissPickerView()
         shopTextField.displayTextField(radius: 15, color: UIColor.white)
         headerContainerView.displayTextField(radius: 15, color: UIColor.white)
         shopTextField.backgroundColor = UIColor.clear
         headerContainerView.backgroundColor = UIColor.clear
         headerContainerView.layer.borderWidth  = 1
         
-    
+        
         
     }
     
     func putReadAll(_ idCuaHang: Int) {
         MGConnection.requestString(APIRouter.PutReadAllNotification(idCuaHang: idCuaHang), returnType: valueBack) { (value, error) in
-            guard error == nil else { return }
+            guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
+                
+                return }
             if let value = value {
                 self.dataStr = value
                 self.tableView.reloadData()
@@ -74,16 +78,18 @@ class NotificationViewController: BaseController {
     }
     
     func loadTableView(){
+        let spinnerView = UIView.init(frame: view.bounds)
+
         var params: [String: Any] = ["idCuaHang" : idCuaHang, "pageSize": 40]
         
-        params["pageIndex"] = pageIndex 
+        params["pageIndex"] = pageIndex
         
-        self.showSpinner(onView: self.view)
+        self.showSpinner1(onView: self.view, spinnerView: spinnerView)
         
         MGConnection.requestArray(APIRouter.GetListNotification(params: params), Notificationn.self) { (result, error) in
-            self.removeSpinner()
-            
+            self.removeSpinner1(spinnerView: spinnerView)
             guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                 print("Error: \(error?.mErrorCode ?? 0) and \(error?.mErrorMessage ?? "")")
                 return
             }
@@ -98,6 +104,7 @@ class NotificationViewController: BaseController {
     func loadCuaHang() {
         MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
             guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                 print("Error \(error?.mErrorMessage ?? "") and \(error?.mErrorCode ?? 0)")
                 return
             }
@@ -133,18 +140,14 @@ class NotificationViewController: BaseController {
         let pickerView = UIPickerView()
         pickerView.delegate = self
         shopTextField.inputView = pickerView
+        self.createToolbar(textField: shopTextField, selector: #selector(action))
     }
     
-    func dismissPickerView() {
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
-        toolBar.setItems([button], animated: true)
-        toolBar.isUserInteractionEnabled = true
-        shopTextField.inputAccessoryView = toolBar
-    }
+    
     
     @objc func action() {
+        loadTableView()
+        
         view.endEditing(true)
     }
     
@@ -213,7 +216,6 @@ extension NotificationViewController: UIPickerViewDelegate, UIPickerViewDataSour
         selectedCuaHang = dataCuaHang[row].tenCuaHang
         shopTextField.text = selectedCuaHang
         idCuaHang =  dataCuaHang[row].id
-        loadTableView()
     }
 }
 

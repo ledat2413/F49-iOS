@@ -29,7 +29,6 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-top" translatesAutoresizingMaskIntoConstraints="NO" id="uh7-54-U7X">
                                                 <rect key="frame" x="0.0" y="0.0" width="70" height="35"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="izN-xs-33p"/>
                                                     <constraint firstAttribute="width" constant="70" id="qYJ-Zm-cIm"/>
                                                 </constraints>
                                             </imageView>
@@ -65,11 +64,13 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="6U0-c6-chv"/>
                                             <constraint firstItem="uh7-54-U7X" firstAttribute="leading" secondItem="K6S-e2-r4K" secondAttribute="leading" id="7Yu-y9-Vxq"/>
                                             <constraint firstAttribute="bottom" secondItem="t0I-4A-TRK" secondAttribute="bottom" id="F0c-nw-Iow"/>
-                                            <constraint firstAttribute="height" constant="35" id="GOd-P3-BZq"/>
                                             <constraint firstItem="t0I-4A-TRK" firstAttribute="leading" secondItem="uh7-54-U7X" secondAttribute="trailing" constant="15" id="HrL-Lw-Wn6"/>
+                                            <constraint firstItem="uh7-54-U7X" firstAttribute="top" secondItem="K6S-e2-r4K" secondAttribute="top" id="QnR-fh-IBL"/>
                                             <constraint firstAttribute="trailing" secondItem="t0I-4A-TRK" secondAttribute="trailing" id="RWx-6z-Kyx"/>
+                                            <constraint firstAttribute="bottom" secondItem="uh7-54-U7X" secondAttribute="bottom" id="dY8-kJ-6w1"/>
                                             <constraint firstItem="uh7-54-U7X" firstAttribute="centerY" secondItem="K6S-e2-r4K" secondAttribute="centerY" id="k1v-R3-DfG"/>
                                             <constraint firstItem="t0I-4A-TRK" firstAttribute="top" secondItem="K6S-e2-r4K" secondAttribute="top" id="qs8-9C-bhf"/>
                                         </constraints>
@@ -78,7 +79,7 @@
                                         <rect key="frame" x="0.0" y="72.5" width="414" height="75"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="Box-V7-EhO"/>
+                                            <constraint firstAttribute="height" constant="75" id="MIx-b7-jjv"/>
                                         </constraints>
                                     </view>
                                 </subviews>

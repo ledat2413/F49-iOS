@@ -33,7 +33,8 @@ class HopDongCamDoViewController: TabbarButton{
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        
+        self.hideKeyboardWhenTappedAround()
+
         
     }
     
@@ -76,9 +77,16 @@ class HopDongCamDoViewController: TabbarButton{
     
     
     //MARK: --Func
-    func loadTaoMoi(){
-        
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     private func loadShop(){
         MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
             guard error == nil else {

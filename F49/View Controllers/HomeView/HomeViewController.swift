@@ -13,7 +13,8 @@ class HomeViewController: BaseController {
     //MARK: --Vars
     var dataCuaHang: [CuaHang] = []
     var dataDashBoard: [DashBoard] = []
-    var selectedCuaHang: String?    
+    var selectedCuaHang: String?
+    var idCuaHang: Int = 0
     
     //MARK: --IBOutlet
     @IBOutlet weak var findContainerView: UIView!
@@ -27,6 +28,7 @@ class HomeViewController: BaseController {
         super.viewDidLoad()
         setUpUI()
         navigation()
+        self.hideKeyboardWhenTappedAround()
 
         //        NotificationCenter.default.addObserver(self, selector: #selector(pushCamDoController), name: NSNotification.Name.init("CamDoController"), object: nil)
     }
@@ -76,9 +78,8 @@ class HomeViewController: BaseController {
     func setUpUI() {
         
         loadData()
-        loadDashBoard(id: 0)
+        loadDashBoard(id: idCuaHang)
         createPickerView()
-        dismissPickerView()
         
         menuCollectionView.backgroundColor = UIColor.clear
         findButton.backgroundColor = UIColor.clear
@@ -103,18 +104,13 @@ class HomeViewController: BaseController {
         let pickerView = UIPickerView()
         pickerView.delegate = self
         findTextField.inputView = pickerView
+        self.createToolbar(textField: findTextField, selector: #selector(action))
     }
     
-    func dismissPickerView() {
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
-        toolBar.setItems([button], animated: true)
-        toolBar.isUserInteractionEnabled = true
-        findTextField.inputAccessoryView = toolBar
-    }
     
     @objc func action() {
+        loadDashBoard(id: idCuaHang)
+
         view.endEditing(true)
     }
 }
@@ -186,7 +182,6 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITe
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCuaHang = dataCuaHang[row].tenCuaHang
-        loadDashBoard(id: dataCuaHang[row].id)
         findTextField.text = selectedCuaHang
     }
 }

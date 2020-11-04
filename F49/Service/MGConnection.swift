@@ -23,8 +23,9 @@ class MGConnection{
     
     static func requestBoolean(_ apiRouter: APIRouter, returnType: Bool?, completion: @escaping (_ result: Bool?, _ error: BaseResponseError?) -> Void) {
         if !isConnectedToInternet() {
-            let popUp = PopUpViewController()
-            popUp.showAnimate("Lỗi kết nối")
+            let base = BaseController()
+            base.Alert("")
+           
             return }
         
         Alamofire.request(apiRouter).responseObject { (response: DataResponse<BaseResponseBool>) in

@@ -12,6 +12,7 @@ import XLPagerTabStrip
 class RutLaiViewController: TabbarButton {
     
     //MARK: --Vars
+    var alert = BaseController()
     var idTienIch: Int = 0
     let purpleInspireColor = UIColor.orange
     var dataCuaHang: [CuaHang] = []
@@ -37,6 +38,8 @@ class RutLaiViewController: TabbarButton {
     
     func setUpUI(){
         
+        self.hideKeyboardWhenTappedAround()
+
         buttonBarContainerView.layer.borderColor = UIColor.lightGray.cgColor
         buttonBarContainerView.layer.borderWidth = 0.5
         shopContainerView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 10)
@@ -47,10 +50,22 @@ class RutLaiViewController: TabbarButton {
         displayHeaderView()
         displayTabbarButton(colors: purpleInspireColor)
     }
+     
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+        
     
     private func loadShop(){
         MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
             guard error == nil else {
+                self.alert.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return
             }
@@ -65,6 +80,8 @@ class RutLaiViewController: TabbarButton {
     private func getTabTrangThai(){
         MGConnection.requestArray(APIRouter.GetTabTrangThai, TabTrangThai.self) { (result, error) in
             guard error == nil else {
+                self.alert.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
+
                 print("Error: \(error?.mErrorMessage ?? "") and \(error?.mErrorCode ?? 0)")
                 return
             }

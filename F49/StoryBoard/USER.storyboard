@@ -17,17 +17,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0tR-gj-d1E">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="Ylt-Gl-i1l">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="190"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPK-LM-e4u">
-                                            <rect key="frame" x="0.0" y="-44" width="414" height="159"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="155"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-bg-page" translatesAutoresizingMaskIntoConstraints="NO" id="70a-Ri-gfT">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="159"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="155"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -39,14 +39,14 @@
                                             </constraints>
                                         </view>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-bg-bottom" translatesAutoresizingMaskIntoConstraints="NO" id="gw7-0e-8bI">
-                                            <rect key="frame" x="132" y="115" width="150" height="40"/>
+                                            <rect key="frame" x="132" y="155" width="150" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="qGK-iG-ySu"/>
                                                 <constraint firstAttribute="width" constant="150" id="vjB-LW-N0f"/>
                                             </constraints>
                                         </imageView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="120906760_911461649380830_788842798036193609_n" translatesAutoresizingMaskIntoConstraints="NO" id="yPe-FU-Okv">
-                                            <rect key="frame" x="152" y="25" width="110" height="110"/>
+                                            <rect key="frame" x="152" y="65" width="110" height="110"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="110" id="ciO-Nx-VSE"/>
@@ -61,7 +61,7 @@
                                         <constraint firstAttribute="bottom" secondItem="gw7-0e-8bI" secondAttribute="bottom" constant="-5" id="L72-FC-TDd"/>
                                         <constraint firstItem="NPK-LM-e4u" firstAttribute="leading" secondItem="Ylt-Gl-i1l" secondAttribute="leading" id="RVm-IS-n2l"/>
                                         <constraint firstItem="gw7-0e-8bI" firstAttribute="top" secondItem="NPK-LM-e4u" secondAttribute="bottom" id="bSn-uF-fYR"/>
-                                        <constraint firstItem="NPK-LM-e4u" firstAttribute="top" secondItem="Ylt-Gl-i1l" secondAttribute="top" constant="-44" id="h3S-HU-slL"/>
+                                        <constraint firstItem="NPK-LM-e4u" firstAttribute="top" secondItem="Ylt-Gl-i1l" secondAttribute="top" id="h3S-HU-slL"/>
                                         <constraint firstItem="yPe-FU-Okv" firstAttribute="centerX" secondItem="Ylt-Gl-i1l" secondAttribute="centerX" id="sMR-Fo-w70"/>
                                         <constraint firstItem="gw7-0e-8bI" firstAttribute="centerX" secondItem="Ylt-Gl-i1l" secondAttribute="centerX" id="uLl-lY-D1b"/>
                                     </constraints>
@@ -73,7 +73,7 @@
                             <constraint firstItem="0tR-gj-d1E" firstAttribute="leading" secondItem="1IP-uW-7ea" secondAttribute="leading" id="Buk-wL-f2f"/>
                             <constraint firstItem="1IP-uW-7ea" firstAttribute="bottom" secondItem="0tR-gj-d1E" secondAttribute="bottom" id="ETi-PD-xB0"/>
                             <constraint firstItem="1IP-uW-7ea" firstAttribute="trailing" secondItem="0tR-gj-d1E" secondAttribute="trailing" id="Ej9-MV-YZz"/>
-                            <constraint firstItem="0tR-gj-d1E" firstAttribute="top" secondItem="1IP-uW-7ea" secondAttribute="top" id="bNq-NK-n0Z"/>
+                            <constraint firstItem="0tR-gj-d1E" firstAttribute="top" secondItem="NiC-Y3-W64" secondAttribute="top" id="tTp-Gb-L55"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1IP-uW-7ea"/>
                     </view>

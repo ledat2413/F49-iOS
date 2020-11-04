@@ -30,7 +30,8 @@ class UtilitiesViewController: BaseController {
         super.viewDidLoad()
         setUpUI()
         navigation()
-        
+        self.hideKeyboardWhenTappedAround()
+
     }   
     
     private func navigation(){
@@ -94,6 +95,7 @@ class UtilitiesViewController: BaseController {
         bodyCollectionView.delegate = self
         bodyCollectionView.dataSource = self
         
+        
     }
     
     func createPickerView() {
@@ -123,6 +125,11 @@ extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewD
         }
         
         let data = dataTienIch[indexPath.row]
+        
+        if data.giaTri.isEmpty {
+            cell.countView.isHidden = true
+        }
+        
         let upCase = data.tieuDe.uppercased()
         cell.layer.borderWidth = 0.5
         cell.layer.borderColor = UIColor.groupTableViewBackground.cgColor

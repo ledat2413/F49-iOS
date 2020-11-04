@@ -48,6 +48,7 @@ class ThanhLyTaiSanViewController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayUI()
+        self.hideKeyboardWhenTappedAround()
 
     }
     
@@ -74,6 +75,9 @@ class ThanhLyTaiSanViewController: BaseController {
         displayNavigation()
         loadData()
         createPickerView()
+        nhomTaiSanView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 15)
+        tenTaiSanView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 15)
+        trangThaiView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 15)
     }
     
     

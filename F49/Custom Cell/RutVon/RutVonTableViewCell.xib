@@ -11,10 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="RutVonTableViewCell" customModule="F49" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="440" height="80"/>
+            <rect key="frame" x="0.0" y="0.0" width="408" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="440" height="80"/>
+                <rect key="frame" x="0.0" y="0.0" width="408" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-content-tien" translatesAutoresizingMaskIntoConstraints="NO" id="fZC-uN-xy1">
@@ -58,8 +58,8 @@
                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyễn Thị Thu Hà" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHS-vS-Awb">
-                        <rect key="frame" x="287" y="62" width="148" height="13"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyễn Thị Thu Hà" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHS-vS-Awb">
+                        <rect key="frame" x="287" y="62" width="116" height="13"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -71,7 +71,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfN-G5-cDp">
-                        <rect key="frame" x="54" y="5" width="381" height="21"/>
+                        <rect key="frame" x="54" y="5" width="349" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="qMs-Q6-o3x"/>
                         </constraints>
@@ -89,7 +89,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Người giao dịch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khR-XK-dLu">
-                        <rect key="frame" x="270" y="36" width="165" height="21"/>
+                        <rect key="frame" x="270" y="36" width="133" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="cqU-F6-qFS"/>
                         </constraints>
@@ -145,12 +145,16 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="dateLabel" destination="8W2-kH-M18" id="PS1-Iq-99D"/>
+                <outlet property="header1Label" destination="YgE-q4-5WO" id="Ojg-FP-eu8"/>
+                <outlet property="header2ImageView" destination="hfg-Ll-pWE" id="Ho2-ow-6OG"/>
+                <outlet property="header2Label" destination="YyR-bx-Twf" id="sfw-eM-ol8"/>
+                <outlet property="header3Label" destination="khR-XK-dLu" id="XAR-nU-4il"/>
                 <outlet property="idLabel" destination="qjK-5I-VlS" id="BtM-za-6R2"/>
                 <outlet property="moneyLabel" destination="iuy-wa-rHc" id="avn-gC-Rdu"/>
                 <outlet property="nameLabel" destination="bfN-G5-cDp" id="jsB-Y9-iNG"/>
                 <outlet property="peopleLabel" destination="oHS-vS-Awb" id="VLz-Ni-Mft"/>
             </connections>
-            <point key="canvasLocation" x="205.79710144927537" y="113.83928571428571"/>
+            <point key="canvasLocation" x="182.60869565217394" y="113.83928571428571"/>
         </tableViewCell>
     </objects>
     <resources>

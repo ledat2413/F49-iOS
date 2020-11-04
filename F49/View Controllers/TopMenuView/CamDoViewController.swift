@@ -18,6 +18,7 @@ class CamDoViewController: BaseController {
     var dataListDoGiaDung: [DoGiaDung] = []
     var selectedStatus: String?
     var callBack: ((_ index: Int) -> Void)?
+
     
     
     //MARK: --IBOutlet
@@ -34,7 +35,7 @@ class CamDoViewController: BaseController {
         displayTitle()
         loadStatus()
         createPickerView()
-        
+        self.hideKeyboardWhenTappedAround()
         headerView.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
         containerView.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
         tableView.dataSource = self
@@ -70,7 +71,7 @@ class CamDoViewController: BaseController {
                 if let result = result{
                     self.dataListCamDo = result
                     if result.count == 0 {
-                        self.Alert("Không có dữ liệu")
+                        self.Alert("Có lỗi xảy ra")
                     }
                     self.tableView.reloadData()
                 }
@@ -143,6 +144,7 @@ class CamDoViewController: BaseController {
     }
     
     @objc func action() {
+        loadData(trangThai: selectedStatus ?? "")
         view.endEditing(true)
     }
 }
@@ -263,7 +265,6 @@ extension CamDoViewController: UIPickerViewDelegate, UIPickerViewDataSource, UIT
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedStatus = dataStatus[row].value
-        loadData(trangThai: dataStatus[row].value)
         findTextField.text = selectedStatus
     }
 }

@@ -25,8 +25,9 @@ class TabbarButton: ButtonBarPagerTabStripViewController{
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         settings.style.buttonBarRightContentInset = 0
         
-        changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
+        changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
+
             oldCell?.label.textColor = .orange
             newCell?.label.textColor = colors
         }

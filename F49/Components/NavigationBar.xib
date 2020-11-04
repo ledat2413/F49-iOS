@@ -43,19 +43,19 @@
                             </constraints>
                         </button>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-arrow-left" translatesAutoresizingMaskIntoConstraints="NO" id="6cG-5m-vch">
-                            <rect key="frame" x="20" y="13" width="10" height="20"/>
+                            <rect key="frame" x="20" y="10.5" width="12" height="25"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="10" id="Oco-UY-kAy"/>
-                                <constraint firstAttribute="height" constant="20" id="dbW-5L-xEs"/>
+                                <constraint firstAttribute="width" constant="12" id="Oco-UY-kAy"/>
+                                <constraint firstAttribute="height" constant="25" id="dbW-5L-xEs"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2g2-PH-jsZ">
-                            <rect key="frame" x="50" y="11.5" width="250" height="23"/>
+                            <rect key="frame" x="52" y="11.5" width="250" height="23"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="23" id="0ZE-PF-sWD"/>
                                 <constraint firstAttribute="width" constant="250" id="wvT-dl-Ebg"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>

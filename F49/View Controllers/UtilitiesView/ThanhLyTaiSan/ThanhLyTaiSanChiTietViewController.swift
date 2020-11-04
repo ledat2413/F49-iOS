@@ -31,7 +31,6 @@ class ThanhLyTaiSanChiTietViewController: UIViewController {
     func displayNavigation(){
         navigation.title = "Thông tin thanh lý tài sản"
         navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
-        navigation.leftButton.setImage(UIImage(named: "icon-arrow-left"), for: .normal)
     }
     
     @objc func backView(){

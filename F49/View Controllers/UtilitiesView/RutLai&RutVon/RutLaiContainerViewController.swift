@@ -24,7 +24,7 @@ class RutLaiContainerViewController: BaseController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setUpUI()
         NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: NSNotification.Name.init("Accept"), object: nil)
     }

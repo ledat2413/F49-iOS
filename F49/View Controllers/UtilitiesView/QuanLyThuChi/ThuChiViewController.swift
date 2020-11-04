@@ -62,7 +62,7 @@ class ThuChiViewController: BaseController {
         
         switch idTienIch {
         case 5:
-            tableView.register(UINib(nibName: "ContractOpenTableViewCell", bundle: nil), forCellReuseIdentifier: "ContractOpenTableViewCell")
+            tableView.register(UINib(nibName: "RutVonTableViewCell", bundle: nil), forCellReuseIdentifier: "RutVonTableViewCell")
             break
         case 8:
             tableView.register(UINib(nibName: "RutVonTableViewCell", bundle: nil), forCellReuseIdentifier: "RutVonTableViewCell")
@@ -188,7 +188,7 @@ class ThuChiViewController: BaseController {
                 if let result = result {
                     self.dataThuChi = result
                     if result.count == 0 {
-                        self.Alert("Không có dữ liếu")
+                        self.Alert("Không có dữ liệu")
                     }
                     self.tableView.reloadData()
                 }
@@ -243,23 +243,35 @@ extension ThuChiViewController: UITableViewDelegate,UITableViewDataSource{
         switch idTienIch {
             
         case 5:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContractOpenTableViewCell", for: indexPath) as? ContractOpenTableViewCell else {fatalError()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "RutVonTableViewCell", for: indexPath) as? RutVonTableViewCell else {fatalError()}
             let data = dataThuChi[indexPath.row]
-            cell.icon1ImageView.image = UIImage(named: "icon-content-tien")
-            cell.icon2ImageView.image = UIImage(named: "icon-content-tien")
-            cell.icon3Imageview.image = UIImage(named: "icon-content-nhanvien")
             
-            cell.title1Label.text = "Thu"
-            cell.title2Label.text = "Chi"
-            cell.title3Label.text = "Người thực hiện"
+            cell.header1Label.text = "Thu"
+            cell.header2Label.text = "Chi"
+            cell.header3Label.text = "Người thực hiện"
+            cell.header2ImageView.image = UIImage(named: "icon-content-tien")
             
-            cell.tangGiamLabel.text = data.thu
-            cell.tienLabel.text = data.chi
-            cell.tongLabel.text = data.nguoiThucHien
             cell.idLabel.text = "\(data.id)"
-            cell.id2Label.text = data.tenCuaHang
-            cell.nameLabel.isHidden = true
-            cell.betweenLabel.isHidden = true
+            cell.nameLabel.text = data.tenCuaHang
+            cell.moneyLabel.text = data.thu
+            cell.dateLabel.text = data.chi
+            cell.peopleLabel.text = data.nguoiThucHien
+            
+//            cell.icon1ImageView.image = UIImage(named: "icon-content-tien")
+//            cell.icon2ImageView.image = UIImage(named: "icon-content-tien")
+//            cell.icon3Imageview.image = UIImage(named: "icon-content-nhanvien")
+//
+//            cell.title1Label.text = "Thu"
+//            cell.title2Label.text = "Chi"
+//            cell.title3Label.text = "Người thực hiện"
+            
+//            cell.tangGiamLabel.text = data.thu
+//            cell.tienLabel.text = data.chi
+//            cell.tongLabel.text = data.nguoiThucHien
+//            cell.idLabel.text = "\(data.id)"
+//            cell.id2Label.text = data.tenCuaHang
+//            cell.nameLabel.isHidden = true
+//            cell.betweenLabel.isHidden = true
             
             return cell
         case 8:

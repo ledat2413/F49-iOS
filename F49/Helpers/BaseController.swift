@@ -12,6 +12,29 @@ import UIKit
 class BaseController: UIViewController {
     var vSpinner: UIView!
     
+    
+    func showSpinner1(onView : UIView, spinnerView : UIView) {
+           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+
+           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+           ai.startAnimating()
+           ai.center = spinnerView.center
+           
+           DispatchQueue.main.async {
+               print("show spinner")
+               spinnerView.addSubview(ai)
+               onView.addSubview(spinnerView)
+        
+           }
+       }
+       
+       func removeSpinner1(spinnerView : UIView) {
+           print("remove spinner")
+           DispatchQueue.main.async {
+               spinnerView.removeFromSuperview()
+           }
+       }
+    
     //Validation
     func isValidEmail(_ email: String?) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -63,25 +86,32 @@ class BaseController: UIViewController {
     func showSpinner(onView : UIView) {
         let spinnerView = UIView.init(frame: onView.bounds)
         spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        
         let ai = UIActivityIndicatorView.init(style: .whiteLarge)
         ai.startAnimating()
         ai.center = spinnerView.center
         
+        
         DispatchQueue.main.async {
+            print("show spinner")
+
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
         }
-        
+
         vSpinner = spinnerView
     }
     
     func removeSpinner() {
+        print("remove spinner")
         DispatchQueue.main.async {
             self.vSpinner?.removeFromSuperview()
             self.vSpinner = nil
         }
     }
     
+    
+    //Convert
     public static func convertImageToBase64String(image : UIImage ) -> String
     {
         let strBase64 =  image.pngData()?.base64EncodedString()

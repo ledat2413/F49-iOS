@@ -41,7 +41,8 @@ class TienHoaHongViewController: BaseController {
     //MARK: --View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()   
+        setUpUI()
+        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
     
