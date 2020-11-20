@@ -36,3 +36,19 @@ class Notificationn: Object, Mappable{
         itemId <- map["itemId"]
     }
 }
+
+class CountNotify: Mappable{
+    
+    var countUnread: Int = 0
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        countUnread <- map["countUnread"]
+    }
+    
+    
+    
+    
+}

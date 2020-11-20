@@ -12,24 +12,24 @@ import RealmSwift
 
 class ChiTietHopDong: Mappable{
     
-   var id: Int = 0
-     var numberContract: String = ""
-   var idKhachHang: Int = 0
-     var fullName: String = ""
-     var phoneNumber: String = ""
+    var id: Int = 0
+    var numberContract: String = ""
+    var idKhachHang: Int = 0
+    var fullName: String = ""
+    var phoneNumber: String = ""
     var duNo: String = ""
-     var expiredDate: String = ""
-     var plusMin: Int = 0
-     var interest: String = ""
-     var fee: String = ""
+    var expiredDate: String = ""
+    var plusMin: Int = 0
+    var interest: String = ""
+    var fee: String = ""
     var total: String = ""
-     var appointmentDate: String = ""
+    var appointmentDate: String = ""
     var content: String = ""
-     var doDeLai: String = ""
-     var catLai: Bool = false
+    var doDeLai: String = ""
+    var catLai: Bool = false
     var ngayNhacNho: String = ""
-     var countLichSuGiaoDich: Int = 0
-     var countLichSuVay: Int = 0
+    var countLichSuGiaoDich: Int = 0
+    var countLichSuVay: Int = 0
     var hinhAnh: [HinhAnh] = []
     
     
@@ -61,9 +61,9 @@ class ChiTietHopDong: Mappable{
 }
 
 class HinhAnh: Mappable{
-     var url: String = ""
-     var name: String = ""
-     var extensions: String = ""
+    var url: String = ""
+    var name: String = ""
+    var extensions: String = ""
     
     required  init?(map: Map) {
     }

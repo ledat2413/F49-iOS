@@ -23,8 +23,8 @@ class MGConnection{
     
     static func requestBoolean(_ apiRouter: APIRouter, returnType: Bool?, completion: @escaping (_ result: Bool?, _ error: BaseResponseError?) -> Void) {
         if !isConnectedToInternet() {
-            let base = BaseController()
-            base.Alert("")
+           let popUp = BaseController()
+           popUp.Alert("Lỗi kết nối")
            
             return }
         
@@ -44,8 +44,8 @@ class MGConnection{
                 
             case .failure(let error):
                 if response.response?.statusCode != 200 {
-                    let popUp = PopUpViewController()
-                    popUp.showAnimate(response.result.value!.message)
+                    let popUp = BaseController()
+                    popUp.Alert(response.result.value!.message)
                     completion(response.result.value?.data, nil)
                 }
                 else if error is AFError {
@@ -61,8 +61,8 @@ class MGConnection{
     
     static func requestString(_ apiRouter: APIRouter, returnType: String?, completion: @escaping (_ result: String?, _ error: BaseResponseError?) -> Void) {
         if !isConnectedToInternet() {
-            let popUp = PopUpViewController()
-            popUp.showAnimate("Lỗi kết nối")
+            let popUp = BaseController()
+            popUp.Alert("Lỗi kết nối")
             return }
         
         Alamofire.request(apiRouter).responseObject { (response: DataResponse<BaseResponseString>) in
@@ -98,8 +98,8 @@ class MGConnection{
     
     static func requestInt(_ apiRouter: APIRouter, returnType: Int?, completion: @escaping (_ result: Int?, _ error: BaseResponseError?) -> Void) {
         if !isConnectedToInternet() {
-            let popUp = PopUpViewController()
-            popUp.showAnimate("Lỗi kết nối")
+            let popUp = BaseController()
+            popUp.Alert("Lỗi kết nối")
             return }
         
         Alamofire.request(apiRouter).responseObject { (response: DataResponse<BaseResponseInt>) in
@@ -118,8 +118,8 @@ class MGConnection{
                 
             case .failure(let error):
                 if response.response?.statusCode != 200 {
-                    let popUp = PopUpViewController()
-                    popUp.showAnimate(response.result.value!.message)
+                   let popUp = BaseController()
+                    popUp.Alert(response.result.value!.message)
                     completion(response.result.value?.data, nil)
                     print(response.request ?? "")
                 }
@@ -138,8 +138,8 @@ class MGConnection{
     //MARK: --Request Token
     static func requestToken<T: Mappable>(_ apiRouter: APIRouter,_ returnType: T.Type, completion: @escaping (_ result: T?, _ error: BaseResponseError?) -> Void) {
         if !isConnectedToInternet() {
-            let popUp = PopUpViewController()
-            popUp.showAnimate("Lỗi kết nối")
+            let popUp = BaseController()
+            popUp.Alert("Lỗi kết nối")
             return
         }
         Alamofire.request(apiRouter).responseObject{(response: DataResponse<T>) in
@@ -157,8 +157,6 @@ class MGConnection{
                 
             case .failure(let error):
                 if response.response?.statusCode != 200 {
-                    let popUp = PopUpViewController()
-                    popUp.showAnimate("Có lỗi xảy ra")
                     completion(response.result.value, nil)
                     print(response.request ?? "")
                 }
@@ -175,8 +173,8 @@ class MGConnection{
     //MARK : -- Request Array
     static func requestArray<T: Mappable>(_ apiRouter: APIRouter,_ returnType: T.Type, completion: @escaping (_ result: [T]?, _ error: BaseResponseError?) -> Void) {
         if !isConnectedToInternet() {
-            let popUp = PopUpViewController()
-            popUp.showAnimate("Lỗi kết nối")
+            let popUp = BaseController()
+            popUp.Alert("Lỗi kết nối")
             return
         }
         
@@ -196,8 +194,8 @@ class MGConnection{
                 
             case .failure(let error):
                 if response.response?.statusCode != 200 {
-                    let popUp = PopUpViewController()
-                    popUp.showAnimate(response.result.value!.message)
+                    let popUp = BaseController()
+                    popUp.Alert(response.result.value!.message)
                     completion(response.result.value?.data, nil)
                     print(response.request ?? "")
                 }
@@ -214,8 +212,8 @@ class MGConnection{
     // MARK : -- Request Object
     static func requestObject<T: Mappable>(_ apiRouter: APIRouter,_ returnType: T.Type, completion: @escaping (_ result: T?, _ error: BaseResponseError?) -> Void) {
         if !isConnectedToInternet(){
-            let popUp = PopUpViewController()
-            popUp.showAnimate("Lỗi kết nối")
+           let popUp = BaseController()
+            popUp.Alert("Lỗi kết nối")
             return
         }
         
@@ -233,8 +231,8 @@ class MGConnection{
                 break
             case .failure(let error):
                 if response.response?.statusCode != 200 {
-                    let popUp = PopUpViewController()
-                    popUp.showAnimate(response.result.value!.message)
+                    let popUp = BaseController()
+                    popUp.Alert(response.result.value!.message)
                     completion(response.result.value?.data, nil)
                     print(response.request ?? "")
                 }
