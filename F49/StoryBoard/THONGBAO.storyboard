@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H4l-o2-ksC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H4l-o2-ksC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -76,7 +77,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbO-vj-NRu">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGs-YF-Xd7">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGs-YF-Xd7">
                                                 <rect key="frame" x="304" y="5.5" width="110" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="110" id="xzY-Oe-NhD"/>
@@ -97,7 +98,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="qGs-YF-Xd7" firstAttribute="centerY" secondItem="VbO-vj-NRu" secondAttribute="centerY" id="Ojg-lE-emW"/>
                                             <constraint firstAttribute="trailing" secondItem="gGI-kU-ZM9" secondAttribute="trailing" constant="10" id="UXE-tt-jIz"/>
@@ -106,7 +107,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="VbO-vj-NRu" secondAttribute="bottom" constant="1" id="4Jl-Qh-1Pv"/>
                                     <constraint firstItem="VbO-vj-NRu" firstAttribute="top" secondItem="kpK-GH-djL" secondAttribute="top" id="Hoe-ZD-wtt"/>
@@ -117,10 +118,11 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AwL-5F-utc">
                                 <rect key="frame" x="0.0" y="146" width="414" height="667"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="8c9-Ga-Q2T"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8c9-Ga-Q2T" firstAttribute="trailing" secondItem="awI-Kg-PHt" secondAttribute="trailing" id="4gz-Vv-Dvp"/>
                             <constraint firstItem="AwL-5F-utc" firstAttribute="trailing" secondItem="8c9-Ga-Q2T" secondAttribute="trailing" id="7VJ-9v-0Wr"/>
@@ -139,16 +141,17 @@
                             <constraint firstItem="kpK-GH-djL" firstAttribute="leading" secondItem="8c9-Ga-Q2T" secondAttribute="leading" id="ujW-j0-UEz"/>
                             <constraint firstItem="icu-02-N4a" firstAttribute="leading" secondItem="8c9-Ga-Q2T" secondAttribute="leading" id="vax-za-hXy"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="8c9-Ga-Q2T"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="THÔNG BÁO" image="resize-bell2" selectedImage="resize-bell1" id="Tgf-Dh-XxL"/>
+                    <tabBarItem key="tabBarItem" title="THÔNG BÁO" image="resize-bell2" selectedImage="resize-bell1" id="Tgf-Dh-XxL">
+                        <color key="badgeColor" systemColor="systemRedColor"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="pEh-yX-t4n"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="headerContainerView" destination="R9h-oR-G8C" id="vYH-3X-lad"/>
-                        <outlet property="itemTabBar" destination="Tgf-Dh-XxL" id="VYi-6y-rnx"/>
-                        <outlet property="shopTextField" destination="2rC-Y8-LoY" id="HIP-1o-0zR"/>
-                        <outlet property="tableView" destination="AwL-5F-utc" id="MdQ-iX-78I"/>
+                        <outlet property="headerContainerView" destination="R9h-oR-G8C" id="qea-VZ-wM3"/>
+                        <outlet property="shopTextField" destination="2rC-Y8-LoY" id="PeV-ek-SV4"/>
+                        <outlet property="tabbarItem" destination="Tgf-Dh-XxL" id="C1W-Xv-9vH"/>
+                        <outlet property="tableView" destination="AwL-5F-utc" id="7Fp-EX-cDt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCK-9N-q6M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -163,5 +166,17 @@
         <image name="profile-bg-home" width="1242" height="435"/>
         <image name="resize-bell1" width="30" height="30"/>
         <image name="resize-bell2" width="30" height="30"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

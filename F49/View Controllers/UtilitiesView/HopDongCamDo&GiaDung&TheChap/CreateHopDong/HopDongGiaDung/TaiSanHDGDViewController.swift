@@ -15,7 +15,7 @@ class TaiSanHDGDViewController: BaseController {
     
     var cellIdentifier: [String] = ["Cell2CreateTableViewCell","Cell3CreateTableViewCell"]
     var gallery: GalleryController!
-    var itemImages: [UIImage] = []
+    var itemImages: [UIImage?] = [UIImage(named: "photo-camera")]
 
     var dataTaiSan: [HDGDDSTaiSan] = []
     
@@ -27,7 +27,6 @@ class TaiSanHDGDViewController: BaseController {
     var viTri: String = ""
     var dinhGia: Int = 0
     var moTa: String = ""
-    var itemImg: [UIImage] = []
     
     //MARK: --IBOutlet
     
@@ -86,9 +85,10 @@ class TaiSanHDGDViewController: BaseController {
     
     //API Request
     func loadDSTaiSan(){
-        self.showSpinner(onView: self.view)
+        self.showActivityIndicator( view: self.view)
+
         MGConnection.requestArray(APIRouter.DanhSachTaiSanHDGD, HDGDDSTaiSan.self) { (result, error) in
-            self.removeSpinner()
+            self.hideActivityIndicator(view: self.view)
             guard error == nil else {
                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                 return}
@@ -104,9 +104,9 @@ class TaiSanHDGDViewController: BaseController {
     
     //Picker View
     func createPickerView() {
-        let pickerView = UIPickerView()
+        let pickerView = UIPickerView().createPicker(tf: headerTextField)
         pickerView.delegate = self
-        headerTextField.inputView = pickerView
+//        headerTextField.inputView = pickerView
         self.createToolbar(textField: headerTextField, selector: #selector(action))
     }
     
@@ -182,7 +182,6 @@ extension TaiSanHDGDViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell3CreateTableViewCell", for: indexPath) as? Cell3CreateTableViewCell else { fatalError() }
             cell.callBackOpenCamera = { () in
                 self.showImageGallery()
-                self.itemImages = []
             }
             cell.loadData(itemImages)
 
@@ -206,12 +205,12 @@ extension TaiSanHDGDViewController: UICollectionViewDelegate, UICollectionViewDa
         case 0:
             cell.thumbnailLabel.backgroundColor = UIColor.orange
             cell.thumbnailLabel.text = "Lưu"
-            cell.thumbnailLabel.display20()
+            cell.thumbnailLabel.displayCornerRadius(radius: 20)
         case 1:
             cell.thumbnailLabel.backgroundColor = UIColor.red
             cell.thumbnailLabel.text = "Đóng"
             cell.thumbnailLabel.textColor = .white
-            cell.thumbnailLabel.display20()
+            cell.thumbnailLabel.displayCornerRadius(radius: 20)
         default:
             return cell
         }

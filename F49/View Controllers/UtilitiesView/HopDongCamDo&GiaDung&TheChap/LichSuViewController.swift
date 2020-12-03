@@ -23,6 +23,7 @@ class LichSuViewController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         displayNavigation()
         displayTableView()
         loadLichSuData()
@@ -35,7 +36,7 @@ class LichSuViewController: BaseController {
         case 0:
             navigation.title = "Lịch sử giao dịch"
         default:
-            navigation.title = "Lịch sử vay"
+            navigation.title = "Lịch sử vay nợ"
         }
     }
     
@@ -54,7 +55,10 @@ class LichSuViewController: BaseController {
     func loadLichSuData(){
         switch code {
         case 0:
+            self.showActivityIndicator( view: self.view)
+
             MGConnection.requestArray(APIRouter.GetLichSuGiaoDich(id: idHopDong), LichSuGiaoDich.self) { (result, error) in
+                self.hideActivityIndicator(view: self.view)
                 guard error == nil else {
                     self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                     return }
@@ -67,7 +71,10 @@ class LichSuViewController: BaseController {
                 }
             }
         default:
+            self.showActivityIndicator( view: self.view)
+
             MGConnection.requestArray(APIRouter.GetLichSuVayNo(id: idKhachHang), LichSuVayNo.self) { (result, error) in
+                self.hideActivityIndicator(view: self.view)
                 guard error == nil else {
                     self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                     return }
@@ -92,15 +99,18 @@ extension LichSuViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch code {
         case 0:
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ChiTietLichSuViewController") as! ChiTietLichSuViewController
+            let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "ChiTietLichSuViewController") as! ChiTietLichSuViewController
             itemVC.code = code
+            itemVC.idHopDong = idHopDong
             itemVC.idLoaiGiaoDich = dataLichSuGiaoDich[indexPath.row].idLoaiGiaoDich
             itemVC.modalPresentationStyle = .overCurrentContext
             itemVC.modalTransitionStyle = .crossDissolve
             self.present(itemVC, animated: true, completion: nil)
         default:
-             let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ChiTietLichSuViewController") as! ChiTietLichSuViewController
+             let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "ChiTietLichSuViewController") as! ChiTietLichSuViewController
              itemVC.code = code
+            itemVC.idHopDong = idHopDong
+
              itemVC.idHopDong = dataLichSuVayNo[indexPath.row].id
              itemVC.modalPresentationStyle = .overCurrentContext
              itemVC.modalTransitionStyle = .crossDissolve

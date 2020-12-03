@@ -7,7 +7,7 @@ target 'F49' do
 
 	
 
-pod 'AlamofireObjectMapper', '~> 5.0'
+pod 'AlamofireObjectMapper', '~> 5.2'
 pod 'JGProgressHUD'
 pod 'RealmSwift'
 pod 'SDWebImage'
@@ -17,6 +17,8 @@ pod 'ChameleonFramework'
 pod 'XLPagerTabStrip', '~> 9.0'
 pod 'Floaty', '~> 4.2.0'
 pod 'Gallery'
+pod 'NVActivityIndicatorView'
+
 
 
   # Pods for F49

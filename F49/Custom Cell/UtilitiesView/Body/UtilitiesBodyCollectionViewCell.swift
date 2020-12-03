@@ -10,6 +10,7 @@ import UIKit
 
 class UtilitiesBodyCollectionViewCell: UICollectionViewCell {
     
+    
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var countView: UIView!
     @IBOutlet weak var countLabel: UILabel!
@@ -25,6 +26,20 @@ class UtilitiesBodyCollectionViewCell: UICollectionViewCell {
     func displayUI(){
         shadowView(countView)
         cornerRadius(countLabel)
+
+    }
+    
+    func ui(model: TienIch){
+        if model.giaTri.isEmpty {
+            self.countView.isHidden = true
+        }
+        let upCase = model.tieuDe.uppercased()
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = UIColor.groupTableViewBackground.cgColor
+        self.titleLabel.text = upCase
+        self.imageView.sd_setImage(with: URL(string: model.hinhAnh), placeholderImage: UIImage(named: "heart"))
+        self.countLabel.text = model.giaTri
+        self.imageView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 15)
     }
     
     func shadowView(_ view: UIView) {

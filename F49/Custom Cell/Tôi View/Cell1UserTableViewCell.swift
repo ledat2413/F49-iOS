@@ -11,7 +11,7 @@ import UIKit
 class Cell1UserTableViewCell: UITableViewCell {
     
     
-    private var dataProfile: [UserProfile] = []
+     var dataProfile: [UserProfile] = []
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var thumbnailTableView: UITableView!

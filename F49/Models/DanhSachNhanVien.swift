@@ -34,6 +34,4 @@ class DanhSachNhanVien: Object, Mappable{
         diaChi <- map["diaChi"]
 
     }
-    
-    
 }

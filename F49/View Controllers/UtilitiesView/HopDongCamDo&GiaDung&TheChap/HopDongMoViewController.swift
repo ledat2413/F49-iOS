@@ -33,6 +33,8 @@ class HopDongMoViewController: BaseController,IndicatorInfoProvider {
     }
     
    @objc func loadData(){
+    self.showActivityIndicator( view: self.tableView)
+
         var params: [String: Any] = ["idCuaHang": idShop, "loaiHD": id]
         
         if let idStatus = self.idStatus {
@@ -41,9 +43,9 @@ class HopDongMoViewController: BaseController,IndicatorInfoProvider {
         if let keyWord = self.keyWord {
             params["tuKhoa"] = keyWord
         }
-        self.showSpinner(onView: self.view)
+    
         MGConnection.requestArray(APIRouter.GetListHopDongTheoLoai(params: params), HopDongTheoLoai.self) { (result, error) in
-            self.removeSpinner()
+            self.hideActivityIndicator(view: self.tableView)
             guard error == nil else {
                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
@@ -95,7 +97,7 @@ extension HopDongMoViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ChiTietHopDongViewController") as! ChiTietHopDongViewController
+        let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "ChiTietHopDongViewController") as! ChiTietHopDongViewController
         itemVC.id = dataHopDong[indexPath.row].id
         self.navigationController?.pushViewController(itemVC, animated: true)
      

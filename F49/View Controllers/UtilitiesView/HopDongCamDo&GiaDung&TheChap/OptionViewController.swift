@@ -17,7 +17,7 @@ class OptionViewController: BaseController {
     var tenKhachHang: String = ""
     var ngayHieuLuc: String = ""
     
-    private var heightHeaderSection: CGFloat = 35
+    private var heightHeaderSection: CGFloat = 40
     
     var data: Int?
     //    var dataLichSuGiaoDich: [LichSuGiaoDich] = []
@@ -88,7 +88,7 @@ extension OptionViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(tableView.frame.height / 3 )
+        return CGFloat(tableView.frame.height / 3 - 20 )
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -126,7 +126,7 @@ extension OptionViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0: //LichSuGiaoDich
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "LichSuViewController") as! LichSuViewController
+            let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "LichSuViewController") as! LichSuViewController
             itemVC.code = 0
             itemVC.modalPresentationStyle = .overCurrentContext
             itemVC.modalTransitionStyle = .crossDissolve
@@ -134,7 +134,7 @@ extension OptionViewController: UITableViewDelegate, UITableViewDataSource{
             itemVC.soHopDong = self.soHopDong
             self.present(itemVC, animated: true, completion: nil)
         case 1: //LichSuVayNo
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "LichSuViewController") as!LichSuViewController
+            let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "LichSuViewController") as!LichSuViewController
             itemVC.code = 1
             itemVC.modalPresentationStyle = .overCurrentContext
             itemVC.modalTransitionStyle = .crossDissolve
@@ -142,7 +142,7 @@ extension OptionViewController: UITableViewDelegate, UITableViewDataSource{
             itemVC.tenKH = self.tenKhachHang
             self.present(itemVC, animated: true, completion: nil)
         case 2: //LichSuVayNo
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "DongLaiViewController") as!DongLaiViewController
+            let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "DongLaiViewController") as!DongLaiViewController
             itemVC.modalPresentationStyle = .overCurrentContext
             itemVC.modalTransitionStyle = .crossDissolve
             itemVC.idHopDong = self.idHopDong

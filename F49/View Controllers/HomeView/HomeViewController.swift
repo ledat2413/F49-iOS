@@ -22,25 +22,24 @@ class HomeViewController: BaseController {
     @IBOutlet weak var findButton: UIButton!
     @IBOutlet weak var findTextField: UITextField!
     @IBOutlet weak var menuCollectionView: Menu!
-    
     @IBOutlet weak var barItem: UITabBarItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpUI()
         navigation()
         self.hideKeyboardWhenTappedAround()
-
-        //        NotificationCenter.default.addObserver(self, selector: #selector(pushCamDoController), name: NSNotification.Name.init("CamDoController"), object: nil)
+   
     }
     
     //MARK: --Func
     
     private func navigation(){
         menuCollectionView.callBack = { [weak self] (index) in
-        
+            
             guard let wself = self else { return }
-            print(index)
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
+            let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
             itemVC.index = index
             wself.navigationController?.pushViewController(itemVC, animated: true)
         }
@@ -49,7 +48,7 @@ class HomeViewController: BaseController {
     private func loadData(){
         MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
             guard error == nil else {
-                print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                self.Alert("\(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                 return
             }
             if let result = result {
@@ -60,11 +59,12 @@ class HomeViewController: BaseController {
     }
     
     private func loadDashBoard(id: Int){
-        self.showSpinner(onView: self.view)
+        self.showActivityIndicator( view: self.view)
+
         MGConnection.requestArray(APIRouter.GetDashBoard(id: id), DashBoard.self) { (result, error) in
-            self.removeSpinner()
+            self.hideActivityIndicator(view: self.view)
             guard error == nil else {
-                print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                self.Alert("\(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                 return
             }
             if let result = result {
@@ -90,10 +90,7 @@ class HomeViewController: BaseController {
         
         findContainerView.displayTextField(radius: 18, color: UIColor.white)
         findContainerView.backgroundColor = UIColor.clear
-       
-//        headerView.backgroundColor = UIColor(patternImage: UIImage(named: "home-bg-page")!)
-//        headerView.displayShadowView2(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 0, offSet: CGSize(width: 3, height: 0))
-
+        
         bodyCollectionView.register(UINib(nibName: "BodyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BodyCollectionViewCell")
         bodyCollectionView.delegate = self
         bodyCollectionView.dataSource = self
@@ -101,16 +98,15 @@ class HomeViewController: BaseController {
     
     
     func createPickerView() {
-        let pickerView = UIPickerView()
+        let pickerView = UIPickerView().createPicker(tf: findTextField)
         pickerView.delegate = self
-        findTextField.inputView = pickerView
         self.createToolbar(textField: findTextField, selector: #selector(action))
     }
     
     
     @objc func action() {
         loadDashBoard(id: idCuaHang)
-
+        
         view.endEditing(true)
     }
 }
@@ -130,15 +126,8 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
             guard let cell = bodyCollectionView.dequeueReusableCell(withReuseIdentifier: "BodyCollectionViewCell", for: indexPath) as? BodyCollectionViewCell else {fatalError()}
             
             let data = dataDashBoard[indexPath.row]
-            let newStr = data.tieuDe.uppercased()
-            cell.thumbnailTitleLabel.text = newStr
-            cell.thumbnailCountLabel.text = data.giaTri
-            cell.thumbnailImageView.sd_setImage(with: URL(string: data.hinhAnh), placeholderImage: UIImage(named: "heart"))
+            cell.ui(model: data)
             
-            cell.displayShadowView(shadowColor: UIColor.gray, borderColor: UIColor.clear, radius: 15)
-            cell.thumbnailImageView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 15)
-            cell.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-
             return cell
             
         default:

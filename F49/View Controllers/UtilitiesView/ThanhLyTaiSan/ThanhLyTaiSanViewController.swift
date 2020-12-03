@@ -12,20 +12,20 @@ class ThanhLyTaiSanViewController: BaseController {
     
     
     //MARK: --Vars
-    var dataNhomTaiSan: [NhomTaiSan] = []
-    var dataTenTaiSan: [TenTaiSan] = []
-    var dataTabTrangThaiTaiSan: [TabTrangThaiTaiSan] = []
-    var dataDSTaiSan: [DanhSachTaiSan] = []
+    fileprivate var dataNhomTaiSan: [NhomTaiSan] = []
+    fileprivate var dataTenTaiSan: [TenTaiSan] = []
+    fileprivate var dataTabTrangThaiTaiSan: [TabTrangThaiTaiSan] = []
+    fileprivate var dataDSTaiSan: [DanhSachTaiSan] = []
     
     var idNhomVatCamDo: Int = 0
     var idTenVatCamDo: Int = 0
     var idTrangThaiTaiSan: Int = 0
     
-    let pickerView1 = UIPickerView()
-    let pickerView2 = UIPickerView()
-    let pickerView3 = UIPickerView()
+    fileprivate let pickerView1 = UIPickerView()
+    fileprivate let pickerView2 = UIPickerView()
+    fileprivate let pickerView3 = UIPickerView()
     
-
+    
     
     //MARK: --IBOutlet
     
@@ -49,13 +49,13 @@ class ThanhLyTaiSanViewController: BaseController {
         super.viewDidLoad()
         displayUI()
         self.hideKeyboardWhenTappedAround()
-
+        
     }
     
     
     
     // MARK: --Navigation
-    func displayNavigation(){
+    fileprivate func displayNavigation(){
         navigation.title = "Quản lí tài sản"
         navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
     }
@@ -70,19 +70,19 @@ class ThanhLyTaiSanViewController: BaseController {
     
     
     
-    func displayUI() {
+    fileprivate func displayUI() {
         displayTableView()
         displayNavigation()
         loadData()
         createPickerView()
-        nhomTaiSanView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 15)
-        tenTaiSanView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 15)
-        trangThaiView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 15)
+        nhomTaiSanView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 8)
+        tenTaiSanView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 8)
+        trangThaiView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 8)
     }
     
     
     
-    func displayTableView(){
+    fileprivate func displayTableView(){
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ThanhLyTaiSanTableViewCell", bundle: nil), forCellReuseIdentifier: "ThanhLyTaiSanTableViewCell")
@@ -91,14 +91,14 @@ class ThanhLyTaiSanViewController: BaseController {
     
     
     
-    func loadData(){
+    fileprivate func loadData(){
         loadNhomTaiSan()
         loadTabTrangThaiTaiSan()
     }
     
     
     
-    func loadNhomTaiSan(){
+    fileprivate func loadNhomTaiSan(){
         MGConnection.requestArray(APIRouter.GetDLNhomTaiSan, NhomTaiSan.self) { (result, error) in
             guard error == nil else {
                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại")
@@ -107,7 +107,7 @@ class ThanhLyTaiSanViewController: BaseController {
             }
             if let result = result {
                 self.dataNhomTaiSan = result
-                self.nhomTaiSanTextField.text = result[0].tenNhom
+                self.nhomTaiSanTextField.text = result.first?.tenNhom
                 if result.count == 0 {
                     self.Alert("Không có dữ liệu")
                 }
@@ -117,7 +117,7 @@ class ThanhLyTaiSanViewController: BaseController {
     
     
     
-    func loadTenTaiSan(_ id: Int){
+    fileprivate func loadTenTaiSan(_ id: Int){
         MGConnection.requestArray(APIRouter.GetDLTenTaiSan(id: id), TenTaiSan.self) { (result, error) in
             guard error == nil else {
                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại")
@@ -126,7 +126,7 @@ class ThanhLyTaiSanViewController: BaseController {
             }
             if let result = result {
                 self.dataTenTaiSan = result
-                self.tenTaiSanTextField.text = result[0].tenVatCamCo
+                self.tenTaiSanTextField.text = result.first?.tenVatCamCo
                 if result.count == 0 {
                     self.Alert("Không có dữ liệu")
                 }
@@ -136,7 +136,7 @@ class ThanhLyTaiSanViewController: BaseController {
     
     
     
-    func loadTabTrangThaiTaiSan(){
+    fileprivate func loadTabTrangThaiTaiSan(){
         MGConnection.requestArray(APIRouter.GetTabTrangThaiTaiSan, TabTrangThaiTaiSan.self) { (result, error) in
             guard error == nil else {
                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại")
@@ -145,7 +145,6 @@ class ThanhLyTaiSanViewController: BaseController {
             }
             if let result = result {
                 self.dataTabTrangThaiTaiSan = result
-                self.trangThaiTextField.text = result[0].tenTrangThai
                 if result.count == 0 {
                     self.Alert("Không có dữ liệu")
                 }
@@ -155,13 +154,12 @@ class ThanhLyTaiSanViewController: BaseController {
     
     
     
-    func loadTaiSan(idNhomVatCamDo: Int, idVatCamDo: Int, trangThai: Int){
-        self.showSpinner(onView: self.view)
+    fileprivate func loadTaiSan(idNhomVatCamDo: Int, idVatCamDo: Int, trangThai: Int){
+        self.showActivityIndicator( view: self.view )
         MGConnection.requestArray(APIRouter.GetDLTaiSan(idNhomVatCamDo: idNhomVatCamDo, idVatCamDo: idVatCamDo, trangThai: trangThai), DanhSachTaiSan.self) { (result, error) in
-            self.removeSpinner()
+            self.hideActivityIndicator(view: self.view)
             guard error == nil else {
                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại")
-                print("Error : \(error?.mErrorMessage ?? "") and code : \(error?.mErrorCode ?? 0)")
                 return
             }
             if let result = result {
@@ -171,14 +169,14 @@ class ThanhLyTaiSanViewController: BaseController {
                     self.Alert("Không có dữ liệu")
                 }
                 self.tableView.reloadData()
-
+                
             }
         }
     }
     
     
     
-    func createPickerView() {
+    fileprivate func createPickerView() {
         
         pickerView1.tag = 1
         pickerView2.tag = 2
@@ -195,7 +193,7 @@ class ThanhLyTaiSanViewController: BaseController {
         self.createToolbar(textField: nhomTaiSanTextField, selector: #selector(actionNhomTaiSan))
         self.createToolbar(textField: tenTaiSanTextField, selector: #selector(actionTenTaiSan))
         self.createToolbar(textField: trangThaiTextField, selector: #selector(actionTrangThaiTaiSan))
-
+        
     }
     
     
@@ -221,25 +219,25 @@ class ThanhLyTaiSanViewController: BaseController {
 extension ThanhLyTaiSanViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThanhLyTaiSanChiTietViewController") as! ThanhLyTaiSanChiTietViewController
+        let itemVC = UIStoryboard.init(name: "THANHLYTAISAN", bundle: nil).instantiateViewController(withIdentifier: "ThanhLyTaiSanChiTietViewController") as! ThanhLyTaiSanChiTietViewController
         itemVC.idTaiSan = dataDSTaiSan[indexPath.row].id
         self.navigationController?.pushViewController(itemVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
+        
         return CGFloat(100)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         return dataDSTaiSan.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThanhLyTaiSanTableViewCell", for: indexPath) as? ThanhLyTaiSanTableViewCell else {fatalError()}
-
+        
         let data = dataDSTaiSan[indexPath.row]
         
         cell.idLabel.text = "\(data.id)"
@@ -281,7 +279,7 @@ extension ThanhLyTaiSanViewController: UIPickerViewDataSource, UITextFieldDelega
         case 3:
             return dataTabTrangThaiTaiSan[row].tenTrangThai
         default:
-            return ""
+            return "a"
         }
     }
     

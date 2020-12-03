@@ -41,4 +41,14 @@ class ContractOpenTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func ui(model: HopDongTheoLoai ) {
+        self.idLabel.text = "\(model.id)"
+        self.id2Label.text = model.soHopDong
+        self.tangGiamLabel.text = "\(model.soNgayQuaHan)"
+        self.nameLabel.text = model.tenKhachHang
+        self.tienLabel.text = model.duNoHienTai
+        self.tongLabel.text = model.laiPhaiThu
+        self.backgroundColor = UIColor(hexString: model.maMau)
+    }
+    
 }

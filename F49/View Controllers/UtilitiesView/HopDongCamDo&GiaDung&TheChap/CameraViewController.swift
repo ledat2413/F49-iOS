@@ -62,28 +62,17 @@ class CameraViewController: BaseController{
         
     }
     
-    
-    func popView(action: UIAlertAction){
-        print("Pop View")
-        NotificationCenter.default.post(name: NSNotification.Name.init("Upload"), object: nil)
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     @objc func backView(){
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc func removeItem(){
-        itemImages.removeAll()
-        self.collectionView.reloadData()
-        print("remove")
-    }
-
+    
+    
     
     //MARK: --IBAction
     
     @IBAction func cameraButtonPressed(_ sender: Any) {
-        itemImages = []
+        //        itemImages = []
         showImageGallery()
     }
     
@@ -117,14 +106,12 @@ extension CameraViewController: UICollectionViewDelegate, UICollectionViewDataSo
             guard let cell = footerCollectionView.dequeueReusableCell(withReuseIdentifier: "ButtonFooterCollectionViewCell", for: indexPath) as? ButtonFooterCollectionViewCell else { fatalError() }
             switch indexPath.row {
             case 0:
-                cell.thumbnailLabel.backgroundColor = UIColor.groupTableViewBackground
-                cell.thumbnailLabel.text = "Huỷ"
-                cell.thumbnailLabel.display20()
+                
+                cell.ui(color: UIColor.groupTableViewBackground, textString: "Huỷ")
             case 1:
-                cell.thumbnailLabel.backgroundColor = UIColor.orange
-                cell.thumbnailLabel.text = "Đồng ý"
                 cell.thumbnailLabel.textColor = .white
-                cell.thumbnailLabel.display20()
+                cell.ui(color: Colors.brightOrange, textString: "Đồng ý")
+
                 
             default:
                 return cell
@@ -138,8 +125,11 @@ extension CameraViewController: UICollectionViewDelegate, UICollectionViewDataSo
             let imageData: Data? = resizeImage(image: itemImages[indexPath.row]!, newWidth: CGFloat(150.0)).jpegData(compressionQuality: 1)
             imgStr = imageData?.base64EncodedString(options: .lineLength64Characters) ?? ""
             
-            cell.deleteButton.addTarget(self, action: #selector(removeItem), for: .allEvents)
-            
+            cell.handlerCallBackButton {
+                self.itemImages.remove(at: indexPath.row)
+                self.collectionView.reloadData()
+                print("remove")
+            }
             return cell
         }
     }
@@ -152,20 +142,19 @@ extension CameraViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 self.navigationController?.popViewController(animated: true)
                 break
             case 1:
-                self.showSpinner(onView: self.view)
+                self.showActivityIndicator( view: self.view)
 
                 MGConnection.requestBoolean(APIRouter.UploadImage(imgStr: imgStr, soHopDong: soHopDong), returnType: data) { (result, error) in
-                    self.removeSpinner()
+                    self.hideActivityIndicator(view: self.view)
                     guard error == nil else {
                         self.Alert("Upload không thành công!")
                         return
                     }
-                   let alert = UIAlertController(title: "Thông Báo", message: "Upload thành công", preferredStyle: UIAlertController.Style.alert)
-                                      // add an action (button)
-                               alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: self.popView))
-                                      
-                                      // show the alert
-                                      self.present(alert, animated: true, completion: nil)
+                    
+                    self.handlerAlert(message: "Upload thành công") {
+                         NotificationCenter.default.post(name: NSNotification.Name.init("Upload"), object: nil)
+                               self.navigationController?.popViewController(animated: true)
+                    }
                 }
                 break
             default:
@@ -205,23 +194,25 @@ extension CameraViewController: GalleryControllerDelegate{
         
         if images.count > 0 {
             Image.resolve(images: images) { (imageResolve) in
-                self.itemImages = imageResolve
-                self.collectionView.reloadData()
-
+                if let image = imageResolve.first ?? UIImage() {
+                    self.itemImages.append(image)
+                    self.collectionView.reloadData()
+                }
             }
         }
+        
         controller.dismiss(animated: true, completion: nil)
     }
     
     func galleryController(_ controller: GalleryController, didSelectVideo video: Video) {
         self.collectionView.reloadData()
-
+        
         controller.dismiss(animated: true, completion: nil)
     }
     
     func galleryController(_ controller: GalleryController, requestLightbox images: [Image]) {
         self.collectionView.reloadData()
-
+        
         controller.dismiss(animated: true, completion: nil)
     }
     

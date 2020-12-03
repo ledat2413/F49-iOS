@@ -50,11 +50,12 @@ class LoginViewController: BaseController {
             return
         }
         
-        self.showSpinner(onView: self.view)
+        self.showActivityIndicator( view: self.view)
+
         MGConnection.requestToken(APIRouter.Login(grant_type: "password", username: emailTextField.text ?? "", password: passTextField.text ?? ""), Token.self) { [weak self] (result, error) in
-            self?.removeSpinner()
             guard let wself = self else {return}
-            guard error == nil else {
+            wself.hideActivityIndicator(view: wself.view)
+                guard error == nil else {
                 wself.Alert("Sai tài khoản hoặc mật khẩu")
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return

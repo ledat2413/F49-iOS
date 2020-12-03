@@ -29,7 +29,7 @@ class PopUpViewController: UIViewController {
     
     func setUpPopup(){
         buttonCancel.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
-        buttonCancel.display20()
+        buttonCancel.displayCornerRadius(radius: 20)
         buttonContainerView.displayShadowView2(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 20, offSet: CGSize(width: 3, height: 0))
     }
     

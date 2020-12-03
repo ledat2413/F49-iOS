@@ -29,6 +29,9 @@
                         </constraints>
                         <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <state key="normal" image="xmark.circle" catalog="system"/>
+                        <connections>
+                            <action selector="buttonPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="zAT-qK-9B5"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>
@@ -43,7 +46,6 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="133" height="118"/>
             <connections>
-                <outlet property="deleteButton" destination="TVV-rc-u4k" id="lIU-aa-tyo"/>
                 <outlet property="thumbnailImageView" destination="kIb-pd-CGz" id="q6r-ts-sJm"/>
             </connections>
             <point key="canvasLocation" x="197.82608695652175" y="147.32142857142856"/>

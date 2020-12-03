@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ThanhLyTaiSanChiTietViewController: UIViewController {
+class ThanhLyTaiSanChiTietViewController: BaseController {
     
     //MARK: --Vars
     var idTaiSan: Int = 0
-    var dataTaiSan: TaiSanChiTiet?
+    fileprivate var dataTaiSan: TaiSanChiTiet?
     
     //MARK: --IBOutlet
     
@@ -28,7 +28,7 @@ class ThanhLyTaiSanChiTietViewController: UIViewController {
     
     //MARK: --Navigation
     
-    func displayNavigation(){
+    fileprivate func displayNavigation(){
         navigation.title = "Thông tin thanh lý tài sản"
         navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
     }
@@ -39,7 +39,7 @@ class ThanhLyTaiSanChiTietViewController: UIViewController {
     
     //MARK: --Func
     
-    func displayUI(){
+    fileprivate func displayUI(){
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "InfoCamDoTableViewCell", bundle: nil), forCellReuseIdentifier: "InfoCamDoTableViewCell")
@@ -47,9 +47,13 @@ class ThanhLyTaiSanChiTietViewController: UIViewController {
         displayNavigation()
     }
     
-    func loadDataChiTiet(){
+    fileprivate func loadDataChiTiet(){
+        self.showActivityIndicator( view: self.view)
+
         MGConnection.requestObject(APIRouter.GetDetailTaiSan(id: idTaiSan), TaiSanChiTiet.self) { (result, error) in
+            self.hideActivityIndicator(view: self.view)
             guard error == nil else {
+                self.Alert("\(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                 return
             }
             if let result = result {

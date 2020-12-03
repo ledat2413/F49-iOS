@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import UIKit
+
+extension UIPickerView {
+    func createPicker(tf: UITextField) -> UIPickerView {
+        let pickerView = UIPickerView()
+        tf.inputView = pickerView
+        
+        return pickerView
+    }
+}

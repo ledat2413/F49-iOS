@@ -10,7 +10,7 @@ import UIKit
 import ChameleonFramework
 import SDWebImage
 
-class SplashScreenViewController: UIViewController {
+class SplashScreenViewController: BaseController {
     
     @IBOutlet weak var imageView: UIImageView!
     var loginSuccess: Bool = false
@@ -18,7 +18,7 @@ class SplashScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-
+        
         setUpUI()
         print(UserHelper.getUserData(key: UserKey.Token) ?? "")
         print(UserHelper.getAutoLogin())
@@ -33,12 +33,11 @@ class SplashScreenViewController: UIViewController {
         }
     }
     
+    
+    
     override func viewDidAppear(_ animated: Bool) {
-        //        NotificationCenter.default.addObserver(self, selector: #selector(checkLogin), name: NSNotification.Name.init("Login"), object: nil)
-            checkLogin()
+        checkLogin()
     }
-    
-    
     
     private func setUpUI(){
         imageView.image = UIImage(named: "hinh_loading")
@@ -52,7 +51,7 @@ class SplashScreenViewController: UIViewController {
         }else {
             let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabarController")
             self.navigationController?.pushViewController(itemVC, animated: true)
-//            self.present(itemVC, animated: true, completion: nil)
+            //            self.present(itemVC, animated: true, completion: nil)
         }
     }
     

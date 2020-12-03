@@ -17,4 +17,9 @@ class ButtonFooterCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
+    func ui(color: UIColor, textString: String){
+        self.thumbnailLabel.backgroundColor = color
+        self.thumbnailLabel.text = textString
+        self.thumbnailLabel.displayCornerRadius(radius: 20)
+    }
 }

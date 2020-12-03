@@ -9,20 +9,20 @@
 import UIKit
 
 class CaiDatViewController: UIViewController {
-
+    
     @IBOutlet weak var headerView: NavigationBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         headerView.title = "Cài đặt"
         headerView.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
         
     }
     @objc func backView(){
-           self.navigationController?.popViewController(animated: true)
-       }
-
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func switchButton(_ sender: UISwitch) {
         if sender.isOn {
             print("ON")

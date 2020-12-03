@@ -10,7 +10,7 @@ import UIKit
 
 class ThongTinThuChiViewController: BaseController {
     
-    var idTienIch: Int = 0
+    var screenID: String = ""
     var id: Int = 0
     var dataDetail: [ThongTinThuChi] = []
     var dataVonDauTu: VonDauTu?
@@ -23,15 +23,16 @@ class ThongTinThuChiViewController: BaseController {
         setUpUI()
     }
     
-    func loadData(){
+    fileprivate func loadData(){
         
-        switch idTienIch {
-        case 5:
-            self.showSpinner(onView: self.view)
+        switch screenID {
+        case "ThuChi":
+            self.showActivityIndicator( view: self.view)
+
             MGConnection.requestArray(APIRouter.GetDetailThuChiByID(id: id), ThongTinThuChi.self) { (result, error) in
-                self.removeSpinner()
+                self.hideActivityIndicator(view: self.view)
                 guard error == nil else {
-                    print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                    self.Alert("\(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                     return
                 }
                 if let result = result {
@@ -41,12 +42,13 @@ class ThongTinThuChiViewController: BaseController {
             }
             break
             
-        case 8:
-            self.showSpinner(onView: self.view)
+        case "RutVon":
+            self.showActivityIndicator( view: self.view)
+
             MGConnection.requestObject(APIRouter.GetDetailVonDauTu(id: id), VonDauTu.self) { (result, error) in
-                self.removeSpinner()
+                self.hideActivityIndicator(view: self.view)
                 guard error == nil else {
-                    print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                    self.Alert("\(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                     return
                 }
                 if let result = result {
@@ -62,18 +64,18 @@ class ThongTinThuChiViewController: BaseController {
         
     }
     
-    func setUpUI() {
+    fileprivate func setUpUI() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "InfoCamDoTableViewCell", bundle: nil), forCellReuseIdentifier: "InfoCamDoTableViewCell")
         loadData()
         
-        switch idTienIch {
-        case 5:
+        switch screenID {
+        case "ThuChi":
             navigation.title = "Thông tin thu chi"
             navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
             break
-        case 8:
+        case "RutVon":
             navigation.title = "Thông tin quản lí vốn"
             navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
             break
@@ -89,10 +91,10 @@ class ThongTinThuChiViewController: BaseController {
 
 extension ThongTinThuChiViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch idTienIch {
-        case 5:
+        switch screenID {
+        case "ThuChi":
             return dataDetail.count
-        case 8:
+        case "RutVon":
             return 6
         default:
             return 0
@@ -100,10 +102,10 @@ extension ThongTinThuChiViewController: UITableViewDelegate, UITableViewDataSour
         
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        switch idTienIch {
-        case 5:
+        switch screenID {
+        case "ThuChi":
             return 7
-        case 8:
+        case "RutVon":
             return 1
         default:
             return 0
@@ -111,10 +113,10 @@ extension ThongTinThuChiViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch idTienIch {
-        case 5:
+        switch screenID {
+        case "ThuChi":
             return CGFloat((self.tableView.frame.height)/2)/7
-        case 8:
+        case "RutVon":
             return CGFloat((self.tableView.frame.height)/2)/6
             
         default:
@@ -125,8 +127,8 @@ extension ThongTinThuChiViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCamDoTableViewCell", for: indexPath) as? InfoCamDoTableViewCell else {
             fatalError()}
-        switch idTienIch {
-        case 5:
+        switch screenID {
+        case "ThuChi":
             let data = dataDetail[indexPath.row]
             switch indexPath.section {
             case 0:
@@ -160,7 +162,7 @@ extension ThongTinThuChiViewController: UITableViewDelegate, UITableViewDataSour
             default:
                 return cell
             }
-        case 8:
+        case "RutVon":
             switch indexPath.row {
             case 0:
                 cell.keyLabel.text = "Cửa hàng"

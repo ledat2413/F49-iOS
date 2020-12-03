@@ -35,7 +35,7 @@ class ChiTietHopDongViewController: BaseController {
     }
     
     @IBAction func floatingButtonPressed(_ sender: Any) {
-        let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "CameraViewController") as! CameraViewController
+        let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "CameraViewController") as! CameraViewController
         itemVC.soHopDong = dataChiTiet?.numberContract ?? ""
         self.navigationController?.pushViewController(itemVC, animated: true)
     }
@@ -58,6 +58,7 @@ class ChiTietHopDongViewController: BaseController {
         navigation.title = "Thông tin hợp đồng cầm đồ"
         navigation.rightButton.isHidden = false
         navigation.image3Cham.isHidden = false
+        navigation.image3Cham.image = UIImage(named: "icon-3cham")
         navigation.rightButton.addTarget(self, action: #selector(optionView), for: .touchUpInside)
         
         self.collectionView.delegate = self
@@ -69,9 +70,10 @@ class ChiTietHopDongViewController: BaseController {
     
     
     @objc func loadData(){
-        self.showSpinner(onView: self.view)
+        self.showActivityIndicator( view: self.view)
+
         MGConnection.requestObject(APIRouter.GetChiTietHopDong(id: id), ChiTietHopDong.self) { (result, error) in
-            self.removeSpinner()
+            self.hideActivityIndicator(view: self.view)
             guard error == nil else {
                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
@@ -100,7 +102,7 @@ class ChiTietHopDongViewController: BaseController {
     }
     
     @objc func optionView(){
-        let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "OptionViewController") as! OptionViewController
+        let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "OptionViewController") as! OptionViewController
         itemVC.modalPresentationStyle = .overCurrentContext
         itemVC.modalTransitionStyle = .crossDissolve
         itemVC.idHopDong = dataChiTiet!.id

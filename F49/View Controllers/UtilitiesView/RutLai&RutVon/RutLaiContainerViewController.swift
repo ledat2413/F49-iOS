@@ -13,30 +13,30 @@ class RutLaiContainerViewController: BaseController, IndicatorInfoProvider {
     
     //MARK: --Vars
     
-    var idTienIch: Int = 0
+    var screenID: String = ""
     var tenTrangThai: String = ""
     var idShop: Int = 0
     var idTab: Int = 0
-    var dataRutVon: [RutVon] = []
+    fileprivate var dataRutVon: [RutVon] = []
     
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUpUI()
         NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: NSNotification.Name.init("Accept"), object: nil)
     }
     
-    func setUpUI(){
+    fileprivate func setUpUI(){
         tableView.delegate = self
         tableView.dataSource = self
-        switch idTienIch {
-        case 4:
+        switch screenID {
+        case "RutLai":
             tableView.register(UINib(nibName: "ContractOpenTableViewCell", bundle: nil), forCellReuseIdentifier: "ContractOpenTableViewCell")
             break
-        case 8:
+        case "RutVon":
             tableView.register(UINib(nibName: "RutVonTableViewCell", bundle: nil), forCellReuseIdentifier: "RutVonTableViewCell")
             break
         default:
@@ -47,23 +47,18 @@ class RutLaiContainerViewController: BaseController, IndicatorInfoProvider {
     
     @objc func loadData(){
         
-        switch idTienIch {
-        case 4:
-            //             MGConnection.requestString(APIRouter.GetListRutLai(idShop: idShop, idTab: idTab), returnType: text) { (result, error) in
-            //                       guard error == nil else { return }
-            //                       if let result = result {
-            //                           self.dataTable = result
-            //                       }
-            //                   }
+        switch screenID {
+        case "RutLai":
             break
-        case 8:
-            self.showSpinner(onView: self.view)
+        case "RutVon":
+            self.showActivityIndicator( view: self.view)
+
             MGConnection.requestArray(APIRouter.GetListRutVon(idShop: idShop, idTab: idTab), RutVon.self) { (result, error) in
-                self.removeSpinner()
+                self.hideActivityIndicator(view: self.view)
                 guard error == nil else {
                     self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
-                    
-                    return }
+                    return
+                }
                 if let result = result {
                     self.dataRutVon = result
                     
@@ -86,10 +81,10 @@ class RutLaiContainerViewController: BaseController, IndicatorInfoProvider {
 extension RutLaiContainerViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch idTienIch {
-        case 4:
+        switch screenID {
+        case "RutLai":
             return 0
-        case 8:
+        case "RutVon":
             
             return dataRutVon.count
             
@@ -101,11 +96,11 @@ extension RutLaiContainerViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch idTienIch {
-        case 4:
+        switch screenID {
+        case "RutLai":
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContractOpenTableViewCell", for: indexPath) as? ContractOpenTableViewCell else { fatalError() }
             return cell
-        case 8:
+        case "RutVon":
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RutVonTableViewCell", for: indexPath) as? RutVonTableViewCell else { fatalError() }
             
             let data = dataRutVon[indexPath.row]
@@ -127,11 +122,11 @@ extension RutLaiContainerViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch idTienIch {
-        case 4:
+        switch screenID {
+        case "RutLai":
             break
-        case 8:
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiChiTietViewController") as! RutLaiChiTietViewController
+        case "RutVon":
+            let itemVC = UIStoryboard.init(name: "RUTLAI", bundle: nil).instantiateViewController(withIdentifier: "RutLaiChiTietViewController") as! RutLaiChiTietViewController
             itemVC.idItem = dataRutVon[indexPath.row].idItem
             itemVC.idTab = idTab
             self.navigationController?.pushViewController(itemVC, animated: true)

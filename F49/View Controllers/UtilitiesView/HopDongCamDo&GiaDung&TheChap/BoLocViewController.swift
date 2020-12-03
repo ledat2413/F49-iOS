@@ -9,11 +9,12 @@
 import UIKit
 
 class BoLocViewController: BaseController {
-
+    
     //MARK: --Vars
     var dataStatus: [StatusHopDong] = []
     var selectedStatus: String?
-
+    var height: CGFloat = 0.0
+    
     var callBackValue: ((_ idStatus: String?, _ text: String?) -> Void)?
     
     //MARK: --IBOutlet
@@ -22,34 +23,47 @@ class BoLocViewController: BaseController {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var reMakeButton: UIButton!
     
+    @IBOutlet weak var bolocContainerView: UIView!
+ 
+    @IBOutlet weak var bottomBoLocContainerView: NSLayoutConstraint!
+    
     
     //MARK: --View Lifecycle
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        findTextFiled.delegate = self
+               statusTextField.delegate = self
+        
+        hideKeyboardWhenTappedAround()
         
         loadStatus()
         createPickerView()
+        
         doneButton.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
-        doneButton.display20()
-        reMakeButton.display20()
+        doneButton.displayCornerRadius(radius: 20)
+        
+        reMakeButton.displayCornerRadius(radius: 20)
         reMakeButton.layer.borderColor = UIColor.gray.cgColor
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
+        
     
     //MARK: --IBAction
     @IBAction func reMakeButtonPressed(_ sender: Any) {
         callBackValue?(nil,nil)
         self.dismiss(animated: true, completion: nil)
-
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         //request api
         callBackValue?(selectedStatus ?? "" ,findTextFiled.text!)
-
+        
         self.dismiss(animated: true, completion: nil)
 
-//        boLocPressed?.boLocPressed(status: selectedStatus!, tukhoa: findTextFiled.text!)
-//
     }
     
     @IBAction func dismissButtonPresseed(_ sender: Any) {
@@ -58,10 +72,25 @@ class BoLocViewController: BaseController {
     
     //MARK: --Func
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                if self.bottomBoLocContainerView.constant == 0 {
+                    self.bottomBoLocContainerView.constant = keyboardSize.height
+                }
+                
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.bottomBoLocContainerView.constant > 0 {
+            self.bottomBoLocContainerView.constant = 0
+        }
+        
+    }
+    
+    
     func loadStatus(){
-        self.showSpinner(onView: self.view)
         MGConnection.requestArray(APIRouter.GetTrangThaiHopDong, StatusHopDong.self) { (result, error) in
-            self.removeSpinner()
             guard error == nil else {   
                 print("Error \(error?.mErrorMessage ?? "") and \(error?.mErrorCode ?? 0)")
                 return
@@ -74,21 +103,16 @@ class BoLocViewController: BaseController {
     }
     
     func createPickerView() {
-           let pickerView = UIPickerView()
-           pickerView.delegate = self
-           statusTextField.inputView = pickerView
-           
-           let toolBar = UIToolbar()
-           toolBar.sizeToFit()
-           let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
-           toolBar.setItems([button], animated: true)
-           toolBar.isUserInteractionEnabled = true
-           statusTextField.inputAccessoryView = toolBar
-       }
-       
-       @objc func action() {
-           view.endEditing(true)
-       }
+        let pickerView = UIPickerView()
+        pickerView.delegate = self
+        statusTextField.inputView = pickerView
+        self.createToolbar(textField: statusTextField, selector: #selector(action))
+    }
+    
+    @objc func action() {
+        loadStatus()
+        view.endEditing(true)
+    }
     
 }
 
@@ -104,7 +128,8 @@ extension BoLocViewController: UIPickerViewDelegate, UIPickerViewDataSource, UIT
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedStatus = dataStatus[row].value
-        
         statusTextField.text = selectedStatus
     }
+
 }
+

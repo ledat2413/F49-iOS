@@ -7,19 +7,23 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class NotificationViewController: BaseController {
+ 
     
     //MARK: --Vars
-
-    var dataNotifi: [Notificationn] = []
-    var selectedCuaHang: String?
-    var dataCuaHang: [CuaHang] = []
-    var pageIndex: Int = 0
-    var idCuaHang: Int = 0
+    fileprivate var dataNotifi: [Notificationn] = []
+    fileprivate var countNotifi: CountNotify?
+    fileprivate var selectedCuaHang: String?
+    fileprivate var dataCuaHang: [CuaHang] = []
+    fileprivate var pageIndex: Int = 0
+    fileprivate var idCuaHang: Int = 0
     
-    var valueBack: String = ""
-    var dataStr: String?
+    fileprivate var valueBack: String = ""
+    fileprivate var dataStr: String?
+    var loadMoreView = LoadMoreView.instanceFromNib()
+
     //    var dataTableView: [T] = []
     
     //MARK: --IBOutlet
@@ -27,14 +31,17 @@ class NotificationViewController: BaseController {
     @IBOutlet weak var headerContainerView: UIView!
     @IBOutlet weak var shopTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var itemTabBar: UITabBarItem!
+    @IBOutlet weak var footerView: UIView!
     
+    @IBOutlet weak var tabbarItem: UITabBarItem!
     
     //MARK: --View Lifecycle
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         setUpUI()
+
     }
     
     //MARK: --IBAction
@@ -45,7 +52,9 @@ class NotificationViewController: BaseController {
     
     //MARK: --Func
     
-    func setUpUI() {
+    fileprivate func setUpUI() {
+        tableView.tableFooterView = loadMoreView
+
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "NotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationTableViewCell")
@@ -60,37 +69,70 @@ class NotificationViewController: BaseController {
         headerContainerView.backgroundColor = UIColor.clear
         headerContainerView.layer.borderWidth  = 1
         
-        
+        getCountNotifi()
         
     }
     
-    func putReadAll(_ idCuaHang: Int) {
-        MGConnection.requestString(APIRouter.PutReadAllNotification(idCuaHang: idCuaHang), returnType: valueBack) { (value, error) in
+    
+    fileprivate func putStatusNotify(_ idCuaHang: Int){
+        MGConnection.requestString(APIRouter.PutStatusNotify(idNotify: idCuaHang), returnType: valueBack) { (value, error) in
             guard error == nil else {
-                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
-                
-                return }
-            if let value = value {
-                self.dataStr = value
-                self.tableView.reloadData()
+                self.Alert("\(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
+                return
             }
         }
     }
     
-    func loadTableView(){
-        let spinnerView = UIView.init(frame: view.bounds)
+    fileprivate func getCountNotifi(){
+        MGConnection.requestObject(APIRouter.GetCountNotify(idCuaHang: idCuaHang), CountNotify.self) { (result, error) in
+            guard error == nil else {
+                self.Alert("\(error?.mErrorMessage ?? "" ). Vui Lòng thử lại!!! ")
+                return
+            }
+            if let result = result {
+                if result.countUnread > 0 {
+                    self.tabbarItem.badgeValue = "\(result.countUnread)"
+                } 
+            }
+        }
+    }
+    
+    fileprivate func putReadAll(_ idCuaHang: Int) {
+        MGConnection.requestString(APIRouter.PutReadAllNotification(idCuaHang: idCuaHang), returnType: valueBack) { (value, error) in
+            guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
 
-        var params: [String: Any] = ["idCuaHang" : idCuaHang, "pageSize": 40]
+                return
+                
+            }
+            if let value = value {
+                self.dataStr = value
+                self.loadTableView()
+            }
+        }
+    }
+    
+    fileprivate func loadTableView(){
+        
+        var params: [String: Any] = ["idCuaHang" : idCuaHang, "pageSize": 30]
         
         params["pageIndex"] = pageIndex
         
-        self.showSpinner1(onView: self.view, spinnerView: spinnerView)
-        
+        switch pageIndex {
+        case 0:
+            self.showActivityIndicator( view: self.view)
+            break
+        default:
+            self.loadMoreView.status = .loading
+            break
+        }
         MGConnection.requestArray(APIRouter.GetListNotification(params: params), Notificationn.self) { (result, error) in
-            self.removeSpinner1(spinnerView: spinnerView)
+        
+            self.hideActivityIndicator(view: self.view)
+            self.loadMoreView.status = .finished
+
             guard error == nil else {
                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
-                print("Error: \(error?.mErrorCode ?? 0) and \(error?.mErrorMessage ?? "")")
                 return
             }
             if let result = result {
@@ -101,11 +143,10 @@ class NotificationViewController: BaseController {
         
     }
     
-    func loadCuaHang() {
+    fileprivate func loadCuaHang() {
         MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
             guard error == nil else {
                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
-                print("Error \(error?.mErrorMessage ?? "") and \(error?.mErrorCode ?? 0)")
                 return
             }
             if let result = result {
@@ -115,39 +156,37 @@ class NotificationViewController: BaseController {
         }
     }
     
-    func displayView(_ view: UIView, cornerRadius: CGFloat) {
-        view.layer.cornerRadius = cornerRadius
-        view.clipsToBounds = true
-        view.backgroundColor = UIColor.clear
-        view.layer.borderColor = UIColor.white.cgColor
+    
+    fileprivate func deleteNotifi(_ id: Int, indexPath: IndexPath){
+        MGConnection.requestString(APIRouter.DeleteNotification(id: id), returnType: valueBack) { (value, error) in
+            guard error == nil else {
+                self.Alert("Lỗi \(error?.mErrorMessage ?? "" ). Vui lòng thử lại!!!")
+                return
+            }
+            if let value = value {
+                if value.isEmpty {
+                    self.handlerAlert(message: "Xoá thành công") {
+                        self.dataNotifi.remove(at: indexPath.row)
+                        self.tableView.reloadData()
+                    }
+                    
+                }
+            }
+        }
     }
     
-    func displayShadowView(_ view: UIView) {
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        view.layer.shadowRadius = 2
-        view.layer.shadowOpacity = 0.5
-        view.layer.cornerRadius = 6
-        view.clipsToBounds = false
-    }
     
-    func cornerRadius(_ view: UIView){
-        view.layer.cornerRadius = 6
-        view.clipsToBounds = true
-    }
-    
-    func createPickerView() {
-        let pickerView = UIPickerView()
+    fileprivate func createPickerView() {
+        let pickerView = UIPickerView().createPicker(tf: shopTextField)
         pickerView.delegate = self
-        shopTextField.inputView = pickerView
         self.createToolbar(textField: shopTextField, selector: #selector(action))
     }
     
     
-    
     @objc func action() {
+        dataNotifi.removeAll()
         loadTableView()
-        
+        getCountNotifi()
         view.endEditing(true)
     }
     
@@ -164,12 +203,26 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
         }
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataNotifi.count
     }
     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(110)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "ChiTietHopDongViewController") as! ChiTietHopDongViewController
+        
+        if dataNotifi[indexPath.row].daDoc == false {
+            putStatusNotify(dataNotifi[indexPath.row].itemId)
+        }
+        
+        itemVC.id = dataNotifi[indexPath.row].itemId
+        self.navigationController?.pushViewController(itemVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -177,6 +230,7 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
             fatalError()
         }
         let data = dataNotifi[indexPath.row]
+        cell.daDocImageview.isHidden = true
         
         switch data.screenId {
         case "RutVon_ChiTiet":
@@ -189,9 +243,10 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
         }
         
         if data.daDoc == true {
-            cell.daDocImageview.image = UIImage(named: "login-checked")
+            cell.backgroundColor = UIColor.groupTableViewBackground
         }else{
-            cell.daDocImageview.isHidden = true
+            cell.backgroundColor = UIColor.white
+            
         }
         
         cell.contentLabel.text = data.tieuDe
@@ -200,7 +255,24 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
         return cell
         
     }
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            self.deleteNotifi(dataNotifi[indexPath.row].id, indexPath: indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Xoá"
+    }
+    
 }
+
 
 extension NotificationViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

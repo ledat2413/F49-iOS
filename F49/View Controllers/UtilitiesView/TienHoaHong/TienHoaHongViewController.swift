@@ -12,14 +12,14 @@ class TienHoaHongViewController: BaseController {
     
     //MARK: --Vars
     var selectedNhanVien: String?
-    var dataTienHoaHong: [NhanVien] = []
-    var dataNhanVien: [NhanVien] = []
+    fileprivate var dataTienHoaHong: [NhanVien] = []
+    fileprivate var dataNhanVien: [NhanVien] = []
     
-    var idNhanVien: Int = 0
-    var string: String?
+    fileprivate var idNhanVien: Int = 0
+    fileprivate var string: String?
     
-    private var fromPicker: UIDatePicker?
-    private var toPicker: UIDatePicker?
+    fileprivate var fromPicker: UIDatePicker?
+    fileprivate var toPicker: UIDatePicker?
     
     var fromValue: String?
     var toValue: String?
@@ -62,7 +62,7 @@ class TienHoaHongViewController: BaseController {
         datePicker()
     }
     
-    func loadNhanVien(){
+    fileprivate func loadNhanVien(){
         MGConnection.requestArray(APIRouter.GetDanhSachNhanVien, NhanVien.self) { (result, error) in
             guard error == nil else {
                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
@@ -79,7 +79,7 @@ class TienHoaHongViewController: BaseController {
         }
     }
     
-    func loadTableView(){
+    fileprivate func loadTableView(){
         
         var params: [String: Any] = ["idNhanVien" : idNhanVien ]
         
@@ -90,8 +90,10 @@ class TienHoaHongViewController: BaseController {
         if let toValue = self.toValue {
             params["denNgay"] = toValue
         }
-        
+        self.showActivityIndicator( view: self.view)
+
         MGConnection.requestArray(APIRouter.GetTienHoaHong(params: params), NhanVien.self) { (result, error) in
+            self.hideActivityIndicator(view: self.view)
             guard error == nil else {
                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
                 
@@ -106,7 +108,7 @@ class TienHoaHongViewController: BaseController {
         }
     }
     
-    func displayNavigation(){
+    fileprivate func displayNavigation(){
         navigation.title = "Tiền hoa hồng"
         navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
     }
@@ -115,10 +117,9 @@ class TienHoaHongViewController: BaseController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func createPickerView() {
-        let pickerView = UIPickerView()
+    fileprivate func createPickerView() {
+        let pickerView = UIPickerView().createPicker(tf: shopTextField)
         pickerView.delegate = self
-        shopTextField.inputView = pickerView
         self.createToolbar(textField: shopTextField, selector: #selector(action))
     }
     
@@ -128,7 +129,7 @@ class TienHoaHongViewController: BaseController {
         view.endEditing(true)
     }
     
-    func datePicker(){
+    fileprivate func datePicker(){
         
         fromPicker = UIDatePicker()
         toPicker = UIDatePicker()
@@ -188,7 +189,7 @@ extension TienHoaHongViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "BodyTienHoaHongTableViewCell", for: indexPath) as? BodyTienHoaHongTableViewCell else { fatalError() }
-
+            
             
             return cell
         }

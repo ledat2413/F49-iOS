@@ -8,32 +8,15 @@
 
 import Foundation
 import UIKit
+import NVActivityIndicatorView
 
 class BaseController: UIViewController {
+    
+    static var baseView = BaseController()
+    
     var vSpinner: UIView!
+//    let child = IndicatorViewController()
     
-    
-    func showSpinner1(onView : UIView, spinnerView : UIView) {
-           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-
-           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
-           ai.startAnimating()
-           ai.center = spinnerView.center
-           
-           DispatchQueue.main.async {
-               print("show spinner")
-               spinnerView.addSubview(ai)
-               onView.addSubview(spinnerView)
-        
-           }
-       }
-       
-       func removeSpinner1(spinnerView : UIView) {
-           print("remove spinner")
-           DispatchQueue.main.async {
-               spinnerView.removeFromSuperview()
-           }
-       }
     
     //Validation
     func isValidEmail(_ email: String?) -> Bool {
@@ -60,13 +43,14 @@ class BaseController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func alertWithHandle(_ message: String){
+    func handlerAlert( message: String, completion: @escaping () -> Void) {
         let alert = UIAlertController(title: "Thông Báo", message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        
-        self.present(alert, animated: true) {
-            
-        }
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Đồng ý", style: UIAlertAction.Style.default, handler: { (action) in
+            return completion()
+        }))
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
     }
     
     
@@ -83,30 +67,30 @@ class BaseController: UIViewController {
     
     
     //Spinner
-    func showSpinner(onView : UIView) {
-        let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        
-        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
-        ai.startAnimating()
-        ai.center = spinnerView.center
-        
-        
-        DispatchQueue.main.async {
-            print("show spinner")
+    
+    func showActivityIndicator(view: UIView) {
+        if view.viewWithTag(1000) == nil{
+            
+           let activityIndicator = NVActivityIndicatorView(frame: view.frame)
+            activityIndicator.type = .circleStrokeSpin
+            activityIndicator.color = Colors.orange
+            activityIndicator.padding =  170
+            activityIndicator.backgroundColor = .clear
+            activityIndicator.center = view.center
+            activityIndicator.tag = 1000
 
-            spinnerView.addSubview(ai)
-            onView.addSubview(spinnerView)
+            view.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
+//            UIApplication.shared.beginIgnoringInteractionEvents() //Block screen
         }
 
-        vSpinner = spinnerView
     }
-    
-    func removeSpinner() {
-        print("remove spinner")
-        DispatchQueue.main.async {
-            self.vSpinner?.removeFromSuperview()
-            self.vSpinner = nil
+
+    func hideActivityIndicator(view: UIView) {
+        if let activityIndicator = view.viewWithTag(1000) as? NVActivityIndicatorView {
+            activityIndicator.stopAnimating()
+            activityIndicator.removeFromSuperview()
+//            UIApplication.shared.endIgnoringInteractionEvents() // Unblock screen
         }
     }
     
@@ -117,6 +101,7 @@ class BaseController: UIViewController {
         let strBase64 =  image.pngData()?.base64EncodedString()
         return strBase64!
     }
+    
     
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
         
@@ -135,13 +120,23 @@ class BaseController: UIViewController {
         toolBar.sizeToFit()
         
         let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: selector)
-        toolBar.setItems([button], animated: true)
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let buttonCancel = UIBarButtonItem(title: "Huỷ", style: .plain, target: self, action: #selector(cancel))
+        toolBar.setItems([buttonCancel,spaceButton,button], animated: true)
         toolBar.isUserInteractionEnabled = true
         textField.inputAccessoryView = toolBar
     }
     
+    @objc func cancel(){
+        self.view.endEditing(true)
+    }
+    
     public func createDatePicker(picker: UIDatePicker, selector: Selector, textField: UITextField) {
         picker.datePickerMode = .date
+        if #available(iOS 13.4, *) {
+            picker.preferredDatePickerStyle = .wheels
+        } else {
+        }
         picker.addTarget(self, action: selector, for: .valueChanged)
         textField.inputView = picker
     }

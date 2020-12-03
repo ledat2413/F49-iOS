@@ -26,6 +26,7 @@ class CreateHDGiaDungViewController: BaseController {
     var dataTinhTienPhi: TinhTien?
     var dataTinhTienLai: TinhTien?
     var dataHopDong: SoHopDong?
+    var screenID: String = ""
     var idCuaHang: Int = 0
     
     var selectedCatLai: String?
@@ -37,7 +38,7 @@ class CreateHDGiaDungViewController: BaseController {
     var idTS: Int = 0
     var tenKH: String = ""
     var idKH: Int = 0
-    var soNgayTrongKy: Int = 0
+    var soNgayTrongKy: Int = 1
     var soTienVay: Int = 0
     var soTienLai: Int = 0
     var thuPhiTruoc: Bool = false
@@ -70,6 +71,7 @@ class CreateHDGiaDungViewController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        hideKeyboardWhenTappedAround()
     }
     
 }
@@ -85,7 +87,11 @@ extension CreateHDGiaDungViewController: UITableViewDataSource, UITableViewDeleg
         switch section {
         case 0:
             guard let cell = tableView1.dequeueReusableCell(withIdentifier: "Cell1CreateTableViewCell") as? Cell1CreateTableViewCell else { fatalError() }
-            cell.thumbnailTitleLabel.text = "Hợp đồng gia dụng"
+            if screenID == "CamDoGiaDung" {
+                cell.thumbnailTitleLabel.text = "Hợp đồng gia dụng"
+            }else {
+                cell.thumbnailTitleLabel.text = "Hợp đồng trả góp"
+            } 
             cell.thumbnailImageView.isHidden = true
             cell.thumbnailButton.isHidden = true
             cell.backgroundColor = UIColor.white
@@ -205,12 +211,11 @@ extension CreateHDGiaDungViewController: UITableViewDataSource, UITableViewDeleg
                 cell.enableKeyboard = true
                 
                 cell.callBackValue = { (value) in
-                    self.soNgayTrongKy = Int(value)!
-                    self.soNgayTrongKy = self.dataLoadTaoMoi!.soNgayTrongKy
+                    self.soNgayTrongKy = Int(value) ?? 0
                     self.tinhSoTienKhachNhan()
                 }
                 
-                cell.thumbnailtextField.text = "\(dataLoadTaoMoi?.soNgayTrongKy ?? 0)"
+                cell.thumbnailtextField.text = "\(self.soNgayTrongKy)"
                 
                 return cell
                 
@@ -220,14 +225,15 @@ extension CreateHDGiaDungViewController: UITableViewDataSource, UITableViewDeleg
                 cell.thumbnail1TextField.text = "\(dataLoadTaoMoi?.soNgayVay ?? 0)"
                 
                 cell.callBackValue = { (value) in
-                    self.soNgayVay = Int(value)!
+                    self.soNgayVay = Int(value) ?? 0
                     self.dataLoadTaoMoi?.soNgayVay = self.soNgayVay
                     self.tinhSoTienKhachNhan()
                 }
-                if let sntk = dataLoadTaoMoi?.soNgayTrongKy {
-                    cell.thumbnail2TextField.text = "\(soNgayVay/sntk) Kỳ"
+                
+              
+                    cell.thumbnail2TextField.text = "\(soNgayVay/soNgayTrongKy) Kỳ"
                     
-                }
+                
                 
                 return cell
                 
@@ -241,7 +247,7 @@ extension CreateHDGiaDungViewController: UITableViewDataSource, UITableViewDeleg
                 cell.callBackValue = { [weak self] (value) in
                     guard let wself = self else { return}
                     
-                    wself.soTienVay = Int(value)!
+                    wself.soTienVay = Int(value) ?? 0
                     wself.tinhSoTienKhachNhan()
                 }
                 
@@ -352,12 +358,12 @@ extension CreateHDGiaDungViewController: UICollectionViewDelegate, UICollectionV
             cell.thumbnailLabel.backgroundColor = Colors.orange
             cell.thumbnailLabel.text = "LẬP HỢP ĐỒNG"
             cell.thumbnailLabel.textColor = .white
-            cell.thumbnailLabel.display20()
+            cell.thumbnailLabel.displayCornerRadius(radius: 20)
         case 1:
             cell.thumbnailLabel.backgroundColor = .systemRed
             cell.thumbnailLabel.text = "ĐÓNG"
             cell.thumbnailLabel.textColor = .white
-            cell.thumbnailLabel.display20()
+            cell.thumbnailLabel.displayCornerRadius(radius: 20)
             
         default:
             return cell

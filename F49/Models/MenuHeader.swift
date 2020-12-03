@@ -16,7 +16,6 @@ class MenuHeader: Object, Mappable{
     @objc dynamic var dinhGia: Int = 0
     @objc dynamic var doGiaDung: Int = 0
     
-
     required convenience init?(map: Map) {
         self.init()
     }

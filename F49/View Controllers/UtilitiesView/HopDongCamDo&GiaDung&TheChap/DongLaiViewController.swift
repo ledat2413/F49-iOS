@@ -39,7 +39,7 @@ class DongLaiViewController: BaseController {
         setUpUI()
         loadChiTietHopDongThuLai()
         self.hideKeyboardWhenTappedAround()
-
+        
     }
     
     //MARK: --IBAction
@@ -67,9 +67,10 @@ class DongLaiViewController: BaseController {
     }
     
     func loadChiTietHopDongThuLai(){
-        self.showSpinner(onView: self.view)
+        self.showActivityIndicator( view: self.view)
+
         MGConnection.requestObject(APIRouter.GetChiTietHopDongThuLai(idHopDong: idHopDong, ngayHieuLuc: ngayHieuLuc ?? ""), ChiTietHopDongThuLai.self) { (result, error) in
-            self.removeSpinner()
+            self.hideActivityIndicator(view: self.view)
             guard error == nil else { return }
             if let result = result {
                 self.dataCTHĐTL = result
@@ -90,9 +91,9 @@ class DongLaiViewController: BaseController {
     
     
     func putThuLai(){
-        self.showSpinner(onView: self.view)
+        self.showActivityIndicator( view: self.view)
         MGConnection.requestObject(APIRouter.PutThucHienThuLai(idHopDong: idHopDong, loaiGiaoDich: idLoaiGiaoDich, idCuaHangFormApp: dataCTHĐTL?.idCuaHang ?? 0, tienThucTe: Double(dataCTHĐTL?.phaiThu ?? 0) , ngayHieuLuc: ngayHieuLuc ?? ""), ChiTietHopDongThuLai.self) { (result, error) in
-            self.removeSpinner()
+            self.hideActivityIndicator(view: self.view)
             guard error == nil else {
                 
                 self.Alert("Đóng lãi không thành công!")
@@ -101,31 +102,29 @@ class DongLaiViewController: BaseController {
                 return
                 
             }
-
-                let alert = UIAlertController(title: "Thông Báo", message: "Đóng lãi thành công", preferredStyle: UIAlertController.Style.alert)
-                   // add an action (button)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: self.popView))
-                   // show the alert
-                   self.present(alert, animated: true, completion: nil)
-           
+            self.handlerAlert(message: "Đóng lãi thành công") {
+                NotificationCenter.default.post(name: NSNotification.Name.init("DongLai"), object: nil)
+                self.dismiss(animated: true, completion: nil)
+            }
+            
         }
         
     }
     
-    func popView(action: UIAlertAction){
-        print("Pop View")
-        NotificationCenter.default.post(name: NSNotification.Name.init("DongLai"), object: nil)
-        self.dismiss(animated: true, completion: nil)
-    }
     
     // Date Picker
     func datePicker(textField: UITextField){
         ngayHieuLucPicker = UIDatePicker()
         ngayHieuLucPicker?.datePickerMode = .date
 
+        if #available(iOS 13.4, *) {
+            ngayHieuLucPicker?.preferredDatePickerStyle = .compact
+        } else {
+        }
+        
         self.createDatePicker(picker: ngayHieuLucPicker!, selector: #selector(dateChange(ngayHieuLucPicker:)), textField: textField)
         self.createToolbar(textField: textField, selector: #selector(actionDate))
-
+        
     }
     
     @objc func dateChange(ngayHieuLucPicker: UIDatePicker) {
@@ -133,13 +132,13 @@ class DongLaiViewController: BaseController {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         ngayHieuLuc = dateFormatter.string(from: ngayHieuLucPicker.date)
         print(ngayHieuLuc!)
-  
+        
     }
     
     @objc func actionDate(){
         loadChiTietHopDongThuLai()
         tableView.reloadData()
-              view.endEditing(true)
+        view.endEditing(true)
     }
     
     
@@ -172,32 +171,26 @@ extension DongLaiViewController: UITableViewDelegate, UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThuLai3TableViewCell", for: indexPath) as? ThuLai3TableViewCell else { fatalError() }
         switch indexPath.row {
         case 0:
-            cell.keyLabel.text = "Số HĐ"
-            cell.valueLabel.text = dataCTHĐTL?.soHopDong ?? "Chưa rõ"
+
+            cell.ui(keyString: "Số HĐ", valueString: dataCTHĐTL?.soHopDong ?? "Chưa rõ", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true)
             return cell
         case 1:
             
-            cell.keyLabel.text = "Tên KH"
-            cell.valueLabel.text = dataCTHĐTL?.tenKhachHang ?? "Chưa rõ"
+            cell.ui(keyString: "Tên KH", valueString: dataCTHĐTL?.tenKhachHang ?? "Chưa rõ", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true)
             
             return cell
         case 2:
-            cell.keyLabel.text = "Cửa hàng"
-            cell.valueLabel.text = dataCTHĐTL?.tenCuaHang ?? "Chưa rõ"
+            cell.ui(keyString: "Cửa hàng", valueString: dataCTHĐTL?.tenCuaHang ?? "Chưa rõ", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true)
             return cell
         case 3:
             
-            cell.keyLabel.text = "Số tiền vay"
-            cell.valueLabel.text = "\(dataCTHĐTL?.soTienVay ?? 0)"
+            cell.ui(keyString: "Số tiền vay", valueString: "\(dataCTHĐTL?.soTienVay ?? 0)", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true)
             return cell
             
         case 4:
-            cell.keyLabel.text = "Ngày hiệu lực"
-            cell.valueLabel.isHidden = true
-            cell.iconDownButton.isHidden = true
             
-            cell.valueTextField.isHidden = false
-            cell.iconLichButton.isHidden = false
+            cell.ui(keyString: "Ngày hiệu lực", valueString: "", isHiddenTextField: false, isHiddenDownButton: true, isHiddenLichButton: false)
+            cell.valueLabel.isHidden = true
             
             let dateFormatOfString = DateFormatter()
             dateFormatOfString.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
@@ -211,45 +204,32 @@ extension DongLaiViewController: UITableViewDelegate, UITableViewDataSource{
                     cell.valueTextField.text = dateFormatToString.string(from: date)
                 }
                 datePicker(textField: cell.valueTextField)
-
+                
             }
-        
+            
             return cell
         case 5:
-            
-            cell.keyLabel.text = "Giao dịch"
-            
+            cell.ui(keyString: "Giao dịch", valueString: "", isHiddenTextField: false, isHiddenDownButton: false, isHiddenLichButton: true)
             cell.valueLabel.isHidden = true
-            
-            cell.valueTextField.isHidden = false
-            cell.iconDownButton.isHidden = false
-            
             createPickerView(tf: cell.valueTextField)
             cell.valueTextField.text = selectedGiaoDich
             return cell
             
         case 6:
+            cell.ui(keyString: "Nợ gốc", valueString: "\(dataCTHĐTL?.noGoc ?? 0)", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true)
             
-            cell.keyLabel.text = "Nợ gốc"
-            cell.valueLabel.text = "\(dataCTHĐTL?.noGoc ?? 0)"
-
             return cell
         case 7:
-            
-            cell.keyLabel.text = "Nợ lãi"
-            cell.valueLabel.text = "\(dataCTHĐTL?.noLai ?? 0)"
-            
+            cell.ui(keyString: "Nợ lãi", valueString: "\(dataCTHĐTL?.noLai ?? 0)", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true)
+        
             return cell
         case 8:
-            
-            cell.keyLabel.text = "Phải thu"
-            cell.valueLabel.text = "\(dataCTHĐTL?.phaiThu ?? 0)"
-            
+            cell.ui(keyString: "Phải thu", valueString: "\(dataCTHĐTL?.phaiThu ?? 0)", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true)
+    
             return cell
         case 9:
-            cell.keyLabel.text = "Thu thực tế"
+            cell.ui(keyString: "Thu thực tế", valueString: "", isHiddenTextField: false, isHiddenDownButton: true, isHiddenLichButton: true)
             cell.valueLabel.isHidden = true
-            cell.valueTextField.isHidden = false
             cell.valueTextField.text = "\(dataCTHĐTL?.phaiThu ?? 0)"
             return cell
         default:    

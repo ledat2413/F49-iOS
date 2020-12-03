@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -31,7 +32,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="0FU-c0-hzk"/>
                                     <constraint firstAttribute="trailing" secondItem="9va-6g-fEK" secondAttribute="trailing" id="78n-xk-2Jk"/>
@@ -41,8 +42,11 @@
                                     <constraint firstItem="9va-6g-fEK" firstAttribute="top" secondItem="wnC-r1-mbT" secondAttribute="top" id="ofb-B7-ZM1"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-dashboard-tonghopdong" translatesAutoresizingMaskIntoConstraints="NO" id="GvH-ij-UsM">
-                                <rect key="frame" x="50" y="15" width="71" height="52"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-tienhoahong" translatesAutoresizingMaskIntoConstraints="NO" id="GvH-ij-UsM">
+                                <rect key="frame" x="58" y="15" width="55" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="nM3-EW-ySg"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TỔNG HỢP ĐỒNG" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvL-Eb-ecB">
                                 <rect key="frame" x="35" y="77" width="101.5" height="21"/>
@@ -61,21 +65,19 @@
                             <constraint firstItem="GvH-ij-UsM" firstAttribute="centerX" secondItem="fAJ-3o-pIf" secondAttribute="centerX" id="6IA-v8-uaT"/>
                             <constraint firstAttribute="bottom" secondItem="cvL-Eb-ecB" secondAttribute="bottom" constant="10" id="9jx-tv-gKl"/>
                             <constraint firstAttribute="trailing" secondItem="wnC-r1-mbT" secondAttribute="trailing" constant="10" id="bAs-Hu-T42"/>
-                            <constraint firstItem="GvH-ij-UsM" firstAttribute="leading" secondItem="fAJ-3o-pIf" secondAttribute="leading" constant="50" id="eOF-l3-r3l"/>
-                            <constraint firstItem="wnC-r1-mbT" firstAttribute="leading" secondItem="GvH-ij-UsM" secondAttribute="trailing" constant="10" id="hnM-8x-OBg"/>
                             <constraint firstItem="wnC-r1-mbT" firstAttribute="top" secondItem="fAJ-3o-pIf" secondAttribute="top" constant="10" id="khi-tb-6Jh"/>
                             <constraint firstItem="GvH-ij-UsM" firstAttribute="top" secondItem="fAJ-3o-pIf" secondAttribute="top" constant="15" id="oxq-lN-f7e"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="fAJ-3o-pIf" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="HAC-lY-gxa"/>
                 <constraint firstItem="fAJ-3o-pIf" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="b4P-GS-oUe"/>
                 <constraint firstItem="fAJ-3o-pIf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="jtB-3e-OiH"/>
                 <constraint firstItem="fAJ-3o-pIf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lKm-Hf-8Fd"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="171" height="108"/>
             <connections>
                 <outlet property="containerView" destination="fAJ-3o-pIf" id="pJT-gJ-zK9"/>
@@ -88,6 +90,9 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="icon-dashboard-tonghopdong" width="246" height="246"/>
+        <image name="icon-tienhoahong" width="246" height="246"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

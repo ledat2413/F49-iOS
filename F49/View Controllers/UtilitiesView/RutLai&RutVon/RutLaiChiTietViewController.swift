@@ -14,9 +14,9 @@ class RutLaiChiTietViewController: BaseController {
     var idItem: Int = 0
     var idTab: Int = 0
     var text: String = ""
-    var tableCellIdentifier: [String] = ["RutVonChiTietTableViewCell","InfoCamDoTableViewCell","RutVon2TableViewCell"]
+    fileprivate var tableCellIdentifier: [String] = ["RutVonChiTietTableViewCell","InfoCamDoTableViewCell","RutVon2TableViewCell"]
     
-    var dataChiTiet: VonDauTuChiTiet?
+    fileprivate var dataChiTiet: VonDauTuChiTiet?
     
     //MARK: --IBOutlet
     @IBOutlet weak var navigation: NavigationBar!
@@ -36,7 +36,7 @@ class RutLaiChiTietViewController: BaseController {
     
     
     //MARK: --Func
-    func setUpUI(){
+    fileprivate func setUpUI(){
         displayNavigation()
         displayTableView()
         displayCollectionView()
@@ -45,17 +45,17 @@ class RutLaiChiTietViewController: BaseController {
         displayFooterView()
     }
     
-    func displayFooterView(){
+    fileprivate func displayFooterView(){
         footerView.displayShadowView2(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 0, offSet: CGSize(width: 3, height: 0))
     }
     
-    func displayCollectionView() {
+    fileprivate func displayCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "ButtonFooterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ButtonFooterCollectionViewCell")
     }
     
-    func displayTableView() {
+    fileprivate func displayTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -64,10 +64,13 @@ class RutLaiChiTietViewController: BaseController {
         }
     }
     
-    func loadChiTiet(){
+    fileprivate func loadChiTiet(){
+        self.showActivityIndicator( view: self.view)
+
         MGConnection.requestObject(APIRouter.GetDetailRutVonByID(id: idItem), VonDauTuChiTiet.self) { (result, error) in
+            self.hideActivityIndicator(view: self.view)
             guard error == nil else {
-                print("Error \(error?.mErrorMessage ?? "") and \(error?.mErrorCode ?? 0)")
+                self.Alert("\(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                 return
             }
             if let result = result {
@@ -78,7 +81,7 @@ class RutLaiChiTietViewController: BaseController {
         }
     }
     
-    func displayNavigation(){
+    fileprivate func displayNavigation(){
         navigation.title = "Thông tin rút vốn"
         navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
     }
@@ -146,7 +149,7 @@ extension RutLaiChiTietViewController: UITableViewDelegate, UITableViewDataSourc
                 cell.valueLabel.text = dataChiTiet?.tenTrangThai ?? ""
                 cell.valueLabel.textColor = UIColor.systemOrange
                 cell.valueLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.subheadline)
-
+                
                 return cell
                 
             case 6:
@@ -190,12 +193,12 @@ extension RutLaiChiTietViewController: UICollectionViewDelegate, UICollectionVie
             case 0:
                 cell.thumbnailLabel.backgroundColor = UIColor.groupTableViewBackground
                 cell.thumbnailLabel.text = "Từ chối"
-                cell.thumbnailLabel.display20()
+                cell.thumbnailLabel.displayCornerRadius(radius: 20)
             case 1:
                 cell.thumbnailLabel.backgroundColor = UIColor.orange
                 cell.thumbnailLabel.text = "Đồng ý"
                 cell.thumbnailLabel.textColor = .white
-                cell.thumbnailLabel.display20()
+                cell.thumbnailLabel.displayCornerRadius(radius: 20)
                 
             default:
                 return cell
@@ -203,7 +206,7 @@ extension RutLaiChiTietViewController: UICollectionViewDelegate, UICollectionVie
         }else {
             cell.thumbnailLabel.backgroundColor = UIColor.groupTableViewBackground
             cell.thumbnailLabel.text = "Đóng"
-            cell.thumbnailLabel.display20()
+            cell.thumbnailLabel.displayCornerRadius(radius: 20)
         }
         
         return cell

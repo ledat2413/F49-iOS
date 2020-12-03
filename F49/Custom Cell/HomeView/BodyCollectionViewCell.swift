@@ -23,22 +23,21 @@ class BodyCollectionViewCell: UICollectionViewCell {
     }
     
     func displayUI(){
-        shadowView(thumbnailCountView)
-        cornerRadius(thumbnailCountLabel)
-        cornerRadius(thumbnailCornerRadiusView)
+        thumbnailCountView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 6)
+        thumbnailCountLabel.displayCornerRadius(radius: 6)
+        thumbnailCornerRadiusView.displayCornerRadius(radius: 6)
+
     }
     
-    func shadowView(_ view: UIView) {
-        view.layer.shadowColor = UIColor.darkGray.cgColor
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        view.layer.shadowRadius = 1
-        view.layer.shadowOpacity = 0.9
-        view.layer.cornerRadius = 6
-    }
-    
-    func cornerRadius(_ view: UIView){
-        view.layer.cornerRadius = 6
-        view.clipsToBounds = true
+    func ui(model: DashBoard){
+        let newStr = model.tieuDe.uppercased()
+        self.thumbnailTitleLabel.text = newStr
+        self.thumbnailCountLabel.text = model.giaTri
+        self.thumbnailImageView.sd_setImage(with: URL(string: model.hinhAnh), placeholderImage: UIImage(named: "heart"))
+        
+        self.displayShadowView(shadowColor: UIColor.gray, borderColor: UIColor.clear, radius: 15)
+        self.thumbnailImageView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 15)
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
     }
 
 }

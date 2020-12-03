@@ -66,6 +66,11 @@
                                         <constraint firstItem="gw7-0e-8bI" firstAttribute="centerX" secondItem="Ylt-Gl-i1l" secondAttribute="centerX" id="uLl-lY-D1b"/>
                                     </constraints>
                                 </view>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="woh-Wd-pew">
+                                    <rect key="frame" x="0.0" y="190" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </view>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -112,6 +117,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="Wz4-3h-iFp"/>
                                 </constraints>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="7U2-9F-rfS">
+                                    <rect key="frame" x="0.0" y="99.666667938232422" width="394" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="10h-eO-dWt">
                                         <rect key="frame" x="0.0" y="28" width="394" height="43.666667938232422"/>

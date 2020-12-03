@@ -28,5 +28,4 @@ class TabTrangThai: Mappable{
         id <- map["id"]
         tenTrangThai <- map["tenTrangThai"]
     }
-    
 }

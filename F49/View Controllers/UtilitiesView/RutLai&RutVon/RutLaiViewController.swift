@@ -12,12 +12,12 @@ import XLPagerTabStrip
 class RutLaiViewController: TabbarButton {
     
     //MARK: --Vars
-    var alert = BaseController()
-    var idTienIch: Int = 0
-    let purpleInspireColor = UIColor.orange
-    var dataCuaHang: [CuaHang] = []
-    var dataTabTrangThai: [TabTrangThai] = [TabTrangThai(id: 0, tenTrangThai: "")]
-    var selectedCuaHang: String?
+    fileprivate var alert = BaseController()
+    var screenID: String = ""
+    fileprivate let purpleInspireColor = UIColor.orange
+    fileprivate var dataCuaHang: [CuaHang] = []
+    fileprivate var dataTabTrangThai: [TabTrangThai] = [TabTrangThai(id: 0, tenTrangThai: "")]
+    fileprivate var selectedCuaHang: String?
     var idShop: Int = 0
     
     //MARK: --IBOutlet
@@ -30,28 +30,27 @@ class RutLaiViewController: TabbarButton {
     //MARK: --View Lifecycle
     
     override func viewDidLoad() {
+        displayTabbarButton(colors: purpleInspireColor)
         super.viewDidLoad()
         setUpUI()
     }
     
     //MARK: --Func
     
-    func setUpUI(){
+    fileprivate func setUpUI(){
         
         self.hideKeyboardWhenTappedAround()
-
+        
         buttonBarContainerView.layer.borderColor = UIColor.lightGray.cgColor
         buttonBarContainerView.layer.borderWidth = 0.5
         shopContainerView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 10)
         loadShop()
         getTabTrangThai()
         createPickerView()
-        dismissPickerView()
         displayHeaderView()
-        displayTabbarButton(colors: purpleInspireColor)
     }
-     
-    func hideKeyboardWhenTappedAround() {
+    
+    fileprivate func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
@@ -60,29 +59,27 @@ class RutLaiViewController: TabbarButton {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-        
     
-    private func loadShop(){
+    
+    fileprivate func loadShop(){
+        
         MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
             guard error == nil else {
                 self.alert.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
-                print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return
             }
             if let result = result {
                 self.dataCuaHang = result
                 self.shopTextField.text = self.dataCuaHang[0].tenCuaHang
-
+                
             }
         }
     }
     
-    private func getTabTrangThai(){
+    fileprivate func getTabTrangThai(){
         MGConnection.requestArray(APIRouter.GetTabTrangThai, TabTrangThai.self) { (result, error) in
             guard error == nil else {
                 self.alert.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
-
-                print("Error: \(error?.mErrorMessage ?? "") and \(error?.mErrorCode ?? 0)")
                 return
             }
             if let result = result {
@@ -96,13 +93,13 @@ class RutLaiViewController: TabbarButton {
         
         var viewControllers: [UIViewController] = []
         for i in dataTabTrangThai {
-            let vc = UIStoryboard(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiContainerViewController") as! RutLaiContainerViewController
+            let vc = UIStoryboard(name: "RUTLAI", bundle: nil).instantiateViewController(withIdentifier: "RutLaiContainerViewController") as! RutLaiContainerViewController
             
             vc.tenTrangThai = i.tenTrangThai
             vc.idTab = i.id
             vc.idShop = self.idShop
-            vc.idTienIch = self.idTienIch
-
+            vc.screenID = self.screenID
+            
             viewControllers.append(vc)
             
         }
@@ -111,14 +108,14 @@ class RutLaiViewController: TabbarButton {
     
     
     private func displayHeaderView(){
-        switch idTienIch {
-        case 4:
-             navigation.title = "Rút lãi cửa hàng"
-              
+        switch screenID {
+        case "RutLai":
+            navigation.title = "Rút lãi cửa hàng"
+            
             break
-        case 8:
+        case "RutVon":
             navigation.title = "Rút vốn cửa hàng"
-                   
+            
             break
             
         default:
@@ -133,19 +130,11 @@ class RutLaiViewController: TabbarButton {
     }
     
     func createPickerView() {
-        let pickerView = UIPickerView()
+        let pickerView = UIPickerView().createPicker(tf: shopTextField)
         pickerView.delegate = self
-        shopTextField.inputView = pickerView
+        self.createToolbar(textField: shopTextField, selector: #selector(self.action))
     }
-    
-    func dismissPickerView() {
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        let button = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(self.action))
-        toolBar.setItems([button], animated: true)
-        toolBar.isUserInteractionEnabled = true
-        shopTextField.inputAccessoryView = toolBar
-    }
+
     
     @objc func action() {
         reloadPagerTabStripView()

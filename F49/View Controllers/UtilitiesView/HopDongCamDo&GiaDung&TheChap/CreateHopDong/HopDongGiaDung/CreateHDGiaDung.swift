@@ -44,7 +44,7 @@ extension CreateHDGiaDungViewController{
         ]]
         
         switch screenID {
-        case 2:
+        case "CamDoGiaDung":
             self.showActivityIndicator( view: self.view)
 
             MGConnection.requestObject(APIRouter.LuuHopDongTraGop(params: params), SoHopDong.self) { (result, error) in
@@ -69,7 +69,7 @@ extension CreateHDGiaDungViewController{
                 }
             }
             break
-        case 3:
+        case "HopDongTraGop":
             self.showActivityIndicator( view: self.view)
 
             MGConnection.requestObject(APIRouter.LuuHopDongHDTG(params: params), SoHopDong.self) { (result, error) in
@@ -115,10 +115,10 @@ extension CreateHDGiaDungViewController{
         
         //Navigation
         switch screenID {
-        case 2:
+        case "CamDoGiaDung":
             navigation.title = "Tạo hợp đồng gia dụng"
             break
-        case 3:
+        case "HopDongTraGop":
             navigation.title = "Tạo hợp đồng trả góp"
             break
         default:
@@ -137,7 +137,7 @@ extension CreateHDGiaDungViewController{
     //API Request
     func loadTaoMoi(){
         switch screenID {
-        case 2:
+        case "CamDoGiaDung":
             MGConnection.requestObject(APIRouter.LoadTaoMoiHDGD(idCuaHang: idCuaHang), LoadTaoMoiHDGD.self) { (result, error) in
                 guard error == nil else { return }
                 if let result = result {
@@ -147,7 +147,7 @@ extension CreateHDGiaDungViewController{
                 }
             }
             break
-        case 3:
+        case "HopDongTraGop":
             MGConnection.requestObject(APIRouter.LoadTaoMoiGDTG(idCuaHang: idCuaHang), LoadTaoMoiHDGD.self) { (result, error) in
                 guard error == nil else { return }
                 if let result = result {
@@ -160,7 +160,7 @@ extension CreateHDGiaDungViewController{
         default:
             break
         }
-        
+         
     }
     
     
@@ -182,7 +182,7 @@ extension CreateHDGiaDungViewController{
         params["ThuPhiTruoc"] = thuPhiTruoc
         
         switch screenID {
-        case 2:
+        case "CamDoGiaDung":
             MGConnection.requestObject(APIRouter.TinhSoTienKhachNhan(params: params), TienKhachNhanHDGD.self) { (result, error) in
                 guard error == nil else { return }
                 if let result = result {
@@ -191,7 +191,7 @@ extension CreateHDGiaDungViewController{
                 }
             }
             break
-        case 3:
+        case "HopDongTraGop":
             MGConnection.requestObject(APIRouter.TinhSoTienKhachNhanGDTG(params: params), TienKhachNhanHDGD.self) { (result, error) in
                 guard error == nil else { return }
                 if let result = result {
@@ -214,7 +214,7 @@ extension CreateHDGiaDungViewController{
         params["SoNgayVay"] = soNgayVay
         
         switch screenID {
-        case 2:
+        case "CamDoGiaDung":
             MGConnection.requestObject(APIRouter.TinhTienLai(params: params), TinhTien.self) { (result, error) in
                 guard error == nil else { return }
                 if let result = result {
@@ -223,7 +223,7 @@ extension CreateHDGiaDungViewController{
                 }
             }
             break
-        case 3:
+        case "HopDongTraGop":
             MGConnection.requestObject(APIRouter.TinhTienLaiHDTG(params: params), TinhTien.self) { (result, error) in
                 guard error == nil else { return }
                 if let result = result {
@@ -246,7 +246,7 @@ extension CreateHDGiaDungViewController{
         params["SoNgayVay"] = soNgayVay
         
         switch screenID {
-        case 2:
+        case "CamDoGiaDung":
             MGConnection.requestObject(APIRouter.TinhTienPhi(params: params), TinhTien.self) { (result, error) in
                 guard error == nil else { return }
                 if let result = result {
@@ -256,7 +256,7 @@ extension CreateHDGiaDungViewController{
                 }
             }
             break
-        case 3:
+        case "HopDongTraGop":
             MGConnection.requestObject(APIRouter.TinhTienPhiHDTG(params: params), TinhTien.self) { (result, error) in
                 guard error == nil else { return }
                 if let result = result {

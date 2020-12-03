@@ -8,14 +8,14 @@
 
 import UIKit
 
-class ThongTinCamDoViewController: UIViewController {
+class ThongTinCamDoViewController: BaseController {
     
     //MARK: --Vars
     public var id: String = ""
     public var index: Int = 0
-    public var dataInfoA: [CamDoChiTiet] = []
-    public var dataInfoB: [DinhGiaChiTiet] = []
-    public var dataInfoC: [DoGiaDungChiTiet] = []
+    fileprivate var dataInfoA: [CamDoChiTiet] = []
+    fileprivate var dataInfoB: [DinhGiaChiTiet] = []
+    fileprivate var dataInfoC: [DoGiaDungChiTiet] = []
     
     //    var callback: ((_ index: Int) -> Void)?
     
@@ -36,7 +36,7 @@ class ThongTinCamDoViewController: UIViewController {
             break
         case 1:
             headerView.title = "Thông tin định giá"
-           
+            
             break
         case 2:
             headerView.title = "Thông tin cầm đồ gia dụng"
@@ -45,7 +45,7 @@ class ThongTinCamDoViewController: UIViewController {
             break
         }
         headerView.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
-
+        
         
         
         tableView.delegate = self
@@ -62,13 +62,16 @@ class ThongTinCamDoViewController: UIViewController {
     }
     
     
-    func loadInfo() {
+    fileprivate func loadInfo() {
         
         switch index {
         case 0:
+            self.showActivityIndicator( view: self.view)
+
             MGConnection.requestArray(APIRouter.GetChiTietCamDo(id: Int(id) ?? 0 ), CamDoChiTiet.self) { (result, error) in
+                self.hideActivityIndicator(view: self.view)
                 guard error == nil else {
-                    print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                    self.Alert("\(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                     return
                 }
                 if let result = result{
@@ -78,9 +81,12 @@ class ThongTinCamDoViewController: UIViewController {
             }
             return
         case 1:
+            self.showActivityIndicator( view: self.view)
+
             MGConnection.requestArray(APIRouter.GetChiTietDinhGia(id: Int(id) ?? 0 ), DinhGiaChiTiet.self) { (result, error) in
+                self.hideActivityIndicator(view: self.view)
                 guard error == nil else {
-                    print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                    self.Alert("\(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                     return
                 }
                 if let result = result{
@@ -90,9 +96,12 @@ class ThongTinCamDoViewController: UIViewController {
             }
             return
         case 2:
+            self.showActivityIndicator( view: self.view)
+
             MGConnection.requestArray(APIRouter.GetChiTietDoGiaDung(id: Int(id) ?? 0 ), DoGiaDungChiTiet.self) { (result, error) in
+                self.hideActivityIndicator(view: self.view)
                 guard error == nil else {
-                    print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                    self.Alert("\(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                     return
                 }
                 if let result = result{
@@ -104,10 +113,7 @@ class ThongTinCamDoViewController: UIViewController {
         default:
             break
         }
-        
-        
     }
-    
 }
 
 extension ThongTinCamDoViewController: UITableViewDataSource,UITableViewDelegate{

@@ -13,14 +13,13 @@ class BaoCaoViewController: BaseController {
     
     //MARK: --Vars
     
-    private let pickerView = UIPickerView()
-    private var fromPicker: UIDatePicker?
-    private var toPicker: UIDatePicker?
+    fileprivate var fromPicker: UIDatePicker?
+    fileprivate var toPicker: UIDatePicker?
     
-    let toolBar = UIToolbar()
+    fileprivate let toolBar = UIToolbar()
     
-    var dataCuaHang: [CuaHang] = []
-    var dataBaoCao: BaoCaoTongHop?
+    fileprivate var dataCuaHang: [CuaHang] = []
+    fileprivate var dataBaoCao: BaoCaoTongHop?
     
     var selectedCuaHang: String?
     var fromValue: String?
@@ -54,7 +53,7 @@ class BaoCaoViewController: BaseController {
     //MARK: --Func
     
     
-    func displayTableView() {
+    fileprivate func displayTableView() {
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -80,9 +79,14 @@ class BaoCaoViewController: BaseController {
     }
     
     //Load Cua Hang
-    func loadCuaHang() {
+    fileprivate func loadCuaHang() {
         MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
-            guard error == nil else { return }
+            guard error == nil else {
+                self.Alert("\(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
+
+                return
+                
+            }
             if let result = result {
                 self.dataCuaHang = result
                 self.shopTextField.text = result[0].tenCuaHang
@@ -92,7 +96,7 @@ class BaoCaoViewController: BaseController {
     }
     
     //Load Bao Cao
-    func loadBaoCao(){
+    fileprivate func loadBaoCao(){
         var params: [String: Any] = ["idCuaHang": id]
         
         if let fromValue = fromValue {
@@ -101,13 +105,18 @@ class BaoCaoViewController: BaseController {
         if let toValue = toValue {
             params["dtDenNgay"] = toValue
         }
-        self.showSpinner(onView: self.view)
+        
+        self.showActivityIndicator( view: self.view)
+
         MGConnection.requestObject(APIRouter.GetBaoCaoTongHop(params: params), BaoCaoTongHop.self) { (result, error) in
-            self.removeSpinner()
-            guard error == nil else { return }
+            self.hideActivityIndicator(view: self.view)
+            guard error == nil else {
+                self.Alert("\(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
+
+                return }
             if let result = result {
                 self.dataBaoCao = result
-        
+                
                 self.tableView.reloadData()
             }
             
@@ -115,7 +124,7 @@ class BaoCaoViewController: BaseController {
     }
     
     //DatePicker
-    func datePicker(){
+    fileprivate func datePicker(){
         
         fromPicker = UIDatePicker()
         toPicker = UIDatePicker()
@@ -124,19 +133,19 @@ class BaoCaoViewController: BaseController {
         self.createDatePicker(picker: toPicker!, selector: #selector(dateChanged(toPicker:)), textField: toTextField)
         self.createToolbar(textField: fromTextField, selector: #selector(doneButton))
         self.createToolbar(textField: toTextField, selector: #selector(doneButton))
-
-
+        
+        
     }
     
     @objc func dateChanged(fromPicker: UIDatePicker){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         fromPicker.dateFormatte(txt: fromTextField)
         fromValue = dateFormatter.string(from: fromPicker.date)
         
         print(fromValue ?? "")
     }
-
+    
     
     @objc func dateChanged(toPicker: UIDatePicker){
         let dateFormatter = DateFormatter()
@@ -150,13 +159,13 @@ class BaoCaoViewController: BaseController {
     @objc func doneButton(){
         loadBaoCao()
         view.endEditing(true)
-
+        
     }
     
     //PickerView
-    func createPickerView() {
+    fileprivate func createPickerView() {
+        let pickerView = UIPickerView().createPicker(tf: shopTextField)
         pickerView.delegate = self
-        shopTextField.inputView = pickerView
         self.createToolbar(textField: shopTextField, selector: #selector(action))
     }
     
@@ -204,14 +213,14 @@ extension BaoCaoViewController: UITableViewDelegate, UITableViewDataSource{
             cell.titleLabel.text = "Tiền cuối kì"
             cell.titleLabel.textColor = .systemGreen
             cell.backgroundColor = UIColor.white
-
+            
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TacVuTableViewCell") as? TacVuTableViewCell else { fatalError() }
             cell.titleLabel.text = "Biến động trong kì"
             cell.titleLabel.textColor = .systemGreen
             cell.backgroundColor = UIColor.white
-
+            
             return cell
         default:
             return UIView()

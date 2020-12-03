@@ -10,19 +10,19 @@ import Foundation
 import ObjectMapper
 import RealmSwift
 
-class Notificationn: Object, Mappable{
+class Notificationn: Mappable{
     
-    @objc dynamic var id: Int = 0
-    @objc dynamic var tieuDe: String = ""
-    @objc dynamic var ngayGui: String = ""
-    @objc dynamic var daDoc: Bool = false
-    @objc dynamic var screenId: String = ""
-    @objc dynamic var hinhAnh: String = ""
-    @objc dynamic var idThongBao: Int = 0
-    @objc dynamic var itemId: Int = 0
-
-    required convenience init?(map: Map) {
-        self.init()
+    var id: Int = 0
+    var tieuDe: String = ""
+    var ngayGui: String = ""
+    var daDoc: Bool = false
+    var screenId: String = ""
+    var hinhAnh: String = ""
+    var idThongBao: Int = 0
+    var itemId: Int = 0
+    
+    required init?(map: Map) {
+        mapping(map: map)
     }
     
     func mapping(map: Map) {

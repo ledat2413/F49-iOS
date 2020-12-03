@@ -26,7 +26,6 @@ final class NavigationBar: UIView{
     }
 
     
-    
     override func awakeFromNib() {
         initWithNib()
         view.displayShadowView2(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 0, offSet: CGSize(width: 3, height: 0))  

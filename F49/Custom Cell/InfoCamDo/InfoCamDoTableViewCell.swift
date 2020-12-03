@@ -25,4 +25,9 @@ class InfoCamDoTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func ui(keyString: String,valueString: String) {
+        self.keyLabel.text = keyString
+        self.valueLabel.text = valueString
+    }
+    
 }

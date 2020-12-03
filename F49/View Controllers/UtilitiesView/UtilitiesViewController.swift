@@ -11,8 +11,8 @@ import UIKit
 class UtilitiesViewController: BaseController {
     
     //MARK: --Vars
-    var dataCuaHang: [CuaHang] = []
-    var dataTienIch: [TienIch] = []
+    fileprivate var dataCuaHang: [CuaHang] = []
+    fileprivate var dataTienIch: [TienIch] = []
     var selectedCuaHang: String?
     var idCuaHang: Int = 0
     
@@ -31,25 +31,25 @@ class UtilitiesViewController: BaseController {
         setUpUI()
         navigation()
         self.hideKeyboardWhenTappedAround()
-
+        
     }   
     
-    private func navigation(){
+    fileprivate func navigation(){
         headerMenu.callBack = { [weak self] (index) in
             
             guard let wself = self else { return }
             print(index)
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
+            let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "CamDoViewController") as! CamDoViewController
             itemVC.index = index
             wself.navigationController?.pushViewController(itemVC, animated: true)
         }
     }
     
     
-    private func loadData(){
+    fileprivate func loadData(){
         MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
             guard error == nil else {
-                print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
+                self.Alert("\(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
                 return
             }
             if let result = result {
@@ -60,13 +60,12 @@ class UtilitiesViewController: BaseController {
         }
     }
     
-    private func loadDashBoard(id: Int){
-        self.showSpinner(onView: self.view)
+    fileprivate func loadDashBoard(id: Int){
+        self.showActivityIndicator( view: self.bodyCollectionView)
         MGConnection.requestArray(APIRouter.GetTienIch(id: id), TienIch.self) { (result, error) in
-            self.removeSpinner()
+            self.hideActivityIndicator(view: self.bodyCollectionView)
             guard error == nil else {
                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
-                print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return
             }
             if let result = result {
@@ -76,7 +75,7 @@ class UtilitiesViewController: BaseController {
         }
     }
     
-    func setUpUI() {
+    fileprivate func setUpUI() {
         
         loadData()
         loadDashBoard(id: 0)
@@ -99,12 +98,12 @@ class UtilitiesViewController: BaseController {
     }
     
     func createPickerView() {
-        let pickerView = UIPickerView()
+        let pickerView = UIPickerView().createPicker(tf: headerTextField)
         pickerView.delegate = self
-        headerTextField.inputView = pickerView
+        
         self.createToolbar(textField: headerTextField, selector: #selector(action))
     }
-
+    
     @objc func action() {
         loadDashBoard(id: idCuaHang)
         view.endEditing(true)
@@ -112,7 +111,6 @@ class UtilitiesViewController: BaseController {
 }
 
 extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewDelegate{
-
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -123,20 +121,8 @@ extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewD
         guard let cell = bodyCollectionView.dequeueReusableCell(withReuseIdentifier: "UtilitiesBodyCollectionViewCell", for: indexPath) as? UtilitiesBodyCollectionViewCell else {
             fatalError()
         }
-        
         let data = dataTienIch[indexPath.row]
-        
-        if data.giaTri.isEmpty {
-            cell.countView.isHidden = true
-        }
-        
-        let upCase = data.tieuDe.uppercased()
-        cell.layer.borderWidth = 0.5
-        cell.layer.borderColor = UIColor.groupTableViewBackground.cgColor
-        cell.titleLabel.text = upCase
-        cell.imageView.sd_setImage(with: URL(string: data.hinhAnh), placeholderImage: UIImage(named: "heart"))
-        cell.countLabel.text = data.giaTri
-        cell.imageView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 15)
+        cell.ui(model: data)
         return cell
         
     }
@@ -145,45 +131,50 @@ extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewD
         switch dataTienIch[indexPath.row].screenId {
             
         case "HopDongCamDo":
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
-            itemVC.loaiHD = dataTienIch[indexPath.row].id
+            let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
+            itemVC.screenId = dataTienIch[indexPath.row].screenId
+            itemVC.loaiHD = 1
             self.navigationController?.pushViewController(itemVC, animated: true)
             
         case "CamDoGiaDung":
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
-            itemVC.loaiHD = dataTienIch[indexPath.row].id
+            let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
+            itemVC.screenId = dataTienIch[indexPath.row].screenId
+            itemVC.loaiHD = 2
 
             self.navigationController?.pushViewController(itemVC, animated: true)
+            
         case "HopDongTraGop":
-        let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
-            itemVC.loaiHD = dataTienIch[indexPath.row].id
+            let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "HopDongCamDoViewController") as! HopDongCamDoViewController
+            itemVC.screenId = dataTienIch[indexPath.row].screenId
+            itemVC.loaiHD = 3
 
-        self.navigationController?.pushViewController(itemVC, animated: true)
+            self.navigationController?.pushViewController(itemVC, animated: true)
+            
         case "RutLai":
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
-            itemVC.idTienIch = 4
+            let itemVC = UIStoryboard.init(name: "RUTLAI", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
+            itemVC.screenID = dataTienIch[indexPath.row].screenId
             self.navigationController?.pushViewController(itemVC, animated: true)
             
         case "ThuChi":
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThuChiViewController") as! ThuChiViewController
-            itemVC.idTienIch = 5
+            let itemVC = UIStoryboard.init(name: "THUCHI", bundle: nil).instantiateViewController(withIdentifier: "ThuChiViewController") as! ThuChiViewController
+            itemVC.screenID = dataTienIch[indexPath.row].screenId
             self.navigationController?.pushViewController(itemVC, animated: true)
             
         case "TaiSanThanhLy":
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThanhLyTaiSanViewController") as! ThanhLyTaiSanViewController
+            let itemVC = UIStoryboard.init(name: "THANHLYTAISAN", bundle: nil).instantiateViewController(withIdentifier: "ThanhLyTaiSanViewController") as! ThanhLyTaiSanViewController
             self.navigationController?.pushViewController(itemVC, animated: true)
             
         case "BaoCaoTongHop":
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "BaoCaoViewController") as! BaoCaoViewController
+            let itemVC = UIStoryboard.init(name: "BAOCAO", bundle: nil).instantiateViewController(withIdentifier: "BaoCaoViewController") as! BaoCaoViewController
             self.navigationController?.pushViewController(itemVC, animated: true)
             
         case "RutVon":
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
-            itemVC.idTienIch = 8
+            let itemVC = UIStoryboard.init(name: "RUTLAI", bundle: nil).instantiateViewController(withIdentifier: "RutLaiViewController") as! RutLaiViewController
+            itemVC.screenID = dataTienIch[indexPath.row].screenId
             self.navigationController?.pushViewController(itemVC, animated: true)
             
         case "TienHoaHong":
-            let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "TienHoaHongViewController") as! TienHoaHongViewController
+            let itemVC = UIStoryboard.init(name: "TIENHOAHONG", bundle: nil).instantiateViewController(withIdentifier: "TienHoaHongViewController") as! TienHoaHongViewController
             self.navigationController?.pushViewController(itemVC, animated: true)
             
         default:

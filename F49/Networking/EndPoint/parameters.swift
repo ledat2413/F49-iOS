@@ -11,176 +11,186 @@ import Alamofire
 
 extension APIRouter {
     // MARK: - Parameters
-    public var parameters: RequestParams {
+    public var parameters: Parameters? {
         switch self {
         
         //Login
         case .Login(let grant_type, let username, let password):
-            return .body(["grant_type": grant_type,
-                          "username": username,
-                          "password": password])
+            return [Constants.APIParameterKey.grant_type: grant_type,
+                    Constants.APIParameterKey.username: username,
+                    Constants.APIParameterKey.password: password]
             
         //User Profile
         case .GetUserProfile:
-            return .body([:])
+            return [:]
             
         case .TimKiemKhachHang(let key):
-            return .body(["key": key])
+            return [Constants.APIParameterKey.key: key]
         case .GetCuaHang:
-            return .body([:])
+            return [:]
             
         //DashBoard
         case .GetDashBoard(let id):
-            return .body(["idCuaHang": id])
+            return [Constants.APIParameterKey.idCuaHang : id]
         case .GetTienIch(let id):
-            return .body(["idCuaHang": id])
-            
+            return [Constants.APIParameterKey.idCuaHang : id]
+
         //Top Menu
         case .GetTopMenu:
-            return .body([:])
+            return [:]
         case .GetStatus:
-            return .body([:])
+            return [:]
         case .GetListCamDo(let trangThai):
-            return .body(["trangThai": trangThai])
+            return [Constants.APIParameterKey.trangThai: trangThai]
         case .GetListDinhGia(let trangThai):
-            return .body(["trangThai": trangThai])
+            return [Constants.APIParameterKey.trangThai: trangThai]
         case .GetListDoGiaDung(let trangThai):
-            return .body(["trangThai": trangThai])
+            return [Constants.APIParameterKey.trangThai: trangThai]
         case .GetChiTietCamDo(let id):
-            return .body(["id": id])
+            return [Constants.APIParameterKey.id: id]
         case .GetChiTietDinhGia(let id):
-            return .body(["id": id])
+            return [Constants.APIParameterKey.id: id]
         case .GetChiTietDoGiaDung(let id):
-            return .body(["id": id])
-            
+            return [Constants.APIParameterKey.id: id]
+
         //Hop Dong
         case .GetTab:
-            return .body([:])
+            return [:]
         case .GetListHopDongTheoLoai(let params):
-            return .body(params)
+            return params
         case .GetTrangThaiHopDong:
-            return .body([:])
+            return [:]
         case .GetChiTietHopDong(let id):
-            return .body(["idHopDong": id])
+            return [Constants.APIParameterKey.idHopDong: id]
         case .GetListThuChi(let params):
-            return .body(params)
+            return params
         case .GetDetailThuChiByID(let id):
-            return .body(["idItem": id])
+            return [Constants.APIParameterKey.idItem: id]
         case .UploadImage(let imgStr, let soHopDong):
-            return .body(["imgStr" : imgStr, "soHopDong" : soHopDong])
+            return [Constants.APIParameterKey.imgStr : imgStr,
+                    Constants.APIParameterKey.soHopDong : soHopDong]
             
         //Notification
         case .GetCountNotify(let idCuaHang):
-            return .body(["idCuaHang": idCuaHang])
+            return [Constants.APIParameterKey.idCuaHang: idCuaHang]
         case .GetListNotification(let params):
-            return .body(params)
+            return params
         case .PutReadAllNotification(let idCuaHang):
-            return .body(["idCuaHang": idCuaHang])
+            return [Constants.APIParameterKey.idCuaHang: idCuaHang]
         case .PutStatusNotify(let idNotify):
-            return .body(["idNotify" : idNotify])
+            return [Constants.APIParameterKey.idNotify : idNotify]
         case .DeleteNotification(let id):
-            return .body(["id": id])
-            
+            return [Constants.APIParameterKey.id : id]
+
         //RutLai
         case .GetTabTrangThai:
-            return .body([:])
+            return [:]
         case .GetListRutLai(let idShop, let idTab):
-            return .body(["idCuaHang": idShop , "idTab": idTab])
-            
+            return [Constants.APIParameterKey.idCuaHang: idShop,
+                    Constants.APIParameterKey.idTab: idTab]
+
         //TienHoaHong
         case .GetDanhSachNhanVien:
-            return .body([:])
+            return [:]
         case .GetTienHoaHong(let params):
-            return .body(params)
-            
+            return params
+
             
         //QuanLyVonDauTu
         case .GetListVonDauTu(let params):
-            return .body(params)
+            return params
         case .GetDetailVonDauTu(let id):
-            return .body(["id" : id])
+            return [Constants.APIParameterKey.id : id]
             
         //RutVon
         case .GetListRutVon(let idShop, let idTab):
-            return .body(["idCuaHang": idShop , "idTab": idTab])
+            return [Constants.APIParameterKey.idCuaHang: idShop,
+                    Constants.APIParameterKey.idTab: idTab]
         case .GetDetailRutVonByID(let id):
-            return .body(["idItem": id])
+            return [Constants.APIParameterKey.idItem: id]
         case .PutDuyetRutVon(let params):
-            return .body(params)
-            
+            return params
+
         //QuanLyTaiSan
         case .GetDLNhomTaiSan:
-            return .body([:])
+            return [:]
         case .GetDLTenTaiSan(let id):
-            return .body(["idNhom" : id])
+            return [Constants.APIParameterKey.idNhom : id]
         case .GetTabTrangThaiTaiSan:
-            return .body([:])
+            return [:]
         case .GetDLTaiSan(let idNhomVatCamDo, let idVatCamDo, let trangThai):
-            return .body(["idNhomVatCamDo": idNhomVatCamDo, "idVatCamDo" : idVatCamDo, "trangThai" : trangThai])
+            return [Constants.APIParameterKey.idNhomVatCamDo: idNhomVatCamDo,
+                    Constants.APIParameterKey.idVatCamDo: idVatCamDo,
+                    Constants.APIParameterKey.trangThai : trangThai]
         case .GetDetailTaiSan(let id):
-            return .body(["idItem" : id])
+            return [Constants.APIParameterKey.idItem : id]
             
         //LichSu
         case .GetLichSuGiaoDich(let id):
-            return .body(["idHopDong" : id])
+            return [Constants.APIParameterKey.idHopDong: id]
         case .GetCountLichSuGiaoDich(let id):
-            return .body(["idHopDong" : id])
+            return [Constants.APIParameterKey.idHopDong: id]
         case .GetChiTietLichSuGiaoDich(let idGiaoDich, let idHopDong):
-            return .body(["idGiaoDich": idGiaoDich, "idHopDong": idHopDong])
+            return [Constants.APIParameterKey.idGiaoDich: idGiaoDich, Constants.APIParameterKey.idHopDong: idHopDong]
         case .GetLichSuVayNo(let id):
-            return .body(["idHopDong" : id])
+            return [Constants.APIParameterKey.idKhachHang: id]
         case .GetChiTietLichSuVayNo(let idHopDong):
-            return .body(["idHopDong" : idHopDong])
+            return [Constants.APIParameterKey.idHopDong: idHopDong]
         case .GetCountLichSuVayNo(let id):
-            return .body(["idHopDong" : id])
-            
+            return [Constants.APIParameterKey.idHopDong: id]
+
         //BaoCaoTongHop
         case .GetBaoCaoTongHop(let params):
-            return .body(params)
-            
+            return params
+
         //ThuLai
         case .GetChiTietHopDongThuLai(let idHopDong, let ngayHieuLuc):
-            return .body(["idHopDong": idHopDong, "ngayHieuLuc": ngayHieuLuc])
+            return [Constants.APIParameterKey.idHopDong: idHopDong,
+                    Constants.APIParameterKey.ngayHieuLuc: ngayHieuLuc]
         case .GetLoaiGiaoDich:
-            return .body([:])
+            return [:]
         case .PutThucHienThuLai(let idHopDong,let loaiGiaoDich,let idCuaHangFormApp,let tienThucTe,let ngayHieuLuc):
-            return .body(["idHopDong" : idHopDong, "loaiGiaoDich": loaiGiaoDich , "idCuaHangFormApp": idCuaHangFormApp, "tienThuThucTe": tienThucTe, "ngayHieuLuc": ngayHieuLuc])
+            return [Constants.APIParameterKey.idHopDong: idHopDong,
+                Constants.APIParameterKey.loaiGiaoDich: loaiGiaoDich,
+                Constants.APIParameterKey.idCuaHangFormApp: idCuaHangFormApp,
+                Constants.APIParameterKey.tienThuThucTe: tienThucTe,
+                Constants.APIParameterKey.ngayHieuLuc: ngayHieuLuc]
             
         //HopDongTheChap
         case .DanhSachTaiSanHDTC:
-            return .body([:])
+            return [:]
         case .ThuocTinhTaiSanHDTC(let loaiTaiSan):
-            return .body(["loaiTaiSan": loaiTaiSan])
+            return [Constants.APIParameterKey.loaiTaiSan: loaiTaiSan]
         case .LoadTaoMoiHDTC(let idCuaHang):
-            return .body(["IDCuaHang": idCuaHang])
+            return [Constants.APIParameterKey.IDCuaHang: idCuaHang]
         case .TinhSoTienKhachNhan(let params):
-            return .body(params)
+            return params
         case .LuuHopDongTheChap(let params):
-            return .body(params)
-            
+            return params
+
         //HopDongGiaDung
         case .DanhSachTaiSanHDGD:
-            return .body([:])
+            return [:]
         case .LoadTaoMoiHDGD(let idCuaHang):
-            return .body(["idCuaHang" : idCuaHang])
+            return [Constants.APIParameterKey.idCuaHang : idCuaHang]
         case .TinhTienLai(let params):
-            return .body(params)
+            return params
         case .TinhTienPhi(let params):
-            return .body(params)
+            return params
         case .LuuHopDongTraGop(let params):
-            return .body(params)
-            
+            return params
+
         //HopDongGiaDungTraGop
         case .LoadTaoMoiGDTG(let idCuaHang):
-            return .body(["idCuaHang": idCuaHang])
+            return [Constants.APIParameterKey.idCuaHang : idCuaHang]
         case .TinhSoTienKhachNhanGDTG(let params):
-            return .body(params)
+            return params
         case .TinhTienLaiHDTG( let params):
-            return .body(params)
+            return params
         case .TinhTienPhiHDTG( let params):
-            return .body(params)
+            return params
         case .LuuHopDongHDTG( let params):
-            return .body(params)
+            return params
         }
     }
 }

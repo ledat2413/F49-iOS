@@ -16,7 +16,7 @@ class ChiTietLichSuViewController: BaseController {
     var idLoaiGiaoDich: Int = 0
     
     var dataChiTietLichSuVayNo: ChiTietVayNo?
-    
+    var dataChoTietLichSuGiaoDich: ChiTietVayNo?
     
     
     @IBOutlet weak var navigation: NavigationBar!
@@ -37,23 +37,30 @@ class ChiTietLichSuViewController: BaseController {
     func loadData(){
         switch code {
         case 0:
-            //            MGConnection.
+            self.showActivityIndicator( view: self.view)
+
             MGConnection.requestObject(APIRouter.GetChiTietLichSuGiaoDich(idGiaoDich: idLoaiGiaoDich, idHopDong: idHopDong), ChiTietVayNo.self) { (result, error) in
+                self.hideActivityIndicator(view: self.view)
                 guard error == nil else {
                     self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
                     
                     return}
+                if result == nil {
+                    self.Alert("Không có dữ liệu")
+                }
+                
                 if let result = result {
-                    self.dataChiTietLichSuVayNo = result
-                    if result.soHopDong.isEmpty {
-                        self.Alert("Không có dữ liệu")
-                    }
+                    self.dataChoTietLichSuGiaoDich = result
+                    
                     self.tableView.reloadData()
                 }
             }
             break
         default:
+            self.showActivityIndicator( view: self.view)
+
             MGConnection.requestObject(APIRouter.GetChiTietLichSuVayNo(idHopDong: idHopDong), ChiTietVayNo.self) { (result, error) in
+                self.hideActivityIndicator(view: self.view)
                 guard error == nil else {
                     
                     self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
@@ -111,40 +118,52 @@ extension ChiTietLichSuViewController: UITableViewDelegate, UITableViewDataSourc
         
         switch code {
         case 0:
-            return cell
-        default:
             switch indexPath.section {
             case 0:
-                cell.keyLabel.text = "Tên KH"
-                cell.valueLabel.text = dataChiTietLichSuVayNo?.tenKhachHang
+                cell.ui(keyString: "Tên KH", valueString: dataChoTietLichSuGiaoDich?.tenKhachHang ?? "")
             case 1:
-                cell.keyLabel.text = "Cửa hàng"
-                cell.valueLabel.text = dataChiTietLichSuVayNo?.tenCuaHang
+                cell.ui(keyString: "Cửa hàng", valueString: dataChoTietLichSuGiaoDich?.tenCuaHang ?? "")
             case 2:
-                cell.keyLabel.text = "Số HĐ"
-                cell.valueLabel.text = dataChiTietLichSuVayNo?.soHopDong
+                cell.ui(keyString: "Số HĐ", valueString: dataChoTietLichSuGiaoDich?.soHopDong ?? "")
             case 3:
-                cell.keyLabel.text = "Ngày vay"
-                cell.valueLabel.text = dataChiTietLichSuVayNo?.ngayVay
+                cell.ui(keyString: "Ngày vay", valueString: dataChoTietLichSuGiaoDich?.ngayVay ?? "")
             case 4:
-                cell.keyLabel.text = "Hình thức vay"
-                cell.valueLabel.text = dataChiTietLichSuVayNo?.hinhThucVay
+                cell.ui(keyString: "Hình thức vay", valueString: dataChoTietLichSuGiaoDich?.hinhThucVay ?? "")
             case 5:
-                cell.keyLabel.text = "Số tiền"
-                cell.valueLabel.text = "\(dataChiTietLichSuVayNo?.soTien ?? 0)"
+                cell.ui(keyString: "Số tiền", valueString: "\(dataChoTietLichSuGiaoDich?.soTien ?? 0)")
             case 6:
-                cell.keyLabel.text = "Gốc đã thu"
-                cell.valueLabel.text = "\(dataChiTietLichSuVayNo?.gocDaThu ?? 0)"
+                cell.ui(keyString: "Gốc đã thu", valueString: "\(dataChoTietLichSuGiaoDich?.gocDaThu ?? 0)")
             case 7:
-                cell.keyLabel.text = "Lãi thu"
-                cell.valueLabel.text = "\(dataChiTietLichSuVayNo?.laiDaThu ?? 0)"
+                cell.ui(keyString: "Lãi đã thu", valueString: "\(dataChoTietLichSuGiaoDich?.laiDaThu ?? 0)")
             case 8:
-                cell.keyLabel.text = "Tình trạng"
-                cell.valueLabel.text = dataChiTietLichSuVayNo?.tinhTrang
+                cell.ui(keyString: "Tình trạng", valueString: dataChoTietLichSuGiaoDich?.tinhTrang ?? "")
                 cell.valueLabel.textColor = .orange
             default:
                 return cell
-            }
+            }        default:
+                switch indexPath.section {
+                case 0:
+                    cell.ui(keyString: "Tên KH", valueString: dataChiTietLichSuVayNo?.tenKhachHang ?? "")
+                case 1:
+                    cell.ui(keyString: "Cửa hàng", valueString: dataChiTietLichSuVayNo?.tenCuaHang ?? "")
+                case 2:
+                    cell.ui(keyString: "Số HĐ", valueString: dataChiTietLichSuVayNo?.soHopDong ?? "")
+                case 3:
+                    cell.ui(keyString: "Ngày vay", valueString: dataChiTietLichSuVayNo?.ngayVay ?? "")
+                case 4:
+                    cell.ui(keyString: "Hình thức vay", valueString: dataChiTietLichSuVayNo?.hinhThucVay ?? "")
+                case 5:
+                    cell.ui(keyString: "Số tiền", valueString: "\(dataChiTietLichSuVayNo?.soTien ?? 0)")
+                case 6:
+                    cell.ui(keyString: "Gốc đã thu", valueString: "\(dataChiTietLichSuVayNo?.gocDaThu ?? 0)")
+                case 7:
+                    cell.ui(keyString: "Lãi đã thu", valueString: "\(dataChiTietLichSuVayNo?.laiDaThu ?? 0)")
+                case 8:
+                    cell.ui(keyString: "Tình trạng", valueString: dataChiTietLichSuVayNo?.tinhTrang ?? "")
+                    cell.valueLabel.textColor = .orange
+                default:
+                    return cell
+                }
         }
         return cell
         

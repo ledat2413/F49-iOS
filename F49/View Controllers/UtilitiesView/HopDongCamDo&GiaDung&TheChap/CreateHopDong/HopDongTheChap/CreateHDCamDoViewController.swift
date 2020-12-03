@@ -25,30 +25,29 @@ class CreateHDCamDoViewController: BaseController {
     var dataTienKhach: SoTienKhachNhan?
     var soHopDong: SoHopDong?
     
-    var tenKH: String = ""
-    var idKH: Int = 0
-    var tenTS: String = ""
-    var idTS: Int = 0
-    var valueCatLai: Bool = false
-    var tienPhuPhi: Int = 0
-    var soTienVay: Int = 0
-    var valueText: String = ""
-    var ghiChu: String = ""
-    var hangSX: String = ""
-    var ngayVay: String = ""
-    var ngayVaoSo: String = ""
-    var kyDongLai: Int = 0
-    var ngayCatLai: String = ""
-    var lai: Int = 0
-    var phi: Int = 0
-    var laiSuat: Double = 0.0
-    var tienKhachNhan: Int = 0
-    var imgArr: [String] = []
-    var imgStr: String = ""
-    var Success: Bool = false
+    lazy var tenKH: String = ""
+    lazy var idKH: Int = 0
+    lazy var tenTS: String = ""
+    lazy var idTS: Int = 0
+    lazy var valueCatLai: Bool = false
+    lazy var tienPhuPhi: Int = 0
+    lazy var soTienVay: Int = 0
+    lazy var valueText: String = ""
+    lazy var ghiChu: String = ""
+    lazy var hangSX: String = ""
+    lazy var ngayVay: String = ""
+    lazy var ngayVaoSo: String = ""
+    lazy var kyDongLai: Int = 0
+    lazy var ngayCatLai: String = ""
+    lazy var lai: Int = 0
+    lazy var phi: Int = 0
+    lazy var laiSuat: Double = 0.0
+    lazy var tienKhachNhan: Int = 0
+    lazy var imgStr: String = ""
+    lazy var Success: Bool = false
     
     var gallery: GalleryController!
-    var itemImages: [UIImage] = []
+    var itemImages: [UIImage?] = [UIImage(named: "photo-camera")]
     
     var dataKeyValue: [KeyValueModel] = [KeyValueModel(title: "Trước", value: true), KeyValueModel(title: "Sau", value: false)]
     
@@ -71,6 +70,7 @@ class CreateHDCamDoViewController: BaseController {
         
         setUpUI()
         loadTaoMoi()
+        hideKeyboardWhenTappedAround()
     }
     
 }
@@ -123,64 +123,52 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
             
             case 0:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-                cell.keyLabel.text = "Khách hàng"
+                cell.ui(keyString: "Khách hàng", textFieldValue: tenKH, celendarHidden: true, downHidden: true, enableKeyboard: false)
                 cell.callBackOpenView = { [weak self] () in
                     guard let wself = self else { return }
                     wself.openView(0)
                 }
-                cell.enableKeyboard = false
-                cell.thumbnailtextField.text = tenKH
                 cell.callBackValue = nil
                 return cell
                 
             case 1:
                 
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-                cell.keyLabel.text = "Ngày vay"
-                cell.celendarButton.isHidden = false
-                cell.thumbnailtextField.isEnabled = false
-                cell.thumbnailtextField.textColor = .lightGray
-                cell.enableKeyboard = true
+                cell.ui(keyString: "Ngày vay", textFieldValue: dataLoadTaoMoi?.ngayVay ?? "", celendarHidden: false, downHidden: true, enableKeyboard: true)
                 
-                cell.thumbnailtextField.text = dataLoadTaoMoi?.ngayVay
+                cell.thumbnailtextField.textColor = .lightGray
                 
                 cell.callBackOpenView = { [weak self ] () in
                     guard let wself = self else { return }
                     wself.openCelendar(1, textField: cell.thumbnailtextField)
                 }
-                cell.thumbnailtextField.isEnabled = false
                 
                 
                 return cell
                 
             case 2:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-                cell.keyLabel.text = "Tài sản"
-                cell.downButton.isHidden = false
-                cell.enableKeyboard = false
-                
+                cell.ui(keyString: "Tài sản", textFieldValue: tenTS, celendarHidden: true, downHidden: false, enableKeyboard: false)
                 cell.callBackOpenView = { [weak self] () in
                     guard let wself = self else { return }
                     wself.openView(2)
                 }
                 cell.callBackValue = nil
-                
-                cell.thumbnailtextField.text = tenTS
                 return cell
                 
             case 3:
+                
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[2], for: indexPath) as? Cell3CreateTableViewCell else { fatalError() }
                 cell.callBackOpenCamera = { [weak self] () in
                     guard let wself = self else { return }
                     wself.showImageGallery()
-                    wself.itemImages = []
                 }
                 return cell
                 
             case 4:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-                cell.keyLabel.text = "Số tiền vay"
-                cell.enableKeyboard = true
+                
+                cell.ui(keyString: "Số tiền vay", textFieldValue: "", celendarHidden: true, downHidden: true, enableKeyboard: true)
                 cell.thumbnailtextField.keyboardType = .numberPad
                 cell.callBackValue = { [weak self] (value) in
                     guard let wself = self else { return }
@@ -192,9 +180,8 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
                 
             case 5:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-                cell.keyLabel.text = "Lãi suất"
+                cell.ui(keyString: "Lãi suất", textFieldValue: "\(dataLoadTaoMoi?.laiXuat ?? 0)", celendarHidden: true, downHidden: true, enableKeyboard: true)
                 cell.enableKeyboard = true
-                cell.thumbnailtextField.text = "\(dataLoadTaoMoi?.laiXuat ?? 0)"
                 cell.callBackValue = { [weak self] (value) in
                     guard let wself = self else { return }
                     wself.dataLoadTaoMoi?.laiXuat = Int(value)!
@@ -206,9 +193,8 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
                 
             case 6:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-                cell.keyLabel.text = "Kì đóng lãi"
-                cell.enableKeyboard = true
-                cell.thumbnailtextField.text = "\(dataLoadTaoMoi?.kyDongLai ?? 0)"
+                
+                cell.ui(keyString: "Kì đóng lãi", textFieldValue: "\(dataLoadTaoMoi?.kyDongLai ?? 0)", celendarHidden: true, downHidden: true, enableKeyboard: true)
                 cell.callBackValue = { [weak self] (value) in
                     guard let wself = self else { return }
                     wself.dataLoadTaoMoi?.kyDongLai = Int(value)!
@@ -219,13 +205,9 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
                 
             case 7:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-                cell.keyLabel.text = "Ngày cắt lãi"
-                cell.celendarButton.isHidden = false
-                cell.enableKeyboard = false
+                cell.ui(keyString: "Ngày cắt lãi", textFieldValue:  dataTienKhach?.ngayDongLai ?? "", celendarHidden: false, downHidden: true, enableKeyboard: false)
                 cell.thumbnailtextField.textColor = .lightGray
-                
                 cell.callBackOpenView = nil
-                cell.thumbnailtextField.text = dataTienKhach?.ngayDongLai
                 
                 dateFormatOfString.dateFormat = "dd/MM/yyyy"
                 dateFormatToString.dateFormat = "yyyy/MM/dd"
@@ -244,9 +226,6 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
                 
             case 8:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-                cell.keyLabel.text = "Cắt lãi"
-                cell.downButton.isHidden = false
-                cell.enableKeyboard = true
                 
                 cell.callBackOpenView =  { [weak self] () in
                     guard let wself = self else {return}
@@ -254,55 +233,46 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
                 }
                 
                 if dataLoadTaoMoi?.catLaiTruoc == false {
-                    cell.thumbnailtextField.text = "Sau"
+                    cell.ui(keyString: "Cắt lãi", textFieldValue: "Sau", celendarHidden: true, downHidden: false, enableKeyboard: true)
                 }else {
-                    cell.thumbnailtextField.text = "Trước"
+                    cell.ui(keyString: "Cắt lãi", textFieldValue: "Trước", celendarHidden: true, downHidden: false, enableKeyboard: true)
                 }
+                
                 
                 return cell
                 
             case 9:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-                cell.keyLabel.text = "Lãi"
-                cell.enableKeyboard = false
                 
-                cell.thumbnailtextField.text = "\(self.lai)"
+                cell.ui(keyString: "Lãi", textFieldValue: "\(self.lai)", celendarHidden: true, downHidden: true, enableKeyboard: false)
+                
                 return cell
                 
             case 10:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-                cell.keyLabel.text = "Phí"
-                cell.celendarButton.isHidden = true
-                cell.downButton.isHidden = true
-                cell.thumbnailtextField.text = "\(self.phi)"
+                
+                cell.ui(keyString: "Phí", textFieldValue: "\(self.phi)", celendarHidden: true, downHidden: true, enableKeyboard: true)
                 
                 return cell
                 
             case 11:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-                cell.keyLabel.text = "Khách nhận"
-                cell.celendarButton.isHidden = true
-                cell.downButton.isHidden = true
+                cell.ui(keyString: "Khách nhận", textFieldValue: "\(dataTienKhach?.soTienKhachNhan ?? 0)", celendarHidden: true, downHidden: true, enableKeyboard: true)
                 cell.callBackOpenView = nil
-                
-                cell.thumbnailtextField.text = "\(dataTienKhach?.soTienKhachNhan ?? 0)"
                 self.tienKhachNhan = dataTienKhach?.soTienKhachNhan ?? 0
                 return cell
                 
             case 12:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-                cell.keyLabel.text = "Nội dung"
-                cell.enableKeyboard = true
+                
+                cell.ui(keyString: "Nội dung", textFieldValue: valueText, celendarHidden: true, downHidden: true, enableKeyboard: true)
+                
                 cell.callBackOpenView = nil
-                cell.celendarButton.isHidden = true
-                cell.downButton.isHidden = true
                 
                 cell.callBackValue = { [weak self] (value) in
                     guard let wself = self else { return }
                     wself.valueText = value
                 }
-                
-                cell.thumbnailtextField.text = valueText
                 
                 return cell
                 
@@ -312,40 +282,27 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
         }
         
         switch indexPath.row {
-            
+        
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-            cell.keyLabel.text = "Khách hàng"
-            cell.thumbnailtextField.placeholder = "Tên khách hàng"
+            cell.ui(keyString: "Khách hàng", textFieldValue: tenKH, celendarHidden: true, downHidden: true, enableKeyboard: false)
             cell.callBackOpenView = { [weak self] () in
                 guard let wself = self else { return }
-                wself.openView(indexPath.row)
+                wself.openView(0)
             }
-            cell.enableKeyboard = false
-            cell.thumbnailtextField.text = tenKH
             cell.callBackValue = nil
             return cell
             
         case 1:
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-            cell.celendarButton.isHidden = false
-            cell.enableKeyboard = true
+            cell.ui(keyString: "Ngày vay", textFieldValue: dataLoadTaoMoi?.ngayVay ?? "", celendarHidden: false, downHidden: true, enableKeyboard: true)
             
-            cell.keyLabel.text = "Ngày vay"
-            
-            cell.thumbnailtextField.text = dataLoadTaoMoi?.ngayVay
+            cell.thumbnailtextField.textColor = .lightGray
             
             cell.callBackOpenView = { [weak self ] () in
                 guard let wself = self else { return }
                 wself.openCelendar(1, textField: cell.thumbnailtextField)
-            }
-            dateFormatOfString.dateFormat = "yyyy/MM/dd"
-            dateFormatToString.dateFormat = "dd/MM/yyyy"
-            
-            let date = dateFormatOfString.date(from: ngayVay)
-            if let date = date {
-                cell.thumbnailtextField.text = dateFormatToString.string(from: date)
             }
             
             
@@ -354,13 +311,7 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
             
-            cell.thumbnailtextField.keyboardType = .default
-            cell.enableKeyboard = true
-            
-            cell.keyLabel.text = "Ngày vào sổ"
-            cell.celendarButton.isHidden = false
-            
-            cell.thumbnailtextField.text = dataLoadTaoMoi?.ngayVaoSo
+            cell.ui(keyString: "Ngày vào sổ", textFieldValue: dataLoadTaoMoi?.ngayVaoSo ?? "", celendarHidden: false, downHidden: true, enableKeyboard: true)
             
             cell.callBackOpenView = { [weak self ] () in
                 guard let wself = self else { return }
@@ -374,23 +325,16 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
                 cell.thumbnailtextField.text = dateFormatToString.string(from: date)
             }
             
-            
             return cell
             
         case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-            cell.keyLabel.text = "Tài sản"
-            cell.downButton.isHidden = false
-            cell.enableKeyboard = false
-            cell.thumbnailtextField.placeholder = "Tên tài sản"
-            
-            cell.callBackValue = nil
+            cell.ui(keyString: "Tài sản", textFieldValue: tenTS, celendarHidden: true, downHidden: false, enableKeyboard: false)
             cell.callBackOpenView = { [weak self] () in
                 guard let wself = self else { return }
-                wself.openView(indexPath.row)
+                wself.openView(3)
             }
-            
-            cell.thumbnailtextField.text = tenTS
+            cell.callBackValue = nil
             return cell
             
         case 4: //Images
@@ -399,7 +343,6 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
             cell.callBackOpenCamera = { [weak self] () in
                 guard let wself = self else { return }
                 wself.showImageGallery()
-                wself.itemImages = []
             }
             
             cell.loadData(itemImages)
@@ -408,14 +351,13 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
             
         case 5:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-            cell.keyLabel.text = "Số tiền vay"
-            cell.enableKeyboard = true
+            
+            cell.ui(keyString: "Số tiền vay", textFieldValue: cell.thumbnailtextField.text ?? ""    , celendarHidden: true, downHidden: true, enableKeyboard: true)
             cell.thumbnailtextField.keyboardType = .numberPad
-            cell.thumbnailtextField.placeholder = "Số tiền vay"
             
             cell.callBackValue = { [weak self] (value) in
                 guard let wself = self else { return }
-                wself.soTienVay = Int(value)!
+                wself.soTienVay = Int(value) ?? 0
                 wself.tinhSoTienKhachNhan()
             }
             
@@ -423,9 +365,9 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
             
         case 6:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-            cell.keyLabel.text = "Lãi suất"
-            cell.enableKeyboard = true
-            cell.thumbnailtextField.text = "\(dataLoadTaoMoi?.laiXuat ?? 0)"
+            
+            cell.ui(keyString: "Lãi suất", textFieldValue: "\(dataLoadTaoMoi?.laiXuat ?? 0)", celendarHidden: true, downHidden: true, enableKeyboard: true)
+            
             cell.callBackValue = { [weak self] (value) in
                 guard let wself = self else { return }
                 wself.dataLoadTaoMoi?.laiXuat = Int(value)!
@@ -437,9 +379,8 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
             
         case 7:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-            cell.keyLabel.text = "Kì đóng lãi"
-            cell.enableKeyboard = true
-            cell.thumbnailtextField.text = "\(dataLoadTaoMoi?.kyDongLai ?? 0)"
+            cell.ui(keyString: "Kì đóng lãi", textFieldValue: "\(dataLoadTaoMoi?.kyDongLai ?? 0)", celendarHidden: true, downHidden: true, enableKeyboard: true)
+            
             cell.callBackValue = { [weak self] (value) in
                 guard let wself = self else { return }
                 wself.dataLoadTaoMoi?.kyDongLai = Int(value)!
@@ -449,15 +390,11 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
             
         case 8:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-            cell.keyLabel.text = "Ngày cắt lãi"
-            cell.celendarButton.isHidden = false
-            cell.downButton.isHidden = true
-
-            cell.enableKeyboard = false
+            
+            cell.ui(keyString: "Ngày cắt lãi", textFieldValue: dataTienKhach?.ngayDongLai ?? "", celendarHidden: false, downHidden: true, enableKeyboard: false)
             cell.thumbnailtextField.textColor = .lightGray
             
             cell.callBackOpenView = nil
-            cell.thumbnailtextField.text = dataTienKhach?.ngayDongLai
             
             dateFormatOfString.dateFormat = "dd/MM/yyyy"
             dateFormatToString.dateFormat = "yyyy-MM-dd"
@@ -473,10 +410,8 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
             
         case 9:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-            cell.keyLabel.text = "Cắt lãi"
-            cell.downButton.isHidden = false
-            cell.celendarButton.isHidden = true
-            cell.enableKeyboard = true
+            
+            cell.ui(keyString: "Cắt lãi", textFieldValue: "Sau", celendarHidden: true, downHidden: false, enableKeyboard: true)
             
             cell.callBackOpenView =  { [weak self] () in
                 guard let wself = self else {return}
@@ -484,20 +419,19 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
             }
             
             if dataLoadTaoMoi?.catLaiTruoc == false {
-                cell.thumbnailtextField.text = "Sau"
+                cell.ui(keyString: "Cắt lãi", textFieldValue: "Sau", celendarHidden: true, downHidden: false, enableKeyboard: true)
             }else {
-                cell.thumbnailtextField.text = "Trước"
+                cell.ui(keyString: "Cắt lãi", textFieldValue: "Trước", celendarHidden: true, downHidden: false, enableKeyboard: true)
             }
             
             return cell
             
         case 10:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-            cell.keyLabel.text = "Lãi"
-            cell.enableKeyboard = true
+            
+            cell.ui(keyString: "Lãi", textFieldValue: "\(self.lai)", celendarHidden: true, downHidden: true, enableKeyboard: true)
             
             cell.callBackOpenView = nil
-            cell.thumbnailtextField.text = "\(self.lai)"
             cell.callBackValue = { [weak self] (value) in
                 guard let wself = self else { return }
                 wself.lai = Int(value) ?? 0
@@ -506,13 +440,11 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
             
         case 11:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-            cell.keyLabel.text = "Phí"
-            cell.enableKeyboard = true
-            cell.celendarButton.isHidden = true
-            cell.downButton.isHidden = true
+            
+            cell.ui(keyString: "Phí", textFieldValue: "\(self.phi)", celendarHidden: true, downHidden: true, enableKeyboard: true)
+            
             cell.callBackOpenView = nil
             
-            cell.thumbnailtextField.text = "\(self.phi)"
             cell.callBackValue = { [weak self] (value) in
                 guard let wself = self else { return }
                 wself.phi = Int(value) ?? 0
@@ -522,29 +454,24 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
             
         case 12:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-            cell.keyLabel.text = "Khách nhận"
-            cell.celendarButton.isHidden = true
-            cell.downButton.isHidden = true
+            cell.ui(keyString: "Khách nhận", textFieldValue: "\(dataTienKhach?.soTienKhachNhan ?? 0)", celendarHidden: true, downHidden: true, enableKeyboard: false)
+            
             cell.callBackOpenView = nil
             
-            cell.thumbnailtextField.text = "\(dataTienKhach?.soTienKhachNhan ?? 0)"
             self.tienKhachNhan = dataTienKhach?.soTienKhachNhan ?? 0
             return cell
             
         case 13:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierTableView[1], for: indexPath) as? Cell2CreateTableViewCell else { fatalError() }
-            cell.keyLabel.text = "Nội dung"
-            cell.enableKeyboard = true
+            
             cell.callBackOpenView = nil
-            cell.celendarButton.isHidden = true
-            cell.downButton.isHidden = true
+            
             
             cell.callBackValue = { [weak self] (value) in
                 guard let wself = self else { return }
                 wself.valueText = value
             }
-            
-            cell.thumbnailtextField.text = valueText 
+            cell.ui(keyString: "Nội dung", textFieldValue: valueText, celendarHidden: true, downHidden: true, enableKeyboard: true)
             
             return cell
             

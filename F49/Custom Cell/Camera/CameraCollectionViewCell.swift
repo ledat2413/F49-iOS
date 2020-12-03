@@ -10,13 +10,22 @@ import UIKit
 
 class CameraCollectionViewCell: UICollectionViewCell {
 
+    var callBackButton: (() -> Void)?
     
     @IBOutlet weak var thumbnailImageView: UIImageView!
-    @IBOutlet weak var deleteButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    
+    func handlerCallBackButton(handler: @escaping () -> Void){
+        self.callBackButton = handler
+    }
+    
+    @IBAction func buttonPressed(_ sender: Any) {
+        callBackButton?()
+    }
+    
 }

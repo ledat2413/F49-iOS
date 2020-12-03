@@ -12,8 +12,7 @@ import Gallery
 class Cell3CreateTableViewCell: UITableViewCell {
     
     //MARK: --Vars
-    var itemImages: [UIImage?] = [UIImage(named: "photo-camera")]
-    var gallery: GalleryController!
+    var itemImages: [UIImage?] = []
     var callBackOpenCamera: (() -> Void)?
     
     
@@ -26,6 +25,7 @@ class Cell3CreateTableViewCell: UITableViewCell {
         thumbnailCollectionView.register(UINib(nibName: "Cell3CreateCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell3CreateCollectionViewCell")
         thumbnailCollectionView.dataSource = self
         thumbnailCollectionView.delegate = self
+        print(itemImages.count)
         
     }
     
@@ -35,8 +35,14 @@ class Cell3CreateTableViewCell: UITableViewCell {
     
     //MARK: --Func
     func loadData(_ images: [UIImage?]){
-        self.itemImages += images
-        self.thumbnailCollectionView.reloadData()
+        
+              itemImages = images
+
+            print("Images \(itemImages.count)" )
+
+            self.thumbnailCollectionView.reloadData()
+
+        
     }
 }
 
@@ -48,16 +54,9 @@ extension Cell3CreateTableViewCell: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        switch indexPath.row {
-        case 0:
-            guard let cell = thumbnailCollectionView.dequeueReusableCell(withReuseIdentifier: "Cell3CreateCollectionViewCell", for: indexPath) as? Cell3CreateCollectionViewCell else { fatalError() }
-            cell.imageCell3CollectionView.image = itemImages[0]
-            return cell
-        default:
-            guard let cell = thumbnailCollectionView.dequeueReusableCell(withReuseIdentifier: "Cell3CreateCollectionViewCell", for: indexPath) as? Cell3CreateCollectionViewCell else { fatalError() }
-            cell.imageCell3CollectionView.image = itemImages[indexPath.row]
-            return cell
-        }
+      guard let cell = thumbnailCollectionView.dequeueReusableCell(withReuseIdentifier: "Cell3CreateCollectionViewCell", for: indexPath) as? Cell3CreateCollectionViewCell else { fatalError() }
+        cell.imageCell3CollectionView.image = itemImages[indexPath.row]
+        return cell
         
     }
     

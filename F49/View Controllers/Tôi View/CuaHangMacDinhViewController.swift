@@ -9,7 +9,7 @@
 import UIKit
 
 class CuaHangMacDinhViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var headerView: NavigationBar!
@@ -37,7 +37,7 @@ class CuaHangMacDinhViewController: UIViewController {
         button.layer.cornerRadius = 20
         button.clipsToBounds = true
     }
-   
+    
 }
 
 extension CuaHangMacDinhViewController: UITableViewDelegate,UITableViewDataSource{

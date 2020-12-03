@@ -50,6 +50,7 @@ class KhachHangViewController: BaseController {
     func handlerTenKH(handler: @escaping (_ ten: String, _ id: Int) -> Void){
         self.tenKH = handler
     }
+
     
     private func setUpUI(){
         
@@ -65,7 +66,10 @@ class KhachHangViewController: BaseController {
     
     
     private func loadKhachHang(_ key: String){
+        self.showActivityIndicator( view: self.view)
+
         MGConnection.requestArray(APIRouter.TimKiemKhachHang(key: key), TimKiem.self) { (result, error) in
+            self.hideActivityIndicator(view: self.view)
             guard error == nil else {
                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!!")
                 return }

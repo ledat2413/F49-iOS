@@ -11,19 +11,20 @@ import UIKit
 class ThuChiViewController: BaseController {
     
     //MARK: --Vars
-    var idTienIch: Int = 0
-    var dataCuaHang: [CuaHang] = []
-    var dataThuChi: [ThuChi] = []
-    var dataVon: [VonDauTu] = []
+    var screenID: String = ""
+    fileprivate var dataCuaHang: [CuaHang] = []
+    fileprivate var dataThuChi: [ThuChi] = []
+    fileprivate var dataVon: [VonDauTu] = []
     var selectedCuaHang: String?
     var idShop: Int = 0
     
     private var fromPicker: UIDatePicker?
     private var toPicker: UIDatePicker?
     
-    
     var fromValue: String?
     var toValue: String?
+    
+    let dateFormatter = DateFormatter()
     
     //MARK: --IBOutlet
     @IBOutlet weak var navigation: NavigationBar!
@@ -48,23 +49,22 @@ class ThuChiViewController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        hideKeyboardWhenTappedAround()
     }
     
     //MARK: --Func
     
-    
-    
-    func setUpUI(){
+    fileprivate func setUpUI(){
         
         datePicker()
         tableView.delegate = self
         tableView.dataSource = self
         
-        switch idTienIch {
-        case 5:
+        switch screenID {
+        case "ThuChi":
             tableView.register(UINib(nibName: "RutVonTableViewCell", bundle: nil), forCellReuseIdentifier: "RutVonTableViewCell")
             break
-        case 8:
+        case "RutVon":
             tableView.register(UINib(nibName: "RutVonTableViewCell", bundle: nil), forCellReuseIdentifier: "RutVonTableViewCell")
             break
         default:
@@ -82,13 +82,13 @@ class ThuChiViewController: BaseController {
         displayNavigation()
     }
     
-    func displayNavigation() {
-        switch idTienIch {
-        case 5:
+    fileprivate func displayNavigation() {
+        switch screenID {
+        case "ThuChi":
             navigation.title = "Quản lí thu chi"
             navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
             break
-        case 8:
+        case "RutVon":
             navigation.title = "Rút vốn"
             navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
             break
@@ -101,7 +101,7 @@ class ThuChiViewController: BaseController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func createPickerView() {
+    fileprivate func createPickerView() {
         let pickerView = UIPickerView().createPicker(tf: shopTextField)
         pickerView.delegate = self
         self.createToolbar(textField: shopTextField, selector: #selector(action))
@@ -115,11 +115,10 @@ class ThuChiViewController: BaseController {
     
     
     //DatePicker
-    func datePicker(){
+    fileprivate func datePicker(){
         
         fromPicker = UIDatePicker()
         toPicker = UIDatePicker()
-        
         self.createToolbar(textField: fromTextField, selector: #selector(actionButton))
         self.createToolbar(textField: toTextField, selector: #selector(actionButton))
         self.createDatePicker(picker: toPicker! , selector: #selector(dateChanged(toPicker:)), textField: toTextField)
@@ -129,7 +128,6 @@ class ThuChiViewController: BaseController {
     
     
     @objc func dateChanged(fromPicker: UIDatePicker){
-        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         fromPicker.dateFormatte(txt: fromTextField)
         fromValue = dateFormatter.string(from: fromPicker.date)
@@ -138,7 +136,6 @@ class ThuChiViewController: BaseController {
     }
     
     @objc func dateChanged(toPicker: UIDatePicker){
-        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         toPicker.dateFormatte(txt: toTextField)
         toValue = dateFormatter.string(from: toPicker.date)
@@ -151,11 +148,10 @@ class ThuChiViewController: BaseController {
     }
     
     
-    func loadCuaHang() {
+    fileprivate func loadCuaHang() {
         MGConnection.requestArray(APIRouter.GetCuaHang, CuaHang.self) { (result, error) in
             guard error == nil else {
                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
-                print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                 return
             }
             if let result = result {
@@ -164,7 +160,7 @@ class ThuChiViewController: BaseController {
         }
     }
     
-    func loadData() {
+    fileprivate func loadData() {
         
         var params: [String: Any] = ["idCuaHang": idShop]
         
@@ -175,14 +171,14 @@ class ThuChiViewController: BaseController {
         if let toValue = self.toValue {
             params["dtDenNgay"] = toValue
         }
-        switch idTienIch {
-        case 5:
-            self.showSpinner(onView: self.view)
+        switch screenID {
+        case "ThuChi":
+            self.showActivityIndicator( view: self.view)
+
             MGConnection.requestArray(APIRouter.GetListThuChi(params: params), ThuChi.self) { (result, error) in
-                self.removeSpinner()
+                self.hideActivityIndicator(view: self.view)
                 guard error == nil else {
                     self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
-                    print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                     return
                 }
                 if let result = result {
@@ -194,19 +190,20 @@ class ThuChiViewController: BaseController {
                 }
             }
             break
-        case 8:
-            self.showSpinner(onView: self.view)
+            
+        case "RutVon":
+            self.showActivityIndicator( view: self.view)
+
             MGConnection.requestArray(APIRouter.GetListVonDauTu(params: params), VonDauTu.self) { (result, error) in
-                self.removeSpinner()
+                self.hideActivityIndicator(view: self.view)
                 guard error == nil else {
                     self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
-                    print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                     return
                 }
                 if let result = result {
                     self.dataVon = result
                     if result.count == 0 {
-                        self.Alert("Không có dữ liếu")
+                        self.Alert("Không có dữ liệu")
                     }
                     self.tableView.reloadData()
                 }
@@ -215,19 +212,16 @@ class ThuChiViewController: BaseController {
             break
         }
         
-        
-        
     }
 }
 
 extension ThuChiViewController: UITableViewDelegate,UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch idTienIch {
-        case 5:
-            
+        switch screenID {
+        case "ThuChi":
             return  dataThuChi.count
-        case 8:
-            
+        case "RutVon":
             return dataVon.count
         default:
             return 0
@@ -240,9 +234,9 @@ extension ThuChiViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch idTienIch {
+        switch screenID {
             
-        case 5:
+        case "ThuChi":
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RutVonTableViewCell", for: indexPath) as? RutVonTableViewCell else {fatalError()}
             let data = dataThuChi[indexPath.row]
             
@@ -257,24 +251,8 @@ extension ThuChiViewController: UITableViewDelegate,UITableViewDataSource{
             cell.dateLabel.text = data.chi
             cell.peopleLabel.text = data.nguoiThucHien
             
-//            cell.icon1ImageView.image = UIImage(named: "icon-content-tien")
-//            cell.icon2ImageView.image = UIImage(named: "icon-content-tien")
-//            cell.icon3Imageview.image = UIImage(named: "icon-content-nhanvien")
-//
-//            cell.title1Label.text = "Thu"
-//            cell.title2Label.text = "Chi"
-//            cell.title3Label.text = "Người thực hiện"
-            
-//            cell.tangGiamLabel.text = data.thu
-//            cell.tienLabel.text = data.chi
-//            cell.tongLabel.text = data.nguoiThucHien
-//            cell.idLabel.text = "\(data.id)"
-//            cell.id2Label.text = data.tenCuaHang
-//            cell.nameLabel.isHidden = true
-//            cell.betweenLabel.isHidden = true
-            
             return cell
-        case 8:
+        case "RutVon":
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RutVonTableViewCell", for: indexPath) as? RutVonTableViewCell else {fatalError()}
             let data = dataVon[indexPath.row]
             cell.idLabel.text = "\(data.idCuaHang)"
@@ -291,14 +269,14 @@ extension ThuChiViewController: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let itemVC = UIStoryboard.init(name: "TIENICH", bundle: nil).instantiateViewController(withIdentifier: "ThongTinThuChiViewController") as! ThongTinThuChiViewController
-        switch idTienIch {
-        case 5:
-            itemVC.idTienIch = idTienIch
+        let itemVC = UIStoryboard.init(name: "THUCHI", bundle: nil).instantiateViewController(withIdentifier: "ThongTinThuChiViewController") as! ThongTinThuChiViewController
+        switch screenID {
+        case "ThuChi":
+            itemVC.screenID = screenID
             itemVC.id = dataThuChi[indexPath.row].id
             self.navigationController?.pushViewController(itemVC, animated: true)
-        case 8:
-            itemVC.idTienIch = idTienIch
+        case "RutVon":
+            itemVC.screenID = screenID
             itemVC.id = dataVon[indexPath.row].idItem
             self.navigationController?.pushViewController(itemVC, animated: true)
         default:

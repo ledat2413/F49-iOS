@@ -12,13 +12,13 @@ class CamDoViewController: BaseController {
     
     //MARK: --Vars
     var index: Int = 0
-    var dataStatus: [Status] = []
-    var dataListCamDo: [CamDo] = []
-    var dataListDinhGia: [DinhGia] = []
-    var dataListDoGiaDung: [DoGiaDung] = []
+    fileprivate var dataStatus: [Status] = []
+    fileprivate var dataListCamDo: [CamDo] = []
+    fileprivate var dataListDinhGia: [DinhGia] = []
+    fileprivate var dataListDoGiaDung: [DoGiaDung] = []
     var selectedStatus: String?
     var callBack: ((_ index: Int) -> Void)?
-
+    
     
     
     //MARK: --IBOutlet
@@ -32,6 +32,9 @@ class CamDoViewController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        loadData(trangThai: "1")
+
         displayTitle()
         loadStatus()
         createPickerView()
@@ -45,7 +48,7 @@ class CamDoViewController: BaseController {
     
     //MARK: --Func
     
-    private func displayTitle(){
+    fileprivate func displayTitle(){
         switch index {
         case 0:
             return headerView.title = "Cầm Đồ"
@@ -58,21 +61,20 @@ class CamDoViewController: BaseController {
         }
     }
     
-    private func loadData(trangThai: String){
+    fileprivate func loadData(trangThai: String){
         switch index {
         case 0:
             MGConnection.requestArray(APIRouter.GetListCamDo(trangThai: trangThai), CamDo.self) { (result, error) in
                 guard error == nil else {
                     self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
-                    
-                    print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
-                    return
+                                        return
+                }
+                if result!.count == 0 {
+                    self.Alert("Có lỗi xảy ra")
                 }
                 if let result = result{
                     self.dataListCamDo = result
-                    if result.count == 0 {
-                        self.Alert("Có lỗi xảy ra")
-                    }
+
                     self.tableView.reloadData()
                 }
             }
@@ -83,14 +85,14 @@ class CamDoViewController: BaseController {
                 guard error == nil else {
                     self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
                     
-                    print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                     return
+                }
+                if result?.count == 0 {
+                    self.Alert("Không có dữ liệu")
                 }
                 if let result = result{
                     self.dataListDinhGia = result
-                    if result.count == 0 {
-                        self.Alert("Không có dữ liệu")
-                    }
+
                     self.tableView.reloadData()
                 }
             }
@@ -101,14 +103,13 @@ class CamDoViewController: BaseController {
                 guard error == nil else {
                     self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
                     
-                    print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
                     return
+                }
+                if result?.count == 0 {
+                    self.Alert("Không có dữ liệu")
                 }
                 if let result = result{
                     self.dataListDoGiaDung = result
-                    if result.count == 0 {
-                        self.Alert("Không có dữ liệu")
-                    }
                     self.tableView.reloadData()
                 }
             }
@@ -119,7 +120,7 @@ class CamDoViewController: BaseController {
         }
     }
     
-    private func loadStatus(){
+    fileprivate func loadStatus(){
         MGConnection.requestArray(APIRouter.GetStatus, Status.self) { (result, error) in
             guard error == nil else {
                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng kiểm tra lại!!!")
@@ -128,6 +129,8 @@ class CamDoViewController: BaseController {
             }
             if let result = result{
                 self.dataStatus = result
+                self.findTextField.text = result[1].value
+
             }
         }
     }
@@ -136,7 +139,7 @@ class CamDoViewController: BaseController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func createPickerView() {
+    fileprivate func createPickerView() {
         let pickerView = UIPickerView()
         pickerView.delegate = self
         findTextField.inputView = pickerView

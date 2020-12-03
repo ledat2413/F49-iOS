@@ -32,6 +32,7 @@ class UserViewController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        
     }
     
     
@@ -66,7 +67,6 @@ extension UserViewController: UITableViewDelegate,UITableViewDataSource {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("DEBUG:    \(scrollView.contentOffset.y)" )
-        
         let offsetY = scrollView.contentOffset.y
         
         var frame = headerView.frame
@@ -74,10 +74,7 @@ extension UserViewController: UITableViewDelegate,UITableViewDataSource {
         if offsetY < 0 {
             topConstrainsHeaderViewContainerView.constant = offsetY
             frame.size.height = height - offsetY
-        } else {
-            return
-            
-        }
+        } else {}
         
         mainTableView.tableHeaderView = headerView
         
@@ -89,6 +86,7 @@ extension UserViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let cell = mainTableView.dequeueReusableCell(withIdentifier: "Cell1UserTableViewCell") as? Cell1UserTableViewCell else { fatalError()}
+        self.avatarImageView.sd_setImage(with: URL(string:   cell.dataProfile.first?.hinh ?? ""), completed: nil)
         return cell
     }
     

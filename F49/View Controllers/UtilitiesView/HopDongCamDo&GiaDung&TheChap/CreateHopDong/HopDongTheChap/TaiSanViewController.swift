@@ -67,7 +67,10 @@ class TaiSanViewController: BaseController {
     }
     
     private func loadDSTaiSan(){
+        self.showActivityIndicator( view: self.view)
+
         MGConnection.requestArray(APIRouter.DanhSachTaiSanHDTC, TaiSanHDTheChap.self) { (result, error) in
+            self.hideActivityIndicator(view: self.view)
             guard error == nil else { return }
             if let result = result {
                 self.DSTSHDTheChap = result
@@ -87,9 +90,9 @@ class TaiSanViewController: BaseController {
     }
     
      func createPickerView() {
-         let pickerView = UIPickerView()
+        let pickerView = UIPickerView().createPicker(tf: findTextField)
          pickerView.delegate = self
-         findTextField.inputView = pickerView
+//         findTextField.inputView = pickerView
         self.createToolbar(textField: findTextField, selector: #selector(action))
         
      }
@@ -134,14 +137,11 @@ extension TaiSanViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let cell = footerCollectionView.dequeueReusableCell(withReuseIdentifier: "ButtonFooterCollectionViewCell", for: indexPath) as? ButtonFooterCollectionViewCell else { fatalError() }
         switch indexPath.row {
         case 0:
-            cell.thumbnailLabel.backgroundColor = UIColor.orange
-            cell.thumbnailLabel.text = "Lưu"
-            cell.thumbnailLabel.display20()
+     
+            cell.ui(color: Colors.orange, textString: "Lưu")
         case 1:
-            cell.thumbnailLabel.backgroundColor = UIColor.red
-            cell.thumbnailLabel.text = "Đóng"
             cell.thumbnailLabel.textColor = .white
-            cell.thumbnailLabel.display20()
+            cell.ui(color: Colors.red, textString: "Đóng")
         default:
             return cell
         }
