@@ -44,7 +44,7 @@ class OptionViewController: BaseController {
     //MARK: --Func
     
     func loadCountLichSuVayNo() {
-        MGConnection.requestInt(APIRouter.GetCountLichSuVayNo(id: idKhachHang), returnType: data) { (result, error) in
+        MGConnection.requestInt(APIRouter.GetCountLichSuVayNo(idKhachHang: idKhachHang), returnType: data) { (result, error) in
             guard error == nil else { return }
             if let result = result {
                 self.countVayNo = result
@@ -97,14 +97,14 @@ extension OptionViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
-        case 0:
+        case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThongTinHopDongTableViewCell", for: indexPath) as? ThongTinHopDongTableViewCell else { fatalError()}
             cell.thumnailImageView.image = UIImage(named: "icon-lichsugiaodich")
             cell.thumbnailTitleLabel.text = "Lịch sử giao dịch"
             cell.thumbnailNumberLabel.text = "( \(countGiaoDich) )"
             cell.thumbnailNumberLabel.textColor = .red
             return cell
-        case 1:
+        case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThongTinHopDongTableViewCell", for: indexPath) as? ThongTinHopDongTableViewCell else { fatalError()}
             cell.thumnailImageView.image = UIImage(named: "icon-lichsuvay")
             cell.thumbnailTitleLabel.text = "Lịch sử vay"
@@ -112,10 +112,10 @@ extension OptionViewController: UITableViewDelegate, UITableViewDataSource{
             cell.thumbnailNumberLabel.textColor = .red
             return cell
             
-        case 2:
+        case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThongTinHopDongTableViewCell", for: indexPath) as? ThongTinHopDongTableViewCell else { fatalError()}
             cell.thumnailImageView.image = UIImage(named: "icon-lichsuvay")
-            cell.thumbnailTitleLabel.text = "Đóng lãi"
+            cell.thumbnailTitleLabel.text = "Thu lãi"
             cell.thumbnailNumberLabel.isHidden = true
             return cell
         default:
@@ -125,7 +125,7 @@ extension OptionViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0: //LichSuGiaoDich
+        case 1: //LichSuGiaoDich
             let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "LichSuViewController") as! LichSuViewController
             itemVC.code = 0
             itemVC.modalPresentationStyle = .overCurrentContext
@@ -133,7 +133,7 @@ extension OptionViewController: UITableViewDelegate, UITableViewDataSource{
             itemVC.idHopDong = self.idHopDong
             itemVC.soHopDong = self.soHopDong
             self.present(itemVC, animated: true, completion: nil)
-        case 1: //LichSuVayNo
+        case 2: //LichSuVayNo
             let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "LichSuViewController") as!LichSuViewController
             itemVC.code = 1
             itemVC.modalPresentationStyle = .overCurrentContext
@@ -141,7 +141,7 @@ extension OptionViewController: UITableViewDelegate, UITableViewDataSource{
             itemVC.idKhachHang = self.idKhachHang
             itemVC.tenKH = self.tenKhachHang
             self.present(itemVC, animated: true, completion: nil)
-        case 2: //LichSuVayNo
+        case 0: //THU LAI
             let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "DongLaiViewController") as!DongLaiViewController
             itemVC.modalPresentationStyle = .overCurrentContext
             itemVC.modalTransitionStyle = .crossDissolve

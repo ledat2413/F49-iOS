@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6CA-fV-Gbx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6CA-fV-Gbx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -265,22 +265,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DKg-xu-Gk7">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QRScan_bg" translatesAutoresizingMaskIntoConstraints="NO" id="GR0-WS-Ehl">
                                 <rect key="frame" x="0.0" y="90" width="414" height="772"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square (1)" translatesAutoresizingMaskIntoConstraints="NO" id="Nak-vE-8qX">
-                                        <rect key="frame" x="87" y="266" width="240" height="240"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="Oow-l3-Gp8"/>
-                                            <constraint firstAttribute="height" constant="240" id="cRt-Wr-ipq"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.15482316428283652" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstItem="Nak-vE-8qX" firstAttribute="centerY" secondItem="DKg-xu-Gk7" secondAttribute="centerY" id="qgc-bo-jIO"/>
-                                    <constraint firstItem="Nak-vE-8qX" firstAttribute="centerX" secondItem="DKg-xu-Gk7" secondAttribute="centerX" id="uhQ-c3-uH7"/>
-                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OC2-au-jbI" customClass="QRCodeScanView" customModule="F49" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="122" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rPe-bC-1ty"/>
@@ -288,18 +278,21 @@
                         <constraints>
                             <constraint firstItem="ssw-8C-Fb0" firstAttribute="height" secondItem="Ab9-aQ-dkv" secondAttribute="height" multiplier="0.100446" id="7ii-eW-6jm"/>
                             <constraint firstItem="ssw-8C-Fb0" firstAttribute="leading" secondItem="rPe-bC-1ty" secondAttribute="leading" id="A6Y-47-Wj5"/>
-                            <constraint firstItem="DKg-xu-Gk7" firstAttribute="trailing" secondItem="rPe-bC-1ty" secondAttribute="trailing" id="DSX-CH-sDz"/>
-                            <constraint firstItem="DKg-xu-Gk7" firstAttribute="leading" secondItem="rPe-bC-1ty" secondAttribute="leading" id="J8u-lD-NIz"/>
+                            <constraint firstItem="GR0-WS-Ehl" firstAttribute="leading" secondItem="rPe-bC-1ty" secondAttribute="leading" id="FZm-EG-KuJ"/>
+                            <constraint firstItem="rPe-bC-1ty" firstAttribute="trailing" secondItem="OC2-au-jbI" secondAttribute="trailing" id="Oam-I2-8bX"/>
                             <constraint firstItem="ssw-8C-Fb0" firstAttribute="top" secondItem="Ab9-aQ-dkv" secondAttribute="top" id="PjK-6U-T21"/>
-                            <constraint firstItem="DKg-xu-Gk7" firstAttribute="bottom" secondItem="rPe-bC-1ty" secondAttribute="bottom" id="hA0-n8-X4f"/>
-                            <constraint firstItem="DKg-xu-Gk7" firstAttribute="top" secondItem="ssw-8C-Fb0" secondAttribute="bottom" id="iDw-po-CYy"/>
+                            <constraint firstAttribute="bottom" secondItem="OC2-au-jbI" secondAttribute="bottom" id="RJ3-xG-pvA"/>
+                            <constraint firstItem="OC2-au-jbI" firstAttribute="leading" secondItem="rPe-bC-1ty" secondAttribute="leading" id="SEg-06-WLx"/>
+                            <constraint firstItem="rPe-bC-1ty" firstAttribute="trailing" secondItem="GR0-WS-Ehl" secondAttribute="trailing" id="dMN-y4-eUX"/>
+                            <constraint firstItem="rPe-bC-1ty" firstAttribute="bottom" secondItem="GR0-WS-Ehl" secondAttribute="bottom" id="dP8-du-kYH"/>
+                            <constraint firstItem="OC2-au-jbI" firstAttribute="top" secondItem="ssw-8C-Fb0" secondAttribute="bottom" constant="32" id="hgi-Nq-gVh"/>
+                            <constraint firstItem="GR0-WS-Ehl" firstAttribute="top" secondItem="ssw-8C-Fb0" secondAttribute="bottom" id="k9C-iW-WSy"/>
                             <constraint firstItem="rPe-bC-1ty" firstAttribute="trailing" secondItem="ssw-8C-Fb0" secondAttribute="trailing" id="xKV-Pb-iJn"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="contentView" destination="DKg-xu-Gk7" id="eze-gB-g1o"/>
-                        <outlet property="navigation" destination="ssw-8C-Fb0" id="sen-4d-R4b"/>
-                        <outlet property="square" destination="Nak-vE-8qX" id="4Rm-lX-C8N"/>
+                        <outlet property="navigation" destination="ssw-8C-Fb0" id="l6w-1p-Q1l"/>
+                        <outlet property="qrCodeScanView" destination="OC2-au-jbI" id="sIF-xu-Tgx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKQ-er-Q2f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -455,6 +448,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="QRScan_bg" width="1125" height="2436"/>
         <image name="loading-bg" width="1242" height="2208"/>
         <image name="login" width="565" height="1103"/>
         <image name="login-check" width="40" height="41"/>
@@ -463,7 +457,6 @@
         <image name="login-pass" width="130" height="130"/>
         <image name="login2" width="565" height="1103"/>
         <image name="logo-f49" width="360" height="198"/>
-        <image name="square (1)" width="512" height="512"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

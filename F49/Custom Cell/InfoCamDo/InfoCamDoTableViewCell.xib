@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -38,15 +39,25 @@
                             <constraint firstAttribute="width" constant="25" id="tkd-Yx-ddf"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0J-JF-wc0">
+                        <rect key="frame" x="16" y="42" width="288" height="1"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="4vS-BG-qG9"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Rya-PI-qkM" secondAttribute="bottom" constant="5" id="46y-rR-aM5"/>
                     <constraint firstItem="Zk2-8h-WLi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="DfO-X4-TTh"/>
                     <constraint firstItem="acX-xf-iHL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="F2Q-GV-ehB"/>
+                    <constraint firstItem="d0J-JF-wc0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="HLA-kG-qxP"/>
                     <constraint firstItem="Rya-PI-qkM" firstAttribute="leading" secondItem="Zk2-8h-WLi" secondAttribute="trailing" constant="5" id="Mp8-RQ-fkr"/>
                     <constraint firstAttribute="bottom" secondItem="Zk2-8h-WLi" secondAttribute="bottom" constant="5" id="PWT-QD-YDN"/>
                     <constraint firstItem="Rya-PI-qkM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Qz3-D9-5pz"/>
+                    <constraint firstAttribute="bottom" secondItem="d0J-JF-wc0" secondAttribute="bottom" constant="1" id="RjD-LC-Qco"/>
                     <constraint firstAttribute="trailing" secondItem="Rya-PI-qkM" secondAttribute="trailing" constant="20" id="YDB-VX-qGS"/>
+                    <constraint firstAttribute="trailing" secondItem="d0J-JF-wc0" secondAttribute="trailing" constant="16" id="axv-Cu-tJK"/>
                     <constraint firstItem="Zk2-8h-WLi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="c3c-oy-H6E"/>
                     <constraint firstItem="acX-xf-iHL" firstAttribute="leading" secondItem="Zk2-8h-WLi" secondAttribute="trailing" constant="10" id="hyn-Q1-4vW"/>
                     <constraint firstAttribute="bottom" secondItem="acX-xf-iHL" secondAttribute="bottom" constant="15" id="yuk-MW-AI3"/>
@@ -63,5 +74,8 @@
     </objects>
     <resources>
         <image name="login-check" width="40" height="41"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

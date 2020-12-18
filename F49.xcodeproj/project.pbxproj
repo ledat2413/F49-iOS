@@ -30,6 +30,17 @@
 		C231177A2577215F00B84A8E /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C231176E2577215F00B84A8E /* Roboto-BlackItalic.ttf */; };
 		C231177B2577215F00B84A8E /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C231176F2577215F00B84A8E /* Roboto-Bold.ttf */; };
 		C231177D257722AF00B84A8E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C265C18525071EE2000D4FAE /* Info.plist */; };
+		C240335825871148004D9C0D /* BaseCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240335725871148004D9C0D /* BaseCustomView.swift */; };
+		C240335F2587140D004D9C0D /* QRCodeScanView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C240335C2587140D004D9C0D /* QRCodeScanView.xib */; };
+		C24033612587140D004D9C0D /* QRCodeScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240335E2587140D004D9C0D /* QRCodeScanView.swift */; };
+		C240336425871A8F004D9C0D /* SwiftEventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240336325871A8F004D9C0D /* SwiftEventBus.swift */; };
+		C240336625871B53004D9C0D /* QRCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240336525871B53004D9C0D /* QRCodeModel.swift */; };
+		C240336825871BAB004D9C0D /* ReponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240336725871BAB004D9C0D /* ReponseObject.swift */; };
+		C240336C25871D67004D9C0D /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C240336A25871D67004D9C0D /* AlertView.xib */; };
+		C240336D25871D67004D9C0D /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240336B25871D67004D9C0D /* AlertView.swift */; };
+		C240336F25872258004D9C0D /* UITabGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240336E25872258004D9C0D /* UITabGesture.swift */; };
+		C240337125872295004D9C0D /* GestureClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240337025872295004D9C0D /* GestureClosure.swift */; };
+		C2403374258722FD004D9C0D /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2403373258722FD004D9C0D /* ScreenManager.swift */; };
 		C243DCC4251D8806004C6347 /* ThuChiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243DCC3251D8806004C6347 /* ThuChiViewController.swift */; };
 		C243DCCB251D9043004C6347 /* ThuChi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243DCCA251D9043004C6347 /* ThuChi.swift */; };
 		C243DCCD251DA276004C6347 /* ThongTinThuChiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243DCCC251DA276004C6347 /* ThongTinThuChiViewController.swift */; };
@@ -208,6 +219,8 @@
 		C2CFAEEB253D59DC00763D84 /* TimKiem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CFAEEA253D59DC00763D84 /* TimKiem.swift */; };
 		C2CFAEEF253D724700763D84 /* TaiSanHopDongTheChapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CFAEED253D724700763D84 /* TaiSanHopDongTheChapTableViewCell.swift */; };
 		C2CFAEF0253D724700763D84 /* TaiSanHopDongTheChapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2CFAEEE253D724700763D84 /* TaiSanHopDongTheChapTableViewCell.xib */; };
+		C2D0947E2581BE840004B2EB /* FooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D0947C2581BE840004B2EB /* FooterCollectionReusableView.swift */; };
+		C2D0947F2581BE840004B2EB /* FooterCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D0947D2581BE840004B2EB /* FooterCollectionReusableView.xib */; };
 		C2E4D6832517A3CD00622DF6 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E4D6812517A3CD00622DF6 /* ImageTableViewCell.swift */; };
 		C2E4D6842517A3CD00622DF6 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2E4D6822517A3CD00622DF6 /* ImageTableViewCell.xib */; };
 		C2F27D2C2558E5D000FB383A /* CAMDO.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F27D2B2558E5D000FB383A /* CAMDO.storyboard */; };
@@ -248,6 +261,17 @@
 		C231176D2577215E00B84A8E /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		C231176E2577215F00B84A8E /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
 		C231176F2577215F00B84A8E /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		C240335725871148004D9C0D /* BaseCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCustomView.swift; sourceTree = "<group>"; };
+		C240335C2587140D004D9C0D /* QRCodeScanView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeScanView.xib; sourceTree = "<group>"; };
+		C240335E2587140D004D9C0D /* QRCodeScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScanView.swift; sourceTree = "<group>"; };
+		C240336325871A8F004D9C0D /* SwiftEventBus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftEventBus.swift; sourceTree = "<group>"; };
+		C240336525871B53004D9C0D /* QRCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeModel.swift; sourceTree = "<group>"; };
+		C240336725871BAB004D9C0D /* ReponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReponseObject.swift; sourceTree = "<group>"; };
+		C240336A25871D67004D9C0D /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		C240336B25871D67004D9C0D /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		C240336E25872258004D9C0D /* UITabGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabGesture.swift; sourceTree = "<group>"; };
+		C240337025872295004D9C0D /* GestureClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureClosure.swift; sourceTree = "<group>"; };
+		C2403373258722FD004D9C0D /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
 		C243DCC3251D8806004C6347 /* ThuChiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThuChiViewController.swift; sourceTree = "<group>"; };
 		C243DCCA251D9043004C6347 /* ThuChi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThuChi.swift; sourceTree = "<group>"; };
 		C243DCCC251DA276004C6347 /* ThongTinThuChiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThongTinThuChiViewController.swift; sourceTree = "<group>"; };
@@ -429,6 +453,8 @@
 		C2CFAEEA253D59DC00763D84 /* TimKiem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimKiem.swift; sourceTree = "<group>"; };
 		C2CFAEED253D724700763D84 /* TaiSanHopDongTheChapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaiSanHopDongTheChapTableViewCell.swift; sourceTree = "<group>"; };
 		C2CFAEEE253D724700763D84 /* TaiSanHopDongTheChapTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaiSanHopDongTheChapTableViewCell.xib; sourceTree = "<group>"; };
+		C2D0947C2581BE840004B2EB /* FooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCollectionReusableView.swift; sourceTree = "<group>"; };
+		C2D0947D2581BE840004B2EB /* FooterCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterCollectionReusableView.xib; sourceTree = "<group>"; };
 		C2E4D6812517A3CD00622DF6 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		C2E4D6822517A3CD00622DF6 /* ImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
 		C2F27D2B2558E5D000FB383A /* CAMDO.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CAMDO.storyboard; sourceTree = "<group>"; };
@@ -511,6 +537,48 @@
 				C231176C2577215E00B84A8E /* Roboto-ThinItalic.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C240335625871130004D9C0D /* BaseCustomBiew */ = {
+			isa = PBXGroup;
+			children = (
+				C240335725871148004D9C0D /* BaseCustomView.swift */,
+			);
+			path = BaseCustomBiew;
+			sourceTree = "<group>";
+		};
+		C240335B2587140D004D9C0D /* QRCodeScanView */ = {
+			isa = PBXGroup;
+			children = (
+				C240335C2587140D004D9C0D /* QRCodeScanView.xib */,
+				C240335E2587140D004D9C0D /* QRCodeScanView.swift */,
+			);
+			path = QRCodeScanView;
+			sourceTree = "<group>";
+		};
+		C240336225871A77004D9C0D /* SwiftEventBus */ = {
+			isa = PBXGroup;
+			children = (
+				C240336325871A8F004D9C0D /* SwiftEventBus.swift */,
+			);
+			path = SwiftEventBus;
+			sourceTree = "<group>";
+		};
+		C240336925871D67004D9C0D /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				C240336A25871D67004D9C0D /* AlertView.xib */,
+				C240336B25871D67004D9C0D /* AlertView.swift */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
+		C2403372258722EC004D9C0D /* ScreenManager */ = {
+			isa = PBXGroup;
+			children = (
+				C2403373258722FD004D9C0D /* ScreenManager.swift */,
+			);
+			path = ScreenManager;
 			sourceTree = "<group>";
 		};
 		C243DCC2251D87DF004C6347 /* QuanLyThuChi */ = {
@@ -821,6 +889,8 @@
 				C26BB5E6252437F70024D236 /* QuanLyVonDauTu.swift */,
 				C26BB5EB25244CB40024D236 /* VonDauTuChiTiet.swift */,
 				C258EFDF253EE85F00FA72C2 /* KeyValue.swift */,
+				C240336525871B53004D9C0D /* QRCodeModel.swift */,
+				C240336725871BAB004D9C0D /* ReponseObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -844,6 +914,12 @@
 		C265C18E25071F4E000D4FAE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C2403372258722EC004D9C0D /* ScreenManager */,
+				C240336925871D67004D9C0D /* AlertView */,
+				C240336225871A77004D9C0D /* SwiftEventBus */,
+				C240335B2587140D004D9C0D /* QRCodeScanView */,
+				C240335625871130004D9C0D /* BaseCustomBiew */,
+				C2D0947B2581BDD20004B2EB /* PageView */,
 				C2FD6ACA2577B7DA00B9D663 /* LoadMoreView */,
 				C2A2B0C7255D24AC004A98CD /* Extension */,
 				C2884734250B21B600CB84FA /* Defaults */,
@@ -852,6 +928,7 @@
 				C27D30422567B78E00AB3765 /* TabbarView.swift */,
 				C27D30452567BDDE00AB3765 /* TabbarCust.swift */,
 				C2FD6ACF2577B93D00B9D663 /* Utils.swift */,
+				C240337025872295004D9C0D /* GestureClosure.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1110,6 +1187,7 @@
 				C2A2B0D6255D2535004A98CD /* ExtensionUIImage.swift */,
 				C2A2B0D9255D2552004A98CD /* ExtensionPickerView.swift */,
 				C2A2B0DF255D2567004A98CD /* ExtensionString.swift */,
+				C240336E25872258004D9C0D /* UITabGesture.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1207,6 +1285,15 @@
 				C265C19C25073A0D000D4FAE /* Token.swift */,
 			);
 			path = Token;
+			sourceTree = "<group>";
+		};
+		C2D0947B2581BDD20004B2EB /* PageView */ = {
+			isa = PBXGroup;
+			children = (
+				C2D0947C2581BE840004B2EB /* FooterCollectionReusableView.swift */,
+				C2D0947D2581BE840004B2EB /* FooterCollectionReusableView.xib */,
+			);
+			path = PageView;
 			sourceTree = "<group>";
 		};
 		C2EBBCB32532E617007F4214 /* Camera */ = {
@@ -1338,6 +1425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C23117772577215F00B84A8E /* Roboto-Thin.ttf in Resources */,
+				C240335F2587140D004D9C0D /* QRCodeScanView.xib in Resources */,
 				C265C18425071EE2000D4FAE /* LaunchScreen.storyboard in Resources */,
 				C2C25845251373C90048FAB2 /* CamDoTableViewCell.xib in Resources */,
 				C2F27D352558E66B00FB383A /* THUCHI.storyboard in Resources */,
@@ -1346,6 +1434,7 @@
 				C231177B2577215F00B84A8E /* Roboto-Bold.ttf in Resources */,
 				C2C2585525148F380048FAB2 /* InfoCamDoTableViewCell.xib in Resources */,
 				C267ACE32533F0F3007BCD49 /* CameraCollectionViewCell.xib in Resources */,
+				C2D0947F2581BE840004B2EB /* FooterCollectionReusableView.xib in Resources */,
 				C2641533252B105D001CB558 /* LichSuTableViewCell.xib in Resources */,
 				C268E52825258D9F00FAF711 /* RutVonChiTietTableViewCell.xib in Resources */,
 				C267A0852542B75D003C840B /* Cell4CreateTableViewCell.xib in Resources */,
@@ -1401,6 +1490,7 @@
 				C2F27D3B2558EB4800FB383A /* THANHLYTAISAN.storyboard in Resources */,
 				C2659CB02510AA660021BC9D /* MacDinhTableViewCell.xib in Resources */,
 				C282CBFA2511CB8500F62B63 /* ShopUITableViewCell.xib in Resources */,
+				C240336C25871D67004D9C0D /* AlertView.xib in Resources */,
 				C287737E2537FBFD00A8B3E8 /* Cell3CreateCollectionViewCell.xib in Resources */,
 				C2CFAEE8253D526D00763D84 /* KhachHangHopDongTheChapTableViewCell.xib in Resources */,
 				C2641537252B1151001CB558 /* LichSu2TableViewCell.xib in Resources */,
@@ -1512,6 +1602,7 @@
 				C265C19225071FF6000D4FAE /* APIRouter.swift in Sources */,
 				C2C2586F2514BF890048FAB2 /* MenuHeader.swift in Sources */,
 				C261B4C7250F58AD00B63043 /* DashBoard.swift in Sources */,
+				C24033612587140D004D9C0D /* QRCodeScanView.swift in Sources */,
 				C268E51B252568B600FAF711 /* RutVon.swift in Sources */,
 				C2A2B0D1255D250E004A98CD /* ExtensionUIDatePicker.swift in Sources */,
 				C2A2B0D7255D2535004A98CD /* ExtensionUIImage.swift in Sources */,
@@ -1519,6 +1610,7 @@
 				C2594D142519F65400A99713 /* HopDongMoViewController.swift in Sources */,
 				C2C2585425148F380048FAB2 /* InfoCamDoTableViewCell.swift in Sources */,
 				C2300825255EE3A5000E84A8 /* Constants.swift in Sources */,
+				C2403374258722FD004D9C0D /* ScreenManager.swift in Sources */,
 				C25E7ED1252D680000490F8D /* TienHoaHongViewController.swift in Sources */,
 				C25E7EE0252DB4C900490F8D /* RutVon2TableViewCell.swift in Sources */,
 				C265C19F250777A1000D4FAE /* UserToken.swift in Sources */,
@@ -1532,6 +1624,7 @@
 				C26BB5E7252437F70024D236 /* QuanLyVonDauTu.swift in Sources */,
 				C20FF73F251F36500096A38F /* NotificationTableViewCell.swift in Sources */,
 				C28C743825453CE500AE95BE /* TaiSanHDGDViewController.swift in Sources */,
+				C240337125872295004D9C0D /* GestureClosure.swift in Sources */,
 				C26BB5E5252434CD0024D236 /* RutLaiChiTietViewController.swift in Sources */,
 				C289FB53255135E9008FE808 /* PopUpViewController.swift in Sources */,
 				C2C25844251373C90048FAB2 /* CamDoTableViewCell.swift in Sources */,
@@ -1539,12 +1632,14 @@
 				C282CBF92511CB8500F62B63 /* ShopUITableViewCell.swift in Sources */,
 				C2659CC52510BE740021BC9D /* CuaHangMacDinhViewController.swift in Sources */,
 				C2A2B0DA255D2552004A98CD /* ExtensionPickerView.swift in Sources */,
+				C240336625871B53004D9C0D /* QRCodeModel.swift in Sources */,
 				C27D30432567B78E00AB3765 /* TabbarView.swift in Sources */,
 				C264152A252AD793001CB558 /* LichSuGiaoDich.swift in Sources */,
 				C264414D252C0997001610A6 /* BaoCaoViewController.swift in Sources */,
 				C2659CAF2510AA660021BC9D /* MacDinhTableViewCell.swift in Sources */,
 				C243DCCB251D9043004C6347 /* ThuChi.swift in Sources */,
 				C264152E252B0CC3001CB558 /* LichSuViewController.swift in Sources */,
+				C2D0947E2581BE840004B2EB /* FooterCollectionReusableView.swift in Sources */,
 				C25ED6922527253A004662A1 /* NhomTaiSan.swift in Sources */,
 				C2C25877251643FC0048FAB2 /* DoGiaDung.swift in Sources */,
 				C2659CC92510BE9C0021BC9D /* CaiDatViewController.swift in Sources */,
@@ -1566,8 +1661,11 @@
 				C27D30462567BDDE00AB3765 /* TabbarCust.swift in Sources */,
 				C243DCCD251DA276004C6347 /* ThongTinThuChiViewController.swift in Sources */,
 				C2659CBA2510AD010021BC9D /* BodyCollectionViewCell.swift in Sources */,
+				C240336D25871D67004D9C0D /* AlertView.swift in Sources */,
 				C2C2583C25133EF20048FAB2 /* TienIch.swift in Sources */,
 				C282CC0A25120A6D00F62B63 /* UtilitiesViewController.swift in Sources */,
+				C240336F25872258004D9C0D /* UITabGesture.swift in Sources */,
+				C240336425871A8F004D9C0D /* SwiftEventBus.swift in Sources */,
 				C2CFAEEB253D59DC00763D84 /* TimKiem.swift in Sources */,
 				C28C743A25454A6700AE95BE /* DanhSachTaiSan.swift in Sources */,
 				C26704AB251C329E00B82116 /* BoLocViewController.swift in Sources */,
@@ -1597,10 +1695,12 @@
 				C282CBF52511A73400F62B63 /* NavigationBar.swift in Sources */,
 				C258EFE0253EE85F00FA72C2 /* KeyValue.swift in Sources */,
 				C260996D253ABA7000A20621 /* TaiSanViewController.swift in Sources */,
+				C240335825871148004D9C0D /* BaseCustomView.swift in Sources */,
 				C265C19D25073A0D000D4FAE /* Token.swift in Sources */,
 				C2B327E9254B00E100D18662 /* ThongTinTaiSanTableViewCell.swift in Sources */,
 				C267ACE22533F0F3007BCD49 /* CameraCollectionViewCell.swift in Sources */,
 				C2C25858251491FA0048FAB2 /* CheckBoxTableViewCell.swift in Sources */,
+				C240336825871BAB004D9C0D /* ReponseObject.swift in Sources */,
 				C2C5A981253E880600CC4EB0 /* LoadTaoMoi.swift in Sources */,
 				C2641532252B105D001CB558 /* LichSuTableViewCell.swift in Sources */,
 			);

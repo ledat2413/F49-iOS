@@ -29,10 +29,13 @@ class ThuLai3TableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func ui(keyString: String, valueString: String, isHiddenTextField: Bool, isHiddenDownButton: Bool, isHiddenLichButton: Bool){
+    func ui(keyString: String, valueString: String, isHiddenTextField: Bool, isHiddenDownButton: Bool, isHiddenLichButton: Bool, numberPad: Bool){
         self.keyLabel.text = keyString
         self.valueLabel.text = valueString
         self.valueTextField.isHidden = isHiddenTextField
+        if numberPad == true {
+            self.valueTextField.keyboardType = .numberPad
+        }
         self.iconDownButton.isHidden = isHiddenDownButton
         self.iconLichButton.isHidden = isHiddenLichButton
     }

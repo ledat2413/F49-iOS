@@ -13,8 +13,9 @@ enum UserKey: String{
     case Email = "email"
     case Password = "password"
     case AutoLogin = "autologin"
+    case BoLocTrangThai = "trangthai"
+    case BoLocTextField = "textfield"
 }
-
 
 struct UserHelper{
     

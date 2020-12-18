@@ -14,7 +14,7 @@ class DongLaiViewController: BaseController {
     private var ngayHieuLucPicker: UIDatePicker?
     
     var idHopDong: Int = 0
-    var ngayHieuLuc: String?
+    var ngayHieuLuc: String = ""
     
     var data: ChiTietHopDongThuLai?
     
@@ -23,7 +23,7 @@ class DongLaiViewController: BaseController {
     
     var dataGiaoDich: [LoaiGiaoDich] = []
     var dataCTHĐTL: ChiTietHopDongThuLai?
-    
+
     //MARK: --IBOutlet
     @IBOutlet weak var navigation: NavigationBar!
     
@@ -37,9 +37,10 @@ class DongLaiViewController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        loadChiTietHopDongThuLai()
+        self.ngayHieuLuc = "\(Date.currentYear())-\(Date.currentMonth())-\(Date.currentDate())T\(00):\(00):\(00)"
+        loadChiTietHopDongThuLai(ngayHieuLuc: self.ngayHieuLuc)
         self.hideKeyboardWhenTappedAround()
-        
+
     }
     
     //MARK: --IBAction
@@ -49,14 +50,20 @@ class DongLaiViewController: BaseController {
     
     
     //MARK: --Function
+    func loadCurrentDate(){
+     
+    }
+    
     func setUpUI(){
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ThuLai3TableViewCell", bundle: nil), forCellReuseIdentifier: "ThuLai3TableViewCell")
         loadGiaoDich()
-        navigation.title = "Đóng lãi"
+        navigation.title = "Thu lãi"
         navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
-        doButton.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
+        
+        doButton.backgroundColor = .gray
+        
         doButton.displayTextField(radius: 20, color: UIColor.clear)
         buttonContainerView.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 20)
     }
@@ -66,10 +73,10 @@ class DongLaiViewController: BaseController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func loadChiTietHopDongThuLai(){
+    func loadChiTietHopDongThuLai(ngayHieuLuc: String){
         self.showActivityIndicator( view: self.view)
 
-        MGConnection.requestObject(APIRouter.GetChiTietHopDongThuLai(idHopDong: idHopDong, ngayHieuLuc: ngayHieuLuc ?? ""), ChiTietHopDongThuLai.self) { (result, error) in
+        MGConnection.requestObject(APIRouter.GetChiTietHopDongThuLai(idHopDong: idHopDong, ngayHieuLuc: ngayHieuLuc ), ChiTietHopDongThuLai.self) { (result, error) in
             self.hideActivityIndicator(view: self.view)
             guard error == nil else { return }
             if let result = result {
@@ -92,7 +99,7 @@ class DongLaiViewController: BaseController {
     
     func putThuLai(){
         self.showActivityIndicator( view: self.view)
-        MGConnection.requestObject(APIRouter.PutThucHienThuLai(idHopDong: idHopDong, loaiGiaoDich: idLoaiGiaoDich, idCuaHangFormApp: dataCTHĐTL?.idCuaHang ?? 0, tienThucTe: Double(dataCTHĐTL?.phaiThu ?? 0) , ngayHieuLuc: ngayHieuLuc ?? ""), ChiTietHopDongThuLai.self) { (result, error) in
+        MGConnection.requestObject(APIRouter.PutThucHienThuLai(idHopDong: idHopDong, loaiGiaoDich: idLoaiGiaoDich, idCuaHangFormApp: dataCTHĐTL?.idCuaHang ?? 0, tienThucTe: Double(dataCTHĐTL?.phaiThu ?? 0) , ngayHieuLuc: self.ngayHieuLuc), ChiTietHopDongThuLai.self) { (result, error) in
             self.hideActivityIndicator(view: self.view)
             guard error == nil else {
                 
@@ -131,12 +138,12 @@ class DongLaiViewController: BaseController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         ngayHieuLuc = dateFormatter.string(from: ngayHieuLucPicker.date)
-        print(ngayHieuLuc!)
+        print(ngayHieuLuc)
         
     }
     
     @objc func actionDate(){
-        loadChiTietHopDongThuLai()
+        loadChiTietHopDongThuLai(ngayHieuLuc: ngayHieuLuc)
         tableView.reloadData()
         view.endEditing(true)
     }
@@ -150,6 +157,8 @@ class DongLaiViewController: BaseController {
     }
     
     @objc func action() {
+        self.doButton.isEnabled = true
+        doButton.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
         self.tableView.reloadData()
         view.endEditing(true)
     }
@@ -172,25 +181,27 @@ extension DongLaiViewController: UITableViewDelegate, UITableViewDataSource{
         switch indexPath.row {
         case 0:
 
-            cell.ui(keyString: "Số HĐ", valueString: dataCTHĐTL?.soHopDong ?? "Chưa rõ", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true)
+            cell.ui(keyString: "Số HĐ", valueString: dataCTHĐTL?.soHopDong ?? "Chưa rõ", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true, numberPad: false)
             return cell
         case 1:
             
-            cell.ui(keyString: "Tên KH", valueString: dataCTHĐTL?.tenKhachHang ?? "Chưa rõ", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true)
+            cell.ui(keyString: "Tên KH", valueString: dataCTHĐTL?.tenKhachHang ?? "Chưa rõ", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true, numberPad: false)
             
             return cell
         case 2:
-            cell.ui(keyString: "Cửa hàng", valueString: dataCTHĐTL?.tenCuaHang ?? "Chưa rõ", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true)
+            cell.ui(keyString: "Cửa hàng", valueString: dataCTHĐTL?.tenCuaHang ?? "Chưa rõ", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true, numberPad: false)
             return cell
         case 3:
             
-            cell.ui(keyString: "Số tiền vay", valueString: "\(dataCTHĐTL?.soTienVay ?? 0)", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true)
+            cell.ui(keyString: "Số tiền vay", valueString: "\(dataCTHĐTL?.soTienVay ?? 0)", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true, numberPad: false)
             return cell
             
         case 4:
             
-            cell.ui(keyString: "Ngày hiệu lực", valueString: "", isHiddenTextField: false, isHiddenDownButton: true, isHiddenLichButton: false)
+            cell.ui(keyString: "Ngày hiệu lực", valueString: "", isHiddenTextField: false, isHiddenDownButton: true, isHiddenLichButton: false, numberPad: false)
             cell.valueLabel.isHidden = true
+            
+            cell.valueTextField.text = "\(Date.currentYear())/\(Date.currentMonth())/\(Date.currentDate())"
             
             let dateFormatOfString = DateFormatter()
             dateFormatOfString.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
@@ -198,38 +209,38 @@ extension DongLaiViewController: UITableViewDelegate, UITableViewDataSource{
             let dateFormatToString = DateFormatter()
             dateFormatToString.dateFormat = "yyyy/MM/dd"
             
-            if let ngayHieuLuc = ngayHieuLuc {
-                let date = dateFormatOfString.date(from: ngayHieuLuc)
+            let date = dateFormatOfString.date(from: self.ngayHieuLuc)
                 if let date = date {
                     cell.valueTextField.text = dateFormatToString.string(from: date)
                 }
                 datePicker(textField: cell.valueTextField)
                 
-            }
+            
             
             return cell
         case 5:
-            cell.ui(keyString: "Giao dịch", valueString: "", isHiddenTextField: false, isHiddenDownButton: false, isHiddenLichButton: true)
+            cell.ui(keyString: "Giao dịch", valueString: "", isHiddenTextField: false, isHiddenDownButton: false, isHiddenLichButton: true, numberPad: false)
             cell.valueLabel.isHidden = true
             createPickerView(tf: cell.valueTextField)
             cell.valueTextField.text = selectedGiaoDich
             return cell
             
         case 6:
-            cell.ui(keyString: "Nợ gốc", valueString: "\(dataCTHĐTL?.noGoc ?? 0)", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true)
+            cell.ui(keyString: "Nợ gốc", valueString: "\(dataCTHĐTL?.noGoc ?? 0)", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true, numberPad: false)
             
             return cell
         case 7:
-            cell.ui(keyString: "Nợ lãi", valueString: "\(dataCTHĐTL?.noLai ?? 0)", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true)
+            cell.ui(keyString: "Nợ lãi", valueString: "\(dataCTHĐTL?.noLai ?? 0)", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true, numberPad: false)
         
             return cell
         case 8:
-            cell.ui(keyString: "Phải thu", valueString: "\(dataCTHĐTL?.phaiThu ?? 0)", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true)
+            cell.ui(keyString: "Phải thu", valueString: "\(dataCTHĐTL?.phaiThu ?? 0)", isHiddenTextField: true, isHiddenDownButton: true, isHiddenLichButton: true, numberPad: false)
     
             return cell
         case 9:
-            cell.ui(keyString: "Thu thực tế", valueString: "", isHiddenTextField: false, isHiddenDownButton: true, isHiddenLichButton: true)
+            cell.ui(keyString: "Thu thực tế", valueString: "", isHiddenTextField: false, isHiddenDownButton: true, isHiddenLichButton: true, numberPad: true)
             cell.valueLabel.isHidden = true
+            
             cell.valueTextField.text = "\(dataCTHĐTL?.phaiThu ?? 0)"
             return cell
         default:    

@@ -31,7 +31,8 @@ class TabbarView: UITabBarController{
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        button.frame = CGRect.init(x: self.tabBar.center.x - 32, y: self.view.bounds.height - 110, width: 64, height: 64)
+        
+        button.frame = CGRect.init(x: self.tabBar.center.x - 32, y: self.tabBar.center.y - 65, width: 64, height: 64)
         button.layer.cornerRadius = 32
     }
     

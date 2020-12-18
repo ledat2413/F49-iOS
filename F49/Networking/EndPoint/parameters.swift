@@ -136,8 +136,8 @@ extension APIRouter {
             return [Constants.APIParameterKey.idKhachHang: id]
         case .GetChiTietLichSuVayNo(let idHopDong):
             return [Constants.APIParameterKey.idHopDong: idHopDong]
-        case .GetCountLichSuVayNo(let id):
-            return [Constants.APIParameterKey.idHopDong: id]
+        case .GetCountLichSuVayNo(let idKhachHang):
+            return [Constants.APIParameterKey.idKhachHang: idKhachHang]
 
         //BaoCaoTongHop
         case .GetBaoCaoTongHop(let params):

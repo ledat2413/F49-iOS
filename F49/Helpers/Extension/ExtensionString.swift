@@ -23,3 +23,28 @@ extension String {
         return String(data: data, encoding: .utf8)
     }
 }
+
+public extension String {
+    
+    func urlEncoding() -> String {
+        guard let encodePath = self.urlDecoding().addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else { return self }
+        return encodePath
+    }
+    
+    func urlDecoding() -> String {
+        return self.removingPercentEncoding ?? self
+    }
+    
+    func toJson() -> [String: Any]? {
+        do {
+            if let json = self.data(using: String.Encoding.utf8) {
+                if let jsonData = try JSONSerialization.jsonObject(with: json, options: .allowFragments) as? [String:   Any] {
+                    return jsonData
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+}

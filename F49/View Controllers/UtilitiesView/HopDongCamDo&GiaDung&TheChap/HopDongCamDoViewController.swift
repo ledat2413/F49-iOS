@@ -9,7 +9,16 @@
 import UIKit
 import XLPagerTabStrip
 
-class HopDongCamDoViewController: BaseController{
+class HopDongCamDoViewController:  TabbarButton{
+    
+    
+    //MARK: --IBOutlet
+    @IBOutlet weak var headerView: NavigationBar!
+    @IBOutlet weak var shopTextField: UITextField!
+    @IBOutlet weak var contrectLabel: UILabel!
+    
+    @IBOutlet weak var floatingButton: UIButton!
+    @IBOutlet weak var floatingButtonContainer: UIView!
     
     //MARK: --Vars
     var screenId: String = ""
@@ -23,19 +32,14 @@ class HopDongCamDoViewController: BaseController{
     var keyWord: String?
     var loaiHD: Int = 0
     var isHidden: Bool = false
+    var baseView = BaseController()
     
-    //MARK: --IBOutlet
-    @IBOutlet weak var headerView: NavigationBar!
-    @IBOutlet weak var shopTextField: UITextField!
-    @IBOutlet weak var contrectLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var floatingButton: UIButton!
-    @IBOutlet weak var floatingButtonContainer: UIView!
     override func viewDidLoad() {
+        displayTabbarButton(colors: purpleInspireColor)
         super.viewDidLoad()
         setUpUI()
-        self.hideKeyboardWhenTappedAround()
+        baseView.hideKeyboardWhenTappedAround()
         
         
     }
@@ -78,7 +82,7 @@ class HopDongCamDoViewController: BaseController{
         itemVC.callBackValue = { (idStatus, text) in
             self.idStatus = idStatus
             self.keyWord = text
-            self.loadData()
+            self.reloadPagerTabStripView()
         }
         self.present(itemVC, animated: true, completion: nil)
 
@@ -110,43 +114,30 @@ class HopDongCamDoViewController: BaseController{
             }
             if let result = result {
                 self.dataTab = result
+                self.reloadPagerTabStripView()
             }
         }
     }
     
-    func loadData(){
-         var params: [String: Any] = ["idCuaHang": idShop, "loaiHD": loaiHD]
-         
-         if let idStatus = self.idStatus {
-             params["trangThai"] = idStatus
-         }
-         if let keyWord = self.keyWord {
-             params["tuKhoa"] = keyWord
-         }
-        self.showActivityIndicator( view: self.view)
-
-        MGConnection.requestArray(APIRouter.GetListHopDongTheoLoai(params: params), HopDongTheoLoai.self) { (result, error) in
-            self.hideActivityIndicator(view: self.view)
-             guard error == nil else {
-                 self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!")
-                 print("Error code \(String(describing: error?.mErrorCode)) and Error message \(String(describing: error?.mErrorMessage))")
-                 return
-             }
-             if let result = result {
-                 self.dataHopDong = result
-                 if result.count == 0 {
-                     self.Alert("Không có dữ liệu")
-                 }
-                 self.tableView.reloadData()
-             }
-         }
-     }
+    
+    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        
+        var viewControllers: [UIViewController] = []
+        for i in dataTab {
+            let vc = UIStoryboard(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "HopDongMoViewController") as! HopDongMoViewController
+            vc.id = i.id
+            vc.value = i.value
+            vc.idShop = self.idShop
+            vc.idStatus = self.idStatus
+            vc.keyWord = self.keyWord
+            viewControllers.append(vc)
+            
+        }
+        return viewControllers
+    }
     
     func setUpUI(){
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: "ContractOpenTableViewCell", bundle: nil), forCellReuseIdentifier: "ContractOpenTableViewCell")
+
         
         floatingButton.layer.cornerRadius = floatingButton.frame.width / 2
         floatingButton.clipsToBounds = true
@@ -155,10 +146,8 @@ class HopDongCamDoViewController: BaseController{
         displayHeaderView()
         loadShop()
         loadStatus()
-        loadData()
         createPickerView()
         contrectLabel.underlined()
-//        displayTabbarButton(colors: UIColor.orange)
         
     }
     
@@ -169,7 +158,7 @@ class HopDongCamDoViewController: BaseController{
         case "CamDoGiaDung":
             headerView.title = "Hợp đồng gia dụng"
         case "HopDongTraGop":
-            headerView.title = "Hợp đồng thế chấp"
+            headerView.title = "Quản lí hợp đồng trả góp"
         default:
             break
         }
@@ -189,40 +178,9 @@ class HopDongCamDoViewController: BaseController{
     }
 
     @objc func action() {
-        loadData()
+        reloadPagerTabStripView()
         view.endEditing(true)
     }
-    
-}
-
-extension HopDongCamDoViewController: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataHopDong.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContractOpenTableViewCell", for: indexPath) as? ContractOpenTableViewCell else{
-            fatalError()
-        }
-        
-        let data = dataHopDong[indexPath.row]
-        cell.ui(model: data)
-
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(100)
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "ChiTietHopDongViewController") as! ChiTietHopDongViewController
-        itemVC.id = dataHopDong[indexPath.row].id
-        self.navigationController?.pushViewController(itemVC, animated: true)
-     
-    }
-    
     
 }
 

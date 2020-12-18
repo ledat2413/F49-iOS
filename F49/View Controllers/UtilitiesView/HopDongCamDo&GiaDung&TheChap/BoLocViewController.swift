@@ -33,7 +33,7 @@ class BoLocViewController: BaseController {
         
         super.viewDidLoad()
         findTextFiled.delegate = self
-               statusTextField.delegate = self
+        statusTextField.delegate = self
         
         hideKeyboardWhenTappedAround()
         
@@ -49,12 +49,16 @@ class BoLocViewController: BaseController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        self.statusTextField.text =  UserHelper.getUserData(key: UserKey.BoLocTrangThai)
+        self.findTextFiled.text = UserHelper.getUserData(key: UserKey.BoLocTextField)
     }
         
     
     //MARK: --IBAction
     @IBAction func reMakeButtonPressed(_ sender: Any) {
         callBackValue?(nil,nil)
+        UserHelper.clearUserData(key: UserKey.BoLocTrangThai)
+        UserHelper.clearUserData(key: UserKey.BoLocTextField)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -67,6 +71,7 @@ class BoLocViewController: BaseController {
     }
     
     @IBAction func dismissButtonPresseed(_ sender: Any) {
+        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -116,6 +121,7 @@ class BoLocViewController: BaseController {
     
 }
 
+
 extension BoLocViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -129,6 +135,11 @@ extension BoLocViewController: UIPickerViewDelegate, UIPickerViewDataSource, UIT
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedStatus = dataStatus[row].value
         statusTextField.text = selectedStatus
+        UserHelper.saveUserData(statusTextField.text, key: UserKey.BoLocTrangThai)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UserHelper.saveUserData(findTextFiled.text, key: UserKey.BoLocTextField)
     }
 
 }

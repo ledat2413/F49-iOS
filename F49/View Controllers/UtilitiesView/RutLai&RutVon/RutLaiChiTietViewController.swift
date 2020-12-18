@@ -31,7 +31,9 @@ class RutLaiChiTietViewController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        
+        if idTab != 1 {
+            footerView.isHidden = true
+        }
     }
     
     

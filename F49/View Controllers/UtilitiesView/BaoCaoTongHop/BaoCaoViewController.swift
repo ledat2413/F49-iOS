@@ -72,6 +72,7 @@ class BaoCaoViewController: BaseController {
         fromView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 5)
         toView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 5)
         
+        
     }
     
     @objc func backView(){
@@ -94,6 +95,7 @@ class BaoCaoViewController: BaseController {
             }
         }
     }
+    
     
     //Load Bao Cao
     fileprivate func loadBaoCao(){
@@ -134,7 +136,7 @@ class BaoCaoViewController: BaseController {
         self.createToolbar(textField: fromTextField, selector: #selector(doneButton))
         self.createToolbar(textField: toTextField, selector: #selector(doneButton))
         
-        
+      
     }
     
     @objc func dateChanged(fromPicker: UIDatePicker){

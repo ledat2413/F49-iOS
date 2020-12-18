@@ -14,6 +14,8 @@ class ChiTietHopDongViewController: BaseController {
     //MARK: --Vars
     var id: Int = 0
     var dataChiTiet: ChiTietHopDong?
+    var loadMoreView = LoadMoreView.instanceFromNib()
+
     
     //MARK: --IBOutlet
     @IBOutlet weak var navigation: NavigationBar!
@@ -32,11 +34,13 @@ class ChiTietHopDongViewController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        
     }
     
     @IBAction func floatingButtonPressed(_ sender: Any) {
         let itemVC = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "CameraViewController") as! CameraViewController
         itemVC.soHopDong = dataChiTiet?.numberContract ?? ""
+        itemVC.imageCount = dataChiTiet?.hinhAnh.count ?? 0
         self.navigationController?.pushViewController(itemVC, animated: true)
     }
     
@@ -51,7 +55,7 @@ class ChiTietHopDongViewController: BaseController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "InfoCamDoTableViewCell", bundle: nil), forCellReuseIdentifier: "InfoCamDoTableViewCell")
-        
+    
         loadData()
         
         navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
@@ -63,6 +67,8 @@ class ChiTietHopDongViewController: BaseController {
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        collectionViewContainer.addSubview(loadMoreView)
+
         self.collectionView.register(UINib(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageCollectionViewCell")
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadDataNotifi), name: NSNotification.Name.init("Upload"), object: nil)
@@ -83,9 +89,17 @@ class ChiTietHopDongViewController: BaseController {
                 self.dataChiTiet = result
                 self.tableView.reloadData()
                 self.collectionView.reloadData()
+
+                self.loadMoreView.status = .loading
+                if self.dataChiTiet?.hinhAnh.count == 10 {
+                    self.floatingButton.isEnabled = false
+                }
                 if !(self.dataChiTiet?.hinhAnh.isEmpty)!  {
+                    self.loadMoreView.status = .finished
                          self.collectionViewContainer.isHidden = false
-                     }
+                }else {
+                    self.loadMoreView.status = .finished
+                }
             }
         }
     }

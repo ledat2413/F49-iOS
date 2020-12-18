@@ -12,6 +12,9 @@ class TienHoaHongViewController: BaseController {
     
     //MARK: --Vars
     var selectedNhanVien: String?
+    
+    var pickerView: UIPickerView?
+    
     fileprivate var dataTienHoaHong: [NhanVien] = []
     fileprivate var dataNhanVien: [NhanVien] = []
     
@@ -23,6 +26,8 @@ class TienHoaHongViewController: BaseController {
     
     var fromValue: String?
     var toValue: String?
+    
+    
     
     //MARK: --IBOutlet
     @IBOutlet weak var navigation: NavigationBar!
@@ -60,6 +65,7 @@ class TienHoaHongViewController: BaseController {
         loadNhanVien()
         createPickerView()
         datePicker()
+        shopTextField.delegate = self
     }
     
     fileprivate func loadNhanVien(){
@@ -91,7 +97,7 @@ class TienHoaHongViewController: BaseController {
             params["denNgay"] = toValue
         }
         self.showActivityIndicator( view: self.view)
-
+        
         MGConnection.requestArray(APIRouter.GetTienHoaHong(params: params), NhanVien.self) { (result, error) in
             self.hideActivityIndicator(view: self.view)
             guard error == nil else {
@@ -118,8 +124,9 @@ class TienHoaHongViewController: BaseController {
     }
     
     fileprivate func createPickerView() {
-        let pickerView = UIPickerView().createPicker(tf: shopTextField)
-        pickerView.delegate = self
+        pickerView = UIPickerView().createPicker(tf: shopTextField)
+        
+        pickerView?.delegate = self
         self.createToolbar(textField: shopTextField, selector: #selector(action))
     }
     
@@ -206,6 +213,15 @@ extension TienHoaHongViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return dataNhanVien[row].hoTen
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == shopTextField{
+            self.pickerView?.selectRow(0, inComponent: 0, animated: true)
+            self.pickerView(pickerView!, didSelectRow: 0, inComponent: 0)
+        }
+    }
+    
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedNhanVien = dataNhanVien[row].hoTen
         shopTextField.text = selectedNhanVien

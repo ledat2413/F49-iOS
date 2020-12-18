@@ -17,9 +17,11 @@ class ThuChiViewController: BaseController {
     fileprivate var dataVon: [VonDauTu] = []
     var selectedCuaHang: String?
     var idShop: Int = 0
+    var pickerView: UIPickerView?
     
     private var fromPicker: UIDatePicker?
     private var toPicker: UIDatePicker?
+    private var todayPicker: UIDatePicker?
     
     var fromValue: String?
     var toValue: String?
@@ -50,13 +52,18 @@ class ThuChiViewController: BaseController {
         super.viewDidLoad()
         setUpUI()
         hideKeyboardWhenTappedAround()
+        
     }
     
     //MARK: --Func
     
     fileprivate func setUpUI(){
+        //        2020-12-14T09:23:54
+        self.fromValue = "\(Date.currentYear())-\(Date.currentMonth())-\(01)'T'\(00):\(00):\(00)"
+        self.toValue = "\(Date.currentYear())-\(Date.currentMonth())-\(Date.currentDate())'T'\(00):\(00):\(00)"
         
         datePicker()
+        shopTextField.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -74,12 +81,18 @@ class ThuChiViewController: BaseController {
         loadCuaHang()
         createPickerView()
         
+        self.fromTextField.text = "\(01)/\(Date.currentMonth())/\(Date.currentYear())"
+        self.toTextField.text = "\(Date.currentDate())/\(Date.currentMonth())/\(Date.currentYear())"
+        
+        
         containerCuaHang.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
         containerToday.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
         containerFrom.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
         containerTo.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
         
         displayNavigation()
+        
+        
     }
     
     fileprivate func displayNavigation() {
@@ -102,8 +115,8 @@ class ThuChiViewController: BaseController {
     }
     
     fileprivate func createPickerView() {
-        let pickerView = UIPickerView().createPicker(tf: shopTextField)
-        pickerView.delegate = self
+        pickerView = UIPickerView().createPicker(tf: shopTextField)
+        pickerView?.delegate = self
         self.createToolbar(textField: shopTextField, selector: #selector(action))
     }
     
@@ -119,10 +132,13 @@ class ThuChiViewController: BaseController {
         
         fromPicker = UIDatePicker()
         toPicker = UIDatePicker()
+        todayPicker = UIDatePicker()
         self.createToolbar(textField: fromTextField, selector: #selector(actionButton))
         self.createToolbar(textField: toTextField, selector: #selector(actionButton))
+        self.createToolbar(textField: toDayTextField, selector: #selector(actionButton))
         self.createDatePicker(picker: toPicker! , selector: #selector(dateChanged(toPicker:)), textField: toTextField)
         self.createDatePicker(picker: fromPicker! , selector: #selector(dateChanged(fromPicker:)), textField: fromTextField)
+        //        self.createDatePicker(picker: todayPicker!, selector: #selector(date), textField: UITextField)
         
     }
     
@@ -174,7 +190,7 @@ class ThuChiViewController: BaseController {
         switch screenID {
         case "ThuChi":
             self.showActivityIndicator( view: self.view)
-
+            
             MGConnection.requestArray(APIRouter.GetListThuChi(params: params), ThuChi.self) { (result, error) in
                 self.hideActivityIndicator(view: self.view)
                 guard error == nil else {
@@ -193,7 +209,7 @@ class ThuChiViewController: BaseController {
             
         case "RutVon":
             self.showActivityIndicator( view: self.view)
-
+            
             MGConnection.requestArray(APIRouter.GetListVonDauTu(params: params), VonDauTu.self) { (result, error) in
                 self.hideActivityIndicator(view: self.view)
                 guard error == nil else {
@@ -235,7 +251,7 @@ extension ThuChiViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch screenID {
-            
+        
         case "ThuChi":
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RutVonTableViewCell", for: indexPath) as? RutVonTableViewCell else {fatalError()}
             let data = dataThuChi[indexPath.row]
@@ -295,6 +311,14 @@ extension ThuChiViewController: UIPickerViewDelegate, UIPickerViewDataSource, UI
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return dataCuaHang[row].tenCuaHang
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == shopTextField{
+            self.pickerView?.selectRow(0, inComponent: 0, animated: true)
+            self.pickerView(pickerView!, didSelectRow: 0, inComponent: 0)
+        }
+    }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCuaHang = dataCuaHang[row].tenCuaHang
         shopTextField.text = selectedCuaHang

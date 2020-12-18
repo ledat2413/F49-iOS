@@ -147,6 +147,13 @@ extension LichSuViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.s"
+
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "dd/MM/yyyy"
+
+
         switch code {
         case 0:
             switch indexPath.section {
@@ -158,8 +165,11 @@ extension LichSuViewController: UITableViewDelegate, UITableViewDataSource{
             case 1:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "LichSu2TableViewCell", for: indexPath) as? LichSu2TableViewCell else { fatalError() }
                 let data = dataLichSuGiaoDich[indexPath.row]
+
                 cell.idLabel.text = "\(data.id)"
-                cell.titleLabel.text = "Ngày giao dịch: \(data.ngayGiaoDich)"
+                cell.choVayTitleLabel.text = "Đóng lãi"
+            
+                self.fomatterStringToDate(target: cell.titleLabel, date1: "yyyy-MM-dd'T'HH:mm:ss", data: data.ngayGiaoDich, haveString: true)
                 cell.choVayLabel.text = "\(data.choVay)"
                 cell.noGocLabel.text = "\(data.noGoc)"
                 cell.nhanVienLabel.text = data.nhanVien

@@ -75,31 +75,30 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcX-0I-jMj" customClass="Menu" customModule="F49" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="77" width="414" height="75"/>
+                                        <rect key="frame" x="0.0" y="70" width="414" height="75"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="cvE-he-ksy"/>
+                                            <constraint firstAttribute="height" constant="75" id="avt-Eg-crp"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="fcX-0I-jMj" firstAttribute="leading" secondItem="4XT-io-u7b" secondAttribute="leading" id="2cH-SB-AN1"/>
                                     <constraint firstAttribute="trailing" secondItem="H4v-pq-59d" secondAttribute="trailing" constant="15" id="6Ye-w3-g7b"/>
-                                    <constraint firstAttribute="trailing" secondItem="fcX-0I-jMj" secondAttribute="trailing" id="X39-Gk-uCU"/>
-                                    <constraint firstItem="fcX-0I-jMj" firstAttribute="centerX" secondItem="4XT-io-u7b" secondAttribute="centerX" id="d4A-KH-43A"/>
+                                    <constraint firstAttribute="trailing" secondItem="fcX-0I-jMj" secondAttribute="trailing" id="LSg-uG-LDP"/>
+                                    <constraint firstItem="fcX-0I-jMj" firstAttribute="leading" secondItem="4XT-io-u7b" secondAttribute="leading" id="PYY-HT-1vQ"/>
+                                    <constraint firstItem="fcX-0I-jMj" firstAttribute="top" secondItem="H4v-pq-59d" secondAttribute="bottom" constant="25" id="cmc-1F-HbZ"/>
                                     <constraint firstItem="H4v-pq-59d" firstAttribute="top" secondItem="4XT-io-u7b" secondAttribute="top" constant="10" id="e9z-dM-E3d"/>
-                                    <constraint firstItem="fcX-0I-jMj" firstAttribute="centerY" secondItem="4XT-io-u7b" secondAttribute="centerY" multiplier="0.9" id="uUG-2o-tCh"/>
                                     <constraint firstItem="H4v-pq-59d" firstAttribute="leading" secondItem="4XT-io-u7b" secondAttribute="leading" constant="15" id="uhB-WV-hHm"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8qk-v6-jZU">
-                                <rect key="frame" x="15" y="220" width="384" height="578"/>
+                                <rect key="frame" x="15" y="214" width="384" height="584"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ho0-ub-gZs">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="578"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ho0-ub-gZs">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="544"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="6WK-04-LKq">
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="6WK-04-LKq">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -107,13 +106,36 @@
                                         </collectionViewFlowLayout>
                                         <cells/>
                                     </collectionView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HWO-3H-nFV">
+                                        <rect key="frame" x="0.0" y="544" width="384" height="40"/>
+                                        <subviews>
+                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="ou3-iw-1rj">
+                                                <rect key="frame" x="167" y="5" width="50" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="k2Y-yt-Tji"/>
+                                                    <constraint firstAttribute="width" constant="50" id="sab-Nl-ufj"/>
+                                                </constraints>
+                                                <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </pageControl>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="cws-6T-RvT"/>
+                                            <constraint firstItem="ou3-iw-1rj" firstAttribute="centerY" secondItem="HWO-3H-nFV" secondAttribute="centerY" id="iqM-X3-psQ"/>
+                                            <constraint firstItem="ou3-iw-1rj" firstAttribute="centerX" secondItem="HWO-3H-nFV" secondAttribute="centerX" id="vxP-9K-Fum"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="ho0-ub-gZs" secondAttribute="bottom" id="P4t-M2-QmS"/>
+                                    <constraint firstAttribute="bottom" secondItem="HWO-3H-nFV" secondAttribute="bottom" id="1i3-uo-8aJ"/>
+                                    <constraint firstItem="HWO-3H-nFV" firstAttribute="top" secondItem="ho0-ub-gZs" secondAttribute="bottom" id="9uZ-N0-Xze"/>
                                     <constraint firstAttribute="trailing" secondItem="ho0-ub-gZs" secondAttribute="trailing" id="Z2L-jw-b8S"/>
+                                    <constraint firstAttribute="trailing" secondItem="HWO-3H-nFV" secondAttribute="trailing" id="dFs-Hk-rag"/>
                                     <constraint firstItem="ho0-ub-gZs" firstAttribute="top" secondItem="8qk-v6-jZU" secondAttribute="top" id="nIZ-SO-G1A"/>
                                     <constraint firstItem="ho0-ub-gZs" firstAttribute="leading" secondItem="8qk-v6-jZU" secondAttribute="leading" id="t1U-cW-HBY"/>
+                                    <constraint firstItem="HWO-3H-nFV" firstAttribute="leading" secondItem="8qk-v6-jZU" secondAttribute="leading" id="xUw-2b-8dY"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -123,8 +145,8 @@
                             <constraint firstItem="4XT-io-u7b" firstAttribute="bottom" secondItem="WNp-Ue-0zN" secondAttribute="bottom" id="5Au-Dd-0KF"/>
                             <constraint firstItem="Scq-64-oNE" firstAttribute="trailing" secondItem="4XT-io-u7b" secondAttribute="trailing" id="66d-ol-Ie6"/>
                             <constraint firstItem="8qk-v6-jZU" firstAttribute="leading" secondItem="Scq-64-oNE" secondAttribute="leading" constant="15" id="76e-Yk-fs4"/>
-                            <constraint firstItem="8qk-v6-jZU" firstAttribute="height" secondItem="XbD-en-amC" secondAttribute="height" multiplier="0.645" id="7Dc-Wt-Ybf"/>
                             <constraint firstItem="Scq-64-oNE" firstAttribute="trailing" secondItem="8qk-v6-jZU" secondAttribute="trailing" constant="15" id="IYK-LU-tVK"/>
+                            <constraint firstItem="8qk-v6-jZU" firstAttribute="top" secondItem="fcX-0I-jMj" secondAttribute="bottom" constant="25" id="Kcx-uM-MsI"/>
                             <constraint firstItem="WNp-Ue-0zN" firstAttribute="leading" secondItem="Scq-64-oNE" secondAttribute="leading" id="O7e-x0-mxx"/>
                             <constraint firstItem="WNp-Ue-0zN" firstAttribute="height" secondItem="XbD-en-amC" secondAttribute="height" multiplier="1/3" id="OAv-2y-MDg"/>
                             <constraint firstItem="4XT-io-u7b" firstAttribute="top" secondItem="Scq-64-oNE" secondAttribute="top" id="dM5-7K-jhX"/>
@@ -142,10 +164,12 @@
                     <connections>
                         <outlet property="bodyCollectionView" destination="ho0-ub-gZs" id="52G-HE-rrV"/>
                         <outlet property="bodyView" destination="8qk-v6-jZU" id="dop-KS-JsV"/>
+                        <outlet property="footerView" destination="HWO-3H-nFV" id="dbB-ew-joz"/>
                         <outlet property="headerButton" destination="QEW-zs-2JT" id="A2V-kz-Z1c"/>
                         <outlet property="headerMenu" destination="fcX-0I-jMj" id="DIE-hA-57F"/>
                         <outlet property="headerTextField" destination="W7M-At-MEv" id="h7w-da-SMd"/>
                         <outlet property="headerView" destination="uAl-Hg-HWl" id="sTw-vV-Y53"/>
+                        <outlet property="pageControl" destination="ou3-iw-1rj" id="XEA-L5-tjX"/>
                         <segue destination="ZhD-sz-V6B" kind="show" id="Jxh-H7-Q4m"/>
                         <segue destination="8qg-pP-qs7" kind="show" id="eV1-1O-sgB"/>
                         <segue destination="Tmo-EM-azf" kind="show" id="9GG-Ig-u7Y"/>
@@ -222,7 +246,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="4464" y="309"/>
+            <point key="canvasLocation" x="4463.768115942029" y="308.70535714285711"/>
         </scene>
         <!--HopDongCamDoViewController-->
         <scene sceneID="ags-mf-ZaK">

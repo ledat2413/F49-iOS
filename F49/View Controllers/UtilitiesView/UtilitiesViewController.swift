@@ -13,11 +13,16 @@ class UtilitiesViewController: BaseController {
     //MARK: --Vars
     fileprivate var dataCuaHang: [CuaHang] = []
     fileprivate var dataTienIch: [TienIch] = []
+    private var numberOfPages = 0
+    private let numberOfItemPerPage = 8
+    private let numberOfRowInPerPage = 4
+    private let numberOfColInPerPage = 2
     var selectedCuaHang: String?
     var idCuaHang: Int = 0
     
     //MARK: --IBOutlet
     
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerTextField: UITextField!
     @IBOutlet weak var headerButton: UIButton!
@@ -25,11 +30,13 @@ class UtilitiesViewController: BaseController {
     
     @IBOutlet weak var bodyView: UIView!
     @IBOutlet weak var bodyCollectionView: UICollectionView!
+    @IBOutlet weak var footerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         navigation()
+        setupCollectionView()
         self.hideKeyboardWhenTappedAround()
         
     }   
@@ -75,6 +82,51 @@ class UtilitiesViewController: BaseController {
         }
     }
     
+    func setupCollectionView() {
+          numberOfPages = dataTienIch.count/numberOfItemPerPage + (dataTienIch.count % numberOfItemPerPage == 0 ? 0 : 1)
+          pageControl.numberOfPages = numberOfPages
+          
+          dataTienIch = sortItems(numberOfPages: numberOfPages, numberOfItemPerPage: numberOfItemPerPage, listItems: dataTienIch)
+      }
+    
+    func sortItems(numberOfPages: Int, numberOfItemPerPage: Int, listItems: [TienIch]) -> [TienIch] {
+           var result: [TienIch] = []
+           
+           // init allItems with empty data
+           var allItems: [TienIch] = []
+           
+           for _ in 0..<numberOfPages*numberOfItemPerPage {
+               allItems.append(TienIch())
+           }
+           
+           // merge array items
+           for i in 0..<listItems.count {
+               allItems[i] = listItems[i]
+           }
+           
+           // rearrange items in per page
+           for _ in 0..<numberOfPages {
+               result.append(contentsOf: arrangeItems(row: numberOfColInPerPage, col: numberOfRowInPerPage, data: allItems))
+               for _ in 0..<numberOfItemPerPage {
+                   allItems.removeFirst()
+               }
+           }
+           
+           return result
+       }
+       
+       func arrangeItems(row: Int, col: Int, data: [TienIch]) -> [TienIch] {
+           var result: [TienIch] = []
+           for i in 0..<row {
+               var row:[TienIch] = []
+               for j in 0..<col {
+                   row.append(data[(i)+(j*numberOfColInPerPage)])
+               }
+               result.append(contentsOf: row)
+           }
+           return result
+       }
+    
     fileprivate func setUpUI() {
         
         loadData()
@@ -89,8 +141,11 @@ class UtilitiesViewController: BaseController {
         
         bodyView.displayShadowView(shadowColor: UIColor.gray, borderColor: UIColor.clear, radius: 10)
         bodyCollectionView.displayTextField(radius: 10, color: UIColor.clear)
+        footerView.displayTextField(radius: 10, color: UIColor.clear)
+
         
         bodyCollectionView.register(UINib(nibName: "UtilitiesBodyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "UtilitiesBodyCollectionViewCell")
+       
         bodyCollectionView.delegate = self
         bodyCollectionView.dataSource = self
         
@@ -111,7 +166,13 @@ class UtilitiesViewController: BaseController {
 }
 
 extension UtilitiesViewController: UICollectionViewDataSource, UICollectionViewDelegate{
-    
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+           let x = scrollView.contentOffset.x
+           let w = scrollView.bounds.size.width
+           let currentPage = Int(ceil(x/w))
+           self.pageControl.currentPage = currentPage
+       }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataTienIch.count
@@ -189,7 +250,7 @@ extension UtilitiesViewController: UICollectionViewDelegateFlowLayout{
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: bodyCollectionView.frame.width/2, height: bodyCollectionView.frame.height/4)
+        return CGSize(width: (bodyCollectionView.frame.width ) / 2, height:( bodyCollectionView.frame.height ) / 4)
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

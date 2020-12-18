@@ -140,4 +140,22 @@ class BaseController: UIViewController {
         picker.addTarget(self, action: selector, for: .valueChanged)
         textField.inputView = picker
     }
+    
+    public func fomatterStringToDate(target: UILabel,date1: String, data: String, haveString: Bool) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = date1
+
+        let dateForrmater2 = DateFormatter()
+        dateForrmater2.dateFormat = "dd/MM/yyyy"
+        
+        if let  date = dateFormatter.date(from: data) {
+            if haveString == true {
+                target.text = "Ngày giao dịch: \(dateForrmater2.string(from: date))"
+            }else {
+                target.text = dateForrmater2.string(from: date)
+
+            }
+        }
+        
+    }
 }

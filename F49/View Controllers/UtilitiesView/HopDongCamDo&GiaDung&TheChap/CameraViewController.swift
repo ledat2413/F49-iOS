@@ -11,6 +11,7 @@ import Gallery
 
 class CameraViewController: BaseController{
     
+    var imageCount: Int =  0
     var imageViewPic: UIImageView?
     var gallery: GalleryController!
     var itemImages:[UIImage?] = []
@@ -34,6 +35,7 @@ class CameraViewController: BaseController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        print(imageCount)
         // Do any additional setup after loading the view.
     }
     
@@ -58,21 +60,15 @@ class CameraViewController: BaseController{
         //Footer
         footerView.displayShadowView2(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 0, offSet: CGSize(width: 3, height: 0))
         
-        //
-        
     }
     
     @objc func backView(){
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-    
-    
     //MARK: --IBAction
     
     @IBAction func cameraButtonPressed(_ sender: Any) {
-        //        itemImages = []
         showImageGallery()
     }
     
@@ -86,6 +82,34 @@ class CameraViewController: BaseController{
         
         self.present(self.gallery, animated: true, completion: nil)
         
+    }
+    
+    func uploadImage(){
+        if itemImages.isEmpty {
+            self.Alert("Vui lòng chọn ảnh")
+        }else {
+            for i in itemImages {
+                self.showActivityIndicator( view: self.view)
+                MGConnection.requestBoolean(APIRouter.UploadImage(imgStr: imgStr, soHopDong: soHopDong), returnType: data) { (result, error) in
+                    self.hideActivityIndicator(view: self.view)
+                    guard error == nil else {
+                        self.Alert("Upload không thành công!")
+                        return
+                    }
+                        self.handlerAlert(message: "Upload thành công") {
+                         NotificationCenter.default.post(name: NSNotification.Name.init("Upload"), object: nil)
+                               self.navigationController?.popViewController(animated: true)
+                    }
+            }
+            
+            }
+        }
+    }
+    
+    func checkCountImage(count: Int){
+        if( count + imageCount) == 10 {
+            
+        }
     }
 }
 
@@ -109,10 +133,12 @@ extension CameraViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 
                 cell.ui(color: UIColor.groupTableViewBackground, textString: "Huỷ")
             case 1:
+                if itemImages.isEmpty {
+                    cell.thumbnailLabel.textColor = .white
+                    cell.ui(color: Colors.darkGrey, textString: "Đồng ý")
+                }
                 cell.thumbnailLabel.textColor = .white
                 cell.ui(color: Colors.brightOrange, textString: "Đồng ý")
-
-                
             default:
                 return cell
             }
@@ -128,7 +154,7 @@ extension CameraViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.handlerCallBackButton {
                 self.itemImages.remove(at: indexPath.row)
                 self.collectionView.reloadData()
-                print("remove")
+                print("remove \(indexPath.row)")
             }
             return cell
         }
@@ -142,20 +168,7 @@ extension CameraViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 self.navigationController?.popViewController(animated: true)
                 break
             case 1:
-                self.showActivityIndicator( view: self.view)
-
-                MGConnection.requestBoolean(APIRouter.UploadImage(imgStr: imgStr, soHopDong: soHopDong), returnType: data) { (result, error) in
-                    self.hideActivityIndicator(view: self.view)
-                    guard error == nil else {
-                        self.Alert("Upload không thành công!")
-                        return
-                    }
-                    
-                    self.handlerAlert(message: "Upload thành công") {
-                         NotificationCenter.default.post(name: NSNotification.Name.init("Upload"), object: nil)
-                               self.navigationController?.popViewController(animated: true)
-                    }
-                }
+              uploadImage()
                 break
             default:
                 break
@@ -172,7 +185,7 @@ extension CameraViewController: UICollectionViewDelegateFlowLayout{
         case footerCollectionView:
             return CGSize(width: collectionView.frame.width / 2 - 10, height: collectionView.frame.height )
         default:
-            return CGSize(width: collectionView.frame.width / 4 , height: collectionView.frame.width / 4 )
+            return CGSize(width: collectionView.frame.width / 4 - 20 , height: collectionView.frame.width / 4 )
         }
         
     }
@@ -192,7 +205,9 @@ extension CameraViewController: GalleryControllerDelegate{
     
     func galleryController(_ controller: GalleryController, didSelectImages images: [Image]) {
         
-        if images.count > 0 {
+        if images.count + imageCount == 10 {
+            return}
+        else{
             Image.resolve(images: images) { (imageResolve) in
                 if let image = imageResolve.first ?? UIImage() {
                     self.itemImages.append(image)

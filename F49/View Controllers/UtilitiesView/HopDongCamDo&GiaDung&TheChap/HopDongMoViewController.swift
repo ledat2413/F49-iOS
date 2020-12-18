@@ -12,6 +12,7 @@ import XLPagerTabStrip
 class HopDongMoViewController: BaseController,IndicatorInfoProvider {
     
     var id: Int = 0
+    var value: String = ""
     var idShop: Int = 0
     var idStatus: String?
     var keyWord: String?
@@ -62,7 +63,7 @@ class HopDongMoViewController: BaseController,IndicatorInfoProvider {
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "value")
+        return IndicatorInfo(title: value)
     }
     
 }
@@ -72,24 +73,18 @@ extension HopDongMoViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataHopDong.count
     }
+ 
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContractOpenTableViewCell", for: indexPath) as? ContractOpenTableViewCell else{
+                fatalError()
+            }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContractOpenTableViewCell", for: indexPath) as? ContractOpenTableViewCell else{
-            fatalError()
+            let data = dataHopDong[indexPath.row]
+            cell.idLabel.text = "\(indexPath.item)"
+            cell.ui(model: data)
+    
+            return cell
         }
-        
-        let data = dataHopDong[indexPath.row]
-        
-        cell.idLabel.text = "\(data.id)"
-        cell.id2Label.text = data.soHopDong
-        cell.tangGiamLabel.text = "\(data.soNgayQuaHan)"
-        cell.nameLabel.text = data.tenKhachHang
-        cell.tienLabel.text = data.duNoHienTai
-        cell.tongLabel.text = data.laiPhaiThu
-        cell.backgroundColor = UIColor(hexString: data.maMau)
-        
-        return cell
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(100)

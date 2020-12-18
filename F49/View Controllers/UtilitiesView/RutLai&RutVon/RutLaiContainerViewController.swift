@@ -105,10 +105,10 @@ extension RutLaiContainerViewController: UITableViewDelegate, UITableViewDataSou
             
             let data = dataRutVon[indexPath.row]
             
-            cell.idLabel.text = "\(data.idItem)"
+            cell.idLabel.text =  "\(indexPath.row + 1)"
             cell.nameLabel.text = data.tenCuaHang
             cell.moneyLabel.text = "\(data.soTien)"
-            cell.dateLabel.text = data.nguoiThucHien
+            self.fomatterStringToDate(target: cell.dateLabel, date1: "yyyy-MM-dd'T'HH:mm:ss", data: data.ngayGiaoDich, haveString: false)
             cell.peopleLabel.text = data.nguoiThucHien
             return cell
         default:

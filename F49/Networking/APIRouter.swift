@@ -37,7 +37,7 @@ enum APIRouter: APIConfiguration {
     case GetCountLichSuGiaoDich(id: Int)
     case GetChiTietLichSuGiaoDich(idGiaoDich: Int, idHopDong: Int)
     case GetLichSuVayNo(id: Int)
-    case GetCountLichSuVayNo(id: Int)
+    case GetCountLichSuVayNo(idKhachHang: Int)
     case GetChiTietLichSuVayNo( idHopDong: Int)
     
     //QuanLyTaiSan

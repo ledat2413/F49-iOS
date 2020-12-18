@@ -91,6 +91,7 @@ extension ThanhLyTaiSanChiTietViewController: UITableViewDelegate, UITableViewDa
         case 3:
             cell.keyLabel.text = "Trạng thái"
             cell.valueLabel.text = dataTaiSan?.tenTrangThai
+            cell.valueLabel.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
             cell.valueLabel.textColor = UIColor.systemYellow
         case 4:
             cell.keyLabel.text = "Ngày vào"

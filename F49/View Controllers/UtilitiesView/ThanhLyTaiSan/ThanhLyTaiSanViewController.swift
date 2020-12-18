@@ -56,7 +56,7 @@ class ThanhLyTaiSanViewController: BaseController {
     
     // MARK: --Navigation
     fileprivate func displayNavigation(){
-        navigation.title = "Quản lí tài sản"
+        navigation.title = "Tài sản thanh lý"
         navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
     }
     
@@ -237,13 +237,14 @@ extension ThanhLyTaiSanViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThanhLyTaiSanTableViewCell", for: indexPath) as? ThanhLyTaiSanTableViewCell else {fatalError()}
-        
         let data = dataDSTaiSan[indexPath.row]
         
-        cell.idLabel.text = "\(data.id)"
+        self.fomatterStringToDate(target: cell.dateLabel, date1: "yyyy-MM-dd'T'HH:mm:ss", data: data.ngayLuuKho, haveString: false)
+        
+        cell.idLabel.text = "\(indexPath.row + 1)"
         cell.id2Label.text = "\(data.soHopDong)"
         cell.nameLabel.text = data.tenVatCamCo
-        cell.dateLabel.text = data.ngayLuuKho
+//        cell.dateLabel.text = "\(data.ngayLuuKho )"
         cell.phoneLabel.text = data.dienThoai
         cell.customerLabel.text = data.hoTen
         

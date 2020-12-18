@@ -66,7 +66,7 @@ class TabbarCust: UITabBar {
 extension UITabBar {
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
         var sizeThatFits = super.sizeThatFits(size)
-        sizeThatFits.height = 80
+        sizeThatFits.height = 50
         return sizeThatFits
     }
 }

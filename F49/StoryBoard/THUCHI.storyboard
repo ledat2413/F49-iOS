@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -74,7 +74,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="liT-d7-svH">
-                                <rect key="frame" x="0.0" y="310" width="414" height="552"/>
+                                <rect key="frame" x="0.0" y="310" width="414" height="586"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="PqY-ll-W3A">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -82,7 +82,7 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="q7h-AY-kku">
+                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="q7h-AY-kku">
                                 <rect key="frame" x="20" y="245" width="374" height="40"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="urP-yJ-iHz">
@@ -145,8 +145,9 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="g3u-fH-bmA"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="liT-d7-svH" secondAttribute="bottom" id="6E2-yD-eyN"/>
                             <constraint firstItem="q7h-AY-kku" firstAttribute="leading" secondItem="g3u-fH-bmA" secondAttribute="leading" constant="20" id="KJM-hb-2gk"/>
                             <constraint firstItem="yay-Lo-aJB" firstAttribute="top" secondItem="Xwp-qk-ZK2" secondAttribute="top" id="MR4-2F-pue"/>
                             <constraint firstItem="liT-d7-svH" firstAttribute="top" secondItem="q7h-AY-kku" secondAttribute="bottom" constant="25" id="Rhp-wV-CIu"/>
@@ -160,7 +161,6 @@
                             <constraint firstItem="7bT-LF-LIp" firstAttribute="leading" secondItem="g3u-fH-bmA" secondAttribute="leading" constant="20" id="nEC-vY-p4L"/>
                             <constraint firstItem="yay-Lo-aJB" firstAttribute="height" secondItem="Xwp-qk-ZK2" secondAttribute="height" multiplier="0.100446" id="qK6-pI-5HO"/>
                             <constraint firstItem="g3u-fH-bmA" firstAttribute="trailing" secondItem="7bT-LF-LIp" secondAttribute="trailing" constant="20" id="sx0-Ga-iGZ"/>
-                            <constraint firstItem="liT-d7-svH" firstAttribute="bottom" secondItem="g3u-fH-bmA" secondAttribute="bottom" id="uVq-bi-H8G"/>
                             <constraint firstItem="Wim-IF-NTa" firstAttribute="leading" secondItem="g3u-fH-bmA" secondAttribute="leading" constant="20" id="vRU-gW-ZdO"/>
                             <constraint firstItem="liT-d7-svH" firstAttribute="leading" secondItem="g3u-fH-bmA" secondAttribute="leading" id="vqm-DG-tOp"/>
                             <constraint firstItem="7bT-LF-LIp" firstAttribute="top" secondItem="yay-Lo-aJB" secondAttribute="bottom" constant="25" id="zgv-rN-qsh"/>
@@ -181,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSR-5r-iEF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3171" y="1142"/>
+            <point key="canvasLocation" x="3169.5652173913045" y="1141.7410714285713"/>
         </scene>
         <!--Thong Tin Thu Chi View Controller-->
         <scene sceneID="IJv-yo-850">

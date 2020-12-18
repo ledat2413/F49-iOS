@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,10 +31,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49R-oy-7Cv">
-                                <rect key="frame" x="136" y="10" width="30" height="25"/>
+                                <rect key="frame" x="131" y="10" width="35" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nD2-kH-FFK">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="30"/>
                                         <color key="backgroundColor" red="0.9191058204" green="0.59309970339999996" blue="0.01923955875" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.98859602899999999" green="0.99781332369999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -43,12 +43,12 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="771-ok-9Tr"/>
+                                    <constraint firstAttribute="height" constant="30" id="771-ok-9Tr"/>
                                     <constraint firstAttribute="trailing" secondItem="nD2-kH-FFK" secondAttribute="trailing" id="Q0g-PB-Bk5"/>
                                     <constraint firstItem="nD2-kH-FFK" firstAttribute="leading" secondItem="49R-oy-7Cv" secondAttribute="leading" id="V6h-Ca-4lS"/>
                                     <constraint firstItem="nD2-kH-FFK" firstAttribute="top" secondItem="49R-oy-7Cv" secondAttribute="top" id="YdA-pG-JdU"/>
                                     <constraint firstAttribute="bottom" secondItem="nD2-kH-FFK" secondAttribute="bottom" id="lme-j1-0l8"/>
-                                    <constraint firstAttribute="width" constant="30" id="umE-Hv-On3"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="umE-Hv-On3"/>
                                 </constraints>
                             </view>
                         </subviews>
