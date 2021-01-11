@@ -61,7 +61,7 @@ class UtilitiesViewController: BaseController {
             }
             if let result = result {
                 self.dataCuaHang = result
-                self.headerTextField.text = self.dataCuaHang[0].tenCuaHang
+                self.headerTextField.text = self.dataCuaHang.first?.tenCuaHang
                 
             }
         }

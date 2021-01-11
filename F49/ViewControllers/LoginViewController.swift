@@ -15,8 +15,9 @@ class LoginViewController: BaseController {
     let cornerRadius : CGFloat = 25.0
     var gradientLayer = CAGradientLayer()
     var token: String = ""
-    
-    
+    var device: UIDevice?
+   let deviceToken = UserHelper.getUserData(key: UserKey.DeviceToken) ?? ""
+
     //MARK: --IBOutlet
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var passView: UIView!
@@ -32,6 +33,7 @@ class LoginViewController: BaseController {
         super.viewDidLoad()
         displayUI()
         hideKeyboardWhenTappedAround()
+        device = UIDevice()
     }
     
     //MARK: --IBAction
@@ -45,10 +47,7 @@ class LoginViewController: BaseController {
         if !isValidEmail(emailTextField.text) {
             Alert("Tài khoản không hợp lệ")
             return
-        } else if !isValidPassword(password: passTextField.text){
-            Alert("Mật khẩu không hợp lệ")
-            return
-        }
+        } 
         
         self.showActivityIndicator( view: self.view)
 
@@ -62,7 +61,7 @@ class LoginViewController: BaseController {
                 
             }
             if let result = result {
-                
+                wself.putFireBase()
                 UserHelper.saveUserData(self!.saveButton.isSelected, key: UserKey.AutoLogin)
                 
                 UserHelper.saveUserData("\(result.token_type) \(result.access_token)", key: UserKey.Token)
@@ -74,6 +73,16 @@ class LoginViewController: BaseController {
     
     deinit {
         print("login deinit")
+    }
+    
+    func putFireBase() {
+        MGConnection.requestObject(APIRouter.PutFirebase(email: emailTextField.text ?? "", token: deviceToken, deviceName: device?.name ?? "", flg: true), NotificationVO.self) {[weak self] (result, error) in
+            guard let wself = self else { return}
+            guard error == nil else {
+                wself.Alert("Có lỗi xảy ra")
+                return
+            }
+        }
     }
     
     //MARK: --Func

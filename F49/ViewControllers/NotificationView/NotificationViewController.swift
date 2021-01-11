@@ -151,7 +151,7 @@ class NotificationViewController: BaseController {
             }
             if let result = result {
                 self.dataCuaHang = result
-                self.shopTextField.text = self.dataCuaHang[0].tenCuaHang
+                self.shopTextField.text = self.dataCuaHang.first?.tenCuaHang
             }
         }
     }

@@ -53,7 +53,7 @@ class HomeViewController: BaseController {
             }
             if let result = result {
                 self.dataCuaHang = result
-                self.findTextField.text = self.dataCuaHang[0].tenCuaHang
+                self.findTextField.text = self.dataCuaHang.first?.tenCuaHang
             }
         }
     }
