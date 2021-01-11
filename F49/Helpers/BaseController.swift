@@ -29,7 +29,7 @@ class BaseController: UIViewController {
     func isValidPassword(password: String?) -> Bool {
         guard password != nil else { return false }
         
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{6,32}")
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{5,32}")
         return passwordTest.evaluate(with: password)
     }
     

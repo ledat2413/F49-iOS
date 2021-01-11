@@ -15,6 +15,9 @@ enum APIRouter: APIConfiguration {
     //Login
     case Login(grant_type: String, username: String, password: String)
     
+    //Firebase
+    case PutFirebase(email: String, token: String, deviceName: String, flg: Bool)
+    
     //User Profile
     case GetUserProfile
     
@@ -181,57 +184,3 @@ enum APIRouter: APIConfiguration {
     }
    
 }
-
-//    func asURLRequest() throws -> URLRequest {
-//        let url = try Constants.ProductionServer.baseURL.asURL()
-//
-//        // setting path
-//        var urlRequest: URLRequest = URLRequest(url: url.appendingPathComponent(path))
-//
-//        // setting header
-//        for (key, value) in headers {
-//            urlRequest.addValue(value, forHTTPHeaderField: key)
-//        }
-//
-//        switch parameters {
-//        case .body(let params):
-//            switch method {
-//            case .post:
-//                urlRequest.httpMethod = method.rawValue
-//
-//                switch self {
-//                case .Login:
-//                    urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
-//
-//                default:
-//                    urlRequest = try JSONEncoding.default.encode(urlRequest, with: params)
-//
-//                }
-//
-//            default:
-//
-//                urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
-//
-//                urlRequest.httpMethod = method.rawValue
-//            }
-//        case .url(let params):
-//            switch method {
-//            case .post:
-//                urlRequest.httpMethod = method.rawValue
-//                switch self {
-//                case .Login:
-//                    urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
-//                default:
-//                    urlRequest = try JSONEncoding.default.encode(urlRequest, with: params)
-//                }
-//            default:
-//
-//                urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
-//
-//                urlRequest.httpMethod = method.rawValue
-//            }
-//        }
-//
-//        return urlRequest
-//    }
-

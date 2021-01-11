@@ -19,7 +19,13 @@ extension APIRouter {
             return [Constants.APIParameterKey.grant_type: grant_type,
                     Constants.APIParameterKey.username: username,
                     Constants.APIParameterKey.password: password]
-            
+        
+        case .PutFirebase(let email, let token, let deviceName, let flg):
+            return [Constants.APIParameterKey.email: email,
+                    Constants.APIParameterKey.token: token,
+                    Constants.APIParameterKey.deviceName: deviceName,
+                    Constants.APIParameterKey.flg: flg
+            ]
         //User Profile
         case .GetUserProfile:
             return [:]

@@ -48,7 +48,7 @@ class ContractOpenTableViewCell: UITableViewCell {
         self.nameLabel.text = model.tenKhachHang
         self.tienLabel.text = model.duNoHienTai
         self.tongLabel.text = model.laiPhaiThu
-        self.backgroundColor = UIColor(hexString: model.maMau)
+        self.backgroundColor = UIColor(named: model.maMau)
     }
     
 }

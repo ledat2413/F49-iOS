@@ -15,6 +15,10 @@ extension APIRouter {
         switch self {
         case .Login:
             return .post
+            
+        case .PutFirebase:
+            return .put
+            
         case .PutDuyetRutVon:
             return .put
         case .PutThucHienThuLai:

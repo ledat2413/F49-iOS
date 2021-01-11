@@ -7,11 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0960F9B87BF1A0D44E7ECE14 /* Pods_F247.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA39709F65D56F24B5B18713 /* Pods_F247.framework */; };
+		5A9DB539A9C81B61877CE559 /* Pods_F49.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E3FC27611B8020906915F1 /* Pods_F49.framework */; };
 		C203D7132547CF0000ADFF73 /* Cell1UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C203D7112547CF0000ADFF73 /* Cell1UserTableViewCell.swift */; };
 		C203D7142547CF0000ADFF73 /* Cell1UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C203D7122547CF0000ADFF73 /* Cell1UserTableViewCell.xib */; };
 		C20FF73B251F18E20096A38F /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20FF73A251F18E20096A38F /* NotificationViewController.swift */; };
 		C20FF73F251F36500096A38F /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20FF73D251F36500096A38F /* NotificationTableViewCell.swift */; };
 		C20FF740251F36500096A38F /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20FF73E251F36500096A38F /* NotificationTableViewCell.xib */; };
+		C21EB55425AC3EAB002621B7 /* FirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21EB55325AC3EAB002621B7 /* FirebaseModel.swift */; };
+		C21EB55525AC3EAB002621B7 /* FirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21EB55325AC3EAB002621B7 /* FirebaseModel.swift */; };
+		C21EB55F25AC529E002621B7 /* MatKhauViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21EB55B25AC529E002621B7 /* MatKhauViewController.swift */; };
+		C21EB56025AC529E002621B7 /* MatKhauViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21EB55B25AC529E002621B7 /* MatKhauViewController.swift */; };
+		C21EB56125AC529E002621B7 /* CaiDatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21EB55C25AC529E002621B7 /* CaiDatViewController.swift */; };
+		C21EB56225AC529E002621B7 /* CaiDatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21EB55C25AC529E002621B7 /* CaiDatViewController.swift */; };
+		C21EB56325AC529E002621B7 /* CuaHangMacDinhViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21EB55D25AC529E002621B7 /* CuaHangMacDinhViewController.swift */; };
+		C21EB56425AC529E002621B7 /* CuaHangMacDinhViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21EB55D25AC529E002621B7 /* CuaHangMacDinhViewController.swift */; };
+		C21EB56525AC529E002621B7 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21EB55E25AC529E002621B7 /* UserViewController.swift */; };
+		C21EB56625AC529E002621B7 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21EB55E25AC529E002621B7 /* UserViewController.swift */; };
 		C2300825255EE3A5000E84A8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2300824255EE3A5000E84A8 /* Constants.swift */; };
 		C2300828255EE414000E84A8 /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2300827255EE414000E84A8 /* APIConfiguration.swift */; };
 		C230082F255EF14A000E84A8 /* methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = C230082E255EF14A000E84A8 /* methods.swift */; };
@@ -100,9 +112,6 @@
 		C2659CBC2510AD090021BC9D /* BodyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2659CBB2510AD090021BC9D /* BodyCollectionViewCell.xib */; };
 		C2659CBF2510AD1C0021BC9D /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2659CBD2510AD1B0021BC9D /* HeaderCollectionViewCell.swift */; };
 		C2659CC02510AD1C0021BC9D /* HeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2659CBE2510AD1B0021BC9D /* HeaderCollectionViewCell.xib */; };
-		C2659CC52510BE740021BC9D /* CuaHangMacDinhViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2659CC42510BE740021BC9D /* CuaHangMacDinhViewController.swift */; };
-		C2659CC72510BE8F0021BC9D /* MatKhauViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2659CC62510BE8F0021BC9D /* MatKhauViewController.swift */; };
-		C2659CC92510BE9C0021BC9D /* CaiDatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2659CC82510BE9C0021BC9D /* CaiDatViewController.swift */; };
 		C265C17825071EE0000D4FAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C17725071EE0000D4FAE /* AppDelegate.swift */; };
 		C265C17A25071EE0000D4FAE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C17925071EE0000D4FAE /* SceneDelegate.swift */; };
 		C265C17F25071EE0000D4FAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C265C17D25071EE0000D4FAE /* Main.storyboard */; };
@@ -115,6 +124,229 @@
 		C265C19D25073A0D000D4FAE /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C19C25073A0D000D4FAE /* Token.swift */; };
 		C265C19F250777A1000D4FAE /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C19E250777A1000D4FAE /* UserToken.swift */; };
 		C265C1A125078812000D4FAE /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C1A025078812000D4FAE /* UserProfile.swift */; };
+		C266672225ABE7C400770680 /* ContractOpenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D0E2519A71F00A99713 /* ContractOpenTableViewCell.swift */; };
+		C266672325ABE7C400770680 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C19A250728CC000D4FAE /* LoginViewController.swift */; };
+		C266672425ABE7C400770680 /* UtilitiesHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282CC0E251211E700F62B63 /* UtilitiesHeaderCollectionViewCell.swift */; };
+		C266672525ABE7C400770680 /* TabbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5DE25241A050024D236 /* TabbarButton.swift */; };
+		C266672625ABE7C400770680 /* LoadMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FD6ACC2577B7DA00B9D663 /* LoadMoreView.swift */; };
+		C266672725ABE7C400770680 /* HopDongTheoLoai.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25AD64F251B2A290091CA6D /* HopDongTheoLoai.swift */; };
+		C266672825ABE7C400770680 /* ThuLai.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7EE5252DCB1E00490F8D /* ThuLai.swift */; };
+		C266672925ABE7C400770680 /* parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2300834255EF1CD000E84A8 /* parameters.swift */; };
+		C266672B25ABE7C400770680 /* BodyTienHoaHongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7ED7252D6E2800490F8D /* BodyTienHoaHongTableViewCell.swift */; };
+		C266672C25ABE7C400770680 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A2B0DF255D2567004A98CD /* ExtensionString.swift */; };
+		C266672D25ABE7C400770680 /* RutVonChiTietTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268E52525258D9F00FAF711 /* RutVonChiTietTableViewCell.swift */; };
+		C266672E25ABE7C400770680 /* CreateHDCamDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259CD96253709C700CD527D /* CreateHDCamDoViewController.swift */; };
+		C266672F25ABE7C400770680 /* UtilitiesBodyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282CC12251219B200F62B63 /* UtilitiesBodyCollectionViewCell.swift */; };
+		C266673025ABE7C400770680 /* MGConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C1952507218E000D4FAE /* MGConnection.swift */; };
+		C266673125ABE7C400770680 /* Cell3CreateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C287737B2537FBFD00A8B3E8 /* Cell3CreateCollectionViewCell.swift */; };
+		C266673225ABE7C400770680 /* LapHopDong.swift in Sources */ = {isa = PBXBuildFile; fileRef = C258EFE1253F26AA00FA72C2 /* LapHopDong.swift */; };
+		C266673325ABE7C400770680 /* Cell4CreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267A0822542B75D003C840B /* Cell4CreateTableViewCell.swift */; };
+		C266673425ABE7C400770680 /* ExtensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A2B0CC255D24E8004A98CD /* ExtensionUIColor.swift */; };
+		C266673525ABE7C400770680 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264151E252ABE10001CB558 /* OptionViewController.swift */; };
+		C266673625ABE7C400770680 /* KhachHangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C260996E253AC99800A20621 /* KhachHangViewController.swift */; };
+		C266673725ABE7C400770680 /* HDGDTinhTien.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267A09325432974003C840B /* HDGDTinhTien.swift */; };
+		C266673825ABE7C400770680 /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C288472E250B0F7200CB84FA /* Contants.swift */; };
+		C266673925ABE7C400770680 /* Underline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704A8251C2C5C00B82116 /* Underline.swift */; };
+		C266673A25ABE7C400770680 /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2659C7A251079C00021BC9D /* NameTableViewCell.swift */; };
+		C266673B25ABE7C400770680 /* ThanhLyTaiSanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28821B5252895DE00EF6B91 /* ThanhLyTaiSanTableViewCell.swift */; };
+		C266673C25ABE7C400770680 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEE2508F69B00E3A3C8 /* SplashScreenViewController.swift */; };
+		C266673D25ABE7C400770680 /* methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = C230082E255EF14A000E84A8 /* methods.swift */; };
+		C266673E25ABE7C400770680 /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2300827255EE414000E84A8 /* APIConfiguration.swift */; };
+		C266673F25ABE7C400770680 /* CodeQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26AA493256B5B6400D46DBD /* CodeQRViewController.swift */; };
+		C266674025ABE7C400770680 /* HeaderTienHoaHongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7ED3252D68FA00490F8D /* HeaderTienHoaHongTableViewCell.swift */; };
+		C266674125ABE7C400770680 /* Cell1UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C203D7112547CF0000ADFF73 /* Cell1UserTableViewCell.swift */; };
+		C266674225ABE7C400770680 /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2659CBD2510AD1B0021BC9D /* HeaderCollectionViewCell.swift */; };
+		C266674325ABE7C400770680 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C1A025078812000D4FAE /* UserProfile.swift */; };
+		C266674425ABE7C400770680 /* VonDauTuChiTiet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5EB25244CB40024D236 /* VonDauTuChiTiet.swift */; };
+		C266674525ABE7C400770680 /* CreateHDGiaDungViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267A07C2542B102003C840B /* CreateHDGiaDungViewController.swift */; };
+		C266674625ABE7C400770680 /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268E5292525C86C00FAF711 /* Footer.swift */; };
+		C266674725ABE7C400770680 /* Cell6CreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267A08A2542B9F6003C840B /* Cell6CreateTableViewCell.swift */; };
+		C266674825ABE7C400770680 /* ChiTietLichSuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2641538252B25D3001CB558 /* ChiTietLichSuViewController.swift */; };
+		C266674925ABE7C400770680 /* DinhGia.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C25874251642C30048FAB2 /* DinhGia.swift */; };
+		C266674A25ABE7C400770680 /* ChiTietHopDong.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704AC251C92E500B82116 /* ChiTietHopDong.swift */; };
+		C266674B25ABE7C400770680 /* HopDongCamDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D052519A1A000A99713 /* HopDongCamDoViewController.swift */; };
+		C266674C25ABE7C400770680 /* ThuLai3TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F698252EAC3600A9C86C /* ThuLai3TableViewCell.swift */; };
+		C266674D25ABE7C400770680 /* BaoCao.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264414F252C10CB001610A6 /* BaoCao.swift */; };
+		C266674E25ABE7C400770680 /* TacVuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2641524252AD19C001CB558 /* TacVuTableViewCell.swift */; };
+		C266674F25ABE7C400770680 /* RutLaiContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C263108D2522D4E70056FD6F /* RutLaiContainerViewController.swift */; };
+		C266675025ABE7C400770680 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ACE52533F725007BCD49 /* Camera.swift */; };
+		C266675125ABE7C400770680 /* ExtensionToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A2B0D3255D251E004A98CD /* ExtensionToolbar.swift */; };
+		C266675225ABE7C400770680 /* GetTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25AD64D251B27890091CA6D /* GetTab.swift */; };
+		C266675325ABE7C400770680 /* CamDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2583E25135AD30048FAB2 /* CamDoViewController.swift */; };
+		C266675425ABE7C400770680 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C19125071FF6000D4FAE /* APIRouter.swift */; };
+		C266675525ABE7C400770680 /* MenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2586E2514BF890048FAB2 /* MenuHeader.swift */; };
+		C266675625ABE7C400770680 /* DashBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C6250F58AD00B63043 /* DashBoard.swift */; };
+		C266675725ABE7C400770680 /* QRCodeScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240335E2587140D004D9C0D /* QRCodeScanView.swift */; };
+		C266675825ABE7C400770680 /* RutVon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268E51A252568B600FAF711 /* RutVon.swift */; };
+		C266675925ABE7C400770680 /* ExtensionUIDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A2B0D0255D250E004A98CD /* ExtensionUIDatePicker.swift */; };
+		C266675A25ABE7C400770680 /* ExtensionUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A2B0D6255D2535004A98CD /* ExtensionUIImage.swift */; };
+		C266675B25ABE7C400770680 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C19325072158000D4FAE /* BaseResponse.swift */; };
+		C266675C25ABE7C400770680 /* HopDongMoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2594D122519F65400A99713 /* HopDongMoViewController.swift */; };
+		C266675D25ABE7C400770680 /* InfoCamDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2585225148F380048FAB2 /* InfoCamDoTableViewCell.swift */; };
+		C266675E25ABE7C400770680 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2300824255EE3A5000E84A8 /* Constants.swift */; };
+		C266675F25ABE7C400770680 /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2403373258722FD004D9C0D /* ScreenManager.swift */; };
+		C266676025ABE7C400770680 /* TienHoaHongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7ED0252D680000490F8D /* TienHoaHongViewController.swift */; };
+		C266676125ABE7C400770680 /* RutVon2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7EDE252DB4C900490F8D /* RutVon2TableViewCell.swift */; };
+		C266676225ABE7C400770680 /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C19E250777A1000D4FAE /* UserToken.swift */; };
+		C266676325ABE7C400770680 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEA2508BF9200E3A3C8 /* HomeViewController.swift */; };
+		C266676425ABE7C400770680 /* QuanLyVonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5EE25247FC50024D236 /* QuanLyVonTableViewCell.swift */; };
+		C266676525ABE7C400770680 /* CamDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2584825144D7A0048FAB2 /* CamDo.swift */; };
+		C266676625ABE7C400770680 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ACE825355EEC007BCD49 /* ImageCollectionViewCell.swift */; };
+		C266676725ABE7C400770680 /* CreateHDTheChap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27F14FA2541C8B600050BAB /* CreateHDTheChap.swift */; };
+		C266676825ABE7C400770680 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2586A2514B1ED0048FAB2 /* Menu.swift */; };
+		C266676925ABE7C400770680 /* DongLaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7EE2252DC52300490F8D /* DongLaiViewController.swift */; };
+		C266676A25ABE7C400770680 /* QuanLyVonDauTu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5E6252437F70024D236 /* QuanLyVonDauTu.swift */; };
+		C266676B25ABE7C400770680 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20FF73D251F36500096A38F /* NotificationTableViewCell.swift */; };
+		C266676C25ABE7C400770680 /* TaiSanHDGDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C743725453CE500AE95BE /* TaiSanHDGDViewController.swift */; };
+		C266676D25ABE7C400770680 /* GestureClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240337025872295004D9C0D /* GestureClosure.swift */; };
+		C266676E25ABE7C400770680 /* RutLaiChiTietViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5E4252434CD0024D236 /* RutLaiChiTietViewController.swift */; };
+		C266676F25ABE7C400770680 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289FB51255135E9008FE808 /* PopUpViewController.swift */; };
+		C266677025ABE7C400770680 /* CamDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C25842251373C90048FAB2 /* CamDoTableViewCell.swift */; };
+		C266677125ABE7C400770680 /* TienKhachNhan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C258EFE3253F326C00FA72C2 /* TienKhachNhan.swift */; };
+		C266677225ABE7C400770680 /* ShopUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282CBF72511CB8500F62B63 /* ShopUITableViewCell.swift */; };
+		C266677425ABE7C400770680 /* ExtensionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A2B0D9255D2552004A98CD /* ExtensionPickerView.swift */; };
+		C266677525ABE7C400770680 /* QRCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240336525871B53004D9C0D /* QRCodeModel.swift */; };
+		C266677625ABE7C400770680 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27D30422567B78E00AB3765 /* TabbarView.swift */; };
+		C266677725ABE7C400770680 /* LichSuGiaoDich.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2641529252AD793001CB558 /* LichSuGiaoDich.swift */; };
+		C266677825ABE7C400770680 /* BaoCaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264414C252C0997001610A6 /* BaoCaoViewController.swift */; };
+		C266677925ABE7C400770680 /* MacDinhTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2659CAD2510AA660021BC9D /* MacDinhTableViewCell.swift */; };
+		C266677A25ABE7C400770680 /* ThuChi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243DCCA251D9043004C6347 /* ThuChi.swift */; };
+		C266677B25ABE7C400770680 /* LichSuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264152D252B0CC3001CB558 /* LichSuViewController.swift */; };
+		C266677C25ABE7C400770680 /* FooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D0947C2581BE840004B2EB /* FooterCollectionReusableView.swift */; };
+		C266677D25ABE7C400770680 /* NhomTaiSan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25ED6912527253A004662A1 /* NhomTaiSan.swift */; };
+		C266677E25ABE7C400770680 /* DoGiaDung.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C25876251643FC0048FAB2 /* DoGiaDung.swift */; };
+		C266678025ABE7C400770680 /* RutVonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268E5212525783D00FAF711 /* RutVonTableViewCell.swift */; };
+		C266678125ABE7C400770680 /* LichSuVayNo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264152B252B06D4001CB558 /* LichSuVayNo.swift */; };
+		C266678225ABE7C400770680 /* ChiTietHopDongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704B2251C9B9D00B82116 /* ChiTietHopDongViewController.swift */; };
+		C266678325ABE7C400770680 /* Cell5CreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267A0862542B845003C840B /* Cell5CreateTableViewCell.swift */; };
+		C266678425ABE7C400770680 /* path.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2300831255EF197000E84A8 /* path.swift */; };
+		C266678525ABE7C400770680 /* LayDanhSachTaiSan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EA71253C82EB00144FFD /* LayDanhSachTaiSan.swift */; };
+		C266678625ABE7C400770680 /* ThanhLyTaiSanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25ED68E25271E21004662A1 /* ThanhLyTaiSanViewController.swift */; };
+		C266678725ABE7C400770680 /* RutLaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26310892522C6B10056FD6F /* RutLaiViewController.swift */; };
+		C266678825ABE7C400770680 /* KhachHangHopDongTheChapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CFAEE5253D526D00763D84 /* KhachHangHopDongTheChapTableViewCell.swift */; };
+		C266678925ABE7C400770680 /* ThanhLyTaiSanChiTietViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28821B225288E6D00EF6B91 /* ThanhLyTaiSanChiTietViewController.swift */; };
+		C266678A25ABE7C400770680 /* ButtonFooterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268E52E2525D4DA00FAF711 /* ButtonFooterCollectionViewCell.swift */; };
+		C266678B25ABE7C400770680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C17725071EE0000D4FAE /* AppDelegate.swift */; };
+		C266678C25ABE7C400770680 /* HDGDLoadTaoMoi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267A095254337E3003C840B /* HDGDLoadTaoMoi.swift */; };
+		C266678D25ABE7C400770680 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BC99D225219D3200796448 /* Notification.swift */; };
+		C266678E25ABE7C400770680 /* CuaHang.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261B4C0250F261900B63043 /* CuaHang.swift */; };
+		C266678F25ABE7C400770680 /* TabbarCust.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27D30452567BDDE00AB3765 /* TabbarCust.swift */; };
+		C266679025ABE7C400770680 /* ThongTinThuChiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243DCCC251DA276004C6347 /* ThongTinThuChiViewController.swift */; };
+		C266679125ABE7C400770680 /* BodyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2659CB92510AD010021BC9D /* BodyCollectionViewCell.swift */; };
+		C266679225ABE7C400770680 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240336B25871D67004D9C0D /* AlertView.swift */; };
+		C266679325ABE7C400770680 /* TienIch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2583B25133EF20048FAB2 /* TienIch.swift */; };
+		C266679425ABE7C400770680 /* UtilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282CC0925120A6D00F62B63 /* UtilitiesViewController.swift */; };
+		C266679525ABE7C400770680 /* UITabGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240336E25872258004D9C0D /* UITabGesture.swift */; };
+		C266679625ABE7C400770680 /* SwiftEventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240336325871A8F004D9C0D /* SwiftEventBus.swift */; };
+		C266679725ABE7C400770680 /* TimKiem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CFAEEA253D59DC00763D84 /* TimKiem.swift */; };
+		C266679825ABE7C400770680 /* DanhSachTaiSan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C743925454A6700AE95BE /* DanhSachTaiSan.swift */; };
+		C266679925ABE7C400770680 /* BoLocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704AA251C329E00B82116 /* BoLocViewController.swift */; };
+		C266679A25ABE7C400770680 /* ThongTinHopDongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2641520252ACC1D001CB558 /* ThongTinHopDongTableViewCell.swift */; };
+		C266679B25ABE7C400770680 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C17925071EE0000D4FAE /* SceneDelegate.swift */; };
+		C266679C25ABE7C400770680 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A2B0C8255D24C9004A98CD /* ExtensionUIView.swift */; };
+		C266679D25ABE7C400770680 /* ThongTinCamDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2584F25145FA00048FAB2 /* ThongTinCamDoViewController.swift */; };
+		C266679E25ABE7C400770680 /* TaiSanHopDongTheChapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CFAEED253D724700763D84 /* TaiSanHopDongTheChapTableViewCell.swift */; };
+		C266679F25ABE7C400770680 /* TabTrangThai.swift in Sources */ = {isa = PBXBuildFile; fileRef = C263108B2522D0310056FD6F /* TabTrangThai.swift */; };
+		C26667A025ABE7C400770680 /* LichSu2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2641534252B1151001CB558 /* LichSu2TableViewCell.swift */; };
+		C26667A125ABE7C400770680 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FD6ACF2577B93D00B9D663 /* Utils.swift */; };
+		C26667A225ABE7C400770680 /* NhanVien.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7EDC252D75B600490F8D /* NhanVien.swift */; };
+		C26667A325ABE7C400770680 /* Cell3CreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28773722537EC2100A8B3E8 /* Cell3CreateTableViewCell.swift */; };
+		C26667A425ABE7C400770680 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A9F992531908000F1D062 /* CameraViewController.swift */; };
+		C26667A525ABE7C400770680 /* DanhSachNhanVien.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5E2252430BD0024D236 /* DanhSachNhanVien.swift */; };
+		C26667A625ABE7C400770680 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E4D6812517A3CD00622DF6 /* ImageTableViewCell.swift */; };
+		C26667A725ABE7C400770680 /* Cell2CreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C287736E2537EAF600A8B3E8 /* Cell2CreateTableViewCell.swift */; };
+		C26667A825ABE7C400770680 /* ThuChiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243DCC3251D8806004C6347 /* ThuChiViewController.swift */; };
+		C26667A925ABE7C400770680 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2584625144BC60048FAB2 /* Status.swift */; };
+		C26667AA25ABE7C400770680 /* ListRutLai.swift in Sources */ = {isa = PBXBuildFile; fileRef = C263108F2522D84B0056FD6F /* ListRutLai.swift */; };
+		C26667AB25ABE7C400770680 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26310932522EF900056FD6F /* BaseController.swift */; };
+		C26667AC25ABE7C400770680 /* CamDoChiTiet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2585A251496770048FAB2 /* CamDoChiTiet.swift */; };
+		C26667AE25ABE7C400770680 /* Cell1CreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C287736A2537E9B400A8B3E8 /* Cell1CreateTableViewCell.swift */; };
+		C26667AF25ABE7C400770680 /* CreateHDGiaDung.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267A0902542DAD4003C840B /* CreateHDGiaDung.swift */; };
+		C26667B025ABE7C400770680 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20FF73A251F18E20096A38F /* NotificationViewController.swift */; };
+		C26667B125ABE7C400770680 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282CBF42511A73400F62B63 /* NavigationBar.swift */; };
+		C26667B225ABE7C400770680 /* KeyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C258EFDF253EE85F00FA72C2 /* KeyValue.swift */; };
+		C26667B325ABE7C400770680 /* TaiSanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C260996C253ABA7000A20621 /* TaiSanViewController.swift */; };
+		C26667B425ABE7C400770680 /* BaseCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240335725871148004D9C0D /* BaseCustomView.swift */; };
+		C26667B525ABE7C400770680 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265C19C25073A0D000D4FAE /* Token.swift */; };
+		C26667B625ABE7C400770680 /* ThongTinTaiSanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B327E7254B00E100D18662 /* ThongTinTaiSanTableViewCell.swift */; };
+		C26667B725ABE7C400770680 /* CameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267ACE02533F0F3007BCD49 /* CameraCollectionViewCell.swift */; };
+		C26667B825ABE7C400770680 /* CheckBoxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C25856251491FA0048FAB2 /* CheckBoxTableViewCell.swift */; };
+		C26667B925ABE7C400770680 /* ReponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240336725871BAB004D9C0D /* ReponseObject.swift */; };
+		C26667BA25ABE7C400770680 /* LoadTaoMoi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C5A980253E880600CC4EB0 /* LoadTaoMoi.swift */; };
+		C26667BB25ABE7C400770680 /* LichSuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2641530252B105D001CB558 /* LichSuTableViewCell.swift */; };
+		C26667BF25ABE7C400770680 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C231176B2577215E00B84A8E /* Roboto-Thin.ttf */; };
+		C26667C025ABE7C400770680 /* QRCodeScanView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C240335C2587140D004D9C0D /* QRCodeScanView.xib */; };
+		C26667C125ABE7C400770680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C265C18225071EE2000D4FAE /* LaunchScreen.storyboard */; };
+		C26667C225ABE7C400770680 /* CamDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2C25843251373C90048FAB2 /* CamDoTableViewCell.xib */; };
+		C26667C325ABE7C400770680 /* THUCHI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F27D342558E66B00FB383A /* THUCHI.storyboard */; };
+		C26667C425ABE7C400770680 /* PopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C289FB52255135E9008FE808 /* PopUpViewController.xib */; };
+		C26667C525ABE7C400770680 /* BodyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2659CBB2510AD090021BC9D /* BodyCollectionViewCell.xib */; };
+		C26667C625ABE7C400770680 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C231176F2577215F00B84A8E /* Roboto-Bold.ttf */; };
+		C26667C725ABE7C400770680 /* InfoCamDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2C2585325148F380048FAB2 /* InfoCamDoTableViewCell.xib */; };
+		C26667C825ABE7C400770680 /* CameraCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C267ACE12533F0F3007BCD49 /* CameraCollectionViewCell.xib */; };
+		C26667C925ABE7C400770680 /* FooterCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D0947D2581BE840004B2EB /* FooterCollectionReusableView.xib */; };
+		C26667CA25ABE7C400770680 /* LichSuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2641531252B105D001CB558 /* LichSuTableViewCell.xib */; };
+		C26667CB25ABE7C400770680 /* RutVonChiTietTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C268E52625258D9F00FAF711 /* RutVonChiTietTableViewCell.xib */; };
+		C26667CC25ABE7C400770680 /* Cell4CreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C267A0832542B75D003C840B /* Cell4CreateTableViewCell.xib */; };
+		C26667CD25ABE7C400770680 /* ThuLai3TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F4F699252EAC3600A9C86C /* ThuLai3TableViewCell.xib */; };
+		C26667CE25ABE7C400770680 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20FF73E251F36500096A38F /* NotificationTableViewCell.xib */; };
+		C26667CF25ABE7C400770680 /* TIENHOAHONG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F27D312558E60F00FB383A /* TIENHOAHONG.storyboard */; };
+		C26667D025ABE7C400770680 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C231176D2577215E00B84A8E /* Roboto-Light.ttf */; };
+		C26667D125ABE7C400770680 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C267ACE925355EEC007BCD49 /* ImageCollectionViewCell.xib */; };
+		C26667D225ABE7C400770680 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C23117642577215C00B84A8E /* Roboto-Black.ttf */; };
+		C26667D325ABE7C400770680 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C231176A2577215E00B84A8E /* Roboto-Regular.ttf */; };
+		C26667D425ABE7C400770680 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2E4D6822517A3CD00622DF6 /* ImageTableViewCell.xib */; };
+		C26667D525ABE7C400770680 /* USER.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2BC99CB2521873900796448 /* USER.storyboard */; };
+		C26667D625ABE7C400770680 /* Cell1CreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C287736B2537E9B400A8B3E8 /* Cell1CreateTableViewCell.xib */; };
+		C26667D725ABE7C400770680 /* ThongTinTaiSanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B327E8254B00E100D18662 /* ThongTinTaiSanTableViewCell.xib */; };
+		C26667D825ABE7C400770680 /* CheckBoxTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2C25857251491FA0048FAB2 /* CheckBoxTableViewCell.xib */; };
+		C26667D925ABE7C400770680 /* ThanhLyTaiSanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C28821B6252895DE00EF6B91 /* ThanhLyTaiSanTableViewCell.xib */; };
+		C26667DA25ABE7C400770680 /* QuanLyVonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C26BB5EF25247FC50024D236 /* QuanLyVonTableViewCell.xib */; };
+		C26667DB25ABE7C400770680 /* Footer.xib in Resources */ = {isa = PBXBuildFile; fileRef = C268E52B2525C89400FAF711 /* Footer.xib */; };
+		C26667DC25ABE7C400770680 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C231176C2577215E00B84A8E /* Roboto-ThinItalic.ttf */; };
+		C26667DE25ABE7C400770680 /* Cell3CreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C28773732537EC2100A8B3E8 /* Cell3CreateTableViewCell.xib */; };
+		C26667DF25ABE7C400770680 /* UtilitiesHeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C282CC0F251211E700F62B63 /* UtilitiesHeaderCollectionViewCell.xib */; };
+		C26667E025ABE7C400770680 /* RutVonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C268E5222525783D00FAF711 /* RutVonTableViewCell.xib */; };
+		C26667E125ABE7C400770680 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C23117682577215D00B84A8E /* Roboto-BoldItalic.ttf */; };
+		C26667E225ABE7C400770680 /* BodyTienHoaHongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25E7ED8252D6E2800490F8D /* BodyTienHoaHongTableViewCell.xib */; };
+		C26667E325ABE7C400770680 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C23117662577215D00B84A8E /* Roboto-MediumItalic.ttf */; };
+		C26667E425ABE7C400770680 /* RUTLAI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F27D2E2558E5F100FB383A /* RUTLAI.storyboard */; };
+		C26667E525ABE7C400770680 /* Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2C258682514B1E10048FAB2 /* Menu.xib */; };
+		C26667E625ABE7C400770680 /* THONGBAO.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2BC99CA2521873800796448 /* THONGBAO.storyboard */; };
+		C26667E725ABE7C400770680 /* ThongTinHopDongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2641521252ACC1D001CB558 /* ThongTinHopDongTableViewCell.xib */; };
+		C26667E825ABE7C400770680 /* ContractOpenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2594D0F2519A71F00A99713 /* ContractOpenTableViewCell.xib */; };
+		C26667E925ABE7C400770680 /* TIENICH.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2BC99CC2521873900796448 /* TIENICH.storyboard */; };
+		C26667EA25ABE7C400770680 /* Cell6CreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C267A08B2542B9F6003C840B /* Cell6CreateTableViewCell.xib */; };
+		C26667EB25ABE7C400770680 /* ButtonFooterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C268E52F2525D4DA00FAF711 /* ButtonFooterCollectionViewCell.xib */; };
+		C26667EC25ABE7C400770680 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C231176E2577215F00B84A8E /* Roboto-BlackItalic.ttf */; };
+		C26667ED25ABE7C400770680 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C23117672577215D00B84A8E /* Roboto-Italic.ttf */; };
+		C26667EE25ABE7C400770680 /* Cell5CreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C267A0872542B845003C840B /* Cell5CreateTableViewCell.xib */; };
+		C26667EF25ABE7C400770680 /* UtilitiesBodyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C282CC13251219B200F62B63 /* UtilitiesBodyCollectionViewCell.xib */; };
+		C26667F025ABE7C400770680 /* Cell1UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C203D7122547CF0000ADFF73 /* Cell1UserTableViewCell.xib */; };
+		C26667F125ABE7C400770680 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C23117692577215D00B84A8E /* Roboto-Medium.ttf */; };
+		C26667F225ABE7C400770680 /* Cell2CreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C287736F2537EAF600A8B3E8 /* Cell2CreateTableViewCell.xib */; };
+		C26667F325ABE7C400770680 /* NavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = C282CBF22511A61400F62B63 /* NavigationBar.xib */; };
+		C26667F425ABE7C400770680 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C265C17D25071EE0000D4FAE /* Main.storyboard */; };
+		C26667F525ABE7C400770680 /* CAMDO.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F27D2B2558E5D000FB383A /* CAMDO.storyboard */; };
+		C26667F625ABE7C400770680 /* HeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2659CBE2510AD1B0021BC9D /* HeaderCollectionViewCell.xib */; };
+		C26667F725ABE7C400770680 /* NameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2659C7B251079C00021BC9D /* NameTableViewCell.xib */; };
+		C26667F825ABE7C400770680 /* BAOCAO.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F27D372558E67500FB383A /* BAOCAO.storyboard */; };
+		C26667FA25ABE7C400770680 /* HOME.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2BC99C82521873600796448 /* HOME.storyboard */; };
+		C26667FB25ABE7C400770680 /* TaiSanHopDongTheChapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2CFAEEE253D724700763D84 /* TaiSanHopDongTheChapTableViewCell.xib */; };
+		C26667FC25ABE7C400770680 /* LoadMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2FD6ACB2577B7DA00B9D663 /* LoadMoreView.xib */; };
+		C26667FD25ABE7C400770680 /* HeaderTienHoaHongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25E7ED4252D68FA00490F8D /* HeaderTienHoaHongTableViewCell.xib */; };
+		C26667FE25ABE7C400770680 /* THANHLYTAISAN.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F27D3A2558EB4800FB383A /* THANHLYTAISAN.storyboard */; };
+		C26667FF25ABE7C400770680 /* MacDinhTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2659CAE2510AA660021BC9D /* MacDinhTableViewCell.xib */; };
+		C266680025ABE7C400770680 /* ShopUITableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C282CBF82511CB8500F62B63 /* ShopUITableViewCell.xib */; };
+		C266680125ABE7C400770680 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C240336A25871D67004D9C0D /* AlertView.xib */; };
+		C266680225ABE7C400770680 /* Cell3CreateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C287737C2537FBFD00A8B3E8 /* Cell3CreateCollectionViewCell.xib */; };
+		C266680325ABE7C400770680 /* KhachHangHopDongTheChapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2CFAEE6253D526D00763D84 /* KhachHangHopDongTheChapTableViewCell.xib */; };
+		C266680425ABE7C400770680 /* LichSu2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2641535252B1151001CB558 /* LichSu2TableViewCell.xib */; };
+		C266680525ABE7C400770680 /* TacVuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2641525252AD19C001CB558 /* TacVuTableViewCell.xib */; };
+		C266680625ABE7C400770680 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C23117652577215C00B84A8E /* Roboto-LightItalic.ttf */; };
+		C266680725ABE7C400770680 /* RutVon2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25E7EDF252DB4C900490F8D /* RutVon2TableViewCell.xib */; };
+		C266681025ABE84200770680 /* F247-Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C266680E25ABE84200770680 /* F247-Assets.xcassets */; };
+		C266681225ABF01600770680 /* F247-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C266681125ABE88D00770680 /* F247-Info.plist */; };
 		C26704A9251C2C5C00B82116 /* Underline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704A8251C2C5C00B82116 /* Underline.swift */; };
 		C26704AB251C329E00B82116 /* BoLocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704AA251C329E00B82116 /* BoLocViewController.swift */; };
 		C26704AD251C92E500B82116 /* ChiTietHopDong.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26704AC251C92E500B82116 /* ChiTietHopDong.swift */; };
@@ -144,7 +376,6 @@
 		C268E5302525D4DA00FAF711 /* ButtonFooterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268E52E2525D4DA00FAF711 /* ButtonFooterCollectionViewCell.swift */; };
 		C268E5312525D4DA00FAF711 /* ButtonFooterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C268E52F2525D4DA00FAF711 /* ButtonFooterCollectionViewCell.xib */; };
 		C2695BEB2508BF9200E3A3C8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEA2508BF9200E3A3C8 /* HomeViewController.swift */; };
-		C2695BED2508C62400E3A3C8 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEC2508C62400E3A3C8 /* UserViewController.swift */; };
 		C2695BEF2508F69B00E3A3C8 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2695BEE2508F69B00E3A3C8 /* SplashScreenViewController.swift */; };
 		C26AA494256B5B6400D46DBD /* CodeQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26AA493256B5B6400D46DBD /* CodeQRViewController.swift */; };
 		C26BB5DF25241A050024D236 /* TabbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB5DE25241A050024D236 /* TabbarButton.swift */; };
@@ -214,6 +445,8 @@
 		C2C25875251642C30048FAB2 /* DinhGia.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C25874251642C30048FAB2 /* DinhGia.swift */; };
 		C2C25877251643FC0048FAB2 /* DoGiaDung.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C25876251643FC0048FAB2 /* DoGiaDung.swift */; };
 		C2C5A981253E880600CC4EB0 /* LoadTaoMoi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C5A980253E880600CC4EB0 /* LoadTaoMoi.swift */; };
+		C2CE2A3825AC0C9200A5DF80 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2CE2A3725AC0C9200A5DF80 /* GoogleService-Info.plist */; };
+		C2CE2A3925AC0C9200A5DF80 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2CE2A3725AC0C9200A5DF80 /* GoogleService-Info.plist */; };
 		C2CFAEE7253D526D00763D84 /* KhachHangHopDongTheChapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CFAEE5253D526D00763D84 /* KhachHangHopDongTheChapTableViewCell.swift */; };
 		C2CFAEE8253D526D00763D84 /* KhachHangHopDongTheChapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2CFAEE6253D526D00763D84 /* KhachHangHopDongTheChapTableViewCell.xib */; };
 		C2CFAEEB253D59DC00763D84 /* TimKiem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CFAEEA253D59DC00763D84 /* TimKiem.swift */; };
@@ -239,11 +472,17 @@
 
 /* Begin PBXFileReference section */
 		07E3FC27611B8020906915F1 /* Pods_F49.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_F49.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		735D8A654505250CC21C6317 /* Pods-F247.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F247.debug.xcconfig"; path = "Target Support Files/Pods-F247/Pods-F247.debug.xcconfig"; sourceTree = "<group>"; };
 		C203D7112547CF0000ADFF73 /* Cell1UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell1UserTableViewCell.swift; sourceTree = "<group>"; };
 		C203D7122547CF0000ADFF73 /* Cell1UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Cell1UserTableViewCell.xib; sourceTree = "<group>"; };
 		C20FF73A251F18E20096A38F /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		C20FF73D251F36500096A38F /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		C20FF73E251F36500096A38F /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
+		C21EB55325AC3EAB002621B7 /* FirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModel.swift; sourceTree = "<group>"; };
+		C21EB55B25AC529E002621B7 /* MatKhauViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatKhauViewController.swift; sourceTree = "<group>"; };
+		C21EB55C25AC529E002621B7 /* CaiDatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaiDatViewController.swift; sourceTree = "<group>"; };
+		C21EB55D25AC529E002621B7 /* CuaHangMacDinhViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CuaHangMacDinhViewController.swift; sourceTree = "<group>"; };
+		C21EB55E25AC529E002621B7 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		C2300824255EE3A5000E84A8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C2300827255EE414000E84A8 /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
 		C230082E255EF14A000E84A8 /* methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = methods.swift; sourceTree = "<group>"; };
@@ -331,9 +570,6 @@
 		C2659CBB2510AD090021BC9D /* BodyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BodyCollectionViewCell.xib; sourceTree = "<group>"; };
 		C2659CBD2510AD1B0021BC9D /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		C2659CBE2510AD1B0021BC9D /* HeaderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCollectionViewCell.xib; sourceTree = "<group>"; };
-		C2659CC42510BE740021BC9D /* CuaHangMacDinhViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuaHangMacDinhViewController.swift; sourceTree = "<group>"; };
-		C2659CC62510BE8F0021BC9D /* MatKhauViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatKhauViewController.swift; sourceTree = "<group>"; };
-		C2659CC82510BE9C0021BC9D /* CaiDatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaiDatViewController.swift; sourceTree = "<group>"; };
 		C265C17425071EDF000D4FAE /* F49.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = F49.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C265C17725071EE0000D4FAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C265C17925071EE0000D4FAE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -349,6 +585,9 @@
 		C265C19C25073A0D000D4FAE /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		C265C19E250777A1000D4FAE /* UserToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToken.swift; sourceTree = "<group>"; };
 		C265C1A025078812000D4FAE /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		C266680C25ABE7C400770680 /* F247.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = F247.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C266680E25ABE84200770680 /* F247-Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "F247-Assets.xcassets"; path = "Assets.xcassets/F247-Assets.xcassets"; sourceTree = "<group>"; };
+		C266681125ABE88D00770680 /* F247-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "F247-Info.plist"; sourceTree = "<group>"; };
 		C26704A8251C2C5C00B82116 /* Underline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Underline.swift; sourceTree = "<group>"; };
 		C26704AA251C329E00B82116 /* BoLocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoLocViewController.swift; sourceTree = "<group>"; };
 		C26704AC251C92E500B82116 /* ChiTietHopDong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChiTietHopDong.swift; sourceTree = "<group>"; };
@@ -378,7 +617,6 @@
 		C268E52E2525D4DA00FAF711 /* ButtonFooterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFooterCollectionViewCell.swift; sourceTree = "<group>"; };
 		C268E52F2525D4DA00FAF711 /* ButtonFooterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonFooterCollectionViewCell.xib; sourceTree = "<group>"; };
 		C2695BEA2508BF9200E3A3C8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		C2695BEC2508C62400E3A3C8 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		C2695BEE2508F69B00E3A3C8 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		C26AA493256B5B6400D46DBD /* CodeQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeQRViewController.swift; sourceTree = "<group>"; };
 		C26BB5DE25241A050024D236 /* TabbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarButton.swift; sourceTree = "<group>"; };
@@ -388,6 +626,7 @@
 		C26BB5EB25244CB40024D236 /* VonDauTuChiTiet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VonDauTuChiTiet.swift; sourceTree = "<group>"; };
 		C26BB5EE25247FC50024D236 /* QuanLyVonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuanLyVonTableViewCell.swift; sourceTree = "<group>"; };
 		C26BB5EF25247FC50024D236 /* QuanLyVonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuanLyVonTableViewCell.xib; sourceTree = "<group>"; };
+		C277194E25AC2A050081AD85 /* F247.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = F247.entitlements; sourceTree = "<group>"; };
 		C27D30422567B78E00AB3765 /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
 		C27D30452567BDDE00AB3765 /* TabbarCust.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCust.swift; sourceTree = "<group>"; };
 		C27F14FA2541C8B600050BAB /* CreateHDTheChap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHDTheChap.swift; sourceTree = "<group>"; };
@@ -448,6 +687,8 @@
 		C2C25874251642C30048FAB2 /* DinhGia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinhGia.swift; sourceTree = "<group>"; };
 		C2C25876251643FC0048FAB2 /* DoGiaDung.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoGiaDung.swift; sourceTree = "<group>"; };
 		C2C5A980253E880600CC4EB0 /* LoadTaoMoi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTaoMoi.swift; sourceTree = "<group>"; };
+		C2CE2A3025AC06DB00A5DF80 /* F49.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = F49.entitlements; sourceTree = "<group>"; };
+		C2CE2A3725AC0C9200A5DF80 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C2CFAEE5253D526D00763D84 /* KhachHangHopDongTheChapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KhachHangHopDongTheChapTableViewCell.swift; sourceTree = "<group>"; };
 		C2CFAEE6253D526D00763D84 /* KhachHangHopDongTheChapTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KhachHangHopDongTheChapTableViewCell.xib; sourceTree = "<group>"; };
 		C2CFAEEA253D59DC00763D84 /* TimKiem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimKiem.swift; sourceTree = "<group>"; };
@@ -468,8 +709,10 @@
 		C2FD6ACB2577B7DA00B9D663 /* LoadMoreView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadMoreView.xib; sourceTree = "<group>"; };
 		C2FD6ACC2577B7DA00B9D663 /* LoadMoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreView.swift; sourceTree = "<group>"; };
 		C2FD6ACF2577B93D00B9D663 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		E42C8533E2BF20FFED4D10D1 /* Pods-F49.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F49.release.xcconfig"; path = "Target Support Files/Pods-F49/Pods-F49.release.xcconfig"; sourceTree = "<group>"; };
-		E65DEDA807C3DBF97E92936A /* Pods-F49.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F49.debug.xcconfig"; path = "Target Support Files/Pods-F49/Pods-F49.debug.xcconfig"; sourceTree = "<group>"; };
+		CBD3CCF55B419E5B7D0E0183 /* Pods-F49.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F49.debug.xcconfig"; path = "Target Support Files/Pods-F49/Pods-F49.debug.xcconfig"; sourceTree = "<group>"; };
+		CC529E58BE2375A87DFA085E /* Pods-F49.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F49.release.xcconfig"; path = "Target Support Files/Pods-F49/Pods-F49.release.xcconfig"; sourceTree = "<group>"; };
+		E022856E7C7EBAFB57FEE353 /* Pods-F247.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F247.release.xcconfig"; path = "Target Support Files/Pods-F247/Pods-F247.release.xcconfig"; sourceTree = "<group>"; };
+		FA39709F65D56F24B5B18713 /* Pods_F247.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_F247.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,6 +721,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAB33D739092F3991E860E43 /* Pods_F49.framework in Frameworks */,
+				5A9DB539A9C81B61877CE559 /* Pods_F49.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C26667BC25ABE7C400770680 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0960F9B87BF1A0D44E7ECE14 /* Pods_F247.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,8 +739,10 @@
 		0A5AD0ECE7DFF2EC53407059 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E65DEDA807C3DBF97E92936A /* Pods-F49.debug.xcconfig */,
-				E42C8533E2BF20FFED4D10D1 /* Pods-F49.release.xcconfig */,
+				CBD3CCF55B419E5B7D0E0183 /* Pods-F49.debug.xcconfig */,
+				CC529E58BE2375A87DFA085E /* Pods-F49.release.xcconfig */,
+				735D8A654505250CC21C6317 /* Pods-F247.debug.xcconfig */,
+				E022856E7C7EBAFB57FEE353 /* Pods-F247.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -508,6 +762,25 @@
 				C20FF73E251F36500096A38F /* NotificationTableViewCell.xib */,
 			);
 			path = Notification;
+			sourceTree = "<group>";
+		};
+		C21EB55225AC3E92002621B7 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				C21EB55325AC3EAB002621B7 /* FirebaseModel.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		C21EB55A25AC529E002621B7 /* UserView */ = {
+			isa = PBXGroup;
+			children = (
+				C21EB55B25AC529E002621B7 /* MatKhauViewController.swift */,
+				C21EB55C25AC529E002621B7 /* CaiDatViewController.swift */,
+				C21EB55D25AC529E002621B7 /* CuaHangMacDinhViewController.swift */,
+				C21EB55E25AC529E002621B7 /* UserViewController.swift */,
+			);
+			path = UserView;
 			sourceTree = "<group>";
 		};
 		C2300837255EF1E4000E84A8 /* EndPoint */ = {
@@ -793,18 +1066,6 @@
 			path = HomeView;
 			sourceTree = "<group>";
 		};
-		C2659CC22510BE2D0021BC9D /* UserView */ = {
-			isa = PBXGroup;
-			children = (
-				C2695BEC2508C62400E3A3C8 /* UserViewController.swift */,
-				C2659CC42510BE740021BC9D /* CuaHangMacDinhViewController.swift */,
-				C2659CC62510BE8F0021BC9D /* MatKhauViewController.swift */,
-				C2659CC82510BE9C0021BC9D /* CaiDatViewController.swift */,
-			);
-			name = UserView;
-			path = "Tôi View";
-			sourceTree = "<group>";
-		};
 		C2659CC32510BE3E0021BC9D /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
@@ -816,6 +1077,7 @@
 		C265C16B25071EDF000D4FAE = {
 			isa = PBXGroup;
 			children = (
+				C277194E25AC2A050081AD85 /* F247.entitlements */,
 				C265C17625071EE0000D4FAE /* F49 */,
 				C265C17525071EE0000D4FAE /* Products */,
 				0A5AD0ECE7DFF2EC53407059 /* Pods */,
@@ -827,6 +1089,7 @@
 			isa = PBXGroup;
 			children = (
 				C265C17425071EDF000D4FAE /* F49.app */,
+				C266680C25ABE7C400770680 /* F247.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -834,18 +1097,22 @@
 		C265C17625071EE0000D4FAE /* F49 */ = {
 			isa = PBXGroup;
 			children = (
+				C2CE2A3025AC06DB00A5DF80 /* F49.entitlements */,
 				C23117622577214D00B84A8E /* Fonts */,
 				C2BC99C7252186C400796448 /* StoryBoard */,
 				C2661CE4250A074500430595 /* Components */,
 				C2661CCE2509D5BE00430595 /* Custom Cell */,
 				C265C18E25071F4E000D4FAE /* Helpers */,
-				C265C18D25071F09000D4FAE /* View Controllers */,
+				C265C18D25071F09000D4FAE /* ViewControllers */,
 				C265C18C25071EFE000D4FAE /* Models */,
 				C265C18B25071EF1000D4FAE /* Networking */,
 				C265C17725071EE0000D4FAE /* AppDelegate.swift */,
 				C265C17925071EE0000D4FAE /* SceneDelegate.swift */,
+				C266680E25ABE84200770680 /* F247-Assets.xcassets */,
 				C265C18025071EE2000D4FAE /* Assets.xcassets */,
 				C265C18525071EE2000D4FAE /* Info.plist */,
+				C2CE2A3725AC0C9200A5DF80 /* GoogleService-Info.plist */,
+				C266681125ABE88D00770680 /* F247-Info.plist */,
 				C265C199250722E0000D4FAE /* F49-Bridging-Header.h */,
 			);
 			path = F49;
@@ -867,6 +1134,7 @@
 		C265C18C25071EFE000D4FAE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C21EB55225AC3E92002621B7 /* Firebase */,
 				C2F27D5D25592A2200FB383A /* TienIch */,
 				C2F27D5C25592A0A00FB383A /* UserProfile */,
 				C2F27D5B255929D300FB383A /* DashBoard */,
@@ -895,20 +1163,20 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		C265C18D25071F09000D4FAE /* View Controllers */ = {
+		C265C18D25071F09000D4FAE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C21EB55A25AC529E002621B7 /* UserView */,
 				C26AA48A256B582F00D46DBD /* QRCode */,
 				C20FF739251F18BB0096A38F /* NotificationView */,
 				C2C2584E25145F380048FAB2 /* InfoCamDoView */,
 				C2C2583D25135A9D0048FAB2 /* TopMenuView */,
 				C282CC0825120A4A00F62B63 /* UtilitiesView */,
 				C2659CC32510BE3E0021BC9D /* HomeView */,
-				C2659CC22510BE2D0021BC9D /* UserView */,
 				C265C19A250728CC000D4FAE /* LoginViewController.swift */,
 				C2695BEE2508F69B00E3A3C8 /* SplashScreenViewController.swift */,
 			);
-			path = "View Controllers";
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		C265C18E25071F4E000D4FAE /* Helpers */ = {
@@ -1360,6 +1628,7 @@
 			isa = PBXGroup;
 			children = (
 				07E3FC27611B8020906915F1 /* Pods_F49.framework */,
+				FA39709F65D56F24B5B18713 /* Pods_F247.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1375,7 +1644,7 @@
 				C265C17025071EDF000D4FAE /* Sources */,
 				C265C17125071EDF000D4FAE /* Frameworks */,
 				C265C17225071EDF000D4FAE /* Resources */,
-				DBB784D969E2E020E71559D7 /* [CP] Embed Pods Frameworks */,
+				5BB9E18A45AFBB1A25F583A3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1384,6 +1653,25 @@
 			name = F49;
 			productName = F49;
 			productReference = C265C17425071EDF000D4FAE /* F49.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C266671F25ABE7C400770680 /* F247 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C266680925ABE7C400770680 /* Build configuration list for PBXNativeTarget "F247" */;
+			buildPhases = (
+				E50326011E485DE8B4092A2B /* [CP] Check Pods Manifest.lock */,
+				C266672125ABE7C400770680 /* Sources */,
+				C26667BC25ABE7C400770680 /* Frameworks */,
+				C26667BE25ABE7C400770680 /* Resources */,
+				D047C8134087E6B07EB23B22 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = F247;
+			productName = F49;
+			productReference = C266680C25ABE7C400770680 /* F247.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1415,6 +1703,7 @@
 			projectRoot = "";
 			targets = (
 				C265C17325071EDF000D4FAE /* F49 */,
+				C266671F25ABE7C400770680 /* F247 */,
 			);
 		};
 /* End PBXProject section */
@@ -1467,6 +1756,7 @@
 				C2641523252ACC1D001CB558 /* ThongTinHopDongTableViewCell.xib in Resources */,
 				C2594D112519A71F00A99713 /* ContractOpenTableViewCell.xib in Resources */,
 				C2BC99D12521873900796448 /* TIENICH.storyboard in Resources */,
+				C2CE2A3825AC0C9200A5DF80 /* GoogleService-Info.plist in Resources */,
 				C267A08D2542B9F6003C840B /* Cell6CreateTableViewCell.xib in Resources */,
 				C268E5312525D4DA00FAF711 /* ButtonFooterCollectionViewCell.xib in Resources */,
 				C231177A2577215F00B84A8E /* Roboto-BlackItalic.ttf in Resources */,
@@ -1500,9 +1790,107 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C26667BE25ABE7C400770680 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C26667BF25ABE7C400770680 /* Roboto-Thin.ttf in Resources */,
+				C26667C025ABE7C400770680 /* QRCodeScanView.xib in Resources */,
+				C2CE2A3925AC0C9200A5DF80 /* GoogleService-Info.plist in Resources */,
+				C26667C125ABE7C400770680 /* LaunchScreen.storyboard in Resources */,
+				C26667C225ABE7C400770680 /* CamDoTableViewCell.xib in Resources */,
+				C26667C325ABE7C400770680 /* THUCHI.storyboard in Resources */,
+				C26667C425ABE7C400770680 /* PopUpViewController.xib in Resources */,
+				C26667C525ABE7C400770680 /* BodyCollectionViewCell.xib in Resources */,
+				C266681025ABE84200770680 /* F247-Assets.xcassets in Resources */,
+				C26667C625ABE7C400770680 /* Roboto-Bold.ttf in Resources */,
+				C26667C725ABE7C400770680 /* InfoCamDoTableViewCell.xib in Resources */,
+				C26667C825ABE7C400770680 /* CameraCollectionViewCell.xib in Resources */,
+				C26667C925ABE7C400770680 /* FooterCollectionReusableView.xib in Resources */,
+				C26667CA25ABE7C400770680 /* LichSuTableViewCell.xib in Resources */,
+				C26667CB25ABE7C400770680 /* RutVonChiTietTableViewCell.xib in Resources */,
+				C26667CC25ABE7C400770680 /* Cell4CreateTableViewCell.xib in Resources */,
+				C266681225ABF01600770680 /* F247-Info.plist in Resources */,
+				C26667CD25ABE7C400770680 /* ThuLai3TableViewCell.xib in Resources */,
+				C26667CE25ABE7C400770680 /* NotificationTableViewCell.xib in Resources */,
+				C26667CF25ABE7C400770680 /* TIENHOAHONG.storyboard in Resources */,
+				C26667D025ABE7C400770680 /* Roboto-Light.ttf in Resources */,
+				C26667D125ABE7C400770680 /* ImageCollectionViewCell.xib in Resources */,
+				C26667D225ABE7C400770680 /* Roboto-Black.ttf in Resources */,
+				C26667D325ABE7C400770680 /* Roboto-Regular.ttf in Resources */,
+				C26667D425ABE7C400770680 /* ImageTableViewCell.xib in Resources */,
+				C26667D525ABE7C400770680 /* USER.storyboard in Resources */,
+				C26667D625ABE7C400770680 /* Cell1CreateTableViewCell.xib in Resources */,
+				C26667D725ABE7C400770680 /* ThongTinTaiSanTableViewCell.xib in Resources */,
+				C26667D825ABE7C400770680 /* CheckBoxTableViewCell.xib in Resources */,
+				C26667D925ABE7C400770680 /* ThanhLyTaiSanTableViewCell.xib in Resources */,
+				C26667DA25ABE7C400770680 /* QuanLyVonTableViewCell.xib in Resources */,
+				C26667DB25ABE7C400770680 /* Footer.xib in Resources */,
+				C26667DC25ABE7C400770680 /* Roboto-ThinItalic.ttf in Resources */,
+				C26667DE25ABE7C400770680 /* Cell3CreateTableViewCell.xib in Resources */,
+				C26667DF25ABE7C400770680 /* UtilitiesHeaderCollectionViewCell.xib in Resources */,
+				C26667E025ABE7C400770680 /* RutVonTableViewCell.xib in Resources */,
+				C26667E125ABE7C400770680 /* Roboto-BoldItalic.ttf in Resources */,
+				C26667E225ABE7C400770680 /* BodyTienHoaHongTableViewCell.xib in Resources */,
+				C26667E325ABE7C400770680 /* Roboto-MediumItalic.ttf in Resources */,
+				C26667E425ABE7C400770680 /* RUTLAI.storyboard in Resources */,
+				C26667E525ABE7C400770680 /* Menu.xib in Resources */,
+				C26667E625ABE7C400770680 /* THONGBAO.storyboard in Resources */,
+				C26667E725ABE7C400770680 /* ThongTinHopDongTableViewCell.xib in Resources */,
+				C26667E825ABE7C400770680 /* ContractOpenTableViewCell.xib in Resources */,
+				C26667E925ABE7C400770680 /* TIENICH.storyboard in Resources */,
+				C26667EA25ABE7C400770680 /* Cell6CreateTableViewCell.xib in Resources */,
+				C26667EB25ABE7C400770680 /* ButtonFooterCollectionViewCell.xib in Resources */,
+				C26667EC25ABE7C400770680 /* Roboto-BlackItalic.ttf in Resources */,
+				C26667ED25ABE7C400770680 /* Roboto-Italic.ttf in Resources */,
+				C26667EE25ABE7C400770680 /* Cell5CreateTableViewCell.xib in Resources */,
+				C26667EF25ABE7C400770680 /* UtilitiesBodyCollectionViewCell.xib in Resources */,
+				C26667F025ABE7C400770680 /* Cell1UserTableViewCell.xib in Resources */,
+				C26667F125ABE7C400770680 /* Roboto-Medium.ttf in Resources */,
+				C26667F225ABE7C400770680 /* Cell2CreateTableViewCell.xib in Resources */,
+				C26667F325ABE7C400770680 /* NavigationBar.xib in Resources */,
+				C26667F425ABE7C400770680 /* Main.storyboard in Resources */,
+				C26667F525ABE7C400770680 /* CAMDO.storyboard in Resources */,
+				C26667F625ABE7C400770680 /* HeaderCollectionViewCell.xib in Resources */,
+				C26667F725ABE7C400770680 /* NameTableViewCell.xib in Resources */,
+				C26667F825ABE7C400770680 /* BAOCAO.storyboard in Resources */,
+				C26667FA25ABE7C400770680 /* HOME.storyboard in Resources */,
+				C26667FB25ABE7C400770680 /* TaiSanHopDongTheChapTableViewCell.xib in Resources */,
+				C26667FC25ABE7C400770680 /* LoadMoreView.xib in Resources */,
+				C26667FD25ABE7C400770680 /* HeaderTienHoaHongTableViewCell.xib in Resources */,
+				C26667FE25ABE7C400770680 /* THANHLYTAISAN.storyboard in Resources */,
+				C26667FF25ABE7C400770680 /* MacDinhTableViewCell.xib in Resources */,
+				C266680025ABE7C400770680 /* ShopUITableViewCell.xib in Resources */,
+				C266680125ABE7C400770680 /* AlertView.xib in Resources */,
+				C266680225ABE7C400770680 /* Cell3CreateCollectionViewCell.xib in Resources */,
+				C266680325ABE7C400770680 /* KhachHangHopDongTheChapTableViewCell.xib in Resources */,
+				C266680425ABE7C400770680 /* LichSu2TableViewCell.xib in Resources */,
+				C266680525ABE7C400770680 /* TacVuTableViewCell.xib in Resources */,
+				C266680625ABE7C400770680 /* Roboto-LightItalic.ttf in Resources */,
+				C266680725ABE7C400770680 /* RutVon2TableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5BB9E18A45AFBB1A25F583A3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-F49/Pods-F49-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-F49/Pods-F49-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-F49/Pods-F49-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7C0F86EDCC6B7DB2EFAE69FB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1525,21 +1913,43 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DBB784D969E2E020E71559D7 /* [CP] Embed Pods Frameworks */ = {
+		D047C8134087E6B07EB23B22 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-F49/Pods-F49-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-F247/Pods-F247-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-F49/Pods-F49-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-F247/Pods-F247-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-F49/Pods-F49-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-F247/Pods-F247-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E50326011E485DE8B4092A2B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-F247-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1557,7 +1967,6 @@
 				C25AD650251B2A290091CA6D /* HopDongTheoLoai.swift in Sources */,
 				C25E7EE6252DCB1E00490F8D /* ThuLai.swift in Sources */,
 				C2300835255EF1CD000E84A8 /* parameters.swift in Sources */,
-				C2695BED2508C62400E3A3C8 /* UserViewController.swift in Sources */,
 				C25E7ED9252D6E2800490F8D /* BodyTienHoaHongTableViewCell.swift in Sources */,
 				C2A2B0E0255D2567004A98CD /* ExtensionString.swift in Sources */,
 				C268E52725258D9F00FAF711 /* RutVonChiTietTableViewCell.swift in Sources */,
@@ -1572,8 +1981,10 @@
 				C260996F253AC99800A20621 /* KhachHangViewController.swift in Sources */,
 				C267A09425432974003C840B /* HDGDTinhTien.swift in Sources */,
 				C288472F250B0F7200CB84FA /* Contants.swift in Sources */,
+				C21EB56125AC529E002621B7 /* CaiDatViewController.swift in Sources */,
 				C26704A9251C2C5C00B82116 /* Underline.swift in Sources */,
 				C2659C7C251079C00021BC9D /* NameTableViewCell.swift in Sources */,
+				C21EB55F25AC529E002621B7 /* MatKhauViewController.swift in Sources */,
 				C28821B7252895DE00EF6B91 /* ThanhLyTaiSanTableViewCell.swift in Sources */,
 				C2695BEF2508F69B00E3A3C8 /* SplashScreenViewController.swift in Sources */,
 				C230082F255EF14A000E84A8 /* methods.swift in Sources */,
@@ -1593,6 +2004,8 @@
 				C2594D062519A1A000A99713 /* HopDongCamDoViewController.swift in Sources */,
 				C2F4F69A252EAC3600A9C86C /* ThuLai3TableViewCell.swift in Sources */,
 				C2644150252C10CB001610A6 /* BaoCao.swift in Sources */,
+				C21EB56325AC529E002621B7 /* CuaHangMacDinhViewController.swift in Sources */,
+				C21EB56525AC529E002621B7 /* UserViewController.swift in Sources */,
 				C2641526252AD19C001CB558 /* TacVuTableViewCell.swift in Sources */,
 				C263108E2522D4E70056FD6F /* RutLaiContainerViewController.swift in Sources */,
 				C267ACE62533F725007BCD49 /* Camera.swift in Sources */,
@@ -1613,6 +2026,7 @@
 				C2403374258722FD004D9C0D /* ScreenManager.swift in Sources */,
 				C25E7ED1252D680000490F8D /* TienHoaHongViewController.swift in Sources */,
 				C25E7EE0252DB4C900490F8D /* RutVon2TableViewCell.swift in Sources */,
+				C21EB55425AC3EAB002621B7 /* FirebaseModel.swift in Sources */,
 				C265C19F250777A1000D4FAE /* UserToken.swift in Sources */,
 				C2695BEB2508BF9200E3A3C8 /* HomeViewController.swift in Sources */,
 				C26BB5F025247FC50024D236 /* QuanLyVonTableViewCell.swift in Sources */,
@@ -1630,7 +2044,6 @@
 				C2C25844251373C90048FAB2 /* CamDoTableViewCell.swift in Sources */,
 				C258EFE4253F326C00FA72C2 /* TienKhachNhan.swift in Sources */,
 				C282CBF92511CB8500F62B63 /* ShopUITableViewCell.swift in Sources */,
-				C2659CC52510BE740021BC9D /* CuaHangMacDinhViewController.swift in Sources */,
 				C2A2B0DA255D2552004A98CD /* ExtensionPickerView.swift in Sources */,
 				C240336625871B53004D9C0D /* QRCodeModel.swift in Sources */,
 				C27D30432567B78E00AB3765 /* TabbarView.swift in Sources */,
@@ -1642,7 +2055,6 @@
 				C2D0947E2581BE840004B2EB /* FooterCollectionReusableView.swift in Sources */,
 				C25ED6922527253A004662A1 /* NhomTaiSan.swift in Sources */,
 				C2C25877251643FC0048FAB2 /* DoGiaDung.swift in Sources */,
-				C2659CC92510BE9C0021BC9D /* CaiDatViewController.swift in Sources */,
 				C268E5232525783D00FAF711 /* RutVonTableViewCell.swift in Sources */,
 				C264152C252B06D4001CB558 /* LichSuVayNo.swift in Sources */,
 				C26704B3251C9B9D00B82116 /* ChiTietHopDongViewController.swift in Sources */,
@@ -1688,7 +2100,6 @@
 				C26310902522D84B0056FD6F /* ListRutLai.swift in Sources */,
 				C26310942522EF900056FD6F /* BaseController.swift in Sources */,
 				C2C2585B251496770048FAB2 /* CamDoChiTiet.swift in Sources */,
-				C2659CC72510BE8F0021BC9D /* MatKhauViewController.swift in Sources */,
 				C287736C2537E9B400A8B3E8 /* Cell1CreateTableViewCell.swift in Sources */,
 				C267A0912542DAD4003C840B /* CreateHDGiaDung.swift in Sources */,
 				C20FF73B251F18E20096A38F /* NotificationViewController.swift in Sources */,
@@ -1703,6 +2114,168 @@
 				C240336825871BAB004D9C0D /* ReponseObject.swift in Sources */,
 				C2C5A981253E880600CC4EB0 /* LoadTaoMoi.swift in Sources */,
 				C2641532252B105D001CB558 /* LichSuTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C266672125ABE7C400770680 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C266672225ABE7C400770680 /* ContractOpenTableViewCell.swift in Sources */,
+				C266672325ABE7C400770680 /* LoginViewController.swift in Sources */,
+				C266672425ABE7C400770680 /* UtilitiesHeaderCollectionViewCell.swift in Sources */,
+				C266672525ABE7C400770680 /* TabbarButton.swift in Sources */,
+				C266672625ABE7C400770680 /* LoadMoreView.swift in Sources */,
+				C266672725ABE7C400770680 /* HopDongTheoLoai.swift in Sources */,
+				C266672825ABE7C400770680 /* ThuLai.swift in Sources */,
+				C266672925ABE7C400770680 /* parameters.swift in Sources */,
+				C266672B25ABE7C400770680 /* BodyTienHoaHongTableViewCell.swift in Sources */,
+				C266672C25ABE7C400770680 /* ExtensionString.swift in Sources */,
+				C266672D25ABE7C400770680 /* RutVonChiTietTableViewCell.swift in Sources */,
+				C266672E25ABE7C400770680 /* CreateHDCamDoViewController.swift in Sources */,
+				C266672F25ABE7C400770680 /* UtilitiesBodyCollectionViewCell.swift in Sources */,
+				C266673025ABE7C400770680 /* MGConnection.swift in Sources */,
+				C266673125ABE7C400770680 /* Cell3CreateCollectionViewCell.swift in Sources */,
+				C266673225ABE7C400770680 /* LapHopDong.swift in Sources */,
+				C266673325ABE7C400770680 /* Cell4CreateTableViewCell.swift in Sources */,
+				C266673425ABE7C400770680 /* ExtensionUIColor.swift in Sources */,
+				C266673525ABE7C400770680 /* OptionViewController.swift in Sources */,
+				C266673625ABE7C400770680 /* KhachHangViewController.swift in Sources */,
+				C266673725ABE7C400770680 /* HDGDTinhTien.swift in Sources */,
+				C266673825ABE7C400770680 /* Contants.swift in Sources */,
+				C21EB56225AC529E002621B7 /* CaiDatViewController.swift in Sources */,
+				C266673925ABE7C400770680 /* Underline.swift in Sources */,
+				C266673A25ABE7C400770680 /* NameTableViewCell.swift in Sources */,
+				C21EB56025AC529E002621B7 /* MatKhauViewController.swift in Sources */,
+				C266673B25ABE7C400770680 /* ThanhLyTaiSanTableViewCell.swift in Sources */,
+				C266673C25ABE7C400770680 /* SplashScreenViewController.swift in Sources */,
+				C266673D25ABE7C400770680 /* methods.swift in Sources */,
+				C266673E25ABE7C400770680 /* APIConfiguration.swift in Sources */,
+				C266673F25ABE7C400770680 /* CodeQRViewController.swift in Sources */,
+				C266674025ABE7C400770680 /* HeaderTienHoaHongTableViewCell.swift in Sources */,
+				C266674125ABE7C400770680 /* Cell1UserTableViewCell.swift in Sources */,
+				C266674225ABE7C400770680 /* HeaderCollectionViewCell.swift in Sources */,
+				C266674325ABE7C400770680 /* UserProfile.swift in Sources */,
+				C266674425ABE7C400770680 /* VonDauTuChiTiet.swift in Sources */,
+				C266674525ABE7C400770680 /* CreateHDGiaDungViewController.swift in Sources */,
+				C266674625ABE7C400770680 /* Footer.swift in Sources */,
+				C266674725ABE7C400770680 /* Cell6CreateTableViewCell.swift in Sources */,
+				C266674825ABE7C400770680 /* ChiTietLichSuViewController.swift in Sources */,
+				C266674925ABE7C400770680 /* DinhGia.swift in Sources */,
+				C266674A25ABE7C400770680 /* ChiTietHopDong.swift in Sources */,
+				C266674B25ABE7C400770680 /* HopDongCamDoViewController.swift in Sources */,
+				C266674C25ABE7C400770680 /* ThuLai3TableViewCell.swift in Sources */,
+				C266674D25ABE7C400770680 /* BaoCao.swift in Sources */,
+				C21EB56425AC529E002621B7 /* CuaHangMacDinhViewController.swift in Sources */,
+				C21EB56625AC529E002621B7 /* UserViewController.swift in Sources */,
+				C266674E25ABE7C400770680 /* TacVuTableViewCell.swift in Sources */,
+				C266674F25ABE7C400770680 /* RutLaiContainerViewController.swift in Sources */,
+				C266675025ABE7C400770680 /* Camera.swift in Sources */,
+				C266675125ABE7C400770680 /* ExtensionToolbar.swift in Sources */,
+				C266675225ABE7C400770680 /* GetTab.swift in Sources */,
+				C266675325ABE7C400770680 /* CamDoViewController.swift in Sources */,
+				C266675425ABE7C400770680 /* APIRouter.swift in Sources */,
+				C266675525ABE7C400770680 /* MenuHeader.swift in Sources */,
+				C266675625ABE7C400770680 /* DashBoard.swift in Sources */,
+				C266675725ABE7C400770680 /* QRCodeScanView.swift in Sources */,
+				C266675825ABE7C400770680 /* RutVon.swift in Sources */,
+				C266675925ABE7C400770680 /* ExtensionUIDatePicker.swift in Sources */,
+				C266675A25ABE7C400770680 /* ExtensionUIImage.swift in Sources */,
+				C266675B25ABE7C400770680 /* BaseResponse.swift in Sources */,
+				C266675C25ABE7C400770680 /* HopDongMoViewController.swift in Sources */,
+				C266675D25ABE7C400770680 /* InfoCamDoTableViewCell.swift in Sources */,
+				C266675E25ABE7C400770680 /* Constants.swift in Sources */,
+				C266675F25ABE7C400770680 /* ScreenManager.swift in Sources */,
+				C266676025ABE7C400770680 /* TienHoaHongViewController.swift in Sources */,
+				C266676125ABE7C400770680 /* RutVon2TableViewCell.swift in Sources */,
+				C21EB55525AC3EAB002621B7 /* FirebaseModel.swift in Sources */,
+				C266676225ABE7C400770680 /* UserToken.swift in Sources */,
+				C266676325ABE7C400770680 /* HomeViewController.swift in Sources */,
+				C266676425ABE7C400770680 /* QuanLyVonTableViewCell.swift in Sources */,
+				C266676525ABE7C400770680 /* CamDo.swift in Sources */,
+				C266676625ABE7C400770680 /* ImageCollectionViewCell.swift in Sources */,
+				C266676725ABE7C400770680 /* CreateHDTheChap.swift in Sources */,
+				C266676825ABE7C400770680 /* Menu.swift in Sources */,
+				C266676925ABE7C400770680 /* DongLaiViewController.swift in Sources */,
+				C266676A25ABE7C400770680 /* QuanLyVonDauTu.swift in Sources */,
+				C266676B25ABE7C400770680 /* NotificationTableViewCell.swift in Sources */,
+				C266676C25ABE7C400770680 /* TaiSanHDGDViewController.swift in Sources */,
+				C266676D25ABE7C400770680 /* GestureClosure.swift in Sources */,
+				C266676E25ABE7C400770680 /* RutLaiChiTietViewController.swift in Sources */,
+				C266676F25ABE7C400770680 /* PopUpViewController.swift in Sources */,
+				C266677025ABE7C400770680 /* CamDoTableViewCell.swift in Sources */,
+				C266677125ABE7C400770680 /* TienKhachNhan.swift in Sources */,
+				C266677225ABE7C400770680 /* ShopUITableViewCell.swift in Sources */,
+				C266677425ABE7C400770680 /* ExtensionPickerView.swift in Sources */,
+				C266677525ABE7C400770680 /* QRCodeModel.swift in Sources */,
+				C266677625ABE7C400770680 /* TabbarView.swift in Sources */,
+				C266677725ABE7C400770680 /* LichSuGiaoDich.swift in Sources */,
+				C266677825ABE7C400770680 /* BaoCaoViewController.swift in Sources */,
+				C266677925ABE7C400770680 /* MacDinhTableViewCell.swift in Sources */,
+				C266677A25ABE7C400770680 /* ThuChi.swift in Sources */,
+				C266677B25ABE7C400770680 /* LichSuViewController.swift in Sources */,
+				C266677C25ABE7C400770680 /* FooterCollectionReusableView.swift in Sources */,
+				C266677D25ABE7C400770680 /* NhomTaiSan.swift in Sources */,
+				C266677E25ABE7C400770680 /* DoGiaDung.swift in Sources */,
+				C266678025ABE7C400770680 /* RutVonTableViewCell.swift in Sources */,
+				C266678125ABE7C400770680 /* LichSuVayNo.swift in Sources */,
+				C266678225ABE7C400770680 /* ChiTietHopDongViewController.swift in Sources */,
+				C266678325ABE7C400770680 /* Cell5CreateTableViewCell.swift in Sources */,
+				C266678425ABE7C400770680 /* path.swift in Sources */,
+				C266678525ABE7C400770680 /* LayDanhSachTaiSan.swift in Sources */,
+				C266678625ABE7C400770680 /* ThanhLyTaiSanViewController.swift in Sources */,
+				C266678725ABE7C400770680 /* RutLaiViewController.swift in Sources */,
+				C266678825ABE7C400770680 /* KhachHangHopDongTheChapTableViewCell.swift in Sources */,
+				C266678925ABE7C400770680 /* ThanhLyTaiSanChiTietViewController.swift in Sources */,
+				C266678A25ABE7C400770680 /* ButtonFooterCollectionViewCell.swift in Sources */,
+				C266678B25ABE7C400770680 /* AppDelegate.swift in Sources */,
+				C266678C25ABE7C400770680 /* HDGDLoadTaoMoi.swift in Sources */,
+				C266678D25ABE7C400770680 /* Notification.swift in Sources */,
+				C266678E25ABE7C400770680 /* CuaHang.swift in Sources */,
+				C266678F25ABE7C400770680 /* TabbarCust.swift in Sources */,
+				C266679025ABE7C400770680 /* ThongTinThuChiViewController.swift in Sources */,
+				C266679125ABE7C400770680 /* BodyCollectionViewCell.swift in Sources */,
+				C266679225ABE7C400770680 /* AlertView.swift in Sources */,
+				C266679325ABE7C400770680 /* TienIch.swift in Sources */,
+				C266679425ABE7C400770680 /* UtilitiesViewController.swift in Sources */,
+				C266679525ABE7C400770680 /* UITabGesture.swift in Sources */,
+				C266679625ABE7C400770680 /* SwiftEventBus.swift in Sources */,
+				C266679725ABE7C400770680 /* TimKiem.swift in Sources */,
+				C266679825ABE7C400770680 /* DanhSachTaiSan.swift in Sources */,
+				C266679925ABE7C400770680 /* BoLocViewController.swift in Sources */,
+				C266679A25ABE7C400770680 /* ThongTinHopDongTableViewCell.swift in Sources */,
+				C266679B25ABE7C400770680 /* SceneDelegate.swift in Sources */,
+				C266679C25ABE7C400770680 /* ExtensionUIView.swift in Sources */,
+				C266679D25ABE7C400770680 /* ThongTinCamDoViewController.swift in Sources */,
+				C266679E25ABE7C400770680 /* TaiSanHopDongTheChapTableViewCell.swift in Sources */,
+				C266679F25ABE7C400770680 /* TabTrangThai.swift in Sources */,
+				C26667A025ABE7C400770680 /* LichSu2TableViewCell.swift in Sources */,
+				C26667A125ABE7C400770680 /* Utils.swift in Sources */,
+				C26667A225ABE7C400770680 /* NhanVien.swift in Sources */,
+				C26667A325ABE7C400770680 /* Cell3CreateTableViewCell.swift in Sources */,
+				C26667A425ABE7C400770680 /* CameraViewController.swift in Sources */,
+				C26667A525ABE7C400770680 /* DanhSachNhanVien.swift in Sources */,
+				C26667A625ABE7C400770680 /* ImageTableViewCell.swift in Sources */,
+				C26667A725ABE7C400770680 /* Cell2CreateTableViewCell.swift in Sources */,
+				C26667A825ABE7C400770680 /* ThuChiViewController.swift in Sources */,
+				C26667A925ABE7C400770680 /* Status.swift in Sources */,
+				C26667AA25ABE7C400770680 /* ListRutLai.swift in Sources */,
+				C26667AB25ABE7C400770680 /* BaseController.swift in Sources */,
+				C26667AC25ABE7C400770680 /* CamDoChiTiet.swift in Sources */,
+				C26667AE25ABE7C400770680 /* Cell1CreateTableViewCell.swift in Sources */,
+				C26667AF25ABE7C400770680 /* CreateHDGiaDung.swift in Sources */,
+				C26667B025ABE7C400770680 /* NotificationViewController.swift in Sources */,
+				C26667B125ABE7C400770680 /* NavigationBar.swift in Sources */,
+				C26667B225ABE7C400770680 /* KeyValue.swift in Sources */,
+				C26667B325ABE7C400770680 /* TaiSanViewController.swift in Sources */,
+				C26667B425ABE7C400770680 /* BaseCustomView.swift in Sources */,
+				C26667B525ABE7C400770680 /* Token.swift in Sources */,
+				C26667B625ABE7C400770680 /* ThongTinTaiSanTableViewCell.swift in Sources */,
+				C26667B725ABE7C400770680 /* CameraCollectionViewCell.swift in Sources */,
+				C26667B825ABE7C400770680 /* CheckBoxTableViewCell.swift in Sources */,
+				C26667B925ABE7C400770680 /* ReponseObject.swift in Sources */,
+				C26667BA25ABE7C400770680 /* LoadTaoMoi.swift in Sources */,
+				C26667BB25ABE7C400770680 /* LichSuTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1781,6 +2354,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1835,6 +2409,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				NEW_SETTING = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1844,11 +2419,18 @@
 		};
 		C265C18925071EE2000D4FAE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E65DEDA807C3DBF97E92936A /* Pods-F49.debug.xcconfig */;
+			baseConfigurationReference = CBD3CCF55B419E5B7D0E0183 /* Pods-F49.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = F49/F49.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 44445494AW;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				INFOPLIST_FILE = F49/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1857,6 +2439,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = MSM.F49;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1864,10 +2447,13 @@
 		};
 		C265C18A25071EE2000D4FAE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E42C8533E2BF20FFED4D10D1 /* Pods-F49.release.xcconfig */;
+			baseConfigurationReference = CC529E58BE2375A87DFA085E /* Pods-F49.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = F49/F49.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 44445494AW;
 				INFOPLIST_FILE = F49/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1877,6 +2463,57 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = MSM.F49;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C266680A25ABE7C400770680 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 735D8A654505250CC21C6317 /* Pods-F247.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = F247.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q96H23AQ4P;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				INFOPLIST_FILE = "F49/F247-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sitp.f247;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C266680B25ABE7C400770680 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E022856E7C7EBAFB57FEE353 /* Pods-F247.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = F247.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q96H23AQ4P;
+				INFOPLIST_FILE = "F49/F247-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sitp.f247;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1899,6 +2536,15 @@
 			buildConfigurations = (
 				C265C18925071EE2000D4FAE /* Debug */,
 				C265C18A25071EE2000D4FAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C266680925ABE7C400770680 /* Build configuration list for PBXNativeTarget "F247" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C266680A25ABE7C400770680 /* Debug */,
+				C266680B25ABE7C400770680 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

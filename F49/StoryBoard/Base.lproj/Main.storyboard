@@ -12,7 +12,7 @@
         <!--Splash Screen View Controller-->
         <scene sceneID="ZLk-os-ggv">
             <objects>
-                <viewController storyboardIdentifier="SplashScreenViewController" modalPresentationStyle="fullScreen" id="rXs-N2-B9k" customClass="SplashScreenViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SplashScreenViewController" modalPresentationStyle="fullScreen" id="rXs-N2-B9k" customClass="SplashScreenViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OHm-TS-5HP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,7 +51,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="LoginViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="LoginViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,7 +77,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U0Y-k5-Qmm">
                                 <rect key="frame" x="57" y="362.5" width="300" height="45"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="long@f49.vn" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YVJ-dL-cDJ">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sanghv@itpsolution.net" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YVJ-dL-cDJ">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -103,7 +103,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcN-IM-7RI">
                                 <rect key="frame" x="57" y="427.5" width="300" height="45"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Demo@123" borderStyle="roundedRect" placeholder="Mật khẩu" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EzZ-7R-eQG">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="F49@123" borderStyle="roundedRect" placeholder="Mật khẩu" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EzZ-7R-eQG">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -256,19 +256,19 @@
         <!--CodeQR View Controller-->
         <scene sceneID="5Co-3e-m5U">
             <objects>
-                <viewController storyboardIdentifier="CodeQRViewController" id="Ay2-UY-Osb" customClass="CodeQRViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CodeQRViewController" id="Ay2-UY-Osb" customClass="CodeQRViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ab9-aQ-dkv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssw-8C-Fb0" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssw-8C-Fb0" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QRScan_bg" translatesAutoresizingMaskIntoConstraints="NO" id="GR0-WS-Ehl">
                                 <rect key="frame" x="0.0" y="90" width="414" height="772"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OC2-au-jbI" customClass="QRCodeScanView" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OC2-au-jbI" customClass="QRCodeScanView" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="122" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -307,7 +307,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bz6-A6-TvY" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bz6-A6-TvY" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -336,7 +336,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bu-fa-nOd" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bu-fa-nOd" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -360,9 +360,9 @@
         <!--Tabbar View-->
         <scene sceneID="o2b-Er-7Ft">
             <objects>
-                <tabBarController storyboardIdentifier="TabarController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="v0p-IY-uzc" customClass="TabbarView" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabarController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="v0p-IY-uzc" customClass="TabbarView" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MKb-y5-8tC" customClass="TabbarCust" customModule="F49" customModuleProvider="target">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MKb-y5-8tC" customClass="TabbarCust" customModule="F247" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tabBar>

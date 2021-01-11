@@ -17,7 +17,6 @@ class Tab: Mappable{
     var value: String = ""
     
     required init?(map: Map) {
-        
     }
     
     init(id: Int, value: String) {

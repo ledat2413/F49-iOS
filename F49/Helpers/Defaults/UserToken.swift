@@ -15,6 +15,7 @@ enum UserKey: String{
     case AutoLogin = "autologin"
     case BoLocTrangThai = "trangthai"
     case BoLocTextField = "textfield"
+    case DeviceToken = "deviceToken"
 }
 
 struct UserHelper{

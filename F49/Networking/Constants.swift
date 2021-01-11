@@ -12,9 +12,9 @@ import Alamofire
 
 struct Constants {
     struct ProductionServer {
-        static let baseURL = "http://uatapiportal.f247.com.vn/"
+        static var baseURL: String = Bundle.main.object(forInfoDictionaryKey: "ServerApi") as! String
     }
-    
+
     struct APIParameterKey {
         static let grant_type = "grant_type"
         static let username = "username"
@@ -40,9 +40,14 @@ struct Constants {
         static let tienThuThucTe = "tienThuThucTe"
         static let loaiTaiSan = "loaiTaiSan"
         static let IDCuaHang = "IDCuaHang"
+        static let token = "token"
+        static let email = "email"
+        static let deviceName = "deviceName"
+        static let flg = "flg"
         
     }
 }
+
 
 enum HTTPHeaderField: String {
     case authentication = "Authorization"

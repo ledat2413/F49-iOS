@@ -13,12 +13,12 @@
         <!--Cam Do View Controller-->
         <scene sceneID="aJX-Ex-jCj">
             <objects>
-                <viewController storyboardIdentifier="CamDoViewController" id="BUW-Ca-3LL" customClass="CamDoViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CamDoViewController" id="BUW-Ca-3LL" customClass="CamDoViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vdG-mq-DTr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuR-Os-RkV" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuR-Os-RkV" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -91,12 +91,12 @@
         <!--Hop Dong Cam Do View Controller-->
         <scene sceneID="nm4-Fw-pXK">
             <objects>
-                <viewController storyboardIdentifier="HopDongCamDoViewController" id="2dB-wp-W4H" customClass="HopDongCamDoViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HopDongCamDoViewController" id="2dB-wp-W4H" customClass="HopDongCamDoViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iB8-wq-5fh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nKy-H7-Cs6" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nKy-H7-Cs6" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -219,19 +219,41 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PzA-yJ-LVi">
                                         <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
-                                        <state key="normal" image="plus"/>
+                                        <color key="backgroundColor" red="1" green="0.61109230526385039" blue="0.023457714790152906" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <action selector="floatingButtonPressed:" destination="2dB-wp-W4H" eventType="touchUpInside" id="u1Q-fP-foT"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0u-Sc-omc">
+                                        <rect key="frame" x="31.5" y="15" width="2" height="35"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="2" id="RXU-tL-kJt"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYH-TR-z9x">
+                                        <rect key="frame" x="15" y="31.5" width="35" height="2"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="q2m-Ve-G1R"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="f0u-Sc-omc" secondAttribute="bottom" constant="15" id="4V3-dQ-7Jk"/>
                                     <constraint firstAttribute="height" constant="65" id="5FY-Av-aWY"/>
                                     <constraint firstItem="PzA-yJ-LVi" firstAttribute="leading" secondItem="C4p-D8-gT6" secondAttribute="leading" id="8Ic-2y-H9K"/>
+                                    <constraint firstItem="DYH-TR-z9x" firstAttribute="leading" secondItem="C4p-D8-gT6" secondAttribute="leading" constant="15" id="8xc-gY-SX4"/>
                                     <constraint firstItem="PzA-yJ-LVi" firstAttribute="top" secondItem="C4p-D8-gT6" secondAttribute="top" id="AF5-hy-mOs"/>
                                     <constraint firstAttribute="width" constant="65" id="CJu-hp-zTz"/>
+                                    <constraint firstItem="f0u-Sc-omc" firstAttribute="centerY" secondItem="C4p-D8-gT6" secondAttribute="centerY" id="EEr-2G-9oN"/>
+                                    <constraint firstAttribute="trailing" secondItem="DYH-TR-z9x" secondAttribute="trailing" constant="15" id="Jmg-Hu-a7d"/>
+                                    <constraint firstItem="DYH-TR-z9x" firstAttribute="centerX" secondItem="C4p-D8-gT6" secondAttribute="centerX" id="Mv6-Cl-qdw"/>
+                                    <constraint firstItem="f0u-Sc-omc" firstAttribute="top" secondItem="C4p-D8-gT6" secondAttribute="top" constant="15" id="Wgh-bP-vqz"/>
                                     <constraint firstAttribute="bottom" secondItem="PzA-yJ-LVi" secondAttribute="bottom" id="YLI-yq-R6g"/>
                                     <constraint firstAttribute="trailing" secondItem="PzA-yJ-LVi" secondAttribute="trailing" id="jNO-9t-lzf"/>
+                                    <constraint firstItem="DYH-TR-z9x" firstAttribute="centerY" secondItem="C4p-D8-gT6" secondAttribute="centerY" id="khq-KL-AJK"/>
+                                    <constraint firstItem="f0u-Sc-omc" firstAttribute="centerX" secondItem="C4p-D8-gT6" secondAttribute="centerX" id="pms-c7-NIw"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -268,12 +290,12 @@
         <!--CreateHD Gia Dung View Controller-->
         <scene sceneID="A1t-sU-nl8">
             <objects>
-                <viewController storyboardIdentifier="CreateHDGiaDungViewController" id="5MO-CJ-W4c" customClass="CreateHDGiaDungViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateHDGiaDungViewController" id="5MO-CJ-W4c" customClass="CreateHDGiaDungViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TIW-NZ-3gl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9k-do-4A0" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9k-do-4A0" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -366,7 +388,7 @@
         <!--Bo Loc View Controller-->
         <scene sceneID="gpN-T3-a2f">
             <objects>
-                <viewController storyboardIdentifier="BoLocViewController" id="P2k-p1-dyd" customClass="BoLocViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BoLocViewController" id="P2k-p1-dyd" customClass="BoLocViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0vF-Hn-Cbd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -495,7 +517,7 @@
         <!--Hop Dong Mo View Controller-->
         <scene sceneID="Cg7-Ft-Sn6">
             <objects>
-                <viewController storyboardIdentifier="HopDongMoViewController" id="SyH-DB-7OR" customClass="HopDongMoViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HopDongMoViewController" id="SyH-DB-7OR" customClass="HopDongMoViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cyc-h8-bXT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -529,12 +551,12 @@
         <!--CreateHD Cam Do View Controller-->
         <scene sceneID="JpX-AF-tdl">
             <objects>
-                <viewController storyboardIdentifier="CreateHDCamDoViewController" id="ewK-SE-W5u" customClass="CreateHDCamDoViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateHDCamDoViewController" id="ewK-SE-W5u" customClass="CreateHDCamDoViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BJK-hP-GVZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FIg-Ny-GeN" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FIg-Ny-GeN" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -612,7 +634,7 @@
         <!--Option View Controller-->
         <scene sceneID="CiN-1B-7OQ">
             <objects>
-                <viewController storyboardIdentifier="OptionViewController" id="qjF-iL-ItC" customClass="OptionViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OptionViewController" id="qjF-iL-ItC" customClass="OptionViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7dR-Pk-0us">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -665,12 +687,12 @@
         <!--Camera View Controller-->
         <scene sceneID="UNm-1H-xO2">
             <objects>
-                <viewController storyboardIdentifier="CameraViewController" id="1NS-gm-hNf" customClass="CameraViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CameraViewController" id="1NS-gm-hNf" customClass="CameraViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ayb-iK-KXa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PM7-AE-oq6" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PM7-AE-oq6" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -760,12 +782,12 @@
         <!--Chi Tiet Hop Dong View Controller-->
         <scene sceneID="OY2-3V-pxc">
             <objects>
-                <viewController storyboardIdentifier="ChiTietHopDongViewController" id="lLg-po-BVV" customClass="ChiTietHopDongViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChiTietHopDongViewController" id="lLg-po-BVV" customClass="ChiTietHopDongViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y8Z-LV-Ype">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6b-u3-gLV" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6b-u3-gLV" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -902,7 +924,7 @@
         <!--Tai SanHDGD View Controller-->
         <scene sceneID="zJb-Pn-tCs">
             <objects>
-                <viewController storyboardIdentifier="TaiSanHDGDViewController" modalPresentationStyle="fullScreen" id="Whh-wy-hxq" customClass="TaiSanHDGDViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaiSanHDGDViewController" modalPresentationStyle="fullScreen" id="Whh-wy-hxq" customClass="TaiSanHDGDViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jHv-Wm-SPy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1045,12 +1067,12 @@
         <!--Thong Tin Cam Do View Controller-->
         <scene sceneID="zcW-Ef-LhI">
             <objects>
-                <viewController storyboardIdentifier="ThongTinCamDoViewController" modalPresentationStyle="fullScreen" id="8lb-Eg-R9t" customClass="ThongTinCamDoViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ThongTinCamDoViewController" modalPresentationStyle="fullScreen" id="8lb-Eg-R9t" customClass="ThongTinCamDoViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="buL-18-wSc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3sg-Xy-DN4" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3sg-Xy-DN4" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -1094,12 +1116,12 @@
         <!--Chi Tiet Lich Su View Controller-->
         <scene sceneID="qL3-Uz-i9i">
             <objects>
-                <viewController storyboardIdentifier="ChiTietLichSuViewController" id="HkX-Ye-7s1" customClass="ChiTietLichSuViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChiTietLichSuViewController" id="HkX-Ye-7s1" customClass="ChiTietLichSuViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NEY-qm-eDN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OD7-rd-xv4" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OD7-rd-xv4" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -1138,12 +1160,12 @@
         <!--Lich Su View Controller-->
         <scene sceneID="b3h-RB-X23">
             <objects>
-                <viewController storyboardIdentifier="LichSuViewController" id="RsZ-EH-9xY" customClass="LichSuViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LichSuViewController" id="RsZ-EH-9xY" customClass="LichSuViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qhm-z2-Zrk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6QH-Vb-cAa" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6QH-Vb-cAa" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -1182,7 +1204,7 @@
         <!--Tai San View Controller-->
         <scene sceneID="w8q-Ix-tHL">
             <objects>
-                <viewController storyboardIdentifier="TaiSanViewController" modalPresentationStyle="fullScreen" id="p06-cQ-qGo" customClass="TaiSanViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaiSanViewController" modalPresentationStyle="fullScreen" id="p06-cQ-qGo" customClass="TaiSanViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6S6-DM-0nm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1314,7 +1336,7 @@
         <!--Khach Hang View Controller-->
         <scene sceneID="pXF-um-biG">
             <objects>
-                <viewController storyboardIdentifier="KhachHangViewController" modalPresentationStyle="fullScreen" id="eEE-Ml-zGL" customClass="KhachHangViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KhachHangViewController" modalPresentationStyle="fullScreen" id="eEE-Ml-zGL" customClass="KhachHangViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fEg-XL-p67">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1410,12 +1432,12 @@
         <!--Dong Lai View Controller-->
         <scene sceneID="IjW-KF-cEt">
             <objects>
-                <viewController storyboardIdentifier="DongLaiViewController" id="dZc-EH-dGz" customClass="DongLaiViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DongLaiViewController" id="dZc-EH-dGz" customClass="DongLaiViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WmF-mj-XcU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wmt-l6-530" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wmt-l6-530" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -1486,7 +1508,6 @@
         <image name="icon-content-loc" width="65" height="49"/>
         <image name="lens" width="128" height="128"/>
         <image name="photo-camera-1" width="64" height="64"/>
-        <image name="plus" width="128" height="128"/>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

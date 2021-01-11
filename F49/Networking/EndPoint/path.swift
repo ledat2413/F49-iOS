@@ -18,6 +18,9 @@ extension APIRouter {
         case .Login:
             return "token"
             
+        case .PutFirebase:
+            return "api/ManageFireBase/PutFireBase"
+            
         //UserProfile
         case .GetUserProfile:
             return "api/UserProfile"
