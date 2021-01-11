@@ -1,0 +1,9 @@
+*.lock
+.DS_Store
+*.xcworkspace*
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
+Pods

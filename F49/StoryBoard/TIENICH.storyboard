@@ -12,7 +12,7 @@
         <!--TIỆN ÍCH-->
         <scene sceneID="WaN-L2-Ank">
             <objects>
-                <viewController id="vfo-Xt-cbh" customClass="UtilitiesViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vfo-Xt-cbh" customClass="UtilitiesViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XbD-en-amC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,7 +74,7 @@
                                             <constraint firstItem="uAl-Hg-HWl" firstAttribute="leading" secondItem="Dtg-uJ-RUQ" secondAttribute="trailing" constant="15" id="tpk-uu-7Y6"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcX-0I-jMj" customClass="Menu" customModule="F49" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcX-0I-jMj" customClass="Menu" customModule="F247" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="70" width="414" height="75"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
