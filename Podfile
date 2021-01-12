@@ -8,7 +8,6 @@ def sharepod
 pod 'AlamofireObjectMapper', '~> 5.2'
 pod 'NVActivityIndicatorView'
 pod 'JGProgressHUD'
-pod 'RealmSwift'
 pod 'SDWebImage'
 pod 'GMStepper'
 pod 'SnapKit', '~> 5.0.0'

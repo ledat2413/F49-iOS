@@ -8,9 +8,9 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
 
-class CamDo: Object, Mappable{
+
+class CamDo: Mappable{
     
     @objc dynamic var id: String = ""
     @objc dynamic var name: String = ""

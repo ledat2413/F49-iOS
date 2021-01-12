@@ -8,9 +8,9 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
 
-class Status: Object, Mappable{
+
+class Status: Mappable{
     
     @objc dynamic var id: String = ""
     @objc dynamic var value: String = ""
@@ -25,7 +25,7 @@ class Status: Object, Mappable{
     }
 }
 
-class StatusHopDong: Object, Mappable{
+class StatusHopDong: Mappable{
     
     @objc dynamic var id: Int = 0
     @objc dynamic var value: String = ""

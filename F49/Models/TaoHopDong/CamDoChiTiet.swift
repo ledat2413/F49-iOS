@@ -8,9 +8,9 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
 
-class CamDoChiTiet: Object, Mappable{
+
+class CamDoChiTiet: Mappable{
     
     @objc dynamic var name: String = ""
     @objc dynamic var phone: String = ""

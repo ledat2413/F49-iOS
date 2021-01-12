@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import RealmSwift
+
 import ObjectMapper
 
-class CuaHang: Object, Mappable{
+class CuaHang: Mappable{
     @objc dynamic var id: Int = 0
     @objc dynamic var tenCuaHang: String = ""
     

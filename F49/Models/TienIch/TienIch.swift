@@ -7,9 +7,9 @@
 //
 import Foundation
 import ObjectMapper
-import RealmSwift
 
-class TienIch: Object, Mappable{
+
+class TienIch: Mappable{
     
     @objc dynamic var id: Int = 0
     @objc dynamic var tieuDe: String = ""

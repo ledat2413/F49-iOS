@@ -8,9 +8,9 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
 
-class Token: Object, Mappable{
+
+class Token: Mappable{
     
     @objc dynamic var access_token: String = ""
     @objc dynamic var token_type: String = ""

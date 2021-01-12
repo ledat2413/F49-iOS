@@ -9,6 +9,6 @@
 #ifndef F49_Bridging_Header_h
 #define F49_Bridging_Header_h
 
-@import RealmSwift
+@
 
 #endif /* F49_Bridging_Header_h */

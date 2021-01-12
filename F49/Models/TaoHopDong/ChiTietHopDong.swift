@@ -8,7 +8,7 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
+
 
 class ChiTietHopDong: Mappable{
     

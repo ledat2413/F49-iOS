@@ -8,9 +8,9 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
 
-class DinhGia: Object, Mappable{
+
+class DinhGia: Mappable{
     
     @objc dynamic var id: String = ""
     @objc dynamic var name: String = ""
@@ -38,7 +38,7 @@ class DinhGia: Object, Mappable{
     }
 }
 
-class DinhGiaChiTiet: Object, Mappable{
+class DinhGiaChiTiet: Mappable{
     
     @objc dynamic var id: String = ""
     @objc dynamic var name: String = ""

@@ -8,9 +8,9 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
 
-class DanhSachNhanVien: Object, Mappable{
+
+class DanhSachNhanVien: Mappable{
 
     @objc dynamic var hoTen: String = ""
     @objc dynamic var taiKhoan: String = ""

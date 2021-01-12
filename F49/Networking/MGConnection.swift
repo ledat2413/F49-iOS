@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
-import RealmSwift
 import UIKit
 
 class MGConnection{

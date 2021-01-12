@@ -8,9 +8,9 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
 
-class ListRutLai: Object, Mappable{
+
+class ListRutLai: Mappable{
     
     @objc dynamic var text: String = ""
     

@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import RealmSwift
 import ObjectMapper
 
-class UserProfile: Object, Mappable{
+class UserProfile: Mappable{
     
     @objc dynamic var id: Int = 0
     @objc dynamic var taiKhoan: String = ""

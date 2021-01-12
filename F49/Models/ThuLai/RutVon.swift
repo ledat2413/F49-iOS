@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import RealmSwift
+
 import ObjectMapper
 
-class RutVon: Object, Mappable{
+class RutVon: Mappable{
     
     @objc dynamic var idCuaHang: Int = 0
     @objc dynamic var tenCuaHang: String = ""

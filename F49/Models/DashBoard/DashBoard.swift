@@ -8,9 +8,9 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
 
-class DashBoard: Object, Mappable{
+
+class DashBoard: Mappable{
     
     @objc dynamic var tieuDe: String = ""
     @objc dynamic var giaTri: String = ""

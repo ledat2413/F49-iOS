@@ -8,9 +8,9 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
 
-class VonDauTu: Object, Mappable{
+
+class VonDauTu: Mappable{
     
     @objc dynamic var idCuaHang: Int = 0
     @objc dynamic var tenCuaHang: String = ""

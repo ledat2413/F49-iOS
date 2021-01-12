@@ -8,9 +8,9 @@
 //
 import Foundation
 import ObjectMapper
-import RealmSwift
 
-class BaseResponseBool: Object, Mappable{
+
+class BaseResponseBool: Mappable{
     dynamic var success: Bool = false
     dynamic var message: String = ""
     dynamic var msgType: Int = 0
@@ -28,7 +28,7 @@ class BaseResponseBool: Object, Mappable{
     }
 }
 
-class BaseResponseInt: Object, Mappable{
+class BaseResponseInt: Mappable{
     dynamic var success: Bool = false
     dynamic var message: String = ""
     dynamic var msgType: Int = 0
@@ -46,7 +46,7 @@ class BaseResponseInt: Object, Mappable{
     }
 }
 
-class BaseResponseString: Object, Mappable{
+class BaseResponseString: Mappable{
     dynamic var success: Bool = false
     dynamic var message: String = ""
     dynamic var msgType: Int = 0
@@ -64,7 +64,7 @@ class BaseResponseString: Object, Mappable{
     }
 }
 
-class BaseResponseArray<T: Mappable>: Object, Mappable{
+class BaseResponseArray<T: Mappable>: Mappable{
     dynamic var success: Bool = false
     dynamic var message: String = ""
     dynamic var msgType: Int = 0
@@ -82,7 +82,7 @@ class BaseResponseArray<T: Mappable>: Object, Mappable{
     }
 }
 
-class BaseResponseObject<T: Mappable>: Object, Mappable{
+class BaseResponseObject<T: Mappable>: Mappable{
     dynamic var success: Bool = false
     dynamic var message: String = ""
     dynamic var msgType: Int = 0

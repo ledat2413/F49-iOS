@@ -8,9 +8,9 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
 
-class MenuHeader: Object, Mappable{
+
+class MenuHeader: Mappable{
     
     @objc dynamic var camDo: Int = 0
     @objc dynamic var dinhGia: Int = 0

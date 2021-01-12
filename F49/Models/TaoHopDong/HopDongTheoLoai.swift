@@ -8,9 +8,8 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
 
-class HopDongTheoLoai: Object, Mappable{
+class HopDongTheoLoai: Mappable{
     
     @objc dynamic var id: Int = 0
     @objc dynamic var soHopDong: String = ""

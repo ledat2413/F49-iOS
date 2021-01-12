@@ -8,9 +8,9 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
 
-class ThuChi: Object, Mappable{
+
+class ThuChi: Mappable{
     
     @objc dynamic var id: Int = 0
     @objc dynamic var tenCuaHang: String = ""
@@ -34,7 +34,7 @@ class ThuChi: Object, Mappable{
     }
 }
 
-class ThongTinThuChi: Object, Mappable{
+class ThongTinThuChi: Mappable{
     
     @objc dynamic var id: Int = 0
     @objc dynamic var tenCuaHang: String = ""
