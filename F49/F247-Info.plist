@@ -29,6 +29,8 @@
 	<string>Camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Library</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app need your location</string>
 	<key>ServerApi</key>
 	<string>http://apiportal.f247.com.vn</string>
 	<key>UIApplicationSceneManifest</key>
