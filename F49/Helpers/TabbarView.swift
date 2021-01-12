@@ -24,16 +24,19 @@ class TabbarView: UITabBarController{
         button.backgroundColor = UIColor.systemGreen
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.systemGreen.cgColor
-        imageView.frame = CGRect(x: button.center.x - 100, y: button.center.y, width: 22, height: 22)
+        imageView.frame = CGRect(x:19, y: 19, width: 22, height: 22)
+//        imageView.center = UIColor.red
         button.addSubview(imageView)
         self.view.insertSubview(button, aboveSubview: self.tabBar)
+        
+        self.tabBar.backgroundColor = UIColor.white;
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        button.frame = CGRect.init(x: self.tabBar.center.x - 32, y: self.tabBar.center.y - 65, width: 64, height: 64)
-        button.layer.cornerRadius = 32
+        button.frame = CGRect.init(x: self.tabBar.center.x - 30, y: (self.tabBar.frame.maxY - self.tabBar.bounds.height) + 2, width: 60, height: 60)
+        button.layer.cornerRadius = 30
+//        imageView.center = button.center
     }
     
     override func didReceiveMemoryWarning() {

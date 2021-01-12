@@ -361,15 +361,15 @@
             <objects>
                 <tabBarController storyboardIdentifier="TabarController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="v0p-IY-uzc" customClass="TabbarView" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MKb-y5-8tC" customClass="TabbarCust" customModule="F247" customModuleProvider="target">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MKb-y5-8tC">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tabBar>
                     <connections>
-                        <segue destination="dFd-RE-QDq" kind="relationship" relationship="viewControllers" id="ooB-hU-mED"/>
                         <segue destination="KiE-L0-vLJ" kind="relationship" relationship="viewControllers" id="KiV-Eg-XNH"/>
-                        <segue destination="Mik-mU-xte" kind="relationship" relationship="viewControllers" id="UfL-CT-GTf"/>
                         <segue destination="AnU-qO-E6w" kind="relationship" relationship="viewControllers" id="0jX-CC-WfO"/>
+                        <segue destination="8Qa-fK-wAo" kind="relationship" relationship="viewControllers" id="JRg-0U-Ia1"/>
+                        <segue destination="dFd-RE-QDq" kind="relationship" relationship="viewControllers" id="ooB-hU-mED"/>
                         <segue destination="FhI-bb-exn" kind="relationship" relationship="viewControllers" id="zOt-uX-tpJ"/>
                     </connections>
                 </tabBarController>
@@ -414,6 +414,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bhx-qM-4df" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4025" y="-13"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DgV-lw-D9S">
+            <objects>
+                <viewController id="8Qa-fK-wAo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8dv-ZT-XUT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="L4X-3v-ez2"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" enabled="NO" title="" id="KrL-ql-WlJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WjZ-em-vCn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4555" y="102"/>
         </scene>
         <!--THONGBAO-->
         <scene sceneID="dfx-tZ-uR2">
