@@ -13,7 +13,6 @@ class HopDongCamDoViewController:  TabbarButton{
     
     
     //MARK: --IBOutlet
-    @IBOutlet weak var headerView: NavigationBar!
     @IBOutlet weak var shopTextField: UITextField!
     @IBOutlet weak var contrectLabel: UILabel!
     
@@ -34,6 +33,7 @@ class HopDongCamDoViewController:  TabbarButton{
     var isHidden: Bool = false
     var baseView = BaseController()
     
+    @IBOutlet weak var TitleLabel: UILabel!
     
     override func viewDidLoad() {
         displayTabbarButton(colors: purpleInspireColor)
@@ -89,6 +89,9 @@ class HopDongCamDoViewController:  TabbarButton{
 
     }
     
+    @IBAction func backAction(_ sender: Any) {
+        self.backView()
+    }
     
     //MARK: --Func
     
@@ -154,20 +157,19 @@ class HopDongCamDoViewController:  TabbarButton{
     private func displayHeaderView(){
         switch screenId {
         case "HopDongCamDo":
-            headerView.title = "Quản lí hợp đồng cầm đồ"
+            TitleLabel.text = "Quản lí hợp đồng cầm đồ"
         case "CamDoGiaDung":
-            headerView.title = "Hợp đồng gia dụng"
+            TitleLabel.text = "Hợp đồng gia dụng"
         case "HopDongTraGop":
-            headerView.title = "Quản lí hợp đồng trả góp"
+            TitleLabel.text = "Quản lí hợp đồng trả góp"
         default:
             break
         }
         
-        headerView.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
         
     }
     
-    @objc func backView(){
+     func backView(){
         self.navigationController?.popViewController(animated: true)
     }
     

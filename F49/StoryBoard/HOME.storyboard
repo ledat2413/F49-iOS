@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ct0-wU-edf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ct0-wU-edf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <!--HOME-->
         <scene sceneID="aCL-pk-lDh">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="ct0-wU-edf" customClass="HomeViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="ct0-wU-edf" customClass="HomeViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6W0-YA-yXE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,26 +24,26 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="180"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6S-e2-r4K">
-                                        <rect key="frame" x="15" y="10" width="384" height="35"/>
+                                        <rect key="frame" x="15" y="10" width="384" height="45"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-top" translatesAutoresizingMaskIntoConstraints="NO" id="uh7-54-U7X">
-                                                <rect key="frame" x="0.0" y="0.0" width="70" height="35"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-top" translatesAutoresizingMaskIntoConstraints="NO" id="uh7-54-U7X">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="45"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="70" id="qYJ-Zm-cIm"/>
+                                                    <constraint firstAttribute="width" constant="80" id="qYJ-Zm-cIm"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t0I-4A-TRK">
-                                                <rect key="frame" x="85" y="0.0" width="299" height="35"/>
+                                                <rect key="frame" x="95" y="5" width="289" height="35"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SzP-Bn-D8D">
-                                                        <rect key="frame" x="0.0" y="0.0" width="299" height="35"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="289" height="35"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXX-Nf-6aj">
-                                                        <rect key="frame" x="269" y="12.5" width="15" height="10"/>
+                                                        <rect key="frame" x="259" y="12.5" width="15" height="10"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="10" id="OVr-uA-0ha"/>
                                                             <constraint firstAttribute="width" constant="15" id="WWs-Xx-PK3"/>
@@ -64,18 +64,18 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="6U0-c6-chv"/>
+                                            <constraint firstAttribute="height" constant="45" id="6U0-c6-chv"/>
                                             <constraint firstItem="uh7-54-U7X" firstAttribute="leading" secondItem="K6S-e2-r4K" secondAttribute="leading" id="7Yu-y9-Vxq"/>
-                                            <constraint firstAttribute="bottom" secondItem="t0I-4A-TRK" secondAttribute="bottom" id="F0c-nw-Iow"/>
+                                            <constraint firstAttribute="bottom" secondItem="t0I-4A-TRK" secondAttribute="bottom" constant="5" id="F0c-nw-Iow"/>
                                             <constraint firstItem="t0I-4A-TRK" firstAttribute="leading" secondItem="uh7-54-U7X" secondAttribute="trailing" constant="15" id="HrL-Lw-Wn6"/>
                                             <constraint firstItem="uh7-54-U7X" firstAttribute="top" secondItem="K6S-e2-r4K" secondAttribute="top" id="QnR-fh-IBL"/>
                                             <constraint firstAttribute="trailing" secondItem="t0I-4A-TRK" secondAttribute="trailing" id="RWx-6z-Kyx"/>
                                             <constraint firstAttribute="bottom" secondItem="uh7-54-U7X" secondAttribute="bottom" id="dY8-kJ-6w1"/>
                                             <constraint firstItem="uh7-54-U7X" firstAttribute="centerY" secondItem="K6S-e2-r4K" secondAttribute="centerY" id="k1v-R3-DfG"/>
-                                            <constraint firstItem="t0I-4A-TRK" firstAttribute="top" secondItem="K6S-e2-r4K" secondAttribute="top" id="qs8-9C-bhf"/>
+                                            <constraint firstItem="t0I-4A-TRK" firstAttribute="top" secondItem="K6S-e2-r4K" secondAttribute="top" constant="5" id="qs8-9C-bhf"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rEU-BJ-FKU" customClass="Menu" customModule="F49" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rEU-BJ-FKU" customClass="Menu" customModule="F247" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72.5" width="414" height="75"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -96,7 +96,7 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HEK-hS-1n7">
                                 <rect key="frame" x="20" y="224" width="374" height="589"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="8K6-eU-ZCD">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -115,7 +115,8 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="ISL-0O-axT"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ISL-0O-axT" firstAttribute="trailing" secondItem="5hY-GR-Ybn" secondAttribute="trailing" id="11g-5s-PpN"/>
                             <constraint firstItem="lmh-IL-QMn" firstAttribute="leading" secondItem="ISL-0O-axT" secondAttribute="leading" id="22T-h5-BLd"/>
@@ -130,7 +131,6 @@
                             <constraint firstItem="5hY-GR-Ybn" firstAttribute="height" secondItem="6W0-YA-yXE" secondAttribute="height" multiplier="1/4" id="sH6-4E-TOD"/>
                             <constraint firstItem="5hY-GR-Ybn" firstAttribute="top" secondItem="6W0-YA-yXE" secondAttribute="top" id="xZb-QF-1AW"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ISL-0O-axT"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="HOME" image="resize-home2" selectedImage="resize-home1" id="nlN-bL-V5c">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -157,5 +157,11 @@
         <image name="profile-bg-home" width="1242" height="435"/>
         <image name="resize-home1" width="30" height="30"/>
         <image name="resize-home2" width="30" height="30"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

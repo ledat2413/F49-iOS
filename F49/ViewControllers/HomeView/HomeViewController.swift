@@ -85,10 +85,10 @@ class HomeViewController: BaseController {
         findButton.backgroundColor = UIColor.clear
         findContainerView.layer.borderWidth  = 1
         
-        findTextField.displayTextField(radius: 18, color: UIColor.white)
+        findTextField.displayTextField(radius: 16, color: UIColor.white)
         findTextField.backgroundColor = UIColor.clear
         
-        findContainerView.displayTextField(radius: 18, color: UIColor.white)
+        findContainerView.displayTextField(radius: 16, color: UIColor.white)
         findContainerView.backgroundColor = UIColor.clear
         
         bodyCollectionView.register(UINib(nibName: "BodyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BodyCollectionViewCell")
