@@ -24,7 +24,7 @@ class TabbarView: UITabBarController{
         button.backgroundColor = UIColor.systemGreen
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.systemGreen.cgColor
-        imageView.frame = CGRect(x:19, y: 19, width: 22, height: 22)
+        imageView.frame = CGRect(x:17, y: 17, width: 22, height: 22)
 //        imageView.center = UIColor.red
         button.addSubview(imageView)
         self.view.insertSubview(button, aboveSubview: self.tabBar)
@@ -34,8 +34,8 @@ class TabbarView: UITabBarController{
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        button.frame = CGRect.init(x: self.tabBar.center.x - 30, y: (self.tabBar.frame.maxY - self.tabBar.bounds.height) + 2, width: 60, height: 60)
-        button.layer.cornerRadius = 30
+        button.frame = CGRect.init(x: self.tabBar.center.x - 30, y: (self.tabBar.frame.maxY - self.tabBar.bounds.height) + 2, width: 55, height: 55)
+        button.layer.cornerRadius = 55 / 2
 //        imageView.center = button.center
     }
     

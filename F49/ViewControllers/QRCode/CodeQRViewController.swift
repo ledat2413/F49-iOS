@@ -4,14 +4,12 @@ import UIKit
 
 class CodeQRViewController: BaseController {
 
-    @IBOutlet weak var navigation: NavigationBar!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var qrCodeScanView: QRCodeScanView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigation.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
-        navigation.titleLabel.text = "Quét QR"
+        titleLabel.text = "Quét QR"
         // Do any additional setup after loading the view.
         qrCodeScanView.delegate = self
         
@@ -27,6 +25,9 @@ class CodeQRViewController: BaseController {
             guard let wself = self else { return }
             wself.qrCodeScanView.startRunning()
         }
+    }
+    @IBAction func backAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,11 +55,6 @@ class CodeQRViewController: BaseController {
         print("Title", qrCode.Title)
         print("WebUrl", qrCode.WebUrl)
     }
-    
-    @objc func backView(){
-        self.dismiss(animated: true, completion: nil)
-    }
-    
 }
 
 
