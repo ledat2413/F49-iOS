@@ -265,7 +265,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OC2-au-jbI" customClass="QRCodeScanView" customModule="F247" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="114" width="414" height="782"/>
+                                <rect key="frame" x="0.0" y="126" width="414" height="770"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n7E-ov-aVn" userLabel="BgTopNav">
@@ -319,7 +319,7 @@
                         <viewLayoutGuide key="safeArea" id="rPe-bC-1ty"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="OC2-au-jbI" firstAttribute="top" secondItem="n7E-ov-aVn" secondAttribute="bottom" constant="20" id="3XD-kE-o2g"/>
+                            <constraint firstItem="OC2-au-jbI" firstAttribute="top" secondItem="n7E-ov-aVn" secondAttribute="bottom" constant="32" id="3XD-kE-o2g"/>
                             <constraint firstItem="GR0-WS-Ehl" firstAttribute="trailing" secondItem="rPe-bC-1ty" secondAttribute="trailing" id="EQ1-cb-MYe"/>
                             <constraint firstItem="GR0-WS-Ehl" firstAttribute="top" secondItem="rPe-bC-1ty" secondAttribute="top" id="HEo-Fv-kl0"/>
                             <constraint firstAttribute="bottom" secondItem="GR0-WS-Ehl" secondAttribute="bottom" id="I5f-PB-aPH"/>

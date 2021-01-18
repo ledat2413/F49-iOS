@@ -54,9 +54,9 @@ class HopDongMoViewController: BaseController,IndicatorInfoProvider {
             }
             if let result = result {
                 self.dataHopDong = result
-                if result.count == 0 {
-                    self.Alert("Không có dữ liệu")
-                }
+//                if result.count == 0 {
+//                    self.Alert("Không có dữ liệu")
+//                }
                 self.tableView.reloadData()
             }
         }

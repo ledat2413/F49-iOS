@@ -47,7 +47,7 @@ class QRCodeScanView: BaseCustomView, AVCaptureMetadataOutputObjectsDelegate {
         
         if !captureSession.isRunning { return }
         UIView.animate(withDuration: 2.5, animations: {
-            self.gradientImageView.center.y += (self.cameraView.bounds.height + 200)
+            self.gradientImageView.center.y += (self.cameraView.bounds.height + 300)
         }) { (_) in
             self.gradientImageView.center.y = -100
             self.scannerAnimation()
