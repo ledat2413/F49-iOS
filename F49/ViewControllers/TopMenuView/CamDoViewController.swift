@@ -40,7 +40,7 @@ class CamDoViewController: BaseController {
         createPickerView()
         self.hideKeyboardWhenTappedAround()
         headerView.leftButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
-        containerView.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
+        containerView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 6)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "CamDoTableViewCell", bundle: nil), forCellReuseIdentifier: "CamDoTableViewCell")

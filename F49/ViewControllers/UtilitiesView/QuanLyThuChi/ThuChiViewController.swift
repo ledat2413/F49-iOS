@@ -58,7 +58,6 @@ class ThuChiViewController: BaseController {
     //MARK: --Func
     
     fileprivate func setUpUI(){
-        //        2020-12-14T09:23:54
         self.fromValue = "\(Date.currentYear())-\(Date.currentMonth())-\(01)'T'\(00):\(00):\(00)"
         self.toValue = "\(Date.currentYear())-\(Date.currentMonth())-\(Date.currentDate())'T'\(00):\(00):\(00)"
         
@@ -85,10 +84,10 @@ class ThuChiViewController: BaseController {
         self.toTextField.text = "\(Date.currentDate())/\(Date.currentMonth())/\(Date.currentYear())"
         
         
-        containerCuaHang.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
-        containerToday.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
-        containerFrom.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
-        containerTo.displayShadowView(shadowColor: UIColor.black, borderColor: UIColor.clear, radius: 6)
+        containerCuaHang.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 6)
+        containerToday.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 6)
+        containerFrom.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 6)
+        containerTo.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 6)
         
         displayNavigation()
         

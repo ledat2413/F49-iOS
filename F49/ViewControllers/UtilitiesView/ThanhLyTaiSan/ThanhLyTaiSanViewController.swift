@@ -75,9 +75,9 @@ class ThanhLyTaiSanViewController: BaseController {
         displayNavigation()
         loadData()
         createPickerView()
-        nhomTaiSanView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 8)
-        tenTaiSanView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 8)
-        trangThaiView.displayShadowView(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 8)
+        nhomTaiSanView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 8)
+        tenTaiSanView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 8)
+        trangThaiView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 8)
     }
     
     

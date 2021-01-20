@@ -30,13 +30,12 @@ class UtilitiesViewController: BaseController {
     
     @IBOutlet weak var bodyView: UIView!
     @IBOutlet weak var bodyCollectionView: UICollectionView!
-    @IBOutlet weak var footerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         navigation()
-        setupCollectionView()
+//        setupCollectionView()
         self.hideKeyboardWhenTappedAround()
         
     }   
@@ -77,6 +76,7 @@ class UtilitiesViewController: BaseController {
             }
             if let result = result {
                 self.dataTienIch = result
+                self.setupCollectionView()
                 self.bodyCollectionView.reloadData()
             }
         }
@@ -141,7 +141,6 @@ class UtilitiesViewController: BaseController {
         
         bodyView.displayShadowView(shadowColor: UIColor.gray, borderColor: UIColor.clear, radius: 10)
         bodyCollectionView.displayTextField(radius: 10, color: UIColor.clear)
-        footerView.displayTextField(radius: 10, color: UIColor.clear)
 
         
         bodyCollectionView.register(UINib(nibName: "UtilitiesBodyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "UtilitiesBodyCollectionViewCell")

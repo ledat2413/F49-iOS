@@ -44,6 +44,7 @@ class BaoCaoViewController: BaseController {
     
     //MARK: --View Lifecycle
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         displayTableView()
         datePicker()
@@ -54,7 +55,7 @@ class BaoCaoViewController: BaseController {
     
     
     fileprivate func displayTableView() {
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "InfoCamDoTableViewCell", bundle: nil), forCellReuseIdentifier: "InfoCamDoTableViewCell")
@@ -71,8 +72,10 @@ class BaoCaoViewController: BaseController {
         shopContainerView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 5)
         fromView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 5)
         toView.displayShadowView(shadowColor: UIColor.lightGray, borderColor: UIColor.clear, radius: 5)
-        
-        
+        self.fromTextField.text = "\(01)/\(Date.currentMonth())/\(Date.currentYear())"
+        self.toTextField.text = "\(Date.currentDate())/\(Date.currentMonth())/\(Date.currentYear())"
+        self.fromValue = "\(Date.currentYear())-\(Date.currentMonth())-\(01)'T'\(00):\(00):\(00)"
+        self.toValue = "\(Date.currentYear())-\(Date.currentMonth())-\(Date.currentDate())'T'\(00):\(00):\(00)"
     }
     
     @objc func backView(){
