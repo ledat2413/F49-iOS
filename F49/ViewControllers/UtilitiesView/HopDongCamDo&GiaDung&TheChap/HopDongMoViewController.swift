@@ -80,7 +80,7 @@ extension HopDongMoViewController: UITableViewDelegate, UITableViewDataSource{
             }
     
             let data = dataHopDong[indexPath.row]
-            cell.idLabel.text = "\(indexPath.item)"
+            cell.idLabel.text = "\(indexPath.item + 1)"
             cell.ui(model: data)
     
             return cell
