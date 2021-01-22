@@ -20,6 +20,7 @@ class KhachHangViewController: BaseController {
     
     @IBOutlet weak var findContainerView: UIView!
     @IBOutlet weak var findTextField: UITextField!
+    @IBOutlet weak var addCustomerView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
         
@@ -43,7 +44,16 @@ class KhachHangViewController: BaseController {
         loadKhachHang(findTextField.text!)
 
     }
-    
+   
+    @IBAction func createCustomerButtonPressed(_ sender: Any) {
+        weak var pvc = self.presentingViewController
+        self.dismiss(animated: true) {
+            let vc = UIStoryboard.init(name: "CAMDO", bundle: nil).instantiateViewController(withIdentifier: "AddKhachHangViewController")
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.modalTransitionStyle = .crossDissolve
+            pvc?.present(vc, animated: true, completion: nil)
+        }
+    }
     
     //MARK: --Func
     
@@ -60,6 +70,7 @@ class KhachHangViewController: BaseController {
         tableView.register(UINib(nibName: "KhachHangHopDongTheChapTableViewCell", bundle: nil), forCellReuseIdentifier: "KhachHangHopDongTheChapTableViewCell")
         //View
         findContainerView.displayShadowView2(shadowColor: UIColor.darkGray, borderColor: UIColor.clear, radius: 0, offSet: CGSize(width: 3, height: 0))
+        addCustomerView.displayCornerRadius(radius: addCustomerView.frame.size.width / 2)
         //Data
         loadKhachHang(findTextField.text!)
     }
@@ -92,10 +103,10 @@ extension KhachHangViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "KhachHangHopDongTheChapTableViewCell", for: indexPath) as? KhachHangHopDongTheChapTableViewCell else { fatalError() }
         let data = dataTimKiem[indexPath.row]
-        cell.idLabel.text = "\(data.id)"
+        cell.idLabel.text = data.soCMND
         cell.nameLabel.text = data.hoTen
         cell.nameLabel.textColor = UIColor.systemGreen
-        cell.cmndLabel.text = data.soCMND
+        cell.cmndLabel.text = "\(data.id)"
         cell.phoneLabel.text = data.dienThoai
         return cell
     }

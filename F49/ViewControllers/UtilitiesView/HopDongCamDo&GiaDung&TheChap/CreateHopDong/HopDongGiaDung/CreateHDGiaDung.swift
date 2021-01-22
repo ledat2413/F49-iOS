@@ -128,6 +128,18 @@ extension CreateHDGiaDungViewController{
         
         //Data
         loadTaoMoi()
+        
+        //NotificationCenter
+        NotificationCenter.default.addObserver(self, selector: #selector(nameCustomer(_:)), name: NSNotification.Name(rawValue: "customer"), object: nil)
+    }
+        
+    @objc func nameCustomer(_ notification: Notification){
+        print(notification.userInfo?["name"] ?? "")
+        if let name = notification.userInfo?["name"] as? String {
+            self.tenKH = name
+            self.tableView1.reloadData()
+         }
+        
     }
     
     @objc func backView(){

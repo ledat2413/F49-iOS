@@ -12,7 +12,7 @@ import Gallery
 class CreateHDGiaDungViewController: BaseController {
     
     //MARK: --Vars
-     var cellIdentifier: [String] = ["Cell1CreateTableViewCell","Cell2CreateTableViewCell","Cell4CreateTableViewCell","Cell5CreateTableViewCell","Cell6CreateTableViewCell","ThongTinTaiSanTableViewCell"]
+    var cellIdentifier: [String] = ["Cell1CreateTableViewCell","Cell2CreateTableViewCell","Cell4CreateTableViewCell","Cell5CreateTableViewCell","Cell6CreateTableViewCell","ThongTinTaiSanTableViewCell"]
     
     var dataKeyValue: [KeyValueModel] = [KeyValueModel(title: "Trước", value: true), KeyValueModel(title: "Sau", value: false)]
     var dataTS: [TSTheChap] = []
@@ -67,11 +67,16 @@ class CreateHDGiaDungViewController: BaseController {
     @IBOutlet weak var footerCollectionView: UICollectionView!
     
     //MARK: --View Lifecycle
+    deinit {
+        NotificationCenter.default
+            .removeObserver(self, name:  NSNotification.Name("customer"), object: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         hideKeyboardWhenTappedAround()
+      
     }
     
 }
@@ -230,9 +235,9 @@ extension CreateHDGiaDungViewController: UITableViewDataSource, UITableViewDeleg
                     self.tinhSoTienKhachNhan()
                 }
                 
-              
-                    cell.thumbnail2TextField.text = "\(soNgayVay/soNgayTrongKy) Kỳ"
-                    
+                
+                cell.thumbnail2TextField.text = "\(soNgayVay/soNgayTrongKy) Kỳ"
+                
                 
                 
                 return cell
