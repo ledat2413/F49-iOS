@@ -26,7 +26,7 @@ class Cell2CreateTableViewCell: UITableViewCell{
     override func awakeFromNib() {
         super.awakeFromNib()
         thumbnailtextField.delegate = self
-        
+    
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,12 +35,13 @@ class Cell2CreateTableViewCell: UITableViewCell{
         // Configure the view for the selected state
     }
     
-    func ui(keyString: String, textFieldValue: String, celendarHidden: Bool, downHidden: Bool, enableKeyboard: Bool){
+    func ui(keyString: String, textFieldValue: String, celendarHidden: Bool, downHidden: Bool, enableKeyboard: Bool ){
         self.keyLabel.text = keyString
         self.celendarButton.isHidden = celendarHidden
         self.downButton.isHidden = downHidden
         self.enableKeyboard = enableKeyboard
         self.thumbnailtextField.text = textFieldValue
+        
     }
     
     

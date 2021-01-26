@@ -214,6 +214,7 @@ extension CreateHDGiaDungViewController: UITableViewDataSource, UITableViewDeleg
                 cell.downButton.isHidden = true
                 cell.celendarButton.isHidden = true
                 cell.enableKeyboard = true
+                cell.thumbnailtextField.keyboardType = .numberPad
                 
                 cell.callBackValue = { (value) in
                     self.soNgayTrongKy = Int(value) ?? 0
@@ -228,6 +229,8 @@ extension CreateHDGiaDungViewController: UITableViewDataSource, UITableViewDeleg
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell6CreateTableViewCell", for: indexPath) as? Cell6CreateTableViewCell else { fatalError() }
                 
                 cell.thumbnail1TextField.text = "\(soNgayVay)"
+                cell.thumbnail1TextField.keyboardType = .numberPad
+
                 
                 cell.callBackValue = { (value) in
                     self.soNgayVay = Int(value) ?? 0
@@ -248,6 +251,10 @@ extension CreateHDGiaDungViewController: UITableViewDataSource, UITableViewDeleg
                 cell.downButton.isHidden = true
                 cell.celendarButton.isHidden = true
                 cell.enableKeyboard = true
+                cell.thumbnailtextField.keyboardType = .numberPad
+
+                
+                
                 
                 cell.callBackValue = { [weak self] (value) in
                     guard let wself = self else { return}
@@ -262,6 +269,7 @@ extension CreateHDGiaDungViewController: UITableViewDataSource, UITableViewDeleg
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell5CreateTableViewCell", for: indexPath) as? Cell5CreateTableViewCell else { fatalError() }
                 cell.thumbnailLabel.text = "Số tiền lãi"
                 cell.thumbnail1TextField.text = "\(phanTramLai)"
+                cell.thumbnail1TextField.keyboardType = .numberPad
                 
                 cell.callBackValue = { (value) in
                     self.phanTramLai = Double(value)!
@@ -278,7 +286,8 @@ extension CreateHDGiaDungViewController: UITableViewDataSource, UITableViewDeleg
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell5CreateTableViewCell", for: indexPath) as? Cell5CreateTableViewCell else { fatalError() }
                 cell.thumbnailLabel.text = "Tiền thu phí"
                 cell.thumbnail1TextField.text = "\(phanTramPhi)"
-                
+                cell.thumbnail1TextField.keyboardType = .numberPad
+
                 cell.callBackValue = { (value) in
                     self.phanTramPhi = Double(value)!
                     self.TinhTienPhi()

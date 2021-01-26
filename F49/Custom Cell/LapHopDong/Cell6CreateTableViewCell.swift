@@ -15,6 +15,7 @@ class Cell6CreateTableViewCell: UITableViewCell {
      var idCell: Int?
      var callBackOpenView: (() -> Void)?
      var callBackValue:  ((_ value: String) -> Void)?
+
     
     @IBOutlet weak var thumbnail1TextField: UITextField!
     
@@ -22,6 +23,7 @@ class Cell6CreateTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+
         // Initialization code
     }
 

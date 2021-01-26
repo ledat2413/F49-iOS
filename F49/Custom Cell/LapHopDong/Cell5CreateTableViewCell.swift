@@ -11,7 +11,7 @@ import UIKit
 class Cell5CreateTableViewCell: UITableViewCell {
 
     var callBackValue: ((_ value: String) -> Void)?
-    
+
     @IBOutlet weak var thumbnailLabel: UILabel!
     @IBOutlet weak var thumbnail1TextField: UITextField!
     @IBOutlet weak var thumbnail2TextField: UITextField!
@@ -19,6 +19,7 @@ class Cell5CreateTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+
         // Initialization code
     }
 

@@ -172,7 +172,7 @@ extension CreateHDCamDoViewController: UITableViewDelegate, UITableViewDataSourc
                 cell.thumbnailtextField.keyboardType = .numberPad
                 cell.callBackValue = { [weak self] (value) in
                     guard let wself = self else { return }
-                    wself.soTienVay = Int(value)!
+                    wself.soTienVay = Int(value) ?? 0
                     wself.tinhSoTienKhachNhan()
                 }
                 
