@@ -389,7 +389,7 @@ extension CreateHDGiaDungViewController: UICollectionViewDelegate, UICollectionV
         switch indexPath.row {
         case 0:
             luuHopDong()
-            self.navigationController?.popViewController(animated: true)
+//            self.navigationController?.popViewController(animated: true)
             break
         default:
             self.navigationController?.popViewController(animated: true)
