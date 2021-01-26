@@ -17,7 +17,8 @@ class AddKhachHangViewController: BaseController {
     @IBOutlet weak var cmndTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
-    
+    var dataKhachHang: KhachHangLuu?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -29,6 +30,24 @@ class AddKhachHangViewController: BaseController {
         createButton.displayCornerRadius(radius: 18.0)
     }
     
+    func luuKhachHang(){
+        self.showActivityIndicator(view: self.view)
+        MGConnection.requestObject(APIRouter.KhachHangLuu(hoTen: nameTextField.text ?? "", soCMND: cmndTextField.text ?? "", dienThoai: phoneTextField.text ?? "", queQuan: addressTextField.text ?? ""), KhachHangLuu.self) { (result, error) in
+            self.hideActivityIndicator(view: self.view)
+            guard error == nil else {
+                print("\(String(describing: error?.mErrorMessage))")
+                self.Alert("Lỗi \(error?.mErrorMessage ?? ""). Vui lòng thử lại!!!!")
+                return }
+            if let result = result {
+                self.dataKhachHang = result
+                let userInfo: [String: Any] = ["name" : result.hoTen, "id" : result.id]
+                let nc = NotificationCenter.default
+                nc.post(name: NSNotification.Name(rawValue: "customer"), object: nil, userInfo: userInfo)
+            }
+            
+        }
+    }
+    
     @IBAction func dismissButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -38,9 +57,7 @@ class AddKhachHangViewController: BaseController {
     }
     
     @IBAction func createCustomerButtonPressed(_ sender: Any) {
-        let userInfo: [String: Any] = ["name": self.nameTextField.text ?? ""]
-        let nc = NotificationCenter.default
-        nc.post(name: NSNotification.Name(rawValue: "customer"), object: nil, userInfo: userInfo)
+        self.luuKhachHang()
         self.dismiss(animated: true, completion: nil)
     }
 }

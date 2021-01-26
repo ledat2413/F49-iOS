@@ -159,8 +159,11 @@ extension CreateHDCamDoViewController {
     
     @objc func nameCustomer(_ notification: Notification){
         print(notification.userInfo?["name"] ?? "")
-        if let name = notification.userInfo?["name"] as? String {
+        print(notification.userInfo?["id"] ?? "")
+
+        if let name = notification.userInfo?["name"] as? String, let id = notification.userInfo?["id"] as? Int{
             self.tenKH = name
+            self.idKH = id
             self.tableView.reloadData()
          }
     }

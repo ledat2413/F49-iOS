@@ -34,6 +34,7 @@ enum APIRouter: APIConfiguration {
     
     //KhachHang
     case TimKiemKhachHang(key: String)
+    case KhachHangLuu(hoTen: String, soCMND: String,dienThoai: String, queQuan: String)
     
     //LichSu
     case GetLichSuGiaoDich(id: Int)

@@ -103,10 +103,10 @@ extension KhachHangViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "KhachHangHopDongTheChapTableViewCell", for: indexPath) as? KhachHangHopDongTheChapTableViewCell else { fatalError() }
         let data = dataTimKiem[indexPath.row]
-        cell.idLabel.text = data.soCMND
+        cell.idLabel.text = "\(data.id)"
         cell.nameLabel.text = data.hoTen
         cell.nameLabel.textColor = UIColor.systemGreen
-        cell.cmndLabel.text = "\(data.id)"
+        cell.cmndLabel.text = data.soCMND
         cell.phoneLabel.text = data.dienThoai
         return cell
     }

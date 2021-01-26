@@ -32,6 +32,9 @@ extension APIRouter {
             
         case .TimKiemKhachHang(let key):
             return [Constants.APIParameterKey.key: key]
+        case .KhachHangLuu(let hoTen, let soCMND, let dienThoai, let queQuan):
+            return [Constants.APIParameterKey.hoTen: hoTen, Constants.APIParameterKey.soCMND: soCMND, Constants.APIParameterKey.dienThoai: dienThoai, Constants.APIParameterKey.queQuan: queQuan]
+            
         case .GetCuaHang:
             return [:]
             

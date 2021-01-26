@@ -163,6 +163,8 @@ extension APIRouter {
         //KhachHang
         case .TimKiemKhachHang:
             return "api/KhachHang/TimKiem"
+        case .KhachHangLuu:
+            return "api/KhachHang/Luu"
             
         //Hop Dong Gia Dich
         case .DanhSachTaiSanHDGD:

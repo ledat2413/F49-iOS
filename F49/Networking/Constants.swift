@@ -44,7 +44,10 @@ struct Constants {
         static let email = "email"
         static let deviceName = "deviceName"
         static let flg = "flg"
-        
+        static let hoTen = "HoTen"
+        static let soCMND = "SoCMND"
+        static let dienThoai = "DienThoai"
+        static let queQuan = "QueQuan"
     }
 }
 

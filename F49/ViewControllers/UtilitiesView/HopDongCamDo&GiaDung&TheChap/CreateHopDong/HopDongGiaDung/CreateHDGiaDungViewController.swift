@@ -227,7 +227,7 @@ extension CreateHDGiaDungViewController: UITableViewDataSource, UITableViewDeleg
             case 4:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell6CreateTableViewCell", for: indexPath) as? Cell6CreateTableViewCell else { fatalError() }
                 
-                cell.thumbnail1TextField.text = "\(dataLoadTaoMoi?.soNgayVay ?? 0)"
+                cell.thumbnail1TextField.text = "\(soNgayVay)"
                 
                 cell.callBackValue = { (value) in
                     self.soNgayVay = Int(value) ?? 0

@@ -55,6 +55,8 @@ extension APIRouter {
             return .post
         case .LuuHopDongHDTG:
             return .post
+        case .KhachHangLuu:
+            return .post
         default:
             return .get
             

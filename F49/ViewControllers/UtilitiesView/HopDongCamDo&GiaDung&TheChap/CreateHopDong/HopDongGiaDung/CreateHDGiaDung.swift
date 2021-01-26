@@ -135,8 +135,10 @@ extension CreateHDGiaDungViewController{
         
     @objc func nameCustomer(_ notification: Notification){
         print(notification.userInfo?["name"] ?? "")
-        if let name = notification.userInfo?["name"] as? String {
+        print(notification.userInfo?["id"] ?? "")
+        if let name = notification.userInfo?["name"] as? String,let id = notification.userInfo?["id"] as? Int {
             self.tenKH = name
+            self.idKH = id
             self.tableView1.reloadData()
          }
         
@@ -154,6 +156,9 @@ extension CreateHDGiaDungViewController{
                 guard error == nil else { return }
                 if let result = result {
                     self.dataLoadTaoMoi = result
+                    self.soNgayTrongKy = result.soNgayTrongKy
+                    self.soNgayVay = 30
+
                     self.tinhSoTienKhachNhan()
                     self.tableView1.reloadData()
                 }
@@ -164,6 +169,8 @@ extension CreateHDGiaDungViewController{
                 guard error == nil else { return }
                 if let result = result {
                     self.dataLoadTaoMoi = result
+                    self.soNgayTrongKy = result.soNgayTrongKy
+                    self.soNgayVay = 30
                     self.tinhSoTienKhachNhan()
                     self.tableView1.reloadData()
                 }

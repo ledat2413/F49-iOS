@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0960F9B87BF1A0D44E7ECE14 /* Pods_F247.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA39709F65D56F24B5B18713 /* Pods_F247.framework */; };
+		4F2CD21825BEAC4E00686434 /* KhachHangLuu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2CD21725BEAC4E00686434 /* KhachHangLuu.swift */; };
+		4F2CD21925BEAC4E00686434 /* KhachHangLuu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2CD21725BEAC4E00686434 /* KhachHangLuu.swift */; };
 		4FE69A4E25BA724D00FF1061 /* AddKhachHangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE69A4D25BA724D00FF1061 /* AddKhachHangViewController.swift */; };
 		4FE69A4F25BA724D00FF1061 /* AddKhachHangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE69A4D25BA724D00FF1061 /* AddKhachHangViewController.swift */; };
 		5A9DB539A9C81B61877CE559 /* Pods_F49.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E3FC27611B8020906915F1 /* Pods_F49.framework */; };
@@ -474,6 +476,7 @@
 
 /* Begin PBXFileReference section */
 		07E3FC27611B8020906915F1 /* Pods_F49.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_F49.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F2CD21725BEAC4E00686434 /* KhachHangLuu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KhachHangLuu.swift; sourceTree = "<group>"; };
 		4FE69A4D25BA724D00FF1061 /* AddKhachHangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddKhachHangViewController.swift; sourceTree = "<group>"; };
 		735D8A654505250CC21C6317 /* Pods-F247.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F247.debug.xcconfig"; path = "Target Support Files/Pods-F247/Pods-F247.debug.xcconfig"; sourceTree = "<group>"; };
 		C203D7112547CF0000ADFF73 /* Cell1UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell1UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -1547,6 +1550,7 @@
 			isa = PBXGroup;
 			children = (
 				C2CFAEEA253D59DC00763D84 /* TimKiem.swift */,
+				4F2CD21725BEAC4E00686434 /* KhachHangLuu.swift */,
 			);
 			path = KhachHang;
 			sourceTree = "<group>";
@@ -2004,6 +2008,7 @@
 				C267A08C2542B9F6003C840B /* Cell6CreateTableViewCell.swift in Sources */,
 				C2641539252B25D3001CB558 /* ChiTietLichSuViewController.swift in Sources */,
 				C2C25875251642C30048FAB2 /* DinhGia.swift in Sources */,
+				4F2CD21825BEAC4E00686434 /* KhachHangLuu.swift in Sources */,
 				C26704AD251C92E500B82116 /* ChiTietHopDong.swift in Sources */,
 				C2594D062519A1A000A99713 /* HopDongCamDoViewController.swift in Sources */,
 				C2F4F69A252EAC3600A9C86C /* ThuLai3TableViewCell.swift in Sources */,
@@ -2167,6 +2172,7 @@
 				C266674725ABE7C400770680 /* Cell6CreateTableViewCell.swift in Sources */,
 				C266674825ABE7C400770680 /* ChiTietLichSuViewController.swift in Sources */,
 				C266674925ABE7C400770680 /* DinhGia.swift in Sources */,
+				4F2CD21925BEAC4E00686434 /* KhachHangLuu.swift in Sources */,
 				C266674A25ABE7C400770680 /* ChiTietHopDong.swift in Sources */,
 				C266674B25ABE7C400770680 /* HopDongCamDoViewController.swift in Sources */,
 				C266674C25ABE7C400770680 /* ThuLai3TableViewCell.swift in Sources */,
