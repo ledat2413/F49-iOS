@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6CA-fV-Gbx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6CA-fV-Gbx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -66,12 +66,6 @@
                                 <rect key="frame" x="141" y="273.5" width="132" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" systemColor="systemGreenColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F49 EO Version 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avb-gQ-XJd">
-                                <rect key="frame" x="156.5" y="830" width="101" height="12"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U0Y-k5-Qmm">
@@ -206,10 +200,8 @@
                             <constraint firstItem="tcN-IM-7RI" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.725333" id="0wK-4J-5mW"/>
                             <constraint firstItem="tcN-IM-7RI" firstAttribute="top" secondItem="U0Y-k5-Qmm" secondAttribute="bottom" constant="20" id="1UD-J8-fKi"/>
                             <constraint firstItem="YBL-Ox-vNk" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0279018" id="42s-PX-76a"/>
-                            <constraint firstItem="avb-gQ-XJd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4Ot-8b-XPD"/>
                             <constraint firstAttribute="bottom" secondItem="jIm-WH-WnL" secondAttribute="bottom" id="5PI-pF-bom"/>
                             <constraint firstItem="U0Y-k5-Qmm" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7Ak-ug-yYe"/>
-                            <constraint firstItem="avb-gQ-XJd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.244" id="7S1-Mg-6rV"/>
                             <constraint firstItem="YBL-Ox-vNk" firstAttribute="top" secondItem="m5O-a3-uO7" secondAttribute="bottom" constant="20" id="FGJ-K2-bWW"/>
                             <constraint firstItem="m5O-a3-uO7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="HPq-g0-Fzv"/>
                             <constraint firstItem="tcN-IM-7RI" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ke1-Uc-w5v"/>
@@ -233,7 +225,6 @@
                             <constraint firstItem="jIm-WH-WnL" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1/2" id="ibP-oE-AkO"/>
                             <constraint firstItem="GEn-Pb-y0k" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mTA-VR-PVC"/>
                             <constraint firstItem="GEn-Pb-y0k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pOC-kV-eCk"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="avb-gQ-XJd" secondAttribute="bottom" constant="20" id="paE-Uv-iCe"/>
                             <constraint firstItem="zun-JV-Vkg" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.32" id="xRv-75-Seh"/>
                         </constraints>
                     </view>

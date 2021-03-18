@@ -34,6 +34,11 @@ class LoginViewController: BaseController {
         displayUI()
         hideKeyboardWhenTappedAround()
         device = UIDevice()
+        if UserHelper.getUserData(key: UserKey.Email) != nil {
+            emailTextField.text = UserHelper.getUserData(key: UserKey.Email)
+        }else {
+            emailTextField.text = ""
+        }
     }
     
     //MARK: --IBAction
@@ -63,9 +68,8 @@ class LoginViewController: BaseController {
             if let result = result {
                 wself.putFireBase()
                 UserHelper.saveUserData(self!.saveButton.isSelected, key: UserKey.AutoLogin)
-                
+                UserHelper.saveUserData(self!.emailTextField.text, key: UserKey.Email)
                 UserHelper.saveUserData("\(result.token_type) \(result.access_token)", key: UserKey.Token)
-                
                 wself.dismiss(animated: true, completion: nil)
             }
         }

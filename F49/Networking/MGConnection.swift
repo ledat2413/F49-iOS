@@ -140,7 +140,7 @@ class MGConnection{
 
             return
         }
-        Alamofire.request(apiRouter).responseObject{(response: DataResponse<T>) in
+        Alamofire.request(apiRouter).responseObject{(response:  DataResponse<T>) in
             APIRouter.printResponse(request: response.request, data: response.data!)
             
             switch response.result {
