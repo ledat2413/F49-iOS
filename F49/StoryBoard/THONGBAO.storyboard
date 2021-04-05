@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H4l-o2-ksC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H4l-o2-ksC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,17 +30,17 @@
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R9h-oR-G8C">
-                                        <rect key="frame" x="95" y="11.5" width="304" height="30"/>
+                                        <rect key="frame" x="95" y="9" width="304" height="35"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2rC-Y8-LoY">
-                                                <rect key="frame" x="0.0" y="0.0" width="304" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="304" height="35"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvW-tr-gG6">
-                                                <rect key="frame" x="274" y="10" width="15" height="10"/>
+                                                <rect key="frame" x="274" y="12.5" width="15" height="10"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="15" id="1Iz-Sw-t16"/>
                                                     <constraint firstAttribute="height" constant="10" id="n1i-0w-PA6"/>
@@ -53,10 +53,10 @@
                                             <constraint firstItem="2rC-Y8-LoY" firstAttribute="leading" secondItem="R9h-oR-G8C" secondAttribute="leading" id="1QJ-PM-Kfs"/>
                                             <constraint firstItem="bvW-tr-gG6" firstAttribute="centerY" secondItem="R9h-oR-G8C" secondAttribute="centerY" id="9nF-2n-e9n"/>
                                             <constraint firstAttribute="trailing" secondItem="2rC-Y8-LoY" secondAttribute="trailing" id="fed-xw-Kbk"/>
+                                            <constraint firstAttribute="height" constant="35" id="jCQ-hd-1GQ"/>
                                             <constraint firstAttribute="trailing" secondItem="bvW-tr-gG6" secondAttribute="trailing" constant="15" id="nQX-fq-jdw"/>
                                             <constraint firstItem="2rC-Y8-LoY" firstAttribute="top" secondItem="R9h-oR-G8C" secondAttribute="top" id="pOT-Fi-dcb"/>
                                             <constraint firstAttribute="bottom" secondItem="2rC-Y8-LoY" secondAttribute="bottom" id="qIj-1d-ujc"/>
-                                            <constraint firstAttribute="height" constant="30" id="xUF-66-viE"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -166,9 +166,6 @@
         <image name="profile-bg-home" width="1242" height="435"/>
         <image name="resize-bell1" width="30" height="30"/>
         <image name="resize-bell2" width="30" height="30"/>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,14 +12,17 @@
         <!--Thu Chi View Controller-->
         <scene sceneID="hwm-Y1-JEv">
             <objects>
-                <viewController storyboardIdentifier="ThuChiViewController" id="DLg-im-LYX" customClass="ThuChiViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ThuChiViewController" id="DLg-im-LYX" customClass="ThuChiViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xwp-qk-ZK2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yay-Lo-aJB" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yay-Lo-aJB" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="8es-vK-jyL"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bT-LF-LIp">
                                 <rect key="frame" x="20" y="115" width="374" height="40"/>
@@ -159,7 +162,6 @@
                             <constraint firstItem="yay-Lo-aJB" firstAttribute="trailing" secondItem="g3u-fH-bmA" secondAttribute="trailing" id="jm1-py-RZR"/>
                             <constraint firstItem="yay-Lo-aJB" firstAttribute="leading" secondItem="g3u-fH-bmA" secondAttribute="leading" id="l9w-Al-nV8"/>
                             <constraint firstItem="7bT-LF-LIp" firstAttribute="leading" secondItem="g3u-fH-bmA" secondAttribute="leading" constant="20" id="nEC-vY-p4L"/>
-                            <constraint firstItem="yay-Lo-aJB" firstAttribute="height" secondItem="Xwp-qk-ZK2" secondAttribute="height" multiplier="0.100446" id="qK6-pI-5HO"/>
                             <constraint firstItem="g3u-fH-bmA" firstAttribute="trailing" secondItem="7bT-LF-LIp" secondAttribute="trailing" constant="20" id="sx0-Ga-iGZ"/>
                             <constraint firstItem="Wim-IF-NTa" firstAttribute="leading" secondItem="g3u-fH-bmA" secondAttribute="leading" constant="20" id="vRU-gW-ZdO"/>
                             <constraint firstItem="liT-d7-svH" firstAttribute="leading" secondItem="g3u-fH-bmA" secondAttribute="leading" id="vqm-DG-tOp"/>
@@ -186,14 +188,17 @@
         <!--Thong Tin Thu Chi View Controller-->
         <scene sceneID="IJv-yo-850">
             <objects>
-                <viewController storyboardIdentifier="ThongTinThuChiViewController" id="cOm-fN-zQQ" customClass="ThongTinThuChiViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ThongTinThuChiViewController" id="cOm-fN-zQQ" customClass="ThongTinThuChiViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NrH-KI-vZw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vk1-lj-cuE" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vk1-lj-cuE" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="dBg-ge-lna"/>
+                                </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lu9-lJ-y2A">
                                 <rect key="frame" x="0.0" y="100" width="414" height="796"/>
@@ -223,7 +228,6 @@
                             <constraint firstItem="Vk1-lj-cuE" firstAttribute="trailing" secondItem="km2-ED-AtU" secondAttribute="trailing" id="OQT-3w-Ivi"/>
                             <constraint firstItem="Lu9-lJ-y2A" firstAttribute="leading" secondItem="km2-ED-AtU" secondAttribute="leading" id="d7s-jb-6a8"/>
                             <constraint firstItem="Lu9-lJ-y2A" firstAttribute="top" secondItem="Vk1-lj-cuE" secondAttribute="bottom" constant="10" id="gMa-og-MQU"/>
-                            <constraint firstItem="Vk1-lj-cuE" firstAttribute="height" secondItem="NrH-KI-vZw" secondAttribute="height" multiplier="0.100446" id="hnd-ls-axJ"/>
                             <constraint firstItem="Lu9-lJ-y2A" firstAttribute="trailing" secondItem="km2-ED-AtU" secondAttribute="trailing" id="nfg-1Y-cJQ"/>
                             <constraint firstItem="Vk1-lj-cuE" firstAttribute="top" secondItem="NrH-KI-vZw" secondAttribute="top" id="t8n-sZ-AYo"/>
                         </constraints>

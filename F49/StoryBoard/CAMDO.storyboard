@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -183,13 +183,22 @@
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4B9-ER-ewP">
                                                 <rect key="frame" x="20" y="133" width="374" height="628"/>
                                             </scrollView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="93M-bY-yFk">
+                                                <rect key="frame" x="20" y="123" width="374" height="1"/>
+                                                <color key="backgroundColor" name="LineViewColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="5bO-dS-9p8"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="a3j-Yq-h6V" secondAttribute="trailing" constant="30" id="39h-Xz-MiV"/>
                                             <constraint firstItem="rat-uf-vyf" firstAttribute="centerX" secondItem="a3j-Yq-h6V" secondAttribute="centerX" id="3OP-Ib-fcW"/>
+                                            <constraint firstItem="93M-bY-yFk" firstAttribute="leading" secondItem="Z7t-3C-zM2" secondAttribute="leading" constant="20" id="5sf-gu-0N3"/>
                                             <constraint firstAttribute="trailing" secondItem="rat-uf-vyf" secondAttribute="trailing" constant="30" id="8Bi-ST-I4g"/>
                                             <constraint firstItem="yIp-h9-VMI" firstAttribute="leading" secondItem="Z7t-3C-zM2" secondAttribute="leading" constant="20" id="8Q3-q8-lDM"/>
+                                            <constraint firstAttribute="trailing" secondItem="93M-bY-yFk" secondAttribute="trailing" constant="20" id="9A3-Ih-lC1"/>
                                             <constraint firstItem="4B9-ER-ewP" firstAttribute="top" secondItem="gT1-hj-DjW" secondAttribute="bottom" constant="8" id="Bv9-qP-BvY"/>
                                             <constraint firstAttribute="trailing" secondItem="4B9-ER-ewP" secondAttribute="trailing" constant="20" id="N9r-7k-4sS"/>
                                             <constraint firstItem="gT1-hj-DjW" firstAttribute="top" secondItem="yIp-h9-VMI" secondAttribute="bottom" constant="20" id="T4d-2f-Pzs"/>
@@ -197,6 +206,7 @@
                                             <constraint firstAttribute="bottom" secondItem="4B9-ER-ewP" secondAttribute="bottom" id="ZOC-41-ofo"/>
                                             <constraint firstAttribute="trailing" secondItem="yIp-h9-VMI" secondAttribute="trailing" constant="20" id="aFN-Dc-ynE"/>
                                             <constraint firstItem="a3j-Yq-h6V" firstAttribute="centerY" secondItem="gT1-hj-DjW" secondAttribute="centerY" id="dEK-VN-j0f"/>
+                                            <constraint firstItem="93M-bY-yFk" firstAttribute="top" secondItem="rat-uf-vyf" secondAttribute="bottom" constant="8" id="jWW-ZR-C8R"/>
                                             <constraint firstItem="gT1-hj-DjW" firstAttribute="leading" secondItem="Z7t-3C-zM2" secondAttribute="leading" constant="20" id="mEq-ip-8Et"/>
                                             <constraint firstItem="yIp-h9-VMI" firstAttribute="top" secondItem="Z7t-3C-zM2" secondAttribute="top" constant="20" id="wkW-4q-ynU"/>
                                             <constraint firstItem="4B9-ER-ewP" firstAttribute="leading" secondItem="Z7t-3C-zM2" secondAttribute="leading" constant="20" id="ykf-WB-ceL"/>
@@ -1801,6 +1811,9 @@
         <namedColor name="BackgroundViewColor">
             <color red="0.94900000095367432" green="0.95300000905990601" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="LineViewColor">
+            <color red="0.88200002908706665" green="0.88200002908706665" blue="0.88200002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="SecondaryTextColor">
             <color red="0.94900000095367432" green="0.37999999523162842" blue="0.14900000393390656" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1812,15 +1825,6 @@
         </namedColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

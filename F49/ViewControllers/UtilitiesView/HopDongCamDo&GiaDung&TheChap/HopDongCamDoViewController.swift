@@ -150,7 +150,7 @@ class HopDongCamDoViewController:  TabbarButton{
         loadShop()
         loadStatus()
         createPickerView()
-        contrectLabel.underlined()
+//        contrectLabel.underlined()
         
     }
     

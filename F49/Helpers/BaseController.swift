@@ -74,7 +74,8 @@ class BaseController: UIViewController {
            let activityIndicator = NVActivityIndicatorView(frame: view.frame)
             activityIndicator.type = .circleStrokeSpin
             activityIndicator.color = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-            activityIndicator.padding =  view.frame.size.width < 400 ? 170 : 190
+//            activityIndicator.padding =  view.frame.size.width < 400 ? 170 : 190
+            activityIndicator.frame.size = view.frame.size.width > 500 ? CGSize(width: 70, height: 70) : CGSize(width: 50, height: 50)
             activityIndicator.backgroundColor = .clear
             activityIndicator.center = view.center
             activityIndicator.tag = 1000

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,14 +12,17 @@
         <!--Rut Lai View Controller-->
         <scene sceneID="VYi-jM-bgJ">
             <objects>
-                <viewController storyboardIdentifier="RutLaiViewController" id="W02-E7-gr6" customClass="RutLaiViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RutLaiViewController" id="W02-E7-gr6" customClass="RutLaiViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AGz-h9-5Ng">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOK-lv-o9L" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOK-lv-o9L" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="3da-tF-Dvy"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bko-mV-9Rd">
                                 <rect key="frame" x="20" y="110" width="374" height="40"/>
@@ -92,7 +95,6 @@
                         <viewLayoutGuide key="safeArea" id="eN3-cR-6ZZ"/>
                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="sOK-lv-o9L" firstAttribute="height" secondItem="AGz-h9-5Ng" secondAttribute="height" multiplier="0.100446" id="3Ny-xZ-P7f"/>
                             <constraint firstItem="eN3-cR-6ZZ" firstAttribute="trailing" secondItem="wyI-Hw-2Up" secondAttribute="trailing" id="4iT-Vi-lfL"/>
                             <constraint firstItem="sOK-lv-o9L" firstAttribute="top" secondItem="AGz-h9-5Ng" secondAttribute="top" id="4ud-XJ-yEh"/>
                             <constraint firstItem="CeF-qv-iBu" firstAttribute="top" secondItem="wyI-Hw-2Up" secondAttribute="bottom" id="70p-z4-cFA"/>
@@ -124,7 +126,7 @@
         <!--Rut Lai Container View Controller-->
         <scene sceneID="xt4-A7-iH3">
             <objects>
-                <viewController storyboardIdentifier="RutLaiContainerViewController" id="JHq-o7-egH" customClass="RutLaiContainerViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RutLaiContainerViewController" id="JHq-o7-egH" customClass="RutLaiContainerViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BdF-CH-qL0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -159,12 +161,12 @@
         <!--Rut Lai Chi Tiet View Controller-->
         <scene sceneID="ab8-5y-X21">
             <objects>
-                <viewController storyboardIdentifier="RutLaiChiTietViewController" id="fXr-9P-GJb" customClass="RutLaiChiTietViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RutLaiChiTietViewController" id="fXr-9P-GJb" customClass="RutLaiChiTietViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ll5-kQ-JaN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gA-Ts-ySt" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gA-Ts-ySt" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>

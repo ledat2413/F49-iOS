@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,14 +12,17 @@
         <!--Bao Cao View Controller-->
         <scene sceneID="a04-ff-OO0">
             <objects>
-                <viewController storyboardIdentifier="BaoCaoViewController" id="ezo-RL-mQf" customClass="BaoCaoViewController" customModule="F49" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BaoCaoViewController" id="ezo-RL-mQf" customClass="BaoCaoViewController" customModule="F247" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oby-fL-qEm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zg5-YE-ftg" customClass="NavigationBar" customModule="F49" customModuleProvider="target">
+                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="zg5-YE-ftg" customClass="NavigationBar" customModule="F247" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="hba-gU-uEw"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZY-81-b0l">
                                 <rect key="frame" x="20" y="110" width="374" height="40"/>
@@ -135,7 +138,6 @@
                             <constraint firstItem="zvJ-xZ-uHS" firstAttribute="trailing" secondItem="sXg-3W-cgT" secondAttribute="trailing" constant="20" id="erB-rq-JEJ"/>
                             <constraint firstItem="pJA-i7-YM5" firstAttribute="trailing" secondItem="zvJ-xZ-uHS" secondAttribute="trailing" id="fwF-d0-Zed"/>
                             <constraint firstItem="zg5-YE-ftg" firstAttribute="top" secondItem="oby-fL-qEm" secondAttribute="top" id="l4l-IC-fk8"/>
-                            <constraint firstItem="zg5-YE-ftg" firstAttribute="height" secondItem="oby-fL-qEm" secondAttribute="height" multiplier="0.100446" id="pTd-5j-qqb"/>
                             <constraint firstItem="pJA-i7-YM5" firstAttribute="top" secondItem="sXg-3W-cgT" secondAttribute="bottom" constant="20" id="vFv-Ze-2eN"/>
                             <constraint firstItem="zvJ-xZ-uHS" firstAttribute="trailing" secondItem="kZY-81-b0l" secondAttribute="trailing" constant="20" id="wMr-7u-dZO"/>
                         </constraints>

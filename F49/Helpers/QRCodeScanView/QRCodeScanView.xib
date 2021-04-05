@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -45,12 +45,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YlV-R1-CWP">
                     <rect key="frame" x="16" y="16" width="501" height="644.66666666666663"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scan_effect" translatesAutoresizingMaskIntoConstraints="NO" id="254-9b-t8v">
-                            <rect key="frame" x="0.0" y="-200" width="501" height="200"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="200" id="shv-zf-6yL"/>
-                            </constraints>
-                        </imageView>
                         <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKs-13-eCl">
                             <rect key="frame" x="0.0" y="0.0" width="501" height="45"/>
                             <color key="backgroundColor" name="PrimaryColor"/>
@@ -58,6 +52,12 @@
                                 <constraint firstAttribute="height" constant="45" id="gFD-QB-dm4"/>
                             </constraints>
                         </view>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scan_effect" translatesAutoresizingMaskIntoConstraints="NO" id="254-9b-t8v">
+                            <rect key="frame" x="0.0" y="-200" width="501" height="200"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="shv-zf-6yL"/>
+                            </constraints>
+                        </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đặt mã QR code ở trung tâm của hình vuông để quét tự động. " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIK-4v-Mxb" customClass="MarqueeLabel" customModule="MarqueeLabel">
                             <rect key="frame" x="12" y="0.0" width="477" height="45"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
@@ -193,7 +193,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BẬT FLASH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmq-Fe-a4c">
-                            <rect key="frame" x="371.66666666666669" y="607.33333333333337" width="66.333333333333314" height="15.333333333333371"/>
+                            <rect key="frame" x="368.33333333333331" y="607.33333333333337" width="69.666666666666686" height="15.333333333333371"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>

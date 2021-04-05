@@ -69,6 +69,7 @@ extension UIView {
         layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    
     func displayCornerRadius(radius: CGFloat){
         self.layer.cornerRadius = radius
         self.clipsToBounds = true
